@@ -1,7 +1,3 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+#![crate_name = "voca_rs"]
+// #![cfg_attr(all(test, feature = "nightly"), feature(test))]
+pub mod split;
