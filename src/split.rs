@@ -9,6 +9,7 @@
 /// # Example
 ///
 /// ```
+/// use voca_rs::*;
 /// split::chars("cloud");
 /// // => ["c", "l", "o", "u", "d"]
 /// ```
@@ -29,20 +30,33 @@ pub fn chars(string: &str) -> Vec<&str> {
 /// # Example
 ///
 /// ```rust
-/// split::split("rage against the dying of the light", " "");
+/// use voca_rs::*;
+/// split::split("rage against the dying of the light", "");
 /// // => ["rage", "against", "the", "dying", "of", "the", "light"]
 /// ```
-pub fn split(s: &'static str, d: &str) -> Vec<&'static str> {
-    if s.len() == 0 {
+pub fn split(string: &'static str, pattern: &str) -> Vec<&'static str> {
+    if string.len() == 0 {
         return vec![];
     }
-    if d.len() == 0 {
-        return vec![s];
+    if pattern.len() == 0 {
+        return vec![string];
     }
-    s.split_terminator(d).collect::<Vec<_>>()
+    string.split_terminator(pattern).collect::<Vec<_>>()
 }
 
 /// Splits `subject` into an array of words.
+///
+/// # Arguments
+///
+/// * `string: &str` - The string to split into characters.
+///
+/// # Example
+///
+/// ```rust
+/// use voca_rs::*;
+/// split::words("Sześć звёзд are dying");
+/// // => ["Sześć", "звёзд", "are", "dying"]
+/// ```
 pub fn words(s: &str) -> Vec<&str> {
     s.split_whitespace().collect::<Vec<_>>()
 }

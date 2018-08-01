@@ -11,6 +11,7 @@ mod tests {
             ["g", "r", "a", "v", "i", "t", "y"]
         );
         assert_eq!(split::chars(&"  ".to_string()), [" ", " "]);
+        assert_eq!(split::chars(&"a b".to_string()), ["a", " ", "b"]);
         assert_eq!(split::chars("\n\t"), ["\n", "\t"]);
     }
     #[test]
@@ -39,6 +40,14 @@ mod tests {
         assert_eq!(
             split::words(&"gravity can cross dimensions".to_string()),
             ["gravity", "can", "cross", "dimensions"]
+        );
+        assert_eq!(
+            split::words(&"gravity    dying\r\nstar\tfalling".to_string()),
+            ["gravity", "dying", "star", "falling"]
+        );
+        assert_eq!(
+            split::words(&"Zażółć gęślą jaźń".to_string()),
+            ["Zażółć", "gęślą", "jaźń"]
         );
     }
     #[test]
