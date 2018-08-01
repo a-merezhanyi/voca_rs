@@ -20,6 +20,21 @@ mod tests {
     }
 
     #[test]
+    fn split_by_pattern() {
+        assert_eq!(
+            split::split("gravity can cross dimensions", " "),
+            ["gravity", "can", "cross", "dimensions"]
+        );
+        assert_eq!(split::split("*dying*star*", "*"), ["", "dying", "star"]);
+        assert_eq!(split::split("dying star", ""), ["dying star"]);
+    }
+    #[test]
+    #[should_panic]
+    fn split_by_pattern_panic() {
+        assert_eq!(split::chars(&"gravity".to_string()), ["g", "r", "a"]);
+    }
+
+    #[test]
     fn split_words() {
         assert_eq!(
             split::words(&"gravity can cross dimensions".to_string()),
