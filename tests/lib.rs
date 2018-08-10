@@ -5,6 +5,11 @@ mod tests {
     use voca_rs::*;
 
     #[test]
+    fn version() {
+        assert_eq!(utils::version(), "0.1.0");
+    }
+
+    #[test]
     fn split_to_chars() {
         assert_eq!(
             split::chars(&"gravity".to_string()),
