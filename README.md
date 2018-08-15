@@ -16,7 +16,7 @@ See the complete documentation at https://e1r0nd.github.io/voca_rs/
 
 coded by Anatol Marezhanyi [@e1r0nd_crg](https://twitter.com/e1r0nd_crg)
 
-http://linkedin.com/in/merezhany/<br>
+https://linkedin.com/in/merezhany/<br>
 https://www.youtube.com/c/AnatolMerezhanyi
 
 ## License
