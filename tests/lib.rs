@@ -54,6 +54,14 @@ mod tests {
             split::words(&"Zażółć gęślą jaźń".to_string()),
             ["Zażółć", "gęślą", "jaźń"]
         );
+        assert_eq!(
+            split::words(&"splitCamelCase".to_string()),
+            ["split", "Camel", "Case"]
+        );
+        assert_eq!(
+            split::words(&"split-some kind_of_mixed CaseHere".to_string()),
+            ["split", "some", "kind", "of", "mixed", "Case", "Here"]
+        );
     }
     #[test]
     #[should_panic]

@@ -2,3 +2,5 @@
 #![cfg_attr(all(test, feature = "nightly"), feature(test))]
 pub mod split;
 pub mod utils;
+
+extern crate unicode_segmentation;
