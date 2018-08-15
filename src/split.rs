@@ -44,6 +44,7 @@ pub fn split(string: &'static str, pattern: &str) -> Vec<&'static str> {
     string.split_terminator(pattern).collect::<Vec<_>>()
 }
 
+use unicode_segmentation::UnicodeSegmentation;
 /// Splits `subject` into an array of words.
 ///
 /// # Arguments
@@ -59,7 +60,6 @@ pub fn split(string: &'static str, pattern: &str) -> Vec<&'static str> {
 /// split::words("LazyLoad with XMLHttpRequest and snake_case");
 /// // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 /// ```
-use unicode_segmentation::UnicodeSegmentation;
 pub fn words(s: &str) -> Vec<String> {
     fn transform(v: &str) -> String {
         // https://github.com/withoutboats/heck/blob/master/src/lib.rs
