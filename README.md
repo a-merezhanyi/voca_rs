@@ -12,6 +12,11 @@ Voca_rs is inspired by [Voca.js](https://vocajs.com/) and [string.py](https://do
 
 See the complete documentation at https://e1r0nd.github.io/voca_rs/
 
+Run test: `cargo test`<br>
+Build docs: `cargo doc` -> `./target/doc/voca_rs/index.html` <br>
+Build project: `cargo build` -> `./target/debug`<br>
+Publish project: `git push`
+
 ## Copyright
 
 coded by Anatol Marezhanyi [@e1r0nd_crg](https://twitter.com/e1r0nd_crg)

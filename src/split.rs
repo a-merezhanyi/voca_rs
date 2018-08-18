@@ -117,3 +117,23 @@ pub fn words(s: &str) -> Vec<String> {
     let return_vector: Vec<String> = res.unicode_words().map(String::from).collect();
     return_vector
 }
+
+/// Splits `subject` into an array of graphemes
+///
+/// # Arguments
+///
+/// * `string: &str` - The string to split into characters.
+///
+/// # Example
+///
+/// ```rust
+/// use voca_rs::*;
+/// split::graphemes("a̐éö̲\r\n");
+/// // => ["a̐", "é", "ö̲", "\r\n"]
+/// ```
+pub fn graphemes(string: &str) -> Vec<&str> {
+    if string.len() == 0 {
+        return vec![];
+    }
+    UnicodeSegmentation::graphemes(string, true).collect::<Vec<&str>>()
+}

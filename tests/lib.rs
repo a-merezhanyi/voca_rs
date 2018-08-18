@@ -71,4 +71,17 @@ mod tests {
             ["gravity1", "can", "cross", "dimensions"]
         );
     }
+
+    #[test]
+    fn split_to_graphemes() {
+        assert_eq!(
+            split::graphemes(&"a̐éö̲\r\n".to_string()),
+            ["a̐", "é", "ö̲", "\r\n"]
+        );
+    }
+    #[test]
+    #[should_panic]
+    fn split_to_graphemes_panic() {
+        assert_eq!(split::graphemes(&"\r".to_string()), ["r"]);
+    }
 }
