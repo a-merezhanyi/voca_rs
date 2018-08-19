@@ -86,6 +86,18 @@ mod tests {
     }
 
     #[test]
+    fn query_ends_with() {
+        assert!(query::ends_with("the world is yours", "is yours"));
+        assert!(query::ends_with("Zażółć gęślą jaźń", "jaźń"));
+        assert!(query::ends_with("the world is yours", ""));
+        assert!(query::ends_with("", ""), true);
+    }
+    #[test]
+    #[should_panic]
+    fn query_dont_ends_with() {
+        assert!(query::ends_with("a b c", "b"));
+    }
+    #[test]
     fn query_starts_with() {
         assert!(query::starts_with("the world is yours", "the world"));
         assert!(query::starts_with(
