@@ -15,7 +15,7 @@
 /// ```
 pub fn chars(string: &str) -> Vec<&str> {
     if string.len() == 0 {
-        return vec![];
+        return vec![""];
     }
     string.split_terminator("").skip(1).collect::<Vec<_>>()
 }
@@ -36,7 +36,7 @@ pub fn chars(string: &str) -> Vec<&str> {
 /// ```
 pub fn split(string: &'static str, pattern: &str) -> Vec<&'static str> {
     if string.len() == 0 {
-        return vec![];
+        return vec![""];
     }
     if pattern.len() == 0 {
         return vec![string];
@@ -133,7 +133,7 @@ pub fn words(s: &str) -> Vec<String> {
 /// ```
 pub fn graphemes(string: &str) -> Vec<&str> {
     if string.len() == 0 {
-        return vec![];
+        return vec![""];
     }
     UnicodeSegmentation::graphemes(string, true).collect::<Vec<&str>>()
 }

@@ -11,18 +11,16 @@ mod tests {
 
     #[test]
     fn split_to_chars() {
-        assert_eq!(
-            split::chars(&"gravity".to_string()),
-            ["g", "r", "a", "v", "i", "t", "y"]
-        );
-        assert_eq!(split::chars(&"  ".to_string()), [" ", " "]);
-        assert_eq!(split::chars(&"a b".to_string()), ["a", " ", "b"]);
+        assert_eq!(split::chars("gravity"), ["g", "r", "a", "v", "i", "t", "y"]);
+        assert_eq!(split::chars("  "), [" ", " "]);
+        assert_eq!(split::chars("a b"), ["a", " ", "b"]);
         assert_eq!(split::chars("\n\t"), ["\n", "\t"]);
+        assert_eq!(split::chars(""), [""]);
     }
     #[test]
     #[should_panic]
     fn split_to_chars_panic() {
-        assert_eq!(split::chars(&"gravity".to_string()), ["g", "r", "a"]);
+        assert_eq!(split::chars("gravity"), ["g", "r", "a"]);
     }
 
     #[test]
@@ -33,41 +31,43 @@ mod tests {
         );
         assert_eq!(split::split("*dying*star*", "*"), ["", "dying", "star"]);
         assert_eq!(split::split("dying star", ""), ["dying star"]);
+        assert_eq!(split::split("", ""), [""]);
     }
     #[test]
     #[should_panic]
     fn split_by_pattern_panic() {
-        assert_eq!(split::chars(&"gravity".to_string()), ["g", "r", "a"]);
+        assert_eq!(split::chars("gravity"), ["g", "r", "a"]);
     }
 
     #[test]
     fn split_words() {
         assert_eq!(
-            split::words(&"gravity can cross dimensions".to_string()),
+            split::words("gravity can cross dimensions"),
             ["gravity", "can", "cross", "dimensions"]
         );
         assert_eq!(
-            split::words(&"gravity    dying\r\nstar\tfalling".to_string()),
+            split::words("gravity    dying\r\nstar\tfalling"),
             ["gravity", "dying", "star", "falling"]
         );
         assert_eq!(
-            split::words(&"Zażółć gęślą jaźń".to_string()),
+            split::words("Zażółć gęślą jaźń"),
             ["Zażółć", "gęślą", "jaźń"]
         );
+        assert_eq!(split::words("splitCamelCase"), ["split", "Camel", "Case"]);
         assert_eq!(
-            split::words(&"splitCamelCase".to_string()),
-            ["split", "Camel", "Case"]
+            split::words("split-some kind_of_mixed CaseHere"),
+            ["split", "some", "kind", "of", "mixed", "Case", "Here"]
         );
         assert_eq!(
-            split::words(&"split-some kind_of_mixed CaseHere".to_string()),
-            ["split", "some", "kind", "of", "mixed", "Case", "Here"]
+            split::words("LazyLoad with XMLHttpRequest and snake_case"),
+            ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
         );
     }
     #[test]
     #[should_panic]
     fn split_words_panic() {
         assert_eq!(
-            split::words(&"gravity can cross dimensions".to_string()),
+            split::words("gravity can cross dimensions"),
             ["gravity1", "can", "cross", "dimensions"]
         );
     }
@@ -75,14 +75,15 @@ mod tests {
     #[test]
     fn split_to_graphemes() {
         assert_eq!(
-            split::graphemes(&"a̐éö̲\r\n".to_string()),
+            split::graphemes("a̐éö̲\r\n"),
             ["a̐", "é", "ö̲", "\r\n"]
         );
+        assert_eq!(split::graphemes(""), [""]);
     }
     #[test]
     #[should_panic]
     fn split_to_graphemes_panic() {
-        assert_eq!(split::graphemes(&"\r".to_string()), ["r"]);
+        assert_eq!(split::graphemes("\r"), ["r"]);
     }
 
     #[test]
