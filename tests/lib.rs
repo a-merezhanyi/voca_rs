@@ -5,7 +5,7 @@ mod tests {
     use voca_rs::*;
 
     #[test]
-    fn version() {
+    fn utils_version() {
         assert_eq!(utils::version(), "0.1.0");
     }
 
@@ -83,5 +83,21 @@ mod tests {
     #[should_panic]
     fn split_to_graphemes_panic() {
         assert_eq!(split::graphemes(&"\r".to_string()), ["r"]);
+    }
+
+    #[test]
+    fn query_starts_with() {
+        assert!(query::starts_with("the world is yours", "the world"));
+        assert!(query::starts_with(
+            "Zażółć gęślą jaźń",
+            "Zażółć"
+        ));
+        assert!(query::starts_with("the world is yours", ""));
+        assert!(query::starts_with("", ""), true);
+    }
+    #[test]
+    #[should_panic]
+    fn query_dont_starts_with() {
+        assert!(query::starts_with("a b c", "b"));
     }
 }
