@@ -141,6 +141,28 @@ mod tests {
     }
 
     #[test]
+    fn case_decapitalize() {
+        assert_eq!(
+            case::decapitalize("The World IS YourS", &true),
+            "the world is yours"
+        );
+        assert_eq!(
+            case::decapitalize("ZAżółć GĘŚLĄ jAźń", &true),
+            "zażółć gęślą jaźń"
+        );
+        assert_eq!(
+            case::decapitalize("Say Hello to ME", &false),
+            "say Hello to ME"
+        );
+        assert_eq!(case::decapitalize("", &true), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_decapitalize_panic() {
+        assert_eq!(case::decapitalize("ABC", &true), "ABC");
+    }
+
+    #[test]
     fn case_lower_case() {
         assert_eq!(case::lower_case("The World IS YourS"), "the world is yours");
         assert_eq!(
