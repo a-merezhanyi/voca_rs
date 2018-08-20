@@ -132,4 +132,18 @@ mod tests {
     fn case_lower_case_panic() {
         assert_eq!(case::lower_case("ABC"), "ABC");
     }
+    #[test]
+    fn case_upper_case() {
+        assert_eq!(case::upper_case("The World IS YourS"), "THE WORLD IS YOURS");
+        assert_eq!(
+            case::upper_case("Zażółć gęślą jaźń"),
+            "ZAŻÓŁĆ GĘŚLĄ JAŹŃ"
+        );
+        assert_eq!(case::upper_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_upper_case_panic() {
+        assert_eq!(case::upper_case("ABC"), "abc");
+    }
 }
