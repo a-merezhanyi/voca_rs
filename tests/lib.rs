@@ -4,11 +4,13 @@ extern crate voca_rs;
 mod tests {
     use voca_rs::*;
 
+    /// voca_rs::utils testing
     #[test]
     fn utils_version() {
         assert_eq!(utils::version(), "0.1.0");
     }
 
+    /// voca_rs::split testing
     #[test]
     fn split_to_chars() {
         assert_eq!(split::chars("gravity"), ["g", "r", "a", "v", "i", "t", "y"]);
@@ -86,6 +88,7 @@ mod tests {
         assert_eq!(split::graphemes("\r"), ["r"]);
     }
 
+    /// voca_rs::query testing
     #[test]
     fn query_ends_with() {
         assert!(query::ends_with("the world is yours", "is yours"));
@@ -112,5 +115,21 @@ mod tests {
     #[should_panic]
     fn query_dont_starts_with() {
         assert!(query::starts_with("a b c", "b"));
+    }
+
+    /// voca_rs::case testing
+    #[test]
+    fn case_lower_case() {
+        assert_eq!(case::lower_case("The World IS YourS"), "the world is yours");
+        assert_eq!(
+            case::lower_case("Zażółć gęślą jaźń"),
+            "zażółć gęślą jaźń"
+        );
+        assert_eq!(case::lower_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_lower_case_panic() {
+        assert_eq!(case::lower_case("ABC"), "ABC");
     }
 }
