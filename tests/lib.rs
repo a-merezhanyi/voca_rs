@@ -119,6 +119,28 @@ mod tests {
 
     /// voca_rs::case testing
     #[test]
+    fn case_capitalize() {
+        assert_eq!(
+            case::capitalize("The World IS YourS", &true),
+            "The world is yours"
+        );
+        assert_eq!(
+            case::capitalize("ZAżółć GĘŚLĄ jAźń", &true),
+            "Zażółć gęślą jaźń"
+        );
+        assert_eq!(
+            case::capitalize("say Hello to ME", &false),
+            "Say Hello to ME"
+        );
+        assert_eq!(case::capitalize("", &true), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_capitalize_panic() {
+        assert_eq!(case::capitalize("ABC", &true), "ABC");
+    }
+
+    #[test]
     fn case_lower_case() {
         assert_eq!(case::lower_case("The World IS YourS"), "the world is yours");
         assert_eq!(
@@ -132,6 +154,7 @@ mod tests {
     fn case_lower_case_panic() {
         assert_eq!(case::lower_case("ABC"), "ABC");
     }
+
     #[test]
     fn case_upper_case() {
         assert_eq!(case::upper_case("The World IS YourS"), "THE WORLD IS YOURS");
