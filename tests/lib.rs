@@ -219,6 +219,28 @@ mod tests {
     }
 
     #[test]
+    fn case_snake_case() {
+        assert_eq!(
+            case::snake_case("The World - IS Yours"),
+            "the_world_is_yours"
+        );
+        assert_eq!(
+            case::snake_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "zażółć_gęślą_jaźń"
+        );
+        assert_eq!(
+            case::snake_case("say  ***    Hello\r\n   to--ME++"),
+            "say_hello_to_me"
+        );
+        assert_eq!(case::snake_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_snake_case_panic() {
+        assert_eq!(case::snake_case("A B C"), "ABC");
+    }
+
+    #[test]
     fn case_upper_case() {
         assert_eq!(case::upper_case("The World IS YourS"), "THE WORLD IS YOURS");
         assert_eq!(

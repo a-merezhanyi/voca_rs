@@ -169,6 +169,34 @@ pub fn lower_case(subject: &str) -> String {
     res
 }
 
+/// Converts the `subject` to snake case.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to convert to snake case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::snake_case("learning to fly");
+/// // => "learning_to_fly"
+/// case::snake_case("LearningToFly");
+/// // => "learning_to_fly"
+/// case::snake_case("-Learning-To-Fly-");
+/// // => "learning_to_fly"
+/// ```
+pub fn snake_case(subject: &str) -> String {
+    if subject.len() == 0 {
+        return subject.to_owned();
+    }
+
+    split::words(subject)
+        .into_iter()
+        .map(|c| lower_case(&c))
+        .collect::<Vec<String>>()
+        .join("_")
+}
+
 /// Converts the `subject` to upper case.
 ///
 /// # Arguments
