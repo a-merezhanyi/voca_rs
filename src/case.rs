@@ -12,7 +12,7 @@ use split;
 /// use voca_rs::*;
 /// case::camel_case("bird flight");
 /// // => "birdFlight"
-/// case::camel_case("BirdFlighT");
+/// case::camel_case("BirdFlight");
 /// // => "birdFlight"
 /// case::camel_case("-BIRD-FLIGHT-");
 /// // => "birdFlight"
@@ -113,11 +113,39 @@ pub fn decapitalize(subject: &str, rest_to_lower: &bool) -> String {
     res
 }
 
+/// Converts the `subject` to kebab case.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to convert to kebab case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::kebab_case("goodbye blue sky");
+/// // => "goodbye-blue-sky"
+/// case::kebab_case("GoodbyeBlueSky");
+/// // => "goodbye-blue-sky"
+/// case::kebab_case("-Goodbye-Blue-Sky-");
+/// // => "goodbye-blue-sky"
+/// ```
+pub fn kebab_case(subject: &str) -> String {
+    if subject.len() == 0 {
+        return subject.to_owned();
+    }
+
+    split::words(subject)
+        .into_iter()
+        .map(|c| lower_case(&c))
+        .collect::<Vec<String>>()
+        .join("-")
+}
+
 /// Converts the `subject` to lower case.
 ///
 /// # Arguments
 ///
-/// * `string: &str` - The string to convert to lower case.
+/// * `subject: &str` - The string to convert to lower case.
 ///
 /// # Example
 ///
@@ -128,13 +156,13 @@ pub fn decapitalize(subject: &str, rest_to_lower: &bool) -> String {
 /// case::lower_case("Say Hello to ME");
 /// // => "say hello to me"
 /// ```
-pub fn lower_case(string: &str) -> String {
-    if string.len() == 0 {
-        return string.to_owned();
+pub fn lower_case(subject: &str) -> String {
+    if subject.len() == 0 {
+        return subject.to_owned();
     }
 
-    let mut res = String::with_capacity(string.len());
-    for c in split::chars(string).iter() {
+    let mut res = String::with_capacity(subject.len());
+    for c in split::chars(subject).iter() {
         res.push_str(&c.to_lowercase());
     }
 
@@ -145,7 +173,7 @@ pub fn lower_case(string: &str) -> String {
 ///
 /// # Arguments
 ///
-/// * `string: &str` - The string to convert to upper case.
+/// * `subject: &str` - The string to convert to upper case.
 ///
 /// # Example
 ///
@@ -156,13 +184,13 @@ pub fn lower_case(string: &str) -> String {
 /// case::upper_case("Say Hello to ME");
 /// // => "SAY HELLO TO ME"
 /// ```
-pub fn upper_case(string: &str) -> String {
-    if string.len() == 0 {
-        return string.to_owned();
+pub fn upper_case(subject: &str) -> String {
+    if subject.len() == 0 {
+        return subject.to_owned();
     }
 
-    let mut res = String::with_capacity(string.len());
-    for c in split::chars(string).iter() {
+    let mut res = String::with_capacity(subject.len());
+    for c in split::chars(subject).iter() {
         res.push_str(&c.to_uppercase());
     }
 

@@ -182,6 +182,28 @@ mod tests {
     }
 
     #[test]
+    fn case_kebab_case() {
+        assert_eq!(
+            case::kebab_case("The World - IS Yours"),
+            "the-world-is-yours"
+        );
+        assert_eq!(
+            case::kebab_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "zażółć-gęślą-jaźń"
+        );
+        assert_eq!(
+            case::kebab_case("say  ***    Hello\r\n   to--ME++"),
+            "say-hello-to-me"
+        );
+        assert_eq!(case::kebab_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_kebab_case_panic() {
+        assert_eq!(case::kebab_case("A B C"), "ABC");
+    }
+
+    #[test]
     fn case_lower_case() {
         assert_eq!(case::lower_case("The World IS YourS"), "the world is yours");
         assert_eq!(
