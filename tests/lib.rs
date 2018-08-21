@@ -119,6 +119,25 @@ mod tests {
 
     /// voca_rs::case testing
     #[test]
+    fn case_camel_case() {
+        assert_eq!(case::camel_case("The World - IS Yours"), "theWorldIsYours");
+        assert_eq!(
+            case::camel_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "zażółćGęśląJaźń"
+        );
+        assert_eq!(
+            case::camel_case("say  ***    Hello\r\n   to--ME++"),
+            "sayHelloToMe"
+        );
+        assert_eq!(case::camel_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_camel_case_panic() {
+        assert_eq!(case::camel_case("ABC"), "ABC");
+    }
+
+    #[test]
     fn case_capitalize() {
         assert_eq!(
             case::capitalize("The World IS YourS", &true),
@@ -166,7 +185,7 @@ mod tests {
     fn case_lower_case() {
         assert_eq!(case::lower_case("The World IS YourS"), "the world is yours");
         assert_eq!(
-            case::lower_case("Zażółć gęślą jaźń"),
+            case::lower_case("Zażółć gęśLą jaźń"),
             "zażółć gęślą jaźń"
         );
         assert_eq!(case::lower_case(""), "");

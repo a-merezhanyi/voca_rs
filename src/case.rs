@@ -1,12 +1,48 @@
 //! Converts the `subject` to a selected case.
 
 use split;
+/// Converts the `subject` to camel case.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to convert to camel case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::camel_case("bird flight");
+/// // => "birdFlight"
+/// case::camel_case("BirdFlighT");
+/// // => "birdFlight"
+/// case::camel_case("-BIRD-FLIGHT-");
+/// // => "birdFlight"
+/// ```
+pub fn camel_case(subject: &str) -> String {
+    if subject.len() == 0 {
+        return subject.to_owned();
+    }
+
+    let mut res = String::with_capacity(subject.len());
+    for (i, c) in split::words(subject).iter().enumerate() {
+        let s;
+        if i == 0 {
+            s = lower_case(c);
+        } else {
+            s = capitalize(c, &true);
+        }
+        res.push_str(&s);
+    }
+
+    res
+}
+
 /// Converts the first character of `subject` to upper case. If `restToLower` is `true`, convert the rest of `subject` to lower case.
 ///
 /// # Arguments
 ///
 /// * `subject: &str` - The string to capitalize.
 /// * `rest_to_lower: &bool` - Convert the rest of `subject` to lower case.
+///
 /// # Example
 ///
 /// ```
