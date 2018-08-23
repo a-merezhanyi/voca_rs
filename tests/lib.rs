@@ -241,6 +241,28 @@ mod tests {
     }
 
     #[test]
+    fn case_shouty_snake_case() {
+        assert_eq!(
+            case::shouty_snake_case("The World - IS Yours"),
+            "THE_WORLD_IS_YOURS"
+        );
+        assert_eq!(
+            case::shouty_snake_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "ZAŻÓŁĆ_GĘŚLĄ_JAŹŃ"
+        );
+        assert_eq!(
+            case::shouty_snake_case("say  ***    Hello\r\n   to--ME++"),
+            "SAY_HELLO_TO_ME"
+        );
+        assert_eq!(case::shouty_snake_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_shouty_snake_case_panic() {
+        assert_eq!(case::shouty_snake_case("A B C"), "ABC");
+    }
+
+    #[test]
     fn case_upper_case() {
         assert_eq!(case::upper_case("The World IS YourS"), "THE WORLD IS YOURS");
         assert_eq!(

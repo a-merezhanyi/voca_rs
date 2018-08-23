@@ -169,6 +169,26 @@ pub fn lower_case(subject: &str) -> String {
     res
 }
 
+/// Converts the `subject` to SHOUTY snake case.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to convert to shouty snake case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::shouty_snake_case("learning to fly");
+/// // => "LEARNING_TO_FLY"
+/// case::shouty_snake_case("LearningToFly");
+/// // => "LEARNING_TO_FLY"
+/// case::shouty_snake_case("-Learning-To-Fly-");
+/// // => "LEARNING_TO_FLY"
+/// ```
+pub fn shouty_snake_case(subject: &str) -> String {
+    snake_and_shouty_snake_case(&subject, false)
+}
+
 /// Converts the `subject` to snake case.
 ///
 /// # Arguments
@@ -186,13 +206,23 @@ pub fn lower_case(subject: &str) -> String {
 /// // => "learning_to_fly"
 /// ```
 pub fn snake_case(subject: &str) -> String {
+    snake_and_shouty_snake_case(&subject, true)
+}
+
+fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
     if subject.len() == 0 {
         return subject.to_owned();
     }
 
     split::words(subject)
         .into_iter()
-        .map(|c| lower_case(&c))
+        .map(|c| {
+            if shouty {
+                lower_case(&c)
+            } else {
+                upper_case(&c)
+            }
+        })
         .collect::<Vec<String>>()
         .join("_")
 }
