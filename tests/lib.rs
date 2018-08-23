@@ -204,6 +204,28 @@ mod tests {
     }
 
     #[test]
+    fn case_shouty_kebab_case() {
+        assert_eq!(
+            case::shouty_kebab_case("The World - IS Yours"),
+            "THE-WORLD-IS-YOURS"
+        );
+        assert_eq!(
+            case::shouty_kebab_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "ZAŻÓŁĆ-GĘŚLĄ-JAŹŃ"
+        );
+        assert_eq!(
+            case::shouty_kebab_case("say  ***    Hello\r\n   to--ME++"),
+            "SAY-HELLO-TO-ME"
+        );
+        assert_eq!(case::shouty_kebab_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_shouty_kebab_case_panic() {
+        assert_eq!(case::shouty_kebab_case("A B C"), "ABC");
+    }
+
+    #[test]
     fn case_lower_case() {
         assert_eq!(case::lower_case("The World IS YourS"), "the world is yours");
         assert_eq!(

@@ -130,13 +130,43 @@ pub fn decapitalize(subject: &str, rest_to_lower: &bool) -> String {
 /// // => "goodbye-blue-sky"
 /// ```
 pub fn kebab_case(subject: &str) -> String {
+    kebab_and_shouty_kebab_case(&subject, false)
+}
+
+/// Converts the `subject` to SHOUTY kebab case.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to convert to SHOUTY kebab case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::shouty_kebab_case("goodbye blue sky");
+/// // => "GOODBYE-BLUE-SKY"
+/// case::shouty_kebab_case("GoodbyeBlueSky");
+/// // => "GOODBYE-BLUE-SKY"
+/// case::shouty_kebab_case("-Goodbye-Blue-Sky-");
+/// // => "GOODBYE-BLUE-SKY"
+/// ```
+pub fn shouty_kebab_case(subject: &str) -> String {
+    kebab_and_shouty_kebab_case(&subject, true)
+}
+
+fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
     if subject.len() == 0 {
         return subject.to_owned();
     }
 
     split::words(subject)
         .into_iter()
-        .map(|c| lower_case(&c))
+        .map(|c| {
+            if shouty {
+                upper_case(&c)
+            } else {
+                lower_case(&c)
+            }
+        })
         .collect::<Vec<String>>()
         .join("-")
 }
@@ -186,7 +216,7 @@ pub fn lower_case(subject: &str) -> String {
 /// // => "learning_to_fly"
 /// ```
 pub fn snake_case(subject: &str) -> String {
-    snake_and_shouty_snake_case(&subject, true)
+    snake_and_shouty_snake_case(&subject, false)
 }
 
 /// Converts the `subject` to SHOUTY snake case.
@@ -206,7 +236,7 @@ pub fn snake_case(subject: &str) -> String {
 /// // => "LEARNING_TO_FLY"
 /// ```
 pub fn shouty_snake_case(subject: &str) -> String {
-    snake_and_shouty_snake_case(&subject, false)
+    snake_and_shouty_snake_case(&subject, true)
 }
 
 fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
@@ -218,9 +248,9 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
         .into_iter()
         .map(|c| {
             if shouty {
-                lower_case(&c)
-            } else {
                 upper_case(&c)
+            } else {
+                lower_case(&c)
             }
         })
         .collect::<Vec<String>>()
