@@ -138,6 +138,25 @@ mod tests {
     }
 
     #[test]
+    fn case_pascal_case() {
+        assert_eq!(case::pascal_case("The World - IS Yours"), "TheWorldIsYours");
+        assert_eq!(
+            case::pascal_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "ZażółćGęśląJaźń"
+        );
+        assert_eq!(
+            case::pascal_case("say  ***    Hello\r\n   to--ME++"),
+            "SayHelloToMe"
+        );
+        assert_eq!(case::pascal_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_pascal_case_panic() {
+        assert_eq!(case::pascal_case("ABC"), "ABC");
+    }
+
+    #[test]
     fn case_capitalize() {
         assert_eq!(
             case::capitalize("The World IS YourS", &true),

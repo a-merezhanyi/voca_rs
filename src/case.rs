@@ -18,6 +18,10 @@ use split;
 /// // => "birdFlight"
 /// ```
 pub fn camel_case(subject: &str) -> String {
+    camel_and_pascal_case(&subject, true)
+}
+
+fn camel_and_pascal_case(subject: &str, cale_case: bool) -> String {
     if subject.len() == 0 {
         return subject.to_owned();
     }
@@ -25,7 +29,7 @@ pub fn camel_case(subject: &str) -> String {
     let mut res = String::with_capacity(subject.len());
     for (i, c) in split::words(subject).iter().enumerate() {
         let s;
-        if i == 0 {
+        if i == 0 && cale_case {
             s = lower_case(c);
         } else {
             s = capitalize(c, &true);
@@ -197,6 +201,26 @@ pub fn lower_case(subject: &str) -> String {
     }
 
     res
+}
+
+/// Converts the `subject` to pascal case.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to convert to pascal case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::pascal_case("bird flight");
+/// // => "BirdFlight"
+/// case::pascal_case("BirdFlight");
+/// // => "BirdFlight"
+/// case::pascal_case("-BIRD-FLIGHT-");
+/// // => "BirdFlight"
+/// ```
+pub fn pascal_case(subject: &str) -> String {
+    camel_and_pascal_case(&subject, false)
 }
 
 /// Converts the `subject` to snake case.
