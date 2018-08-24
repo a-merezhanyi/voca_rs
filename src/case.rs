@@ -281,6 +281,42 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
         .join("_")
 }
 
+/// Converts the uppercase alpha caracters of `subject` to lowercase and lowercase characters to uppercase.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to swap the case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::swap_case("League of Shadows");
+/// // => "lEAGUE OF sHADOWS"
+/// case::swap_case("2 üBer Bees");
+/// // => "2 ÜbER bEES"
+/// ```
+pub fn swap_case(subject: &str) -> String {
+    if subject.len() == 0 {
+        return subject.to_owned();
+    }
+
+    split::words(subject)
+        .into_iter()
+        .map(|s| {
+            s.chars()
+                .filter_map(|c| {
+                    if c.is_lowercase() {
+                        c.to_uppercase().next()
+                    } else {
+                        c.to_lowercase().next()
+                    }
+                })
+                .collect()
+        })
+        .collect::<Vec<String>>()
+        .join(" ")
+}
+
 /// Converts the `subject` to upper case.
 ///
 /// # Arguments

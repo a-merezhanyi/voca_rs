@@ -16,6 +16,7 @@ mod tests {
         assert_eq!(split::chars("gravity"), ["g", "r", "a", "v", "i", "t", "y"]);
         assert_eq!(split::chars("  "), [" ", " "]);
         assert_eq!(split::chars("a b"), ["a", " ", "b"]);
+        assert_eq!(split::chars("ÜbER"), ["Ü", "b", "E", "R"]);
         assert_eq!(split::chars("\n\t"), ["\n", "\t"]);
         assert_eq!(split::chars(""), [""]);
     }
@@ -33,6 +34,7 @@ mod tests {
         );
         assert_eq!(split::split("*dying*star*", "*"), ["", "dying", "star"]);
         assert_eq!(split::split("dying star", ""), ["dying star"]);
+        assert_eq!(split::split("Über Stern", ""), ["Über Stern"]);
         assert_eq!(split::split("", ""), [""]);
     }
     #[test]
@@ -301,6 +303,28 @@ mod tests {
     #[should_panic]
     fn case_shouty_snake_case_panic() {
         assert_eq!(case::shouty_snake_case("A B C"), "ABC");
+    }
+
+    #[test]
+    fn case_swap_case() {
+        assert_eq!(
+            case::swap_case("The World - IS Yours"),
+            "tHE wORLD is yOURS"
+        );
+        assert_eq!(
+            case::swap_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "zAŻÓŁĆ gęślą JAŹŃ"
+        );
+        assert_eq!(
+            case::swap_case("say über ***    Hello\r\n   to--ME++"),
+            "SAY ÜBER hELLO TO me"
+        );
+        assert_eq!(case::swap_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_swap_case_panic() {
+        assert_eq!(case::swap_case("A B C"), "---");
     }
 
     #[test]
