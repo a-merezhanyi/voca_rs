@@ -309,15 +309,15 @@ mod tests {
     fn case_swap_case() {
         assert_eq!(
             case::swap_case("The World - IS Yours"),
-            "tHE wORLD is yOURS"
+            "tHE wORLD - is yOURS"
         );
         assert_eq!(
             case::swap_case("_Zażółć-GĘŚLĄ_jaźń-"),
-            "zAŻÓŁĆ gęślą JAŹŃ"
+            "_zAŻÓŁĆ-gęślą_JAŹŃ-"
         );
         assert_eq!(
-            case::swap_case("say über ***    Hello\r\n   to--ME++"),
-            "SAY ÜBER hELLO TO me"
+            case::swap_case("say über Hello to--ME++"),
+            "SAY ÜBER hELLO TO--me++"
         );
         assert_eq!(case::swap_case(""), "");
     }

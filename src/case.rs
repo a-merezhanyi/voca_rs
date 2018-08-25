@@ -300,7 +300,7 @@ pub fn swap_case(subject: &str) -> String {
         return subject.to_owned();
     }
 
-    split::words(subject)
+    split::chars(subject)
         .into_iter()
         .map(|s| {
             s.chars()
@@ -314,7 +314,18 @@ pub fn swap_case(subject: &str) -> String {
                 .collect()
         })
         .collect::<Vec<String>>()
-        .join(" ")
+        .join("")
+    // let mut res = String::with_capacity(subject.len());
+    // for c in split::chars(subject).iter() {
+    //     if c.to_owned().is_lowercase() {
+    //         c.to_uppercase().next()
+    //     } else {
+    //         c.to_lowercase().next()
+    //     }
+    //     res.push_str(&c.to_uppercase());
+    // }
+
+    // res
 }
 
 /// Converts the `subject` to upper case.
