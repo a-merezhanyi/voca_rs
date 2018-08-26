@@ -315,17 +315,34 @@ pub fn swap_case(subject: &str) -> String {
         })
         .collect::<Vec<String>>()
         .join("")
-    // let mut res = String::with_capacity(subject.len());
-    // for c in split::chars(subject).iter() {
-    //     if c.to_owned().is_lowercase() {
-    //         c.to_uppercase().next()
-    //     } else {
-    //         c.to_lowercase().next()
-    //     }
-    //     res.push_str(&c.to_uppercase());
-    // }
+}
 
-    // res
+/// Converts the `subject` to title case.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to convert to title case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::title_case("bird flight");
+/// // => "Bird Flight"
+/// case::title_case("BirdFlight");
+/// // => "Bird Flight"
+/// case::title_case("-BIRD-FLIGHT-");
+/// // => "Bird Flight"
+/// ```
+pub fn title_case(subject: &str) -> String {
+    if subject.len() == 0 {
+        return subject.to_owned();
+    }
+
+    split::words(subject)
+        .into_iter()
+        .map(|c| capitalize(&c, &true))
+        .collect::<Vec<String>>()
+        .join(" ")
 }
 
 /// Converts the `subject` to upper case.

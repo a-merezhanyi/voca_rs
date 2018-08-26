@@ -341,4 +341,26 @@ mod tests {
     fn case_upper_case_panic() {
         assert_eq!(case::upper_case("ABC"), "abc");
     }
+
+    #[test]
+    fn case_title_case() {
+        assert_eq!(
+            case::title_case("The World - IS Yours"),
+            "The World Is Yours"
+        );
+        assert_eq!(
+            case::title_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "Zażółć Gęślą Jaźń"
+        );
+        assert_eq!(
+            case::title_case("say über Hello to--ME++"),
+            "Say Über Hello To Me"
+        );
+        assert_eq!(case::title_case(""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn case_title_case_panic() {
+        assert_eq!(case::title_case("A B C"), "---");
+    }
 }
