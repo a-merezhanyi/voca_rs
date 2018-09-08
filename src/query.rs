@@ -4,7 +4,7 @@
 ///
 /// # Arguments
 ///
-/// * `string: &str` - The string to verify.
+/// * `subject: &str` - The string to verify.
 /// * `end: &str` - The ending string.
 ///
 /// # Example
@@ -16,18 +16,46 @@
 /// query::ends_with("say hello to my little friend", "little");
 /// // => false
 /// ```
-pub fn ends_with(string: &str, end: &str) -> bool {
-    if string.len() == 0 || end.len() == 0 {
+pub fn ends_with(subject: &str, end: &str) -> bool {
+    if subject.len() == 0 || end.len() == 0 {
         return true;
     }
-    string.ends_with(end)
+    subject.ends_with(end)
+}
+
+/// Checks whether `subject` includes `search` starting from `position`.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to verify.
+/// * `search: &str` - The ending string.
+/// * `position: u8` - The position to start searching.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::includes("starship", "star", 0);
+/// // => true
+/// query::includes("Zażółć gęślą jaźń", "gęślą", 7);
+/// // => true
+/// query::includes("galaxy", "g", 1);
+/// // => false
+/// ```
+pub fn includes(subject: &str, search: &str, position: usize) -> bool {
+    if subject.len() == 0 || search.len() == 0 {
+        return true;
+    }
+    subject.to_owned()[subject.char_indices().nth(position).unwrap().0..]
+        .to_string()
+        .contains(&search)
 }
 
 /// Checks whether `subject` starts with `start`.
 ///
 /// # Arguments
 ///
-/// * `string: &str` - The string to verify.
+/// * `subject: &str` - The string to verify.
 /// * `start: &str` - The starting string.
 ///
 /// # Example
@@ -39,9 +67,9 @@ pub fn ends_with(string: &str, end: &str) -> bool {
 /// query::starts_with("say hello to my little friend", "hello");
 /// // => flase
 /// ```
-pub fn starts_with(string: &str, start: &str) -> bool {
-    if string.len() == 0 || start.len() == 0 {
+pub fn starts_with(subject: &str, start: &str) -> bool {
+    if subject.len() == 0 || start.len() == 0 {
         return true;
     }
-    string.starts_with(start)
+    subject.starts_with(start)
 }

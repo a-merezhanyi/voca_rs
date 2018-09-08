@@ -104,6 +104,18 @@ mod tests {
         assert!(query::ends_with("a b c", "b"));
     }
     #[test]
+    fn query_includes() {
+        assert!(query::includes("the world is yours", "the world", 0));
+        assert!(query::includes("Zażółć gęślą jaźń", "gęślą", 7));
+        assert!(query::includes("the world is yours", "", 0));
+        assert!(query::includes("", "", 0), true);
+    }
+    #[test]
+    #[should_panic]
+    fn query_dont_includes() {
+        assert!(query::includes("a b c", "d", 0));
+    }
+    #[test]
     fn query_starts_with() {
         assert!(query::starts_with("the world is yours", "the world"));
         assert!(query::starts_with(
