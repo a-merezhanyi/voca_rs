@@ -6,7 +6,15 @@ Voca_rs is inspired by [Voca.js](https://vocajs.com/) and [string.py](https://do
 
 ## TL;DR
 
-...TBD...
+```rust
+use voca_rs::*;
+
+let input_string = "LazyLoad with XMLHttpRequest and snake_case";
+let string_in_words = split::words(&input_string);
+// => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
+let snake_string = case::snake_case(&string_in_words[3..6].join(" "));
+// => "xml_http_request"
+```
 
 ## Documentation
 
@@ -16,6 +24,141 @@ Run test: `cargo test`<br>
 Build docs: `cargo doc` -> `./target/doc/voca_rs/index.html` <br>
 Build project: `cargo build` -> `./target/debug`<br>
 Publish project: `git push`
+
+## Roadmap
+
+##### Constants
+
+- [ ] ascii_letters - [link](https://docs.python.org/3.4/library/string.html#string.ascii_letters)
+- [ ] ascii_lowercase - [link](https://docs.python.org/3.4/library/string.html#string.ascii_lowercase)
+- [ ] ascii_uppercase - [link](https://docs.python.org/3.4/library/string.html#string.ascii_lowercase)
+- [ ] digits - [link](https://docs.python.org/3.4/library/string.html#string.digits)
+- [ ] hexdigits - [link](https://docs.python.org/3.4/library/string.html#string.hexdigits)
+- [ ] octdigits - [link](https://docs.python.org/3.4/library/string.html#string.octdigits)
+- [ ] punctuation - [link](https://docs.python.org/3.4/library/string.html#string.punctuation)
+- [ ] printable - [link](https://docs.python.org/3.4/library/string.html#string.printable)
+- [ ] whitespace - [link](https://docs.python.org/3.4/library/string.html#string.whitespace)
+
+#### Case
+
+- [x] [camel_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.camel_case.html)
+- [x] [capitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.capitalize.html)
+- [x] [decapitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.decapitalize.html)
+- [x] [kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.kebab_case.html)
+- [x] [lower_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.lower_case.html)
+- [x] [pascal_case]https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.pascal_case.html)
+- [x] [shouty_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.shouty_kebab_case.html)
+- [x] [shouty_snake_case]https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.shouty_snake_case.html)
+- [x] [snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.snake_case.html)
+- [x] [swap_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.swap_case.html)
+- [x] [title_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.title_case.html)
+- [x] [upper_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.upper_case.html)
+
+#### Chop
+
+- [ ] charAt
+- [ ] codePointAt
+- [ ] first
+- [ ] graphemeAt
+- [ ] last
+- [ ] prune
+- [ ] slice
+- [ ] substr
+- [ ] substring
+- [ ] truncate
+
+#### Count
+
+- [ ] count
+- [ ] countGraphemes
+- [ ] countSubstrings
+- [ ] countWhere
+- [ ] countWords
+
+#### Escape
+
+- [ ] escapeHtml
+- [ ] escapeRegExp
+- [ ] unescapeHtml
+
+#### Format
+
+- [ ] format - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.format)
+- [ ] vformat - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.vformat)
+- [ ] parse - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.parse)
+- [ ] get_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.get_field)
+- [ ] get_value - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.get_value)
+- [ ] check_unused_args - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.check_unused_args)
+- [ ] format_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.format_field)
+- [ ] convert_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.convert_field)
+- [ ] sprintf - [link](https://vocajs.com/#sprintf)
+- [ ] vprintf - [link](https://vocajs.com/#vprintf)
+
+#### Index
+
+- [ ] indexOf
+- [ ] lastIndexOf
+- [ ] search
+
+#### Manipulate
+
+- [ ] insert
+- [ ] latinise
+- [ ] pad
+- [ ] padLeft
+- [ ] padRight
+- [ ] repeat
+- [ ] replace
+- [ ] replaceAll
+- [ ] reverse
+- [ ] reverseGrapheme
+- [ ] slugify
+- [ ] splice
+- [ ] tr
+- [ ] trim
+- [ ] trimLeft
+- [ ] trimRight
+- [ ] wordWrap
+
+#### Query
+
+- [ ] endsWith
+- [ ] includes
+- [ ] isAlpha
+- [ ] isAlphaDigit
+- [ ] isBlank
+- [ ] isDigit
+- [ ] isEmpty
+- [ ] isLowerCase
+- [ ] isNumeric
+- [ ] isString
+- [ ] isUpperCase
+- [ ] matches
+- [ ] startsWith
+
+#### Split
+
+- [ ] chars
+- [ ] codePoints
+- [ ] graphemes
+- [ ] split
+- [ ] words
+
+#### Strip
+
+- [ ] stripBom
+- [ ] stripTags
+
+
+#### Template
+
+- [ ] substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.substitute)
+- [ ] safe_substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.safe_substitute)
+
+#### Util
+
+- [ ] noConflict
+- [x] [version](https://e1r0nd.github.io/voca_rs/voca_rs/utils/fn.version.html)
 
 ## Copyright
 
