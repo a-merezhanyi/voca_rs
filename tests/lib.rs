@@ -7,7 +7,15 @@ mod tests {
     /// voca_rs::utils testing
     #[test]
     fn utils_version() {
-        assert_eq!(utils::version(), "0.1.0");
+        assert_eq!(utils::VERSION, "0.1.0");
+    }
+    #[test]
+    fn utils_ascii_lowercase() {
+        assert_eq!(utils::ASCII_LOWERCASE, "abcdefghijklmnopqrstuvwxyz");
+    }
+    #[test]
+    fn utils_ascii_uppercase() {
+        assert_eq!(utils::ASCII_UPPERCASE, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
     }
 
     /// voca_rs::split testing

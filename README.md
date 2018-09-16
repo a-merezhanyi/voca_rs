@@ -27,18 +27,6 @@ Publish project: `git push`
 
 ## Roadmap
 
-##### Constants
-
-- [ ] ascii_letters - [link](https://docs.python.org/3.4/library/string.html#string.ascii_letters)
-- [ ] ascii_lowercase - [link](https://docs.python.org/3.4/library/string.html#string.ascii_lowercase)
-- [ ] ascii_uppercase - [link](https://docs.python.org/3.4/library/string.html#string.ascii_lowercase)
-- [ ] digits - [link](https://docs.python.org/3.4/library/string.html#string.digits)
-- [ ] hexdigits - [link](https://docs.python.org/3.4/library/string.html#string.hexdigits)
-- [ ] octdigits - [link](https://docs.python.org/3.4/library/string.html#string.octdigits)
-- [ ] punctuation - [link](https://docs.python.org/3.4/library/string.html#string.punctuation)
-- [ ] printable - [link](https://docs.python.org/3.4/library/string.html#string.printable)
-- [ ] whitespace - [link](https://docs.python.org/3.4/library/string.html#string.whitespace)
-
 #### Case
 
 - [x] [camel_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.camel_case.html)
@@ -149,7 +137,6 @@ Publish project: `git push`
 - [ ] stripBom
 - [ ] stripTags
 
-
 #### Template
 
 - [ ] substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.substitute)
@@ -159,6 +146,15 @@ Publish project: `git push`
 
 - [ ] noConflict
 - [x] [version](https://e1r0nd.github.io/voca_rs/voca_rs/utils/fn.version.html)
+- [ ] ascii_letters - [link](https://docs.python.org/3.4/library/string.html#string.ascii_letters)
+- [ ] ascii_lowercase - [link](https://docs.python.org/3.4/library/string.html#string.ascii_lowercase)
+- [ ] ascii_uppercase - [link](https://docs.python.org/3.4/library/string.html#string.ascii_lowercase)
+- [ ] digits - [link](https://docs.python.org/3.4/library/string.html#string.digits)
+- [ ] hexdigits - [link](https://docs.python.org/3.4/library/string.html#string.hexdigits)
+- [ ] octdigits - [link](https://docs.python.org/3.4/library/string.html#string.octdigits)
+- [ ] punctuation - [link](https://docs.python.org/3.4/library/string.html#string.punctuation)
+- [ ] printable - [link](https://docs.python.org/3.4/library/string.html#string.printable)
+- [ ] whitespace - [link](https://docs.python.org/3.4/library/string.html#string.whitespace)
 
 ## Copyright
 
