@@ -79,6 +79,8 @@ Publish project: `git push`
 - [ ] check_unused_args - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.check_unused_args)
 - [ ] format_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.format_field)
 - [ ] convert_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.convert_field)
+- [ ] substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.substitute)
+- [ ] safe_substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.safe_substitute)
 - [ ] sprintf - [link](https://vocajs.com/#sprintf)
 - [ ] vprintf - [link](https://vocajs.com/#vprintf)
 
@@ -110,8 +112,8 @@ Publish project: `git push`
 
 #### Query
 
-- [ ] endsWith
-- [ ] includes
+- [x] [ends_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.ends_with.html)
+- [x] [includes](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.includes.html)
 - [ ] isAlpha
 - [ ] isAlphaDigit
 - [ ] isBlank
@@ -122,27 +124,22 @@ Publish project: `git push`
 - [ ] isString
 - [ ] isUpperCase
 - [ ] matches
-- [ ] startsWith
+- [x] [starts_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.starts_with.html)
 
 #### Split
 
-- [ ] chars
+- [x] [chars](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.chars.html)
 - [ ] codePoints
-- [ ] graphemes
-- [ ] split
-- [ ] words
+- [x] [graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.graphemes.html)
+- [x] [split](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.split.html)
+- [x] [words](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.words.html)
 
 #### Strip
 
 - [ ] stripBom
 - [ ] stripTags
 
-#### Template
-
-- [ ] substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.substitute)
-- [ ] safe_substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.safe_substitute)
-
-#### Util
+#### Utils
 
 - [x] [ASCII_LETTERS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LETTERS.html)
 - [x] [ASCII_LOWERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LOWERCASE.html)
