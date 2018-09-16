@@ -144,15 +144,15 @@ Publish project: `git push`
 
 #### Util
 
-- [ ] ascii_letters - [link](https://docs.python.org/3.4/library/string.html#string.ascii_letters)
+- [x] [ASCII_LETTERS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LETTERS.html)
 - [x] [ASCII_LOWERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LOWERCASE.html)
 - [x] [ASCII_UPPERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_UPPERCASE.html)
-- [ ] digits - [link](https://docs.python.org/3.4/library/string.html#string.digits)
-- [ ] hexdigits - [link](https://docs.python.org/3.4/library/string.html#string.hexdigits)
-- [ ] octdigits - [link](https://docs.python.org/3.4/library/string.html#string.octdigits)
-- [ ] punctuation - [link](https://docs.python.org/3.4/library/string.html#string.punctuation)
+- [x] [DIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.DIGITS.html)
+- [x] [HEXDIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.HEXDIGITS.html)
+- [x] [OCTDIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.OCTDIGITS.html)
+- [x] [PUNCTUATION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.PUNCTUATION.html)
 - [ ] printable - [link](https://docs.python.org/3.4/library/string.html#string.printable)
-- [ ] whitespace - [link](https://docs.python.org/3.4/library/string.html#string.whitespace)
+- [x] [WHITESPACE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.WHITESPACE.html)
 - [ ] noConflict
 - [x] [VERSION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.VERSION.html)
 

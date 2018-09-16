@@ -10,12 +10,39 @@ mod tests {
         assert_eq!(utils::VERSION, "0.1.0");
     }
     #[test]
+    fn utils_ascii_letters() {
+        assert_eq!(
+            utils::ASCII_LETTERS,
+            "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        );
+    }
+    #[test]
     fn utils_ascii_lowercase() {
         assert_eq!(utils::ASCII_LOWERCASE, "abcdefghijklmnopqrstuvwxyz");
     }
     #[test]
     fn utils_ascii_uppercase() {
         assert_eq!(utils::ASCII_UPPERCASE, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    }
+    #[test]
+    fn utils_digits() {
+        assert_eq!(utils::DIGITS, "0123456789");
+    }
+    #[test]
+    fn utils_hexdigits() {
+        assert_eq!(utils::HEXDIGITS, "0123456789abcdefABCDEF");
+    }
+    #[test]
+    fn utils_octdigits() {
+        assert_eq!(utils::OCTDIGITS, "01234567");
+    }
+    #[test]
+    fn utils_punctuation() {
+        assert_eq!(utils::PUNCTUATION, "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
+    }
+    #[test]
+    fn utils_whitespace() {
+        assert_eq!(utils::WHITESPACE, " \t\n\r");
     }
 
     /// voca_rs::split testing
