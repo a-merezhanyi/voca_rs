@@ -2,6 +2,18 @@
 name = "voca_rs"
 version = "0.1.0"
 authors = ["Anatol Merezhanyi <a.merezhanyi@gmail.com>"]
+license = "MIT"
+description = "Voca_rs is inspired by Voca.js and string.py"
+repository = "https://github.com/e1r0nd/voca_rs"
+documentation = "https://e1r0nd.github.io/voca_rs/"
+keywords = ["string", "utf-8", "utf8", "string-manipulation", "string-matching", "string-formatter", "char", "unicode"]
+categories = ["encoding"]
+readme = "README.md"
+include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
+
+[badges]
+travis-ci = { repository = "e1r0nd/voca_rs" }
+codecov = { repository = "e1r0nd/voca_rs", branch = "master", service = "github" }
 
 [dependencies]
 unicode-segmentation = "1.2.0"
