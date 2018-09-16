@@ -44,30 +44,30 @@ Publish project: `git push`
 
 #### Chop
 
-- [ ] charAt
-- [ ] codePointAt
-- [ ] first
-- [ ] graphemeAt
-- [ ] last
-- [ ] prune
-- [ ] slice
-- [ ] substr
-- [ ] substring
-- [ ] truncate
+- [ ] charAt - [link](https://vocajs.com/#charAt)
+- [ ] codePointAt - [link](https://vocajs.com/#codePointAt)
+- [ ] first - [link](https://vocajs.com/#first)
+- [ ] graphemeAt - [link](https://vocajs.com/#graphemeAt)
+- [ ] last - [link](https://vocajs.com/#last)
+- [ ] prune - [link](https://vocajs.com/#prune)
+- [ ] slice - [link](https://vocajs.com/#slice)
+- [ ] substr - [link](https://vocajs.com/#substr)
+- [ ] substring - [link](https://vocajs.com/#substring)
+- [ ] truncate - [link](https://vocajs.com/#truncate)
 
 #### Count
 
-- [ ] count
-- [ ] countGraphemes
-- [ ] countSubstrings
-- [ ] countWhere
-- [ ] countWords
+- [ ] count - [link](https://vocajs.com/#count)
+- [ ] countGraphemes - [link](https://vocajs.com/#countGraphemes)
+- [ ] countSubstrings - [link](https://vocajs.com/#countSubstrings)
+- [ ] countWhere - [link](https://vocajs.com/#countWhere)
+- [ ] countWords - [link](https://vocajs.com/#countWords)
 
 #### Escape
 
-- [ ] escapeHtml
-- [ ] escapeRegExp
-- [ ] unescapeHtml
+- [ ] escapeHtml - [link](https://vocajs.com/#escapeHtml)
+- [ ] escapeRegExp - [link](https://vocajs.com/#escapeRegExp)
+- [ ] unescapeHtml - [link](https://vocajs.com/#unescapeHtml)
 
 #### Format
 
@@ -86,58 +86,58 @@ Publish project: `git push`
 
 #### Index
 
-- [ ] indexOf
-- [ ] lastIndexOf
-- [ ] search
+- [ ] indexOf - [link](https://vocajs.com/#indexOf)
+- [ ] lastIndexOf - [link](https://vocajs.com/#lastIndexOf)
+- [ ] search - [link](https://vocajs.com/#search)
 
 #### Manipulate
 
-- [ ] insert
-- [ ] latinise
-- [ ] pad
-- [ ] padLeft
-- [ ] padRight
-- [ ] repeat
-- [ ] replace
-- [ ] replaceAll
-- [ ] reverse
-- [ ] reverseGrapheme
-- [ ] slugify
-- [ ] splice
-- [ ] tr
-- [ ] trim
-- [ ] trimLeft
-- [ ] trimRight
-- [ ] wordWrap
+- [ ] insert - [link](https://vocajs.com/#insert)
+- [ ] latinise - [link](https://vocajs.com/#latinise)
+- [ ] pad - [link](https://vocajs.com/#pad)
+- [ ] padLeft - [link](https://vocajs.com/#padLeft)
+- [ ] padRight - [link](https://vocajs.com/#padRight)
+- [ ] repeat - [link](https://vocajs.com/#repeat)
+- [ ] replace - [link](https://vocajs.com/#replace)
+- [ ] replaceAll - [link](https://vocajs.com/#replaceAll)
+- [ ] reverse - [link](https://vocajs.com/#reverse)
+- [ ] reverseGrapheme - [link](https://vocajs.com/#reverseGrapheme)
+- [ ] slugify - [link](https://vocajs.com/#slugify)
+- [ ] splice - [link](https://vocajs.com/#splice)
+- [ ] tr - [link](https://vocajs.com/#tr)
+- [ ] trim - [link](https://vocajs.com/#trim)
+- [ ] trimLeft - [link](https://vocajs.com/#trimLeft)
+- [ ] trimRight - [link](https://vocajs.com/#trimRight)
+- [ ] wordWrap - [link](https://vocajs.com/#wordWrap)
 
 #### Query
 
 - [x] [ends_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.ends_with.html)
 - [x] [includes](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.includes.html)
-- [ ] isAlpha
-- [ ] isAlphaDigit
-- [ ] isBlank
-- [ ] isDigit
-- [ ] isEmpty
-- [ ] isLowerCase
-- [ ] isNumeric
-- [ ] isString
-- [ ] isUpperCase
-- [ ] matches
+- [ ] isAlpha - [link](https://vocajs.com/#isAlpha)
+- [ ] isAlphaDigit - [link](https://vocajs.com/#isAlphaDigit)
+- [ ] isBlank - [link](https://vocajs.com/#isBlank)
+- [ ] isDigit - [link](https://vocajs.com/#isDigit)
+- [ ] isEmpty - [link](https://vocajs.com/#isEmpty)
+- [ ] isLowerCase - [link](https://vocajs.com/#isLowerCase)
+- [ ] isNumeric - [link](https://vocajs.com/#isNumeric)
+- [ ] isString - [link](https://vocajs.com/#isString)
+- [ ] isUpperCase - [link](https://vocajs.com/#isUpperCase)
+- [ ] matches - [link](https://vocajs.com/#matches)
 - [x] [starts_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.starts_with.html)
 
 #### Split
 
 - [x] [chars](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.chars.html)
-- [ ] codePoints
+- [ ] codePoints - [link](https://vocajs.com/#codePoints)
 - [x] [graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.graphemes.html)
 - [x] [split](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.split.html)
 - [x] [words](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.words.html)
 
 #### Strip
 
-- [ ] stripBom
-- [ ] stripTags
+- [ ] stripBom - [link](https://vocajs.com/#stripBom)
+- [ ] stripTags - [link](https://vocajs.com/#stripTags)
 
 #### Utils
 
