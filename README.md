@@ -144,17 +144,17 @@ Publish project: `git push`
 
 #### Util
 
-- [ ] noConflict
-- [x] [version](https://e1r0nd.github.io/voca_rs/voca_rs/utils/fn.version.html)
 - [ ] ascii_letters - [link](https://docs.python.org/3.4/library/string.html#string.ascii_letters)
-- [ ] ascii_lowercase - [link](https://docs.python.org/3.4/library/string.html#string.ascii_lowercase)
-- [ ] ascii_uppercase - [link](https://docs.python.org/3.4/library/string.html#string.ascii_lowercase)
+- [x] [ASCII_LOWERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LOWERCASE.html)
+- [x] [ASCII_UPPERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_UPPERCASE.html)
 - [ ] digits - [link](https://docs.python.org/3.4/library/string.html#string.digits)
 - [ ] hexdigits - [link](https://docs.python.org/3.4/library/string.html#string.hexdigits)
 - [ ] octdigits - [link](https://docs.python.org/3.4/library/string.html#string.octdigits)
 - [ ] punctuation - [link](https://docs.python.org/3.4/library/string.html#string.punctuation)
 - [ ] printable - [link](https://docs.python.org/3.4/library/string.html#string.printable)
 - [ ] whitespace - [link](https://docs.python.org/3.4/library/string.html#string.whitespace)
+- [ ] noConflict
+- [x] [VERSION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.VERSION.html)
 
 ## Copyright
 
