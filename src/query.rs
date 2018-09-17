@@ -51,6 +51,31 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
         .contains(&search)
 }
 
+/// Checks whether `subject` is empty.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_empty("");
+/// // => true
+/// query::is_empty("   ");
+/// // => false
+/// query::is_empty("sun");
+/// // => false
+/// ```
+pub fn is_empty(subject: &str) -> bool {
+    if subject.len() == 0 {
+        return true;
+    }
+
+    return false;
+}
+
 /// Checks whether `subject` starts with `start`.
 ///
 /// # Arguments
