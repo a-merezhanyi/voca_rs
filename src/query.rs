@@ -51,6 +51,31 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
         .contains(&search)
 }
 
+/// Checks whether `subject` is empty or contains only whitespaces.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_blank("");
+/// // => true
+/// query::is_blank("   ");
+/// // => true
+/// query::is_blank("sun");
+/// // => false
+/// ```
+pub fn is_blank(subject: &str) -> bool {
+    if subject.len() == 0 {
+        return true;
+    }
+
+    return subject.trim().is_empty();
+}
+
 /// Checks whether `subject` is empty.
 ///
 /// # Arguments

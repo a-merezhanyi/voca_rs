@@ -151,6 +151,13 @@ mod tests {
         assert!(query::includes("a b c", "d", 0));
     }
     #[test]
+    fn query_is_blank() {
+        assert!(query::is_blank(""), true);
+        assert_eq!(query::is_blank("   "), true);
+        assert_eq!(query::is_blank("\n\t\r"), true);
+        assert_eq!(query::is_blank("Zażółć gęślą jaźń"), false);
+    }
+    #[test]
     fn query_is_empty() {
         assert!(query::is_empty(""), true);
         assert_eq!(query::is_empty("Zażółć gęślą jaźń"), false);
