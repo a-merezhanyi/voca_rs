@@ -171,6 +171,13 @@ mod tests {
         assert_eq!(query::is_lowercase("T1000"), false);
     }
     #[test]
+    fn query_is_uppercase() {
+        assert!(query::is_uppercase(""), true);
+        assert_eq!(query::is_uppercase("THE WORLD IS YOURS"), true);
+        assert_eq!(query::is_uppercase("Zażółć gęślą jaźń"), false);
+        assert_eq!(query::is_uppercase("t1000"), false);
+    }
+    #[test]
     fn query_starts_with() {
         assert!(query::starts_with("the world is yours", "the world"));
         assert!(query::starts_with(

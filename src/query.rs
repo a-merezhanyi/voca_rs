@@ -123,6 +123,25 @@ pub fn is_lowercase(subject: &str) -> bool {
     is_upper_or_lowercase(subject, true)
 }
 
+/// Checks whether `subject` has only upper case characters.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_uppercase("ACDC");
+/// // => true
+/// query::is_uppercase("Morning");
+/// // => false
+/// ```
+pub fn is_uppercase(subject: &str) -> bool {
+    is_upper_or_lowercase(subject, false)
+}
+
 fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
     if subject.len() == 0 {
         return true;
