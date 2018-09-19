@@ -164,6 +164,13 @@ mod tests {
         assert_eq!(query::is_empty("the world is yours"), false);
     }
     #[test]
+    fn query_is_lowercase() {
+        assert!(query::is_lowercase(""), true);
+        assert_eq!(query::is_lowercase("the world is yours"), true);
+        assert_eq!(query::is_lowercase("Zażółć gęślą jaźń"), false);
+        assert_eq!(query::is_lowercase("T1000"), false);
+    }
+    #[test]
     fn query_starts_with() {
         assert!(query::starts_with("the world is yours", "the world"));
         assert!(query::starts_with(
@@ -423,4 +430,24 @@ mod tests {
     fn case_title_case_panic() {
         assert_eq!(case::title_case("A B C"), "---");
     }
+
+    // /// voca_rs::manipulate testing
+    // #[test]
+    // fn manipulate_trim() {
+    //     assert_eq!(
+    //         manipulate::trim("   The world - is yours\t   ", ''),
+    //         "The world - is yours"
+    //     );
+    //     assert_eq!(
+    //         manipulate::trim("--Zażółć gęślą jaźń---", '-'),
+    //         "Zażółć gęślą jaźń"
+    //     );
+    //     assert_eq!(manipulate::trim("++--say über++", '+'), "--say über");
+    //     assert_eq!(manipulate::trim("", ''), "");
+    // }
+    // #[test]
+    // #[should_panic]
+    // fn manipulate_trim_panic() {
+    //     // assert_eq!(manipulate::trim("A B C", ""), "---");
+    // }
 }

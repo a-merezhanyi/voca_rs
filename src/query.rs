@@ -1,5 +1,6 @@
 //! Checks a `subject` against a query.
 
+use split;
 /// Checks whether `subject` ends with `end`.
 ///
 /// # Arguments
@@ -99,6 +100,45 @@ pub fn is_empty(subject: &str) -> bool {
     }
 
     return false;
+}
+
+/// Checks whether `subject` has only lower case characters.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_lowercase("motorcycle");
+/// // => true
+/// query::is_lowercase("John");
+/// // => false
+/// /// query::is_lowercase("T1000");
+/// // => false
+/// ```
+pub fn is_lowercase(subject: &str) -> bool {
+    is_upper_or_lowercase(subject, true)
+}
+
+fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
+    if subject.len() == 0 {
+        return true;
+    }
+
+    let mut res = true;
+    split::chars(subject).into_iter().for_each(|s| {
+        s.chars().for_each(|c| {
+            if lowercase && c.is_uppercase() {
+                res = false;
+            } else if !lowercase && c.is_lowercase() {
+                res = false;
+            }
+        })
+    });
+    res
 }
 
 /// Checks whether `subject` starts with `start`.
