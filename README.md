@@ -119,7 +119,7 @@ Publish project: `git push`
 - [x] [isBlank](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_blank.html)
 - [ ] isDigit - [link](https://vocajs.com/#isDigit)
 - [x] [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
-- [ ] isLowerCase - [link](https://vocajs.com/#isLowerCase)
+- [x] [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
 - [ ] isNumeric - [link](https://vocajs.com/#isNumeric)
 - [ ] isString - [link](https://vocajs.com/#isString)
 - [ ] isUpperCase - [link](https://vocajs.com/#isUpperCase)
