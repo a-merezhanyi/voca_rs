@@ -116,7 +116,7 @@ pub fn is_empty(subject: &str) -> bool {
 /// // => true
 /// query::is_lowercase("John");
 /// // => false
-/// /// query::is_lowercase("T1000");
+/// query::is_lowercase("T1000");
 /// // => false
 /// ```
 pub fn is_lowercase(subject: &str) -> bool {
