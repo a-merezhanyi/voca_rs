@@ -438,23 +438,28 @@ mod tests {
         assert_eq!(case::title_case("A B C"), "---");
     }
 
-    // /// voca_rs::manipulate testing
-    // #[test]
-    // fn manipulate_trim() {
-    //     assert_eq!(
-    //         manipulate::trim("   The world - is yours\t   ", ''),
-    //         "The world - is yours"
-    //     );
-    //     assert_eq!(
-    //         manipulate::trim("--Zażółć gęślą jaźń---", '-'),
-    //         "Zażółć gęślą jaźń"
-    //     );
-    //     assert_eq!(manipulate::trim("++--say über++", '+'), "--say über");
-    //     assert_eq!(manipulate::trim("", ''), "");
-    // }
-    // #[test]
-    // #[should_panic]
-    // fn manipulate_trim_panic() {
-    //     // assert_eq!(manipulate::trim("A B C", ""), "---");
-    // }
+    /// voca_rs::manipulate testing
+    #[test]
+    fn manipulate_trim() {
+        assert_eq!(
+            manipulate::trim("   The world - is yours\t   ", ""),
+            "The world - is yours"
+        );
+        assert_eq!(
+            manipulate::trim("--Zażółć gęślą jaźń---", "-"),
+            "Zażółć gęślą jaźń"
+        );
+        assert_eq!(manipulate::trim("-~-Earth--~", "-~"), "Earth");
+        assert_eq!(manipulate::trim("++--say über++", "+"), "--say über");
+        assert_eq!(
+            manipulate::trim("ё1ё2ёКак слышно, приём!ё1ё", "ёё12"),
+            "Как слышно, приём!"
+        );
+        assert_eq!(manipulate::trim("", ""), "");
+    }
+    #[test]
+    #[should_panic]
+    fn manipulate_trim_panic() {
+        assert_eq!(manipulate::trim("A B C", ""), "---");
+    }
 }

@@ -105,7 +105,7 @@ Publish project: `git push`
 - [ ] slugify - [link](https://vocajs.com/#slugify)
 - [ ] splice - [link](https://vocajs.com/#splice)
 - [ ] tr - [link](https://vocajs.com/#tr)
-- [ ] trim - [link](https://vocajs.com/#trim)
+- [x] [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
 - [ ] trimLeft - [link](https://vocajs.com/#trimLeft)
 - [ ] trimRight - [link](https://vocajs.com/#trimRight)
 - [ ] wordWrap - [link](https://vocajs.com/#wordWrap)
