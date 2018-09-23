@@ -180,6 +180,7 @@ mod tests {
         assert_eq!(query::is_numeric("350"), true);
         assert_eq!(query::is_numeric("-20.5"), true);
         assert_eq!(query::is_numeric("five"), false);
+        assert_eq!(query::is_numeric(".."), false);
     }
     #[test]
     fn query_is_uppercase() {

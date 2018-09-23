@@ -142,6 +142,7 @@ pub fn is_lowercase(subject: &str) -> bool {
 /// ```
 // TODO: add scientific numbers validation
 // assert_eq!(query::is_numeric("1.5E+2"), true);
+// probably via regexp
 pub fn is_numeric(subject: &str) -> bool {
     if subject.len() == 0 {
         return true;
