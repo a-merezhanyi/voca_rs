@@ -12,7 +12,7 @@
 /// ```
 /// use voca_rs::*;
 /// manipulate::trim(" Mother nature ", "");
-/// => "Mother nature"
+/// // => "Mother nature"
 /// manipulate::trim("-~-Earth~-~", "-~");
 /// // => "Earth"
 /// ```
