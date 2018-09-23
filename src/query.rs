@@ -137,8 +137,6 @@ pub fn is_lowercase(subject: &str) -> bool {
 /// // => true
 /// query::is_numeric("-20.5");
 /// // => true
-/// query::is_numeric("1.5E+2");
-/// // => true
 /// query::is_numeric("five");
 /// // => false
 /// ```
