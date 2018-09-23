@@ -4,7 +4,7 @@
 ///
 /// # Arguments
 ///
-/// * `string: &str` - The string to split into characters.
+/// * `subject` - The string to split into characters.
 ///
 /// # Example
 ///
@@ -24,8 +24,8 @@ pub fn chars(string: &str) -> Vec<&str> {
 ///
 /// # Arguments
 ///
-/// * `string: &str` - The string to split into characters.
-/// * `pattern: &str` - The pattern to match the separator.
+/// * `subject` - The string to split into characters.
+/// * `pattern` - The pattern to match the separator.
 ///
 /// # Example
 ///
@@ -49,7 +49,7 @@ use unicode_segmentation::UnicodeSegmentation;
 ///
 /// # Arguments
 ///
-/// * `string: &str` - The string to split into characters.
+/// * `subject` - The string to split into characters.
 ///
 /// # Example
 ///
@@ -122,7 +122,7 @@ pub fn words(s: &str) -> Vec<String> {
 ///
 /// # Arguments
 ///
-/// * `string: &str` - The string to split into characters.
+/// * `subject` - The string to split into characters.
 ///
 /// # Example
 ///

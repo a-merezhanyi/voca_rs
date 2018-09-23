@@ -20,7 +20,7 @@ pub const VERSION: &'static str = "0.1.0";
 /// utils::ASCII_LETTERS;
 /// // => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 /// ```
-// TODO: make a combination ASCII_LOWERCASE, ASCII_UPPERCASE
+// TODO: make a combination of ASCII_LOWERCASE, ASCII_UPPERCASE
 pub const ASCII_LETTERS: &'static str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 /// The lowercase letters `"abcdefghijklmnopqrstuvwxyz"`. This value is not locale-dependent and will not change.

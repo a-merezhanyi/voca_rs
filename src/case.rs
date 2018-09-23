@@ -5,7 +5,7 @@ use split;
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to camel case.
+/// * `subject` - The string to convert to camel case.
 ///
 /// # Example
 /// ```
@@ -44,8 +44,8 @@ fn camel_and_pascal_case(subject: &str, cale_case: bool) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to capitalize.
-/// * `rest_to_lower: &bool` - Convert the rest of `subject` to lower case.
+/// * `subject` - The string to capitalize.
+/// * `rest_to_lower` - Convert the rest of `subject` to lower case.
 ///
 /// # Example
 ///
@@ -83,8 +83,8 @@ pub fn capitalize(subject: &str, rest_to_lower: &bool) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to decapitalize.
-/// * `rest_to_lower: &bool` - Convert the rest of `subject` to lower case.
+/// * `subject` - The string to decapitalize.
+/// * `rest_to_lower` - Convert the rest of `subject` to lower case.
 /// # Example
 ///
 /// ```
@@ -121,7 +121,7 @@ pub fn decapitalize(subject: &str, rest_to_lower: &bool) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to kebab case.
+/// * `subject` - The string to convert to kebab case.
 ///
 /// # Example
 /// ```
@@ -141,7 +141,7 @@ pub fn kebab_case(subject: &str) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to SHOUTY kebab case.
+/// * `subject` - The string to convert to SHOUTY kebab case.
 ///
 /// # Example
 /// ```
@@ -170,8 +170,7 @@ fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
             } else {
                 lower_case(&c)
             }
-        })
-        .collect::<Vec<String>>()
+        }).collect::<Vec<String>>()
         .join("-")
 }
 
@@ -179,7 +178,7 @@ fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to lower case.
+/// * `subject` - The string to convert to lower case.
 ///
 /// # Example
 ///
@@ -207,7 +206,7 @@ pub fn lower_case(subject: &str) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to pascal case.
+/// * `subject` - The string to convert to pascal case.
 ///
 /// # Example
 /// ```
@@ -227,7 +226,7 @@ pub fn pascal_case(subject: &str) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to snake case.
+/// * `subject` - The string to convert to snake case.
 ///
 /// # Example
 /// ```
@@ -247,7 +246,7 @@ pub fn snake_case(subject: &str) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to shouty snake case.
+/// * `subject` - The string to convert to shouty snake case.
 ///
 /// # Example
 /// ```
@@ -276,8 +275,7 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
             } else {
                 lower_case(&c)
             }
-        })
-        .collect::<Vec<String>>()
+        }).collect::<Vec<String>>()
         .join("_")
 }
 
@@ -285,7 +283,7 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to swap the case.
+/// * `subject` - The string to swap the case.
 ///
 /// # Example
 /// ```
@@ -310,10 +308,8 @@ pub fn swap_case(subject: &str) -> String {
                     } else {
                         c.to_lowercase().next()
                     }
-                })
-                .collect()
-        })
-        .collect::<Vec<String>>()
+                }).collect()
+        }).collect::<Vec<String>>()
         .join("")
 }
 
@@ -321,7 +317,7 @@ pub fn swap_case(subject: &str) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to title case.
+/// * `subject` - The string to convert to title case.
 ///
 /// # Example
 /// ```
@@ -349,7 +345,7 @@ pub fn title_case(subject: &str) -> String {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to convert to upper case.
+/// * `subject` - The string to convert to upper case.
 ///
 /// # Example
 ///

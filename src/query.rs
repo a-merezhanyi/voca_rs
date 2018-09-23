@@ -5,8 +5,8 @@ use split;
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to verify.
-/// * `end: &str` - The ending string.
+/// * `subject` - The string to verify.
+/// * `end` - The ending string.
 ///
 /// # Example
 ///
@@ -28,9 +28,9 @@ pub fn ends_with(subject: &str, end: &str) -> bool {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to verify.
-/// * `search: &str` - The ending string.
-/// * `position: u8` - The position to start searching.
+/// * `subject` - The string to verify.
+/// * `search` - The ending string.
+/// * `position` - The position to start searching.
 ///
 /// # Example
 ///
@@ -56,7 +56,7 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to verify.
+/// * `subject` - The string to verify.
 ///
 /// # Example
 ///
@@ -81,7 +81,7 @@ pub fn is_blank(subject: &str) -> bool {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to verify.
+/// * `subject` - The string to verify.
 ///
 /// # Example
 ///
@@ -106,7 +106,7 @@ pub fn is_empty(subject: &str) -> bool {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to verify.
+/// * `subject` - The string to verify.
 ///
 /// # Example
 ///
@@ -127,7 +127,7 @@ pub fn is_lowercase(subject: &str) -> bool {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to verify.
+/// * `subject` - The string to verify.
 ///
 /// # Example
 ///
@@ -164,7 +164,7 @@ pub fn is_numeric(subject: &str) -> bool {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to verify.
+/// * `subject` - The string to verify.
 ///
 /// # Example
 ///
@@ -201,8 +201,8 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to verify.
-/// * `start: &str` - The starting string.
+/// * `subject` - The string to verify.
+/// * `start` - The starting string.
 ///
 /// # Example
 ///

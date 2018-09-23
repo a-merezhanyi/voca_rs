@@ -4,8 +4,8 @@
 ///
 /// # Arguments
 ///
-/// * `subject: &str` - The string to trim.
-/// * `whitespace: char` - The whitespace characters to trim. List all characters that you want to be stripped.
+/// * `subject` - The string to trim.
+/// * `whitespace` - The whitespace characters to trim. List all characters that you want to be stripped.
 ///
 /// # Example
 ///
