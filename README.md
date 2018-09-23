@@ -148,9 +148,8 @@ Publish project: `git push`
 - [x] [HEXDIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.HEXDIGITS.html)
 - [x] [OCTDIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.OCTDIGITS.html)
 - [x] [PUNCTUATION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.PUNCTUATION.html)
-- [ ] printable - [link](https://docs.python.org/3.4/library/string.html#string.printable)
+- [x] [PRINTABLE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.PRINTABLE.html)
 - [x] [WHITESPACE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.WHITESPACE.html)
-- [ ] noConflict
 - [x] [VERSION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.VERSION.html)
 
 ## Copyright
