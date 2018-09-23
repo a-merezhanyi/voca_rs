@@ -99,7 +99,7 @@ pub const PUNCTUATION: &'static str = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 /// ```
 /// use voca_rs::*;
 /// utils::PRINTABLE;
-/// // => !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+/// // => 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r
 /// ```
 // TODO: make a conbination of DIGITS, ASCII_LETTERS, PUNCTUATION, WHITESPACE
 pub const PRINTABLE: &'static str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r";

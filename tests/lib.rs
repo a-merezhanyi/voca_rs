@@ -41,6 +41,10 @@ mod tests {
         assert_eq!(utils::PUNCTUATION, "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~");
     }
     #[test]
+    fn utils_printable() {
+        assert_eq!(utils::PRINTABLE, "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r");
+    }
+    #[test]
     fn utils_whitespace() {
         assert_eq!(utils::WHITESPACE, " \t\n\r");
     }
