@@ -175,6 +175,13 @@ mod tests {
         assert_eq!(query::is_lowercase("T1000"), false);
     }
     #[test]
+    fn query_is_numeric() {
+        assert!(query::is_numeric(""), true);
+        assert_eq!(query::is_numeric("350"), true);
+        assert_eq!(query::is_numeric("-20.5"), true);
+        assert_eq!(query::is_numeric("five"), false);
+    }
+    #[test]
     fn query_is_uppercase() {
         assert!(query::is_uppercase(""), true);
         assert_eq!(query::is_uppercase("THE WORLD IS YOURS"), true);

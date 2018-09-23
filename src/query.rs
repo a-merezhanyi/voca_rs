@@ -123,6 +123,44 @@ pub fn is_lowercase(subject: &str) -> bool {
     is_upper_or_lowercase(subject, true)
 }
 
+/// Checks whether `subject` is numeric.
+///
+/// # Arguments
+///
+/// * `subject: &str` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_numeric("350");
+/// // => true
+/// query::is_numeric("-20.5");
+/// // => true
+/// query::is_numeric("1.5E+2");
+/// // => true
+/// query::is_numeric("five");
+/// // => false
+/// ```
+// TODO: add scientific numbers validation
+// assert_eq!(query::is_numeric("1.5E+2"), true);
+pub fn is_numeric(subject: &str) -> bool {
+    if subject.len() == 0 {
+        return true;
+    }
+
+    match subject.find('.') {
+        Some(_) => match subject.parse::<f32>() {
+            Ok(_) => true,
+            Err(_) => false,
+        },
+        None => match subject.parse::<i32>() {
+            Ok(_) => true,
+            Err(_) => false,
+        },
+    }
+}
+
 /// Checks whether `subject` has only upper case characters.
 ///
 /// # Arguments
