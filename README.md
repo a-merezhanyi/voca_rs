@@ -57,8 +57,8 @@ Publish project: `git push`
 
 #### Count
 
-- [x] [count](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.count.html)
-- [x] [count_graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.count_graphemes.html)
+- [x] [count](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count.html)
+- [x] [count_graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_graphemes.html)
 - [ ] countSubstrings - [link](https://vocajs.com/#countSubstrings)
 - [ ] countWhere - [link](https://vocajs.com/#countWhere)
 - [ ] countWords - [link](https://vocajs.com/#countWords)
