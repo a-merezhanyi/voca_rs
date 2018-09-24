@@ -1,6 +1,7 @@
 #![crate_name = "voca_rs"]
 #![cfg_attr(all(test, feature = "nightly"), feature(test))]
 pub mod case;
+pub mod count;
 pub mod manipulate;
 pub mod query;
 pub mod split;

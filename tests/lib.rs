@@ -462,7 +462,10 @@ mod tests {
             "Zażółć gęślą jaźń"
         );
         assert_eq!(manipulate::trim("-~-Earth--~", "-~"), "Earth");
-        assert_eq!(manipulate::trim("++--say über++", "+"), "--say über");
+        assert_eq!(
+            manipulate::trim("++--Die Schildkröte fliegt über das Floß.++", "+"),
+            "--Die Schildkröte fliegt über das Floß."
+        );
         assert_eq!(
             manipulate::trim("ё1ё2ёКак слышно, приём!ё1ё", "ёё12"),
             "Как слышно, приём!"
@@ -473,5 +476,13 @@ mod tests {
     #[should_panic]
     fn manipulate_trim_panic() {
         assert_eq!(manipulate::trim("A B C", ""), "---");
+    }
+
+    /// voca_rs::count testing
+    #[test]
+    fn count_count() {
+        assert_eq!(count::count("rain"), 4);
+        assert_eq!(count::count("Die Schildkröte fliegt über das Floß."), 37);
+        assert_eq!(count::count("Как слышно, приём!"), 18);
     }
 }
