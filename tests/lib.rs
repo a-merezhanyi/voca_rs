@@ -481,12 +481,14 @@ mod tests {
     /// voca_rs::count testing
     #[test]
     fn count_count() {
+        assert_eq!(count::count(""), 0);
         assert_eq!(count::count("rain"), 4);
         assert_eq!(count::count("Die Schildkröte fliegt über das Floß."), 37);
         assert_eq!(count::count("Как слышно, приём!"), 18);
     }
     #[test]
     fn count_count_graphemes() {
+        assert_eq!(count::count_graphemes(""), 0);
         assert_eq!(count::count_graphemes("rain"), 4);
         assert_eq!(
             count::count_graphemes("Die Schildkröte fliegt über das Floß."),
