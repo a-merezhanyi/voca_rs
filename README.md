@@ -106,8 +106,8 @@ Publish project: `git push`
 - [ ] splice - [link](https://vocajs.com/#splice)
 - [ ] tr - [link](https://vocajs.com/#tr)
 - [x] [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
-- [ ] trimLeft - [link](https://vocajs.com/#trimLeft)
-- [ ] trimRight - [link](https://vocajs.com/#trimRight)
+- [x] [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)
+- [x] [trim_right](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_right.html)
 - [ ] wordWrap - [link](https://vocajs.com/#wordWrap)
 
 #### Query

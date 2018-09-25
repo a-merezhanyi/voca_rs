@@ -473,9 +473,46 @@ mod tests {
         assert_eq!(manipulate::trim("", ""), "");
     }
     #[test]
-    #[should_panic]
-    fn manipulate_trim_panic() {
-        assert_eq!(manipulate::trim("A B C", ""), "---");
+    fn manipulate_trim_left() {
+        assert_eq!(
+            manipulate::trim_left("   The world - is yours\t   ", ""),
+            "The world - is yours\t   "
+        );
+        assert_eq!(
+            manipulate::trim_left("--Zażółć gęślą jaźń---", "-"),
+            "Zażółć gęślą jaźń---"
+        );
+        assert_eq!(manipulate::trim_left("-~-Earth--~", "-~"), "Earth--~");
+        assert_eq!(
+            manipulate::trim_left("++--Die Schildkröte fliegt über das Floß.++", "+"),
+            "--Die Schildkröte fliegt über das Floß.++"
+        );
+        assert_eq!(
+            manipulate::trim_left("ё1ё2ёКак слышно, приём!ё1ё", "ёё12"),
+            "Как слышно, приём!ё1ё"
+        );
+        assert_eq!(manipulate::trim_left("", ""), "");
+    }
+    #[test]
+    fn manipulate_trim_right() {
+        assert_eq!(
+            manipulate::trim_right("   The world - is yours\t   ", ""),
+            "   The world - is yours"
+        );
+        assert_eq!(
+            manipulate::trim_right("--Zażółć gęślą jaźń---", "-"),
+            "--Zażółć gęślą jaźń"
+        );
+        assert_eq!(manipulate::trim_right("-~-Earth--~", "-~"), "-~-Earth");
+        assert_eq!(
+            manipulate::trim_right("++--Die Schildkröte fliegt über das Floß.++", "+"),
+            "++--Die Schildkröte fliegt über das Floß."
+        );
+        assert_eq!(
+            manipulate::trim_right("ё1ё2ёКак слышно, приём!ё1ё", "ёё12"),
+            "ё1ё2ёКак слышно, приём!"
+        );
+        assert_eq!(manipulate::trim_right("", ""), "");
     }
 
     /// voca_rs::count testing
