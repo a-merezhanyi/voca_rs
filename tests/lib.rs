@@ -415,6 +415,7 @@ mod tests {
     fn count_count_graphemes() {
         assert_eq!(count::count_graphemes(""), 0);
         assert_eq!(count::count_graphemes("rain"), 4);
+        assert_eq!(count::count_graphemes("a̐éö̲"), 3);
         assert_eq!(
             count::count_graphemes("Die Schildkröte fliegt über das Floß."),
             37

@@ -32,6 +32,8 @@ pub fn count(subject: &str) -> usize {
 /// use voca_rs::*;
 /// count::count_graphemes("cafe\u{0301}"); // or 'café'
 /// // => 4
+/// count::count_graphemes("a̐éö̲");
+/// // => 3
 /// count::count_graphemes("rain");
 /// // => 4
 pub fn count_graphemes(subject: &str) -> usize {
