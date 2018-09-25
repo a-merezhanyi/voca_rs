@@ -60,12 +60,6 @@ mod tests {
         assert_eq!(split::chars(""), [""]);
     }
     #[test]
-    #[should_panic]
-    fn split_to_chars_panic() {
-        assert_eq!(split::chars("gravity"), ["g", "r", "a"]);
-    }
-
-    #[test]
     fn split_by_pattern() {
         assert_eq!(
             split::split("gravity can cross dimensions", " "),
@@ -76,12 +70,6 @@ mod tests {
         assert_eq!(split::split("Über Stern", ""), ["Über Stern"]);
         assert_eq!(split::split("", ""), [""]);
     }
-    #[test]
-    #[should_panic]
-    fn split_by_pattern_panic() {
-        assert_eq!(split::chars("gravity"), ["g", "r", "a"]);
-    }
-
     #[test]
     fn split_words() {
         assert_eq!(
@@ -107,26 +95,12 @@ mod tests {
         );
     }
     #[test]
-    #[should_panic]
-    fn split_words_panic() {
-        assert_eq!(
-            split::words("gravity can cross dimensions"),
-            ["gravity1", "can", "cross", "dimensions"]
-        );
-    }
-
-    #[test]
     fn split_to_graphemes() {
         assert_eq!(
             split::graphemes("a̐éö̲\r\n"),
             ["a̐", "é", "ö̲", "\r\n"]
         );
         assert_eq!(split::graphemes(""), [""]);
-    }
-    #[test]
-    #[should_panic]
-    fn split_to_graphemes_panic() {
-        assert_eq!(split::graphemes("\r"), ["r"]);
     }
 
     /// voca_rs::query testing
@@ -138,21 +112,11 @@ mod tests {
         assert!(query::ends_with("", ""), true);
     }
     #[test]
-    #[should_panic]
-    fn query_dont_ends_with() {
-        assert!(query::ends_with("a b c", "b"));
-    }
-    #[test]
     fn query_includes() {
         assert!(query::includes("the world is yours", "the world", 0));
         assert!(query::includes("Zażółć gęślą jaźń", "gęślą", 7));
         assert!(query::includes("the world is yours", "", 0));
         assert!(query::includes("", "", 0), true);
-    }
-    #[test]
-    #[should_panic]
-    fn query_dont_includes() {
-        assert!(query::includes("a b c", "d", 0));
     }
     #[test]
     fn query_is_blank() {
@@ -199,11 +163,6 @@ mod tests {
         assert!(query::starts_with("the world is yours", ""));
         assert!(query::starts_with("", ""), true);
     }
-    #[test]
-    #[should_panic]
-    fn query_dont_starts_with() {
-        assert!(query::starts_with("a b c", "b"));
-    }
 
     /// voca_rs::case testing
     #[test]
@@ -220,12 +179,6 @@ mod tests {
         assert_eq!(case::camel_case(""), "");
     }
     #[test]
-    #[should_panic]
-    fn case_camel_case_panic() {
-        assert_eq!(case::camel_case("ABC"), "ABC");
-    }
-
-    #[test]
     fn case_pascal_case() {
         assert_eq!(case::pascal_case("The World - IS Yours"), "TheWorldIsYours");
         assert_eq!(
@@ -238,12 +191,6 @@ mod tests {
         );
         assert_eq!(case::pascal_case(""), "");
     }
-    #[test]
-    #[should_panic]
-    fn case_pascal_case_panic() {
-        assert_eq!(case::pascal_case("ABC"), "ABC");
-    }
-
     #[test]
     fn case_capitalize() {
         assert_eq!(
@@ -261,12 +208,6 @@ mod tests {
         assert_eq!(case::capitalize("", &true), "");
     }
     #[test]
-    #[should_panic]
-    fn case_capitalize_panic() {
-        assert_eq!(case::capitalize("ABC", &true), "ABC");
-    }
-
-    #[test]
     fn case_decapitalize() {
         assert_eq!(
             case::decapitalize("The World IS YourS", &true),
@@ -282,12 +223,6 @@ mod tests {
         );
         assert_eq!(case::decapitalize("", &true), "");
     }
-    #[test]
-    #[should_panic]
-    fn case_decapitalize_panic() {
-        assert_eq!(case::decapitalize("ABC", &true), "ABC");
-    }
-
     #[test]
     fn case_kebab_case() {
         assert_eq!(
@@ -305,12 +240,6 @@ mod tests {
         assert_eq!(case::kebab_case(""), "");
     }
     #[test]
-    #[should_panic]
-    fn case_kebab_case_panic() {
-        assert_eq!(case::kebab_case("A B C"), "ABC");
-    }
-
-    #[test]
     fn case_shouty_kebab_case() {
         assert_eq!(
             case::shouty_kebab_case("The World - IS Yours"),
@@ -327,12 +256,6 @@ mod tests {
         assert_eq!(case::shouty_kebab_case(""), "");
     }
     #[test]
-    #[should_panic]
-    fn case_shouty_kebab_case_panic() {
-        assert_eq!(case::shouty_kebab_case("A B C"), "ABC");
-    }
-
-    #[test]
     fn case_lower_case() {
         assert_eq!(case::lower_case("The World IS YourS"), "the world is yours");
         assert_eq!(
@@ -341,12 +264,6 @@ mod tests {
         );
         assert_eq!(case::lower_case(""), "");
     }
-    #[test]
-    #[should_panic]
-    fn case_lower_case_panic() {
-        assert_eq!(case::lower_case("ABC"), "ABC");
-    }
-
     #[test]
     fn case_snake_case() {
         assert_eq!(
@@ -364,12 +281,6 @@ mod tests {
         assert_eq!(case::snake_case(""), "");
     }
     #[test]
-    #[should_panic]
-    fn case_snake_case_panic() {
-        assert_eq!(case::snake_case("A B C"), "ABC");
-    }
-
-    #[test]
     fn case_shouty_snake_case() {
         assert_eq!(
             case::shouty_snake_case("The World - IS Yours"),
@@ -385,12 +296,6 @@ mod tests {
         );
         assert_eq!(case::shouty_snake_case(""), "");
     }
-    #[test]
-    #[should_panic]
-    fn case_shouty_snake_case_panic() {
-        assert_eq!(case::shouty_snake_case("A B C"), "ABC");
-    }
-
     #[test]
     fn case_swap_case() {
         assert_eq!(
@@ -408,12 +313,6 @@ mod tests {
         assert_eq!(case::swap_case(""), "");
     }
     #[test]
-    #[should_panic]
-    fn case_swap_case_panic() {
-        assert_eq!(case::swap_case("A B C"), "---");
-    }
-
-    #[test]
     fn case_upper_case() {
         assert_eq!(case::upper_case("The World IS YourS"), "THE WORLD IS YOURS");
         assert_eq!(
@@ -422,12 +321,6 @@ mod tests {
         );
         assert_eq!(case::upper_case(""), "");
     }
-    #[test]
-    #[should_panic]
-    fn case_upper_case_panic() {
-        assert_eq!(case::upper_case("ABC"), "abc");
-    }
-
     #[test]
     fn case_title_case() {
         assert_eq!(
@@ -443,11 +336,6 @@ mod tests {
             "Say Über Hello To Me"
         );
         assert_eq!(case::title_case(""), "");
-    }
-    #[test]
-    #[should_panic]
-    fn case_title_case_panic() {
-        assert_eq!(case::title_case("A B C"), "---");
     }
 
     /// voca_rs::manipulate testing
