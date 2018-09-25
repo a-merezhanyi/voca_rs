@@ -13,11 +13,11 @@
 /// split::chars("cloud");
 /// // => ["c", "l", "o", "u", "d"]
 /// ```
-pub fn chars(string: &str) -> Vec<&str> {
-    if string.len() == 0 {
+pub fn chars(subject: &str) -> Vec<&str> {
+    if subject.len() == 0 {
         return vec![""];
     }
-    string.split_terminator("").skip(1).collect::<Vec<_>>()
+    subject.split_terminator("").skip(1).collect::<Vec<_>>()
 }
 
 /// Splits `subject` into an array of chunks by `separator`.
@@ -34,14 +34,14 @@ pub fn chars(string: &str) -> Vec<&str> {
 /// split::split("rage against the dying of the light", "");
 /// // => ["rage", "against", "the", "dying", "of", "the", "light"]
 /// ```
-pub fn split(string: &'static str, pattern: &str) -> Vec<&'static str> {
-    if string.len() == 0 {
+pub fn split(subject: &'static str, pattern: &str) -> Vec<&'static str> {
+    if subject.len() == 0 {
         return vec![""];
     }
     if pattern.len() == 0 {
-        return vec![string];
+        return vec![subject];
     }
-    string.split_terminator(pattern).collect::<Vec<_>>()
+    subject.split_terminator(pattern).collect::<Vec<_>>()
 }
 
 use unicode_segmentation::UnicodeSegmentation;
@@ -60,7 +60,7 @@ use unicode_segmentation::UnicodeSegmentation;
 /// split::words("LazyLoad with XMLHttpRequest and snake_case");
 /// // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 /// ```
-pub fn words(s: &str) -> Vec<String> {
+pub fn words(subject: &str) -> Vec<String> {
     fn transform(v: &str) -> String {
         // https://github.com/withoutboats/heck/blob/master/src/lib.rs
         #[derive(Clone, Copy, PartialEq)]
@@ -112,7 +112,7 @@ pub fn words(s: &str) -> Vec<String> {
         res
     }
 
-    let string = s.to_string().replace("-", " ").replace("_", " ");
+    let string = subject.to_string().replace("-", " ").replace("_", " ");
     let res = transform(&string);
     let return_vector: Vec<String> = res.unicode_words().map(String::from).collect();
     return_vector
@@ -131,9 +131,9 @@ pub fn words(s: &str) -> Vec<String> {
 /// split::graphemes("a̐éö̲\r\n");
 /// // => ["a̐", "é", "ö̲", "\r\n"]
 /// ```
-pub fn graphemes(string: &str) -> Vec<&str> {
-    if string.len() == 0 {
+pub fn graphemes(subject: &str) -> Vec<&str> {
+    if subject.len() == 0 {
         return vec![""];
     }
-    UnicodeSegmentation::graphemes(string, true).collect::<Vec<&str>>()
+    UnicodeSegmentation::graphemes(subject, true).collect::<Vec<&str>>()
 }
