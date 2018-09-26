@@ -408,6 +408,7 @@ mod tests {
     fn count_count() {
         assert_eq!(count::count(""), 0);
         assert_eq!(count::count("rain"), 4);
+        assert_eq!(count::count("b\u{0142}\u{0105}d"), 4);
         assert_eq!(count::count("Die Schildkröte fliegt über das Floß."), 37);
         assert_eq!(count::count("Как слышно, приём!"), 18);
     }
@@ -415,6 +416,8 @@ mod tests {
     fn count_count_graphemes() {
         assert_eq!(count::count_graphemes(""), 0);
         assert_eq!(count::count_graphemes("rain"), 4);
+        assert_eq!(count::count_graphemes("b\u{0142}\u{0105}d"), 4);
+        assert_eq!(count::count_graphemes("błąd"), 4);
         assert_eq!(count::count_graphemes("a̐éö̲"), 3);
         assert_eq!(
             count::count_graphemes("Die Schildkröte fliegt über das Floß."),

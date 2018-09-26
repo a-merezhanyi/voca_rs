@@ -13,6 +13,8 @@ use split;
 /// use voca_rs::*;
 /// count::count("rain");
 /// // => 4
+/// count::count("błąd");
+/// // => 4
 pub fn count(subject: &str) -> usize {
     if subject.len() == 0 {
         return 0;
@@ -30,7 +32,9 @@ pub fn count(subject: &str) -> usize {
 ///
 /// ```
 /// use voca_rs::*;
-/// count::count_graphemes("cafe\u{0301}"); // or 'café'
+/// count::count_graphemes("cafe\u{0301}"); // or "café"
+/// // => 4
+/// count::count_graphemes("b\u{0142}\u{0105}d"); // or "błąd"
 /// // => 4
 /// count::count_graphemes("a̐éö̲");
 /// // => 3
