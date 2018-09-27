@@ -44,7 +44,7 @@ Publish project: `git push`
 
 #### Chop
 
-- [ ] charAt - [link](https://vocajs.com/#charAt)
+- [x] [char_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.char_at.html)
 - [ ] codePointAt - [link](https://vocajs.com/#codePointAt)
 - [ ] first - [link](https://vocajs.com/#first)
 - [ ] graphemeAt - [link](https://vocajs.com/#graphemeAt)

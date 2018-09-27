@@ -425,4 +425,17 @@ mod tests {
         );
         assert_eq!(count::count_graphemes("cafe\u{0301}"), 4);
     }
+
+    /// voca_rs::chop testing
+    #[test]
+    fn chop_char_at() {
+        assert_eq!(chop::char_at("", 0), "");
+        assert_eq!(chop::char_at("rain", 0), "r");
+        assert_eq!(chop::char_at("b\u{0142}\u{0105}d", 2), "ą");
+        assert_eq!(
+            chop::char_at("Die Schildkröte fliegt über das Floß.", 12),
+            "ö"
+        );
+        assert_eq!(chop::char_at("Как слышно, приём!", 15), "ё");
+    }
 }
