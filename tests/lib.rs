@@ -438,4 +438,12 @@ mod tests {
         );
         assert_eq!(chop::char_at("Как слышно, приём!", 15), "ё");
     }
+    #[test]
+    fn chop_first() {
+        assert_eq!(chop::first("", 0), "");
+        assert_eq!(chop::first("rain", 2), "ra");
+        assert_eq!(chop::first("b\u{0142}\u{0105}d", 3), "błą");
+        assert_eq!(chop::first("über das Floß.", 1), "ü");
+        assert_eq!(chop::first("Как слышно, приём!", 3), "Как");
+    }
 }
