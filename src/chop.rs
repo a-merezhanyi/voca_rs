@@ -42,6 +42,8 @@ fn get_chars(subject: &str, start: usize, end: usize) -> String {
 /// // => "h"
 /// chop::first("błąd", 2);
 /// // => "bł"
+/// chop::first("e\u{0301}", 1); // or 'é'
+/// // => "e"
 /// ```
 pub fn first(subject: &str, length: usize) -> String {
     if length == 0 {
@@ -72,4 +74,30 @@ pub fn grapheme_at(subject: &str, position: usize) -> String {
     }
 
     split::graphemes(&subject)[position].to_string()
+}
+
+/// Extracts the last `length` characters from `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `length` - The number of characters to extract.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::last("helicopter", 1);
+/// // => "r"
+/// chop::last("błąd", 2);
+/// // => "ąd"
+/// chop::last("e\u{0301}", 1); // or 'é'
+/// // => "\u{0301}"
+/// ```
+pub fn last(subject: &str, length: usize) -> String {
+    if length == 0 {
+        return "".to_string();
+    }
+    let subject_lenght = split::chars(&subject).len();
+
+    get_chars(&subject, subject_lenght - length, subject_lenght)
 }

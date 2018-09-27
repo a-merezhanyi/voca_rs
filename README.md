@@ -48,7 +48,7 @@ Publish project: `git push`
 - [ ] codePointAt - [link](https://vocajs.com/#codePointAt)
 - [x] [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
 - [x] [grapheme_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.grapheme_at.html)
-- [ ] last - [link](https://vocajs.com/#last)
+- [x] [last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.last.html)
 - [ ] prune - [link](https://vocajs.com/#prune)
 - [ ] slice - [link](https://vocajs.com/#slice)
 - [ ] substr - [link](https://vocajs.com/#substr)

@@ -441,10 +441,12 @@ mod tests {
     #[test]
     fn chop_first() {
         assert_eq!(chop::first("", 0), "");
+        assert_eq!(chop::first("a", 0), "");
         assert_eq!(chop::first("rain", 2), "ra");
         assert_eq!(chop::first("b\u{0142}\u{0105}d", 3), "błą");
         assert_eq!(chop::first("über das Floß.", 1), "ü");
         assert_eq!(chop::first("Как слышно, приём!", 3), "Как");
+        assert_eq!(chop::first("e\u{0301}", 1), "e");
     }
     #[test]
     fn chop_grapheme_at() {
@@ -453,5 +455,14 @@ mod tests {
         assert_eq!(chop::grapheme_at("cafe\u{0301}", 3), "é");
         assert_eq!(chop::grapheme_at("über das Floß.", 0), "ü");
         assert_eq!(chop::grapheme_at("a̐éö̲", 0), "a̐");
+    }
+    #[test]
+    fn chop_last() {
+        assert_eq!(chop::last("", 0), "");
+        assert_eq!(chop::last("a", 0), "");
+        assert_eq!(chop::last("b\u{0142}\u{0105}d", 2), "ąd");
+        assert_eq!(chop::last("helicopter", 1), "r");
+        assert_eq!(chop::last("über das Floß.", 2), "ß.");
+        assert_eq!(chop::last("e\u{0301}", 1), "\u{0301}");
     }
 }
