@@ -50,3 +50,26 @@ pub fn first(subject: &str, length: usize) -> String {
 
     get_chars(&subject, 0, length)
 }
+
+/// Get a grapheme from `subject` at specified `position`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `position` - The position to get the grapheme.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::grapheme_at("cafe\u{0301}", 3); // or 'café'
+/// // => "é"
+/// chop::grapheme_at("a̐éö̲", 0);
+/// // => "a̐"
+/// ```
+pub fn grapheme_at(subject: &str, position: usize) -> String {
+    if subject.len() == 0 {
+        return subject.to_string();
+    }
+
+    split::graphemes(&subject)[position].to_string()
+}

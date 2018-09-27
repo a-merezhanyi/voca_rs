@@ -446,4 +446,12 @@ mod tests {
         assert_eq!(chop::first("über das Floß.", 1), "ü");
         assert_eq!(chop::first("Как слышно, приём!", 3), "Как");
     }
+    #[test]
+    fn chop_grapheme_at() {
+        assert_eq!(chop::grapheme_at("", 0), "");
+        assert_eq!(chop::grapheme_at("b\u{0142}\u{0105}d", 1), "ł");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}", 3), "é");
+        assert_eq!(chop::grapheme_at("über das Floß.", 0), "ü");
+        assert_eq!(chop::grapheme_at("a̐éö̲", 0), "a̐");
+    }
 }
