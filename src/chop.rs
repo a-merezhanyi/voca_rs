@@ -107,6 +107,50 @@ pub fn last(subject: &str, length: usize) -> String {
 /// # Arguments
 ///
 /// * `subject` - The string to extract from.
+/// * `start` - The position to start extraction. 0 means from the beginning of the `subject`. If negative use `subject.len() + start`.
+/// * `end` - The position to end extraction. 0 means till the end of the `subject`. If negative use `subject.len() + end`.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::slice("miami", 1, 0);
+/// // => "iami"
+/// chop::slice("błąd", -2, 0);
+/// // => "ąd"
+/// chop::slice("florida", 1, 4);
+/// // => "lor"
+/// chop::slice("e\u{0301}", 1, 0); // or 'é'
+/// // => "\u{0301}"
+/// chop::slice("Die Schildkröte fliegt.", 4, -8);
+/// // => "Schildkröte"
+/// ```
+pub fn slice(subject: &str, start: isize, end: isize) -> String {
+    let subject_lenght = split::chars(&subject).len();
+    let position_start = calulate_position(subject_lenght, start, true);
+    let position_end = calulate_position(subject_lenght, end, false);
+
+    fn calulate_position(length: usize, x: isize, start: bool) -> usize {
+        if x < 0 {
+            length - x.abs() as usize
+        } else if x == 0 {
+            if start {
+                0
+            } else {
+                length
+            }
+        } else {
+            x as usize
+        }
+    }
+
+    get_chars(&subject, position_start, position_end)
+}
+
+/// Extracts from `subject` a string from `start` position up to `end` position. The character at `end` position is not included.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
 /// * `start` - The position to start extraction. 0 means from the beginning of the `subject`.
 /// * `end` - The position to end extraction. 0 means till the end of the `subject`.
 ///
