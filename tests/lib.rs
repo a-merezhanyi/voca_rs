@@ -477,6 +477,14 @@ mod tests {
         assert_eq!(chop::slice("e\u{0301}", -1, 0), "\u{0301}");
     }
     #[test]
+    fn chop_substr() {
+        assert_eq!(chop::substr("", 0, 0), "");
+        assert_eq!(chop::substr("helicopter", 1, 0), "elicopter");
+        assert_eq!(chop::substr("b\u{0142}\u{0105}d", 1, 2), "łą");
+        assert_eq!(chop::substr("über das Floß.", 9, 4), "Floß");
+        assert_eq!(chop::substr("e\u{0301}", 1, 0), "\u{0301}");
+    }
+    #[test]
     fn chop_substring() {
         assert_eq!(chop::substring("", 0, 0), "");
         assert_eq!(chop::substring("helicopter", 1, 0), "elicopter");

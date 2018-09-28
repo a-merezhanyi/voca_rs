@@ -107,8 +107,8 @@ pub fn last(subject: &str, length: usize) -> String {
 /// # Arguments
 ///
 /// * `subject` - The string to extract from.
-/// * `start` - The position to start extraction. 0 means from the beginning of the `subject`. If negative use `subject.len() + start`.
-/// * `end` - The position to end extraction. 0 means till the end of the `subject`. If negative use `subject.len() + end`.
+/// * `start` - The position to start extraction. 0 means extract from the beginning of the `subject`. If negative use `subject.len() + start`.
+/// * `end` - The position to end extraction. 0 means extract to the end of the `subject`. If negative use `subject.len() + end`.
 ///
 /// # Example
 /// ```
@@ -146,13 +146,39 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
     get_chars(&subject, position_start, position_end)
 }
 
+/// Extracts from `subject` a string from `start` position a number of `length` characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `start` - The position to start extraction. 0 means extract from the beginning of the `subject`.
+/// * `length` - The number of characters to extract. 0 means extract to the end of `subject`.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::substr("beach", 1, 0);
+/// // => "each"
+/// chop::substr("błąd", 1, 2);
+/// // => "łą"
+/// ```
+pub fn substr(subject: &str, start: usize, length: usize) -> String {
+    let subject_lenght = split::chars(&subject).len();
+    let position_end = match length {
+        0 => subject_lenght,
+        _ => start + length,
+    };
+
+    get_chars(&subject, start, position_end)
+}
+
 /// Extracts from `subject` a string from `start` position up to `end` position. The character at `end` position is not included.
 ///
 /// # Arguments
 ///
 /// * `subject` - The string to extract from.
-/// * `start` - The position to start extraction. 0 means from the beginning of the `subject`.
-/// * `end` - The position to end extraction. 0 means till the end of the `subject`.
+/// * `start` - The position to start extraction. 0 means extract from the beginning of the `subject`.
+/// * `end` - The position to end extraction. 0 means extract to the end of the `subject`.
 ///
 /// # Example
 /// ```

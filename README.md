@@ -51,7 +51,7 @@ Publish project: `git push`
 - [x] [last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.last.html)
 - [ ] prune - [link](https://vocajs.com/#prune)
 - [x] [slice](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.slice.html)
-- [ ] substr - [link](https://vocajs.com/#substr)
+- [x] [substr](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substr.html)
 - [x] [substring](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substring.html)
 - [ ] truncate - [link](https://vocajs.com/#truncate)
 
