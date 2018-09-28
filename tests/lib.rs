@@ -465,4 +465,12 @@ mod tests {
         assert_eq!(chop::last("über das Floß.", 2), "ß.");
         assert_eq!(chop::last("e\u{0301}", 1), "\u{0301}");
     }
+    #[test]
+    fn chop_substring() {
+        assert_eq!(chop::substring("", 0, 0), "");
+        assert_eq!(chop::substring("helicopter", 1, 0), "elicopter");
+        assert_eq!(chop::substring("b\u{0142}\u{0105}d", 2, 4), "ąd");
+        assert_eq!(chop::substring("über das Floß.", 0, 1), "ü");
+        assert_eq!(chop::substring("e\u{0301}", 1, 0), "\u{0301}");
+    }
 }

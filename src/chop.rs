@@ -101,3 +101,31 @@ pub fn last(subject: &str, length: usize) -> String {
 
     get_chars(&subject, subject_lenght - length, subject_lenght)
 }
+
+/// Extracts from `subject` a string from `start` position up to `end` position. The character at `end` position is not included.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `start` - The position to start extraction. 0 means from the beginning of the `subject`.
+/// * `end` - The position to end extraction. 0 means till the end of the `subject`.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::substring("beach", 1, 0);
+/// // => "each"
+/// chop::substring("błąd", 2, 4);
+/// // => "ąd"
+/// chop::substring("e\u{0301}", 1, 0); // or 'é'
+/// // => "\u{0301}"
+/// ```
+pub fn substring(subject: &str, start: usize, end: usize) -> String {
+    let subject_lenght = split::chars(&subject).len();
+    let position_end = match end {
+        0 => subject_lenght,
+        _ => end,
+    };
+
+    get_chars(&subject, start, position_end)
+}

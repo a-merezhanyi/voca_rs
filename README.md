@@ -52,7 +52,7 @@ Publish project: `git push`
 - [ ] prune - [link](https://vocajs.com/#prune)
 - [ ] slice - [link](https://vocajs.com/#slice)
 - [ ] substr - [link](https://vocajs.com/#substr)
-- [ ] substring - [link](https://vocajs.com/#substring)
+- [x] [substring](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substring.html)
 - [ ] truncate - [link](https://vocajs.com/#truncate)
 
 #### Count
