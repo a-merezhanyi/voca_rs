@@ -1,5 +1,6 @@
 //! Manipulate with the `subject`.
 
+use split;
 /// Repeats the `subject` number of `times`.
 ///
 /// # Arguments
@@ -22,6 +23,28 @@ pub fn repeat(subject: &str, times: usize) -> String {
     }
 
     subject.repeat(times)
+}
+
+/// Repeats the `subject` number of `times`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to repeat.
+/// * `times` - The number of times to repeat.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::reverse("winter");
+/// // => "retniw"
+/// ```
+pub fn reverse(subject: &str) -> String {
+    if subject.len() == 0 {
+        return "".to_string();
+    }
+
+    subject.chars().rev().collect()
 }
 
 /// Removes whitespaces from left and right sides of the `subject`.

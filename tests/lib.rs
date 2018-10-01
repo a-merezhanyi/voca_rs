@@ -357,6 +357,18 @@ mod tests {
         assert_eq!(manipulate::repeat("abc abc", 3), "abc abcabc abcabc abc");
     }
     #[test]
+    fn manipulate_reverse() {
+        assert_eq!(manipulate::reverse(""), "");
+        assert_eq!(manipulate::reverse("abc"), "cba");
+        assert_eq!(manipulate::reverse("abc abc"), "cba cba");
+        assert_eq!(manipulate::reverse("Zażółć"), "ćłóżaZ");
+        assert_eq!(
+            manipulate::reverse("über\tdas\tFloß"),
+            "ßolF\tsad\trebü"
+        );
+        assert_eq!(manipulate::reverse("приём!"), "!мёирп");
+    }
+    #[test]
     fn manipulate_trim() {
         assert_eq!(
             manipulate::trim("   The world - is yours\t   ", ""),
