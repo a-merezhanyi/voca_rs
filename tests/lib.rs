@@ -492,4 +492,18 @@ mod tests {
         assert_eq!(chop::substring("über das Floß.", 0, 1), "ü");
         assert_eq!(chop::substring("e\u{0301}", 1, 0), "\u{0301}");
     }
+    #[test]
+    fn chop_truncate() {
+        assert_eq!(chop::truncate("", 0, ""), "");
+        assert_eq!(chop::truncate("Once upon a time", 7, ""), "Once...");
+        assert_eq!(
+            chop::truncate("Die Schildkröte fliegt über das Floß.", 28, "(...)"),
+            "Die Schildkröte fliegt (...)"
+        );
+        assert_eq!(chop::truncate("Once upon", 10, ""), "Once upon");
+        assert_eq!(
+            chop::truncate("Как слышно, приём!", 13, ""),
+            "Как слышно..."
+        );
+    }
 }

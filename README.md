@@ -53,7 +53,7 @@ Publish project: `git push`
 - [x] [slice](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.slice.html)
 - [x] [substr](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substr.html)
 - [x] [substring](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substring.html)
-- [ ] truncate - [link](https://vocajs.com/#truncate)
+- [x] [truncate](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.truncate.html)
 
 #### Count
 

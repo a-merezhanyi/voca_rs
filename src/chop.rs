@@ -199,3 +199,40 @@ pub fn substring(subject: &str, start: usize, end: usize) -> String {
 
     get_chars(&subject, start, position_end)
 }
+
+/// Truncates `subject` to a new `length`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to truncate.
+/// * `length` - The length to truncate the string.
+/// * `end` - The string to be added at the end.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::truncate("Once upon a time", 7, "");
+/// // => "Once..."
+/// chop::truncate("Die Schildkröte fliegt über das Floß.", 28, "(...)");
+/// // => "Die Schildkröte fliegt (...)"
+/// chop::truncate("Once upon", 10, "");
+/// // => "Once upon"
+/// ```
+pub fn truncate(subject: &str, length: usize, end: &str) -> String {
+    if length == 0 {
+        return "".to_string();
+    }
+    let mut sufix = match end {
+        "" => "...",
+        _ => end,
+    };
+    let subject_length = split::chars(&subject).len();
+    let end_length = split::chars(&sufix).len();
+    let position_end = if subject_length < length {
+        sufix = "";
+        subject_length
+    } else {
+        length - end_length
+    };
+    format!("{}{}", get_chars(&subject, 0, position_end), sufix)
+}
