@@ -369,6 +369,20 @@ mod tests {
         assert_eq!(manipulate::reverse("приём!"), "!мёирп");
     }
     #[test]
+    fn manipulate_reverse_grapheme() {
+        assert_eq!(manipulate::reverse_grapheme(""), "");
+        assert_eq!(manipulate::reverse_grapheme("abc"), "cba");
+        assert_eq!(manipulate::reverse_grapheme("abc abc"), "cba cba");
+        assert_eq!(manipulate::reverse_grapheme("Zażółć"), "ćłóżaZ");
+        assert_eq!(
+            manipulate::reverse_grapheme("über\tdas\tFloß"),
+            "ßolF\tsad\trebü"
+        );
+        assert_eq!(manipulate::reverse_grapheme("приём!"), "!мёирп");
+        assert_eq!(manipulate::reverse_grapheme("café"), "éfac");
+        assert_eq!(manipulate::reverse_grapheme("a̐éö̲"), "ö̲éa̐");
+    }
+    #[test]
     fn manipulate_trim() {
         assert_eq!(
             manipulate::trim("   The world - is yours\t   ", ""),

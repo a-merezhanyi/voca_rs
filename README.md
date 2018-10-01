@@ -101,7 +101,7 @@ Publish project: `git push`
 - [ ] replace - [link](https://vocajs.com/#replace)
 - [ ] replaceAll - [link](https://vocajs.com/#replaceAll)
 - [x] [reverse](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse.html)
-- [ ] reverseGrapheme - [link](https://vocajs.com/#reverseGrapheme)
+- [x] [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse_grapheme.html)
 - [ ] slugify - [link](https://vocajs.com/#slugify)
 - [ ] splice - [link](https://vocajs.com/#splice)
 - [ ] tr - [link](https://vocajs.com/#tr)

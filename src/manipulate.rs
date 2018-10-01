@@ -1,6 +1,5 @@
 //! Manipulate with the `subject`.
 
-use split;
 /// Repeats the `subject` number of `times`.
 ///
 /// # Arguments
@@ -45,6 +44,34 @@ pub fn reverse(subject: &str) -> String {
     }
 
     subject.chars().rev().collect()
+}
+
+use unicode_segmentation::UnicodeSegmentation;
+/// Repeats the `subject` number of `times`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to repeat.
+/// * `times` - The number of times to repeat.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::reverse_grapheme("café");
+/// // => "éfac"
+/// manipulate::reverse_grapheme("a̐éö̲");
+/// // => "ö̲éa̐"
+/// ```
+pub fn reverse_grapheme(subject: &str) -> String {
+    if subject.len() == 0 {
+        return "".to_string();
+    }
+
+    UnicodeSegmentation::graphemes(subject, true)
+        .rev()
+        .collect::<Vec<&str>>()
+        .join("")
 }
 
 /// Removes whitespaces from left and right sides of the `subject`.
