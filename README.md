@@ -97,7 +97,7 @@ Publish project: `git push`
 - [ ] pad - [link](https://vocajs.com/#pad)
 - [ ] padLeft - [link](https://vocajs.com/#padLeft)
 - [ ] padRight - [link](https://vocajs.com/#padRight)
-- [ ] repeat - [link](https://vocajs.com/#repeat)
+- [x] [repeat](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
 - [ ] replace - [link](https://vocajs.com/#replace)
 - [ ] replaceAll - [link](https://vocajs.com/#replaceAll)
 - [ ] reverse - [link](https://vocajs.com/#reverse)

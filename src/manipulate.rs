@@ -1,5 +1,29 @@
 //! Manipulate with the `subject`.
 
+/// Repeats the `subject` number of `times`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to repeat.
+/// * `times` - The number of times to repeat.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::repeat("w", 3);
+/// // => "www"
+/// manipulate::repeat("world", 0);
+/// // => ""
+/// ```
+pub fn repeat(subject: &str, times: usize) -> String {
+    if subject.len() == 0 || times == 0 {
+        return "".to_string();
+    }
+
+    subject.repeat(times)
+}
+
 /// Removes whitespaces from left and right sides of the `subject`.
 ///
 /// # Arguments

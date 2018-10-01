@@ -350,6 +350,13 @@ mod tests {
 
     /// voca_rs::manipulate testing
     #[test]
+    fn manipulate_repeat() {
+        assert_eq!(manipulate::repeat("", 1), "");
+        assert_eq!(manipulate::repeat("www", 0), "");
+        assert_eq!(manipulate::repeat("abc", 3), "abcabcabc");
+        assert_eq!(manipulate::repeat("abc abc", 3), "abc abcabc abcabc abc");
+    }
+    #[test]
     fn manipulate_trim() {
         assert_eq!(
             manipulate::trim("   The world - is yours\t   ", ""),
