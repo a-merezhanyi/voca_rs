@@ -92,7 +92,7 @@ Publish project: `git push`
 
 #### Manipulate
 
-- [ ] insert - [link](https://vocajs.com/#insert)
+- [x] [insert](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.insert.html)
 - [ ] latinise - [link](https://vocajs.com/#latinise)
 - [ ] pad - [link](https://vocajs.com/#pad)
 - [ ] padLeft - [link](https://vocajs.com/#padLeft)

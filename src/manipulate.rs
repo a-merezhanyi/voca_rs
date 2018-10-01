@@ -1,5 +1,38 @@
 //! Manipulate with the `subject`.
 
+use split;
+/// Inserts into `subject` a string `to_insert` at specified `position`.
+///
+/// # Arguments
+///
+/// * `subject` - The string where to insert.
+/// * `to_insert` - The string to be inserted
+/// * `position` - The position to insert.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::insert("ct", "a", 1);
+/// // => "cat"
+/// manipulate::insert("sunny", " day", 5);
+/// // => "sunny day"
+/// ```
+pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
+    let subject_len = subject.len();
+    if subject_len == 0 || to_insert.len() == 0 {
+        return subject.to_string();
+    }
+    let insert_position = if position >= subject_len {
+        subject_len - 1
+    } else {
+        position
+    };
+    let prefix = split::chars(&subject)[..insert_position].join("");
+    let sufix = split::chars(&subject)[insert_position..].join("");
+    format!("{}{}{}", prefix, to_insert, sufix)
+}
+
 /// Repeats the `subject` number of `times`.
 ///
 /// # Arguments

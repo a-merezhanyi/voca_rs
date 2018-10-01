@@ -350,6 +350,18 @@ mod tests {
 
     /// voca_rs::manipulate testing
     #[test]
+    fn manipulate_insert() {
+        assert_eq!(manipulate::insert("", "", 0), "");
+        assert_eq!(manipulate::insert("abc", "1", 1), "a1bc");
+        assert_eq!(manipulate::insert("abc abc", ",", 3), "abc, abc");
+        assert_eq!(manipulate::insert("Zażółć", "-!-", 3), "Zaż-!-ółć");
+        assert_eq!(
+            manipulate::insert("über\tdas\tFloß", "~~~", 6),
+            "über\td~~~as\tFloß"
+        );
+        assert_eq!(manipulate::insert("приём", "!", 5), "приём!");
+    }
+    #[test]
     fn manipulate_repeat() {
         assert_eq!(manipulate::repeat("", 1), "");
         assert_eq!(manipulate::repeat("www", 0), "");
