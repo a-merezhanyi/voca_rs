@@ -1,6 +1,7 @@
 //! Extracts a character(s) from `subject`.
 
 use split;
+use utils;
 /// Access a character from `subject` at specified `position`.
 ///
 /// # Arguments
@@ -100,6 +101,86 @@ pub fn last(subject: &str, length: usize) -> String {
     let subject_length = split::chars(&subject).len();
 
     get_chars(&subject, subject_length - length, subject_length)
+}
+
+/// Truncates `subject` to a new `length` and does not break the words. Guarantees that the truncated string is no longer than `length`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to prune.
+/// * `length` - The length to prune the string.
+/// * `end` - The string to be added at the end.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::prune("Once upon a time", 7, "");
+/// // => "Once..."
+/// chop::prune("Die Schildkröte fliegt über das Floß.", 19, "~~");
+/// // => "Die Schildkröte~~"
+/// chop::prune("Once upon", 10, "");
+/// // => "Once upon"
+/// chop::prune("Как слышно, приём!", 14, "");
+/// // => "Как слышно..."
+/// ```
+pub fn prune(subject: &str, length: usize, end: &str) -> String {
+    if length == 0 {
+        return "".to_string();
+    }
+    let mut sufix = match end {
+        "" => "...",
+        _ => end,
+    };
+    let subject_chars = split::chars(&subject);
+    let subject_length = subject_chars.len();
+    let end_length = split::chars(&sufix).len();
+    let position_end = if subject_length < length {
+        sufix = "";
+        subject_length
+    } else {
+        let string_length = length - end_length;
+        let mut char_indices = subject_chars.iter();
+        let mut end_position = 0;
+        let mut current_position = 0;
+        #[derive(Clone, Copy, PartialEq)]
+        enum WordMode {
+            Spaces,
+            Words,
+        }
+        let mut mode = WordMode::Words;
+        while current_position <= string_length {
+            let next_char = char_indices.next();
+            match next_char {
+                Some(c) => {
+                    let mut current_char = String::new();
+                    current_char.push_str(c);
+                    if utils::WHITESPACE.contains(&current_char)
+                        || utils::PUNCTUATION.contains(&current_char)
+                    {
+                        if mode == WordMode::Words {
+                            end_position = if current_position > 0 {
+                                current_position
+                            } else {
+                                0
+                            };
+                            mode = WordMode::Spaces;
+                        }
+                    } else {
+                        if mode == WordMode::Spaces {
+                            mode = WordMode::Words;
+                        }
+                    }
+                }
+                None => {
+                    return subject.to_string();
+                }
+            }
+            current_position = current_position + 1;
+        }
+        end_position
+    };
+
+    format!("{}{}", get_chars(&subject, 0, position_end), sufix)
 }
 
 /// Extracts from `subject` a string from `start` position up to `end` position. The character at `end` position is not included.

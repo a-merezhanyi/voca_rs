@@ -466,6 +466,20 @@ mod tests {
         assert_eq!(chop::last("e\u{0301}", 1), "\u{0301}");
     }
     #[test]
+    fn chop_prune() {
+        assert_eq!(chop::prune("", 0, ""), "");
+        assert_eq!(chop::prune("Once upon a time", 7, ""), "Once...");
+        assert_eq!(
+            chop::prune("Die Schildkröte fliegt über das Floß.", 19, "~~"),
+            "Die Schildkröte~~"
+        );
+        assert_eq!(chop::prune("once upon", 10, ""), "once upon");
+        assert_eq!(
+            chop::prune("Как слышно, приём!", 14, ""),
+            "Как слышно..."
+        );
+    }
+    #[test]
     fn chop_slice() {
         assert_eq!(chop::slice("", 0, 0), "");
         assert_eq!(chop::slice("helicopter", 1, 0), "elicopter");

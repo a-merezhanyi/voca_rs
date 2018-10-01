@@ -49,7 +49,7 @@ Publish project: `git push`
 - [x] [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
 - [x] [grapheme_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.grapheme_at.html)
 - [x] [last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.last.html)
-- [ ] prune - [link](https://vocajs.com/#prune)
+- [x] [prune](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.prune.html)
 - [x] [slice](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.slice.html)
 - [x] [substr](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substr.html)
 - [x] [substring](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substring.html)
