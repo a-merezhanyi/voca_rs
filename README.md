@@ -117,7 +117,7 @@ Publish project: `git push`
 - [ ] isAlpha - [link](https://vocajs.com/#isAlpha)
 - [ ] isAlphaDigit - [link](https://vocajs.com/#isAlphaDigit)
 - [x] [isBlank](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_blank.html)
-- [ ] isDigit - [link](https://vocajs.com/#isDigit)
+- [x] [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
 - [x] [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
 - [x] [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
 - [x] [is_numeric](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_numeric.html)

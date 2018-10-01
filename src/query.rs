@@ -1,6 +1,7 @@
 //! Checks a `subject` against a query.
 
 use split;
+use utils;
 /// Checks whether `subject` ends with `end`.
 ///
 /// # Arguments
@@ -75,6 +76,42 @@ pub fn is_blank(subject: &str) -> bool {
     }
 
     return subject.trim().is_empty();
+}
+
+/// Checks whether `subject` contains only digit characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_digit("35");
+/// // => true
+/// query::is_digit("1.5");
+/// // => false
+/// query::is_digit("0xFF");
+/// // => false
+/// query::is_digit("ten");
+/// // => false
+/// ```
+pub fn is_digit(subject: &str) -> bool {
+    let subject_len = subject.len();
+    if subject_len == 0 {
+        return true;
+    }
+
+    split::chars(&subject)
+        .iter()
+        .filter(|c| {
+            let mut current_char = String::new();
+            current_char.push_str(c);
+            utils::DIGITS.contains(&current_char)
+        }).collect::<Vec<_>>()
+        .len()
+        == subject_len
 }
 
 /// Checks whether `subject` is empty.

@@ -126,6 +126,16 @@ mod tests {
         assert_eq!(query::is_blank("Zażółć gęślą jaźń"), false);
     }
     #[test]
+    fn query_is_digit() {
+        assert!(query::is_digit(""));
+        assert!(query::is_digit("0"));
+        assert!(query::is_digit("100"));
+        assert!(query::is_digit("100500"));
+        assert_eq!(query::is_digit("1.5"), false);
+        assert_eq!(query::is_digit("0xFF"), false);
+        assert_eq!(query::is_digit("ten"), false);
+    }
+    #[test]
     fn query_is_empty() {
         assert!(query::is_empty(""), true);
         assert_eq!(query::is_empty("Zażółć gęślą jaźń"), false);
