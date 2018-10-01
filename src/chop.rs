@@ -97,9 +97,9 @@ pub fn last(subject: &str, length: usize) -> String {
     if length == 0 {
         return "".to_string();
     }
-    let subject_lenght = split::chars(&subject).len();
+    let subject_length = split::chars(&subject).len();
 
-    get_chars(&subject, subject_lenght - length, subject_lenght)
+    get_chars(&subject, subject_length - length, subject_length)
 }
 
 /// Extracts from `subject` a string from `start` position up to `end` position. The character at `end` position is not included.
@@ -125,9 +125,9 @@ pub fn last(subject: &str, length: usize) -> String {
 /// // => "Schildkröte"
 /// ```
 pub fn slice(subject: &str, start: isize, end: isize) -> String {
-    let subject_lenght = split::chars(&subject).len();
-    let position_start = calulate_position(subject_lenght, start, true);
-    let position_end = calulate_position(subject_lenght, end, false);
+    let subject_length = split::chars(&subject).len();
+    let position_start = calulate_position(subject_length, start, true);
+    let position_end = calulate_position(subject_length, end, false);
 
     fn calulate_position(length: usize, x: isize, start: bool) -> usize {
         if x < 0 {
@@ -163,9 +163,9 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
 /// // => "łą"
 /// ```
 pub fn substr(subject: &str, start: usize, length: usize) -> String {
-    let subject_lenght = split::chars(&subject).len();
+    let subject_length = split::chars(&subject).len();
     let position_end = match length {
-        0 => subject_lenght,
+        0 => subject_length,
         _ => start + length,
     };
 
@@ -191,9 +191,9 @@ pub fn substr(subject: &str, start: usize, length: usize) -> String {
 /// // => "\u{0301}"
 /// ```
 pub fn substring(subject: &str, start: usize, end: usize) -> String {
-    let subject_lenght = split::chars(&subject).len();
+    let subject_length = split::chars(&subject).len();
     let position_end = match end {
-        0 => subject_lenght,
+        0 => subject_length,
         _ => end,
     };
 
