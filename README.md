@@ -1,4 +1,4 @@
-# voca_rs [![Build Status](https://travis-ci.org/e1r0nd/voca_rs.svg?branch=master)](https://travis-ci.org/e1r0nd/voca_rs) [![GitHub version](https://badge.fury.io/gh/e1r0nd%2Fvoca_rs.svg)](https://badge.fury.io/gh/e1r0nd%2Fvoca_rs) [![codecov](https://codecov.io/gh/e1r0nd/voca_rs/branch/master/graph/badge.svg)](https://codecov.io/gh/e1r0nd/voca_rs) [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+# voca_rs [![Build Status](https://travis-ci.org/e1r0nd/voca_rs.svg?branch=master)](https://travis-ci.org/e1r0nd/voca_rs) [![Crates version](http://meritbadge.herokuapp.com/voca_rs)](https://crates.io/crates/voca_rs)(https://badge.fury.io/gh/e1r0nd%2Fvoca_rs) [![codecov](https://codecov.io/gh/e1r0nd/voca_rs/branch/master/graph/badge.svg)](https://codecov.io/gh/e1r0nd/voca_rs) [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 **Voca_rs is a Rust library for manipulating strings.**
 
