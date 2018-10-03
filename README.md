@@ -14,6 +14,8 @@ let string_in_words = split::words(&input_string);
 // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 let snake_string = case::snake_case(&string_in_words[3..6].join(" "));
 // => "xml_http_request"
+let trancated_string = chop::prune(&string_in_words.join(" "), 15, "");
+// => "Lazy Load..."
 ```
 
 ## Documentation
