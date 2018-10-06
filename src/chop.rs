@@ -109,7 +109,7 @@ pub fn last(subject: &str, length: usize) -> String {
 ///
 /// * `subject` - The string to prune.
 /// * `length` - The length to prune the string.
-/// * `end` - The string to be added at the end.
+/// * `end` - The string to be added at the end. Default value is "...".
 ///
 /// # Example
 /// ```
@@ -287,7 +287,7 @@ pub fn substring(subject: &str, start: usize, end: usize) -> String {
 ///
 /// * `subject` - The string to truncate.
 /// * `length` - The length to truncate the string.
-/// * `end` - The string to be added at the end.
+/// * `end` - The string to be added at the end. Default value is "...".
 ///
 /// # Example
 /// ```
