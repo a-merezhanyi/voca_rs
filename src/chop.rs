@@ -22,11 +22,10 @@ pub fn char_at(subject: &str, position: usize) -> String {
 }
 
 fn get_chars(subject: &str, start: usize, end: usize) -> String {
-    if subject.len() == 0 {
-        return subject.to_string();
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => split::chars(&subject)[start..end].join(""),
     }
-
-    split::chars(&subject)[start..end].join("")
 }
 
 /// Extracts the first `length` characters from `subject`.
@@ -47,11 +46,10 @@ fn get_chars(subject: &str, start: usize, end: usize) -> String {
 /// // => "e"
 /// ```
 pub fn first(subject: &str, length: usize) -> String {
-    if length == 0 {
-        return "".to_string();
+    match length {
+        0 => "".to_string(),
+        _ => get_chars(&subject, 0, length),
     }
-
-    get_chars(&subject, 0, length)
 }
 
 /// Get a grapheme from `subject` at specified `position`.
@@ -70,11 +68,10 @@ pub fn first(subject: &str, length: usize) -> String {
 /// // => "a̐"
 /// ```
 pub fn grapheme_at(subject: &str, position: usize) -> String {
-    if subject.len() == 0 {
-        return subject.to_string();
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => split::graphemes(&subject)[position].to_string(),
     }
-
-    split::graphemes(&subject)[position].to_string()
 }
 
 /// Extracts the last `length` characters from `subject`.
@@ -95,12 +92,13 @@ pub fn grapheme_at(subject: &str, position: usize) -> String {
 /// // => "\u{0301}"
 /// ```
 pub fn last(subject: &str, length: usize) -> String {
-    if length == 0 {
-        return "".to_string();
+    match length {
+        0 => "".to_string(),
+        _ => {
+            let subject_length = split::chars(&subject).len();
+            get_chars(&subject, subject_length - length, subject_length)
+        }
     }
-    let subject_length = split::chars(&subject).len();
-
-    get_chars(&subject, subject_length - length, subject_length)
 }
 
 /// Truncates `subject` to a new `length` and does not break the words. Guarantees that the truncated string is no longer than `length`.
@@ -214,10 +212,9 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
         if x < 0 {
             length - x.abs() as usize
         } else if x == 0 {
-            if start {
-                0
-            } else {
-                length
+            match start {
+                true => 0,
+                false => length,
             }
         } else {
             x as usize
