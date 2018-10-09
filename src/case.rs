@@ -22,23 +22,24 @@ pub fn camel_case(subject: &str) -> String {
 }
 
 fn camel_and_pascal_case(subject: &str, cale_case: bool) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
-    }
+    return match subject.len() {
+        0 => subject.to_string(),
+        _ => return_string(&subject, cale_case),
+    };
 
-    let mut res = String::with_capacity(subject.len());
-    for (i, c) in split::words(subject).iter().enumerate() {
-        let s;
-        if i == 0 && cale_case {
-            s = lower_case(c);
-        } else {
-            s = capitalize(c, &true);
+    fn return_string(subject: &str, cale_case: bool) -> String {
+        let mut res = String::with_capacity(subject.len());
+        for (i, c) in split::words(subject).iter().enumerate() {
+            let s = if i == 0 && cale_case {
+                lower_case(c)
+            } else {
+                capitalize(c, &true)
+            };
+            res.push_str(&s);
         }
-        res.push_str(&s);
-    }
 
-    res
-}
+        res
+    };}
 
 /// Converts the first character of `subject` to upper case. If `restToLower` is `true`, convert the rest of `subject` to lower case.
 ///
@@ -57,27 +58,28 @@ fn camel_and_pascal_case(subject: &str, cale_case: bool) -> String {
 /// // => "Say hello to me"
 /// ```
 pub fn capitalize(subject: &str, rest_to_lower: &bool) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
-    }
+    return match subject.len() {
+        0 => subject.to_string(),
+        _ => return_string(&subject, rest_to_lower),
+    };
 
-    let mut res = String::with_capacity(subject.len());
-    for (i, c) in split::chars(subject).iter().enumerate() {
-        let s;
-        if i == 0 {
-            s = c.to_uppercase();
-        } else {
-            if *rest_to_lower {
-                s = c.to_lowercase();
+    fn return_string(subject: &str, rest_to_lower: &bool) -> String {
+        let mut res = String::with_capacity(subject.len());
+        for (i, c) in split::chars(subject).iter().enumerate() {
+            let s = if i == 0 {
+                c.to_uppercase()
             } else {
-                s = c.to_string();
-            }
+                if *rest_to_lower {
+                    c.to_lowercase()
+                } else {
+                    c.to_string()
+                }
+            };
+            res.push_str(&s);
         }
-        res.push_str(&s);
-    }
 
-    res
-}
+        res
+    };}
 
 /// Converts the first character of `subject` to lower case. If `restToLower` is `true`, convert the rest of `subject` to lower case.
 ///
@@ -95,27 +97,28 @@ pub fn capitalize(subject: &str, rest_to_lower: &bool) -> String {
 /// // => "say Hello to ME"
 /// ```
 pub fn decapitalize(subject: &str, rest_to_lower: &bool) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
-    }
+    return match subject.len() {
+        0 => subject.to_string(),
+        _ => return_string(&subject, rest_to_lower),
+    };
 
-    let mut res = String::with_capacity(subject.len());
-    for (i, c) in split::chars(subject).iter().enumerate() {
-        let s;
-        if i == 0 {
-            s = c.to_lowercase();
-        } else {
-            if *rest_to_lower {
-                s = c.to_lowercase();
+    fn return_string(subject: &str, rest_to_lower: &bool) -> String {
+        let mut res = String::with_capacity(subject.len());
+        for (i, c) in split::chars(subject).iter().enumerate() {
+            let s = if i == 0 {
+                c.to_lowercase()
             } else {
-                s = c.to_string();
-            }
+                if *rest_to_lower {
+                    c.to_lowercase()
+                } else {
+                    c.to_string()
+                }
+            };
+            res.push_str(&s);
         }
-        res.push_str(&s);
-    }
 
-    res
-}
+        res
+    };}
 
 /// Converts the `subject` to kebab case.
 ///
@@ -158,20 +161,19 @@ pub fn shouty_kebab_case(subject: &str) -> String {
 }
 
 fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
-    }
-
-    split::words(subject)
-        .into_iter()
-        .map(|c| {
-            if shouty {
-                upper_case(&c)
-            } else {
-                lower_case(&c)
-            }
-        }).collect::<Vec<String>>()
-        .join("-")
+    return match subject.len() {
+        0 => subject.to_string(),
+        _ => split::words(subject)
+            .into_iter()
+            .map(|c| {
+                if shouty {
+                    upper_case(&c)
+                } else {
+                    lower_case(&c)
+                }
+            }).collect::<Vec<String>>()
+            .join("-"),
+    };
 }
 
 /// Converts the `subject` to lower case.
@@ -190,16 +192,16 @@ fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
 /// // => "say hello to me"
 /// ```
 pub fn lower_case(subject: &str) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => {
+            let mut res = String::with_capacity(subject.len());
+            for c in split::chars(subject).iter() {
+                res.push_str(&c.to_lowercase());
+            }
+            res
+        }
     }
-
-    let mut res = String::with_capacity(subject.len());
-    for c in split::chars(subject).iter() {
-        res.push_str(&c.to_lowercase());
-    }
-
-    res
 }
 
 /// Converts the `subject` to pascal case.
@@ -263,20 +265,19 @@ pub fn shouty_snake_case(subject: &str) -> String {
 }
 
 fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => split::words(subject)
+            .into_iter()
+            .map(|c| {
+                if shouty {
+                    upper_case(&c)
+                } else {
+                    lower_case(&c)
+                }
+            }).collect::<Vec<String>>()
+            .join("_"),
     }
-
-    split::words(subject)
-        .into_iter()
-        .map(|c| {
-            if shouty {
-                upper_case(&c)
-            } else {
-                lower_case(&c)
-            }
-        }).collect::<Vec<String>>()
-        .join("_")
 }
 
 /// Converts the uppercase alpha caracters of `subject` to lowercase and lowercase characters to uppercase.
@@ -294,23 +295,22 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
 /// // => "2 ÜbER bEES"
 /// ```
 pub fn swap_case(subject: &str) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => split::chars(subject)
+            .into_iter()
+            .map(|s| {
+                s.chars()
+                    .filter_map(|c| {
+                        if c.is_lowercase() {
+                            c.to_uppercase().next()
+                        } else {
+                            c.to_lowercase().next()
+                        }
+                    }).collect()
+            }).collect::<Vec<String>>()
+            .join(""),
     }
-
-    split::chars(subject)
-        .into_iter()
-        .map(|s| {
-            s.chars()
-                .filter_map(|c| {
-                    if c.is_lowercase() {
-                        c.to_uppercase().next()
-                    } else {
-                        c.to_lowercase().next()
-                    }
-                }).collect()
-        }).collect::<Vec<String>>()
-        .join("")
 }
 
 /// Converts the `subject` to title case.
@@ -330,15 +330,14 @@ pub fn swap_case(subject: &str) -> String {
 /// // => "Bird Flight"
 /// ```
 pub fn title_case(subject: &str) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => split::words(subject)
+            .into_iter()
+            .map(|c| capitalize(&c, &true))
+            .collect::<Vec<String>>()
+            .join(" "),
     }
-
-    split::words(subject)
-        .into_iter()
-        .map(|c| capitalize(&c, &true))
-        .collect::<Vec<String>>()
-        .join(" ")
 }
 
 /// Converts the `subject` to upper case.
@@ -357,14 +356,14 @@ pub fn title_case(subject: &str) -> String {
 /// // => "SAY HELLO TO ME"
 /// ```
 pub fn upper_case(subject: &str) -> String {
-    if subject.len() == 0 {
-        return subject.to_owned();
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => {
+            let mut res = String::with_capacity(subject.len());
+            for c in split::chars(subject).iter() {
+                res.push_str(&c.to_uppercase());
+            }
+            res
+        }
     }
-
-    let mut res = String::with_capacity(subject.len());
-    for c in split::chars(subject).iter() {
-        res.push_str(&c.to_uppercase());
-    }
-
-    res
 }
