@@ -24,8 +24,7 @@ See the complete documentation at https://e1r0nd.github.io/voca_rs/
 
 Run test: `cargo test`<br>
 Build docs: `cargo doc` -> `./target/doc/voca_rs/index.html` <br>
-Build project: `cargo build` -> `./target/debug`<br>
-Publish project: `git push`
+Build project: `cargo build` -> `./target/debug`
 
 ## Roadmap
 
