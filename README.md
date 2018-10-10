@@ -88,7 +88,7 @@ Publish project: `git push`
 
 #### Index
 
-- [ ] indexOf - [link](https://vocajs.com/#indexOf)
+- [x] [index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.index_of.html)
 - [ ] lastIndexOf - [link](https://vocajs.com/#lastIndexOf)
 - [ ] search - [link](https://vocajs.com/#search)
 

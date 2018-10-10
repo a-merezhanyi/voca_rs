@@ -575,4 +575,32 @@ mod tests {
             "Как слышно..."
         );
     }
+
+    /// voca_rs::index testing
+    #[test]
+    fn index_index_of() {
+        assert_eq!(index::index_of("", "", 0), 0);
+        assert_eq!(index::index_of("rain", "r", 0), 0);
+        assert_eq!(index::index_of("rain", "a", 0), 1);
+        assert_eq!(index::index_of("Rain, dear rain", "ear", 0), 7);
+        assert_eq!(index::index_of("Rain, dear rain", "ain", 0), 1);
+        assert_eq!(index::index_of("rain", "z", 0), -1);
+        assert_eq!(index::index_of("b\u{0142}\u{0105}d", "ą", 0), 2);
+        assert_eq!(
+            index::index_of("Zażółć gęślą jaźń", "gęślą", 0),
+            7
+        );
+        assert_eq!(
+            index::index_of(
+                "Die Schildkröte fliegt über das Floß.",
+                "Schildkröte",
+                4
+            ),
+            0
+        );
+        assert_eq!(
+            index::index_of("Как слышно, приём!", "слышно", 0),
+            4
+        );
+    }
 }
