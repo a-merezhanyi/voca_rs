@@ -603,4 +603,30 @@ mod tests {
             4
         );
     }
+    #[test]
+    fn index_last_index_of() {
+        assert_eq!(index::last_index_of("", "", 0), 0);
+        assert_eq!(index::last_index_of("rain", "r", 0), 0);
+        assert_eq!(index::last_index_of("rain", "a", 0), 1);
+        assert_eq!(index::last_index_of("Rain, dear rain", "rain", 0), 11);
+        assert_eq!(index::last_index_of("Rain, dear rain", "ain", 0), 12);
+        assert_eq!(index::last_index_of("rain", "z", 0), -1);
+        assert_eq!(index::last_index_of("b\u{0142}\u{0105}d", "ą", 0), 2);
+        assert_eq!(
+            index::last_index_of("Zażółć gęślą jaźń", "gęślą", 0),
+            7
+        );
+        assert_eq!(
+            index::last_index_of(
+                "Die Schildkröte fliegt über das Floß.",
+                "Schildkröte",
+                4
+            ),
+            0
+        );
+        assert_eq!(
+            index::last_index_of("Как слышно, приём!", "слышно", 0),
+            4
+        );
+    }
 }
