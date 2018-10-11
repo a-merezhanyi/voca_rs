@@ -105,6 +105,34 @@ fn is_alpha_or_alphadigit(subject: &str, count_digits: bool) -> bool {
     subject_is_ok
 }
 
+/// Checks whether `subject` contains contains only alpha and digit characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_alphadigit("");
+/// // => false
+/// query::is_alphadigit("cafe\u{0301}"); // or "café"
+/// // => true
+/// query::is_alphadigit("year2020");
+/// // => true
+/// query::is_alphadigit("1448");
+/// // => true
+/// query::is_alphadigit("40-20");
+/// // => false
+/// ```
+pub fn is_alphadigit(subject: &str) -> bool {
+    match is_empty(&subject) {
+        true => false,
+        _ => is_alpha_or_alphadigit(&subject, true),
+    }
+}
+
 /// Checks whether `subject` is empty or contains only whitespaces.
 ///
 /// # Arguments

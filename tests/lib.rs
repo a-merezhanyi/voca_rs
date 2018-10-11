@@ -132,6 +132,21 @@ mod tests {
         assert_eq!(query::is_alpha("Zażółć gęślą jaźń"), false);
     }
     #[test]
+    fn query_is_alphadigit() {
+        assert_eq!(query::is_alphadigit(""), false);
+        assert_eq!(query::is_alphadigit("bart"), true);
+        assert_eq!(query::is_alphadigit("café"), true);
+        assert_eq!(query::is_alphadigit("cafe\u{0301}"), true);
+        assert_eq!(query::is_alphadigit("T1000"), true);
+        assert_eq!(query::is_alphadigit("1000"), true);
+        assert_eq!(query::is_alphadigit("10-00"), false);
+        assert_eq!(query::is_alphadigit("\n\t"), false);
+        assert_eq!(query::is_alphadigit("lisa!"), false);
+        assert_eq!(query::is_alphadigit("lisa and bart"), false);
+        assert_eq!(query::is_alphadigit("Zażółć"), true);
+        assert_eq!(query::is_alphadigit("Zażółć gęślą jaźń"), false);
+    }
+    #[test]
     fn query_is_blank() {
         assert!(query::is_blank(""), true);
         assert_eq!(query::is_blank("   "), true);

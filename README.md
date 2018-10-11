@@ -116,7 +116,7 @@ Build project: `cargo build` -> `./target/debug`
 - [x] [ends_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.ends_with.html)
 - [x] [includes](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.includes.html)
 - [x] [is_alpha](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alpha.html)
-- [ ] isAlphaDigit - [link](https://vocajs.com/#isAlphaDigit)
+- [x] [is_alphadigit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alphadigit.html)
 - [x] [isBlank](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_blank.html)
 - [x] [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
 - [x] [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
