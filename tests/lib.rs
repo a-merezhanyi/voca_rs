@@ -119,6 +119,19 @@ mod tests {
         assert!(query::includes("", "", 0), true);
     }
     #[test]
+    fn query_is_alpha() {
+        assert_eq!(query::is_alpha(""), false);
+        assert_eq!(query::is_alpha("bart"), true);
+        assert_eq!(query::is_alpha("café"), true);
+        assert_eq!(query::is_alpha("cafe\u{0301}"), true);
+        assert_eq!(query::is_alpha("T1000"), false);
+        assert_eq!(query::is_alpha("\n\t"), false);
+        assert_eq!(query::is_alpha("lisa!"), false);
+        assert_eq!(query::is_alpha("lisa and bart"), false);
+        assert_eq!(query::is_alpha("Zażółć"), true);
+        assert_eq!(query::is_alpha("Zażółć gęślą jaźń"), false);
+    }
+    #[test]
     fn query_is_blank() {
         assert!(query::is_blank(""), true);
         assert_eq!(query::is_blank("   "), true);

@@ -1,5 +1,7 @@
 //! Checks a `subject` against a query.
 
+use chop;
+use count;
 use split;
 use utils;
 /// Checks whether `subject` ends with `end`.
@@ -51,6 +53,56 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
     subject.to_owned()[subject.char_indices().nth(position).unwrap().0..]
         .to_string()
         .contains(&search)
+}
+
+/// Checks whether `subject` contains only alpha characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_alpha("");
+/// // => false
+/// query::is_alpha("cafe\u{0301}"); // or "café"
+/// // => true
+/// query::is_alpha("bart");
+/// // => true
+/// query::is_alpha("lisa!");
+/// // => false
+/// query::is_alpha("Zażółć and bart");
+/// // => false
+/// ```
+pub fn is_alpha(subject: &str) -> bool {
+    match is_empty(&subject) {
+        true => false,
+        _ => is_alpha_or_alphadigit(&subject, false),
+    }
+}
+
+fn is_alpha_or_alphadigit(subject: &str, count_digits: bool) -> bool {
+    let mut subject_is_ok = true;
+    let subject_grapheme_len = count::count_graphemes(&subject);
+    let mut current_pos = 0;
+    while current_pos < subject_grapheme_len {
+        let current_char = chop::grapheme_at(&subject, current_pos);
+        if (!count_digits
+            && (is_digit(&current_char)
+                || is_blank(&current_char)
+                || utils::PUNCTUATION.contains(&current_char)))
+            || (count_digits
+                && (is_blank(&current_char) || utils::PUNCTUATION.contains(&current_char)))
+        {
+            subject_is_ok = false;
+            current_pos = subject_grapheme_len;
+        } else {
+            current_pos = current_pos + 1;
+        }
+    }
+    subject_is_ok
 }
 
 /// Checks whether `subject` is empty or contains only whitespaces.
