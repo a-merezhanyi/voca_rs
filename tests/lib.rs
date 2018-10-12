@@ -531,6 +531,26 @@ mod tests {
         );
         assert_eq!(count::count_substrings("every dog has its day", "cat"), 0);
     }
+    #[test]
+    fn count_count_words() {
+        assert_eq!(count::count_words("", ""), 0);
+        assert_eq!(count::count_words("ab c", ""), 2);
+        assert_eq!(count::count_words("Gravity - can cross dimensions!", ""), 4);
+        assert_eq!(count::count_words("GravityCanCrossDimensions", ""), 4);
+        assert_eq!(
+            count::count_words("Cafe\u{0301}-del-Mar-andBossaNova1", "-"),
+            4
+        );
+        assert_eq!(count::count_words("Język /polski wywodzi się z` języka` praindoeuropejskiego za**pośrednictwem+języka-prasłowiańskiego.", ""), 11);
+        assert_eq!(
+            count::count_words("Στις--αρχές** (του) 21ου, αιώνα!'", ""),
+            5
+        );
+        assert_eq!(
+            count::count_words("Гравитация-Притягивает-ВСЕ!!", "-"),
+            3
+        );
+    }
 
     /// voca_rs::chop testing
     #[test]

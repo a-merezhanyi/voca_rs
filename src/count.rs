@@ -77,3 +77,38 @@ pub fn count_substrings(subject: &str, substring: &str) -> usize {
         _ => match_substring(&subject, &substring),
     }
 }
+
+/// Counts the number of words in `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string where to count.
+/// * `pattern` - The pattern to watch words.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// count::count_words("Gravity - can cross dimensions!", "");
+/// // => 4
+/// count::count_words("GravityCanCrossDimensions", "");
+/// // => 4
+/// count::count_words("Cafe\u{0301}-del-Mar-andBossaNova1", "-");
+/// // => 4
+pub fn count_words(subject: &str, pattern: &str) -> usize {
+    fn match_substring(subject: &str, pattern: &str) -> usize {
+        match pattern.len() {
+            0 => split::words(&subject).iter().count(),
+            _ => subject
+                .split_terminator(pattern)
+                .collect::<Vec<_>>()
+                .iter()
+                .count(),
+        }
+    }
+
+    match subject.len() {
+        0 => 0,
+        _ => match_substring(&subject, &pattern),
+    }
+}
