@@ -60,7 +60,7 @@ Build project: `cargo build` -> `./target/debug`
 
 - [x] [count](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count.html)
 - [x] [count_graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_graphemes.html)
-- [ ] countSubstrings - [link](https://vocajs.com/#countSubstrings)
+- [x] [count_substrings](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_substrings.html)
 - [ ] countWhere - [link](https://vocajs.com/#countWhere)
 - [ ] countWords - [link](https://vocajs.com/#countWords)
 

@@ -508,6 +508,26 @@ mod tests {
         );
         assert_eq!(count::count_graphemes("cafe\u{0301}"), 4);
     }
+    #[test]
+    fn count_count_substrings() {
+        assert_eq!(count::count_substrings("", ""), 0);
+        assert_eq!(count::count_substrings("abc", ""), 0);
+        assert_eq!(count::count_substrings("rain", "rain"), 1);
+        assert_eq!(
+            count::count_substrings("Die Schildkröte fliegt über das Floß.", "über"),
+            1
+        );
+        assert_eq!(
+            count::count_substrings("bad boys, bad boys whatcha gonna do?", "boys"),
+            2
+        );
+        assert_eq!(count::count_substrings("Cafe\u{0301} del Mar", "Café"), 1);
+        assert_eq!(
+            count::count_substrings("Cafe\u{0301} del Mar Café del Mar cafe\u{0301}", "Café"),
+            2
+        );
+        assert_eq!(count::count_substrings("every dog has its day", "cat"), 0);
+    }
 
     /// voca_rs::chop testing
     #[test]
