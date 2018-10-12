@@ -511,6 +511,9 @@ mod tests {
     #[test]
     fn count_count_substrings() {
         assert_eq!(count::count_substrings("", ""), 0);
+        assert_eq!(count::count_substrings("******", "*"), 6);
+        assert_eq!(count::count_substrings("******", "**"), 3);
+        assert_eq!(count::count_substrings("******", "**-"), 0);
         assert_eq!(count::count_substrings("abc", ""), 0);
         assert_eq!(count::count_substrings("rain", "rain"), 1);
         assert_eq!(
