@@ -12,9 +12,10 @@ use voca_rs::*;
 let input_string = "LazyLoad with XMLHttpRequest and snake_case";
 let string_in_words = split::words(&input_string);
 // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
-let snake_string = case::snake_case(&string_in_words[3..6].join(" "));
+let words_in_string = &string_in_words.join(" ");
+let snake_string = case::snake_case(chop::slice(&words_in_string, 13, 28));
 // => "xml_http_request"
-let trancated_string = chop::prune(&string_in_words.join(" "), 15, "");
+let trancated_string = chop::prune(&words_in_string, 15, "");
 // => "Lazy Load..."
 ```
 

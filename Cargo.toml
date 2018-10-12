@@ -1,6 +1,6 @@
 [package]
 name = "voca_rs"
-version = "0.3.0"
+version = "0.4.0"
 authors = ["Anatol Merezhanyi <a.merezhanyi@gmail.com>"]
 license = "MIT"
 description = "Voca_rs is inspired by Voca.js and string.py"

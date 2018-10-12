@@ -7,7 +7,7 @@ mod tests {
     /// voca_rs::utils testing
     #[test]
     fn utils_version() {
-        assert_eq!(utils::VERSION, "0.3.0");
+        assert_eq!(utils::VERSION, "0.4.0");
     }
     #[test]
     fn utils_ascii_letters() {
