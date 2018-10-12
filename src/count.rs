@@ -16,10 +16,10 @@ use split;
 /// count::count("błąd");
 /// // => 4
 pub fn count(subject: &str) -> usize {
-    if subject.len() == 0 {
-        return 0;
+    match subject.len() {
+        0 => 0,
+        _ => split::chars(subject).len(),
     }
-    split::chars(subject).len()
 }
 
 /// Counts the graphemes in `subject` taking care of surrogate pairs and combining marks.
@@ -41,10 +41,10 @@ pub fn count(subject: &str) -> usize {
 /// count::count_graphemes("rain");
 /// // => 4
 pub fn count_graphemes(subject: &str) -> usize {
-    if subject.len() == 0 {
-        return 0;
+    match subject.len() {
+        0 => 0,
+        _ => split::graphemes(subject).len(),
     }
-    split::graphemes(subject).len()
 }
 
 /// Counts the number of `substring` appearances in `subject`.
