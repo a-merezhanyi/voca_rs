@@ -13,6 +13,7 @@ let input_string = "LazyLoad with XMLHttpRequest and snake_case";
 let string_in_words = split::words(&input_string);
 // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 let words_in_string = &string_in_words.join(" ");
+// => "Lazy Load with XML Http Request and snake case"
 let snake_string = case::snake_case(chop::slice(&words_in_string, 13, 28));
 // => "xml_http_request"
 let trancated_string = chop::prune(&words_in_string, 15, "");
