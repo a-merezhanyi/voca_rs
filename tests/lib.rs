@@ -423,6 +423,42 @@ mod tests {
         assert_eq!(manipulate::reverse_grapheme("a̐éö̲"), "ö̲éa̐");
     }
     #[test]
+    fn manipulate_splice() {
+        assert_eq!(manipulate::splice("", 0, 0, ""), "");
+        assert_eq!(manipulate::splice("test", 0, 0, ""), "test");
+        assert_eq!(manipulate::splice("test", 0, 0, "-"), "-test");
+        assert_eq!(manipulate::splice("test", 1, 0, "-"), "t-est");
+        assert_eq!(manipulate::splice("test", 1, 1, "-"), "t-st");
+        assert_eq!(manipulate::splice("test", 3, 0, "-"), "tes-t");
+        assert_eq!(manipulate::splice("test", 4, 0, "-"), "test-");
+        assert_eq!(manipulate::splice("test", 4, 1, "-"), "test-");
+        assert_eq!(manipulate::splice("test", 4, 10, "-"), "test-");
+        assert_eq!(manipulate::splice("test", -1, 0, "="), "tes=t");
+        assert_eq!(manipulate::splice("test", -2, 1, "="), "te=t");
+        assert_eq!(manipulate::splice("test", -10, 0, "."), ".test");
+        assert_eq!(manipulate::splice("test", 100, 0, "."), "test.");
+        assert_eq!(
+            manipulate::splice("Zażółć", 6, 0, " gęślą jaźń"),
+            "Zażółć gęślą jaźń"
+        );
+        assert_eq!(
+            manipulate::splice("Zażółć gęślą", 6, 6, " jaźń"),
+            "Zażółć jaźń"
+        );
+        assert_eq!(
+            manipulate::splice("to jest błąd", 0, 7, "mój"),
+            "mój błąd"
+        );
+        assert_eq!(
+            manipulate::splice("Die Schildkröte fliegt.", -7, 0, "und Kröte "),
+            "Die Schildkröte und Kröte fliegt."
+        );
+        assert_eq!(
+            manipulate::splice("Привет", 6, 0, ", Ёлка!"),
+            "Привет, Ёлка!"
+        );
+    }
+    #[test]
     fn manipulate_trim() {
         assert_eq!(
             manipulate::trim("   The world - is yours\t   ", ""),

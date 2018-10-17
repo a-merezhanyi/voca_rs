@@ -106,7 +106,7 @@ Build project: `cargo build` -> `./target/debug`
 - [x] [reverse](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse.html)
 - [x] [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse_grapheme.html)
 - [ ] slugify - [link](https://vocajs.com/#slugify)
-- [ ] splice - [link](https://vocajs.com/#splice)
+- [x] [splice](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.splice.html)
 - [ ] tr - [link](https://vocajs.com/#tr)
 - [x] [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
 - [x] [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)

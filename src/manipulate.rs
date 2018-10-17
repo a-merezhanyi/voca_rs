@@ -1,5 +1,7 @@
 //! Manipulate with the `subject`.
 
+use chop;
+use count;
 use split;
 /// Inserts into `subject` a string `to_insert` at specified `position`.
 ///
@@ -105,6 +107,75 @@ pub fn reverse_grapheme(subject: &str) -> String {
         .rev()
         .collect::<Vec<&str>>()
         .join("")
+}
+
+/// Changes `subject` by deleting `delete_count` of characters starting at position `start`. Places a new string `to_add` instead of deleted characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string where to insert.
+/// * `start` - The position to start changing the string. For a negative position will start from the end of the string.
+/// * `delete_count` - The number of characters to delete from string.
+/// * `to_add` - The string to be added instead of deleted characters.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// manipulate::splice("new year", 0, 4, "");
+/// // => "year"
+/// manipulate::splice("to jest błąd", 0, 7, "mój");
+/// // => "mój błąd"
+/// manipulate::splice("Die Schildkröte fliegt.", -7, 0, "und Kröte ");
+/// // => "Die Schildkröte und Kröte fliegt."
+/// manipulate::splice("Привет", 6, 0, ", Ёлка!");
+/// // => "Привет, Ёлка!"
+/// ```
+pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) -> String {
+    let subject_len = count::count(&subject);
+    fn calculate_start_position(start: isize, subject_len: usize) -> usize {
+        if start < 0 {
+            if start.abs() as usize > subject_len {
+                0
+            } else {
+                subject_len - start.abs() as usize
+            }
+        } else {
+            if (start as usize) >= subject_len {
+                subject_len
+            } else {
+                start as usize
+            }
+        }
+    }
+
+    match delete_count {
+        0 => match to_add.len() {
+            0 => subject.to_string(),
+            _ => {
+                let insert_position = calculate_start_position(start, subject_len);
+                if insert_position >= subject_len {
+                    format!("{}{}", &subject, &to_add)
+                } else {
+                    insert(&subject, &to_add, insert_position)
+                }
+            }
+        },
+        _ => {
+            let start_position = calculate_start_position(start, subject_len);
+            let end_position = if delete_count > subject_len - start_position {
+                subject_len
+            } else {
+                start_position + delete_count
+            };
+
+            format!(
+                "{}{}{}",
+                chop::first(&subject, start_position),
+                &to_add,
+                chop::slice(&subject, end_position as isize, 0)
+            )
+        }
+    }
 }
 
 /// Removes whitespaces from left and right sides of the `subject`.
