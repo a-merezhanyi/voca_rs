@@ -68,7 +68,7 @@ Build project: `cargo build` -> `./target/debug`
 
 #### Escape
 
-- [ ] escapeHtml - [link](https://vocajs.com/#escapeHtml)
+- [x] [escape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_html.html)
 - [ ] escapeRegExp - [link](https://vocajs.com/#escapeRegExp)
 - [ ] unescapeHtml - [link](https://vocajs.com/#unescapeHtml)
 

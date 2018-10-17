@@ -736,4 +736,23 @@ mod tests {
             4
         );
     }
+
+    /// voca_rs::escape testing
+    #[test]
+    fn escape_escape_html() {
+        assert_eq!(escape::escape_html(""), "");
+        assert_eq!(
+            escape::escape_html("<>&\"'`"),
+            "&lt;&gt;&amp;&quot;&#x27;&#x60;"
+        );
+        assert_eq!(
+            escape::escape_html(utils::PUNCTUATION),
+            "!&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\\]^_&#x60;{|}~"
+        );
+        assert_eq!(
+            escape::escape_html("<p>wonderful world</p>"),
+            "&lt;p&gt;wonderful world&lt;/p&gt;"
+        );
+        assert_eq!(escape::escape_html("<span>"), "&lt;span&gt;");
+    }
 }

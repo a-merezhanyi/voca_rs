@@ -3,6 +3,7 @@
 pub mod case;
 pub mod chop;
 pub mod count;
+pub mod escape;
 pub mod index;
 pub mod manipulate;
 pub mod query;
