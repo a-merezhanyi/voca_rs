@@ -186,8 +186,8 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
 /// # Arguments
 ///
 /// * `subject` - The string to extract from.
-/// * `start` - The position to start extraction. 0 means extract from the beginning of the `subject`. If negative use `subject.len() + start`.
-/// * `end` - The position to end extraction. 0 means extract to the end of the `subject`. If negative use `subject.len() + end`.
+/// * `start` - The position to start extraction. 0 means extract from the beginning of the `subject`. If negative use `subject.len() - start`.
+/// * `end` - The position to end extraction. 0 means extract to the end of the `subject`. If negative use `subject.len() - end`.
 ///
 /// # Example
 /// ```
@@ -210,6 +210,9 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
 
     fn calulate_position(length: usize, x: isize, start: bool) -> usize {
         if x < 0 {
+            // TODO: check if < 0 then return 0
+            // TODO: add such unit tests
+            // TODO: check other methods
             length - x.abs() as usize
         } else if x == 0 {
             match start {
