@@ -70,7 +70,7 @@ Build project: `cargo build` -> `./target/debug`
 
 - [x] [escape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_html.html)
 - [x] [escape_regexp](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_regexp.html)
-- [ ] [unescape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.unescape_html.html)
+- [x] [unescape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.unescape_html.html)
 
 #### Format
 

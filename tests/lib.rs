@@ -767,4 +767,25 @@ mod tests {
             "\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|"
         );
     }
+    #[test]
+    fn escape_unescape_html() {
+        assert_eq!(escape::escape_html(""), "");
+        assert_eq!(
+            escape::unescape_html("&lt;&gt;&amp;&quot;&#x27;&#x60;"),
+            "<>&\"'`"
+        );
+        assert_eq!(
+            escape::unescape_html("!&quot;#$%&amp;&#x27;()*+,-./:;&lt;=&gt;?@[\\]^_&#x60;{|}~"),
+            utils::PUNCTUATION
+        );
+        assert_eq!(
+            escape::unescape_html("&lt;p&gt;wonderful world&lt;/p&gt;"),
+            "<p>wonderful world</p>"
+        );
+        assert_eq!(escape::unescape_html("&lt;span&gt;"), "<span>");
+        assert_eq!(
+            escape::unescape_html("&lt;p&gt;wonderful&lt;span&gt;world&lt;span/&gt;&lt;/p&gt;"),
+            "<p>wonderful<span>world<span/></p>"
+        );
+    }
 }
