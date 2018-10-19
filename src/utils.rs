@@ -9,7 +9,7 @@
 /// utils::VERSION;
 /// // => "0.4.0"
 /// ```
-pub const VERSION: &'static str = "0.4.0";
+pub const VERSION: &'static str = "0.5.0";
 
 /// The concatenation of the `ascii_lowercase` and `ascii_uppercase` constants described below. This value is not locale-dependent.
 ///
