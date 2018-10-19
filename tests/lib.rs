@@ -754,6 +754,10 @@ mod tests {
             "&lt;p&gt;wonderful world&lt;/p&gt;"
         );
         assert_eq!(escape::escape_html("<span>"), "&lt;span&gt;");
+        assert_eq!(
+            escape::escape_html("<p>wonderful<span>world<span/></p>"),
+            "&lt;p&gt;wonderful&lt;span&gt;world&lt;span/&gt;&lt;/p&gt;"
+        );
     }
     #[test]
     fn escape_escape_regexp() {
