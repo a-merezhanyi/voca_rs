@@ -54,3 +54,34 @@ fn map_replace(subject: &str, map_type: CovertMode) -> String {
         }
     }
 }
+
+/// Escapes the regular expression special characters - [ ] / { } ( ) * + ? . \ ^ $ | in `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to escape.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// escape::escape_regexp("(hours)[minutes]{seconds}");
+/// // => \(hours\)\[minutes\]\{seconds\}
+pub fn escape_regexp(subject: &str) -> String {
+    let key = "-[]/{}()*+?.\\^$|";
+    match subject.len() {
+        0 => "".to_string(),
+        _ => {
+            let mut res = String::new();
+            for c in split::chars(&subject) {
+                let push_char = if key.contains(&c) {
+                    format!("\\{}", &c)
+                } else {
+                    c.to_string()
+                };
+                res.push_str(&push_char);
+            }
+            res
+        }
+    }
+}

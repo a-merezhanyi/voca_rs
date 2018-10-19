@@ -755,4 +755,16 @@ mod tests {
         );
         assert_eq!(escape::escape_html("<span>"), "&lt;span&gt;");
     }
+    #[test]
+    fn escape_escape_regexp() {
+        assert_eq!(escape::escape_regexp(""), "");
+        assert_eq!(
+            escape::escape_regexp("(hours)[minutes]{seconds}"),
+            "\\(hours\\)\\[minutes\\]\\{seconds\\}"
+        );
+        assert_eq!(
+            escape::escape_regexp("-[]/{}()*+?.\\^$|"),
+            "\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|"
+        );
+    }
 }
