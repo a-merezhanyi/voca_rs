@@ -396,6 +396,10 @@ mod tests {
         assert_eq!(manipulate::pad("abc", 5, ""), " abc ");
         assert_eq!(manipulate::pad("dog", 5, ""), " dog ");
         assert_eq!(manipulate::pad("bird", 6, "-"), "-bird-");
+        assert_eq!(manipulate::pad("bird", 6, "-="), "-bird-");
+        // assert_eq!(manipulate::pad("bird", 6, "-=:"), "-bird-");
+        // assert_eq!(manipulate::pad("bird", 6, "-=:="), "-bird-");
+        // assert_eq!(manipulate::pad("bird", 6, "-=:=-"), "-bird-");
         assert_eq!(
             manipulate::pad("Café del Mar", 15, ""),
             " Café del Mar  "
@@ -415,6 +419,38 @@ mod tests {
         assert_eq!(
             manipulate::pad("Алё! Приём", 11, ""),
             "Алё! Приём "
+        );
+    }
+    #[test]
+    fn manipulate_pad_left() {
+        assert_eq!(manipulate::pad_left("", 0, ""), "");
+        assert_eq!(manipulate::pad_left("abc", 1, ""), "abc");
+        assert_eq!(manipulate::pad_left("abc", 5, ""), "  abc");
+        assert_eq!(manipulate::pad_left("dog", 5, ""), "  dog");
+        assert_eq!(manipulate::pad_left("bird", 6, "-"), "--bird");
+        assert_eq!(manipulate::pad_left("bird", 6, "-="), "-=bird");
+        assert_eq!(manipulate::pad_left("bird", 6, "-=:"), "-=bird");
+        assert_eq!(manipulate::pad_left("bird", 6, "-=:="), "-=bird");
+        assert_eq!(manipulate::pad_left("bird", 6, "-=:=-"), "-=bird");
+        assert_eq!(
+            manipulate::pad_left("Café del Mar", 15, ""),
+            "   Café del Mar"
+        );
+        assert_eq!(
+            manipulate::pad_left("Café del Mar", 15, "-="),
+            "-=-Café del Mar"
+        );
+        assert_eq!(
+            manipulate::pad_left("Zażółć gęślą jaźń", 25, ".:"),
+            ".:.:.:.:Zażółć gęślą jaźń"
+        );
+        assert_eq!(
+            manipulate::pad_left("Die Schildkröte fliegt", 29, "~-"),
+            "~-~-~-~Die Schildkröte fliegt"
+        );
+        assert_eq!(
+            manipulate::pad_left("Алё! Приём", 11, ""),
+            " Алё! Приём"
         );
     }
     #[test]
