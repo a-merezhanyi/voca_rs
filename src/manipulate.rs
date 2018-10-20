@@ -2,6 +2,7 @@
 
 use chop;
 use count;
+use index;
 use split;
 /// Inserts into `subject` a string `to_insert` at specified `position`.
 ///
@@ -57,6 +58,35 @@ pub fn repeat(subject: &str, times: usize) -> String {
     }
 
     subject.repeat(times)
+}
+
+/// Replaces the matches of `pattern` with `replacement`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+/// * `pattern` - The pattern which match is replaced. Only the first occurrence replaced.
+/// * `replacement` - The string which invocation result replaces `pattern` match.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::replace("swan", "wa", "u");
+/// // => "sun"
+/// manipulate::replace("domestic duck", "d", "D");
+/// // => "Domestic duck"
+/// manipulate::replace("Café del Mar cafe\u{0301}", "é", "e");
+/// // => "Cafe del Mar café"
+/// ```
+pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
+    if subject.len() == 0 || pattern.len() == 0 {
+        return subject.to_string();
+    }
+    match index::index_of(&subject, &pattern, 0) {
+        -1 => subject.to_string(),
+        x => splice(&subject, x as isize, count::count(&pattern), &replacement),
+    }
 }
 
 /// Reverses the `subject`.

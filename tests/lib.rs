@@ -397,6 +397,39 @@ mod tests {
         assert_eq!(manipulate::repeat("abc abc", 3), "abc abcabc abcabc abc");
     }
     #[test]
+    fn manipulate_replace() {
+        assert_eq!(manipulate::replace("", "", ""), "");
+        assert_eq!(manipulate::replace("abc", "", ""), "abc");
+        assert_eq!(manipulate::replace("swan", "wa", "u"), "sun");
+        assert_eq!(manipulate::replace("swan", "b", "a"), "swan");
+        assert_eq!(
+            manipulate::replace("domestic duck", "d", "D"),
+            "Domestic duck"
+        );
+        assert_eq!(manipulate::replace("Zażółć", "ó", "o"), "Zażołć");
+        assert_eq!(manipulate::replace("café", "é", "e"), "cafe");
+        assert_eq!(
+            manipulate::replace("Café del Mar cafe\u{0301}", "é", "e"),
+            "Cafe del Mar café"
+        );
+        assert_eq!(
+            manipulate::replace(
+                "Cafe\u{0301} del Mar Café del Mar cafe\u{0301}",
+                "é",
+                "e"
+            ),
+            "Cafe del Mar Café del Mar cafe\u{0301}"
+        );
+        assert_eq!(
+            manipulate::replace(
+                "Zażółć gęślą jaźń w gęślą oraz jaźń",
+                "jaźń",
+                "***"
+            ),
+            "Zażółć gęślą *** w gęślą oraz jaźń"
+        );
+    }
+    #[test]
     fn manipulate_reverse() {
         assert_eq!(manipulate::reverse(""), "");
         assert_eq!(manipulate::reverse("abc"), "cba");
@@ -448,6 +481,10 @@ mod tests {
         assert_eq!(
             manipulate::splice("to jest błąd", 0, 7, "mój"),
             "mój błąd"
+        );
+        assert_eq!(
+            manipulate::splice("это моя ошибка", 4, 3, "не"),
+            "это не ошибка"
         );
         assert_eq!(
             manipulate::splice("Die Schildkröte fliegt.", -7, 0, "und Kröte "),
