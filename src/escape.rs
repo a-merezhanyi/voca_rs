@@ -13,6 +13,7 @@ use split;
 /// use voca_rs::*;
 /// escape::escape_html("<p>wonderful world</p>");
 /// // => &lt;p&gt;wonderful world&lt;/p&gt;
+// TODO: check for optimizations https://lise-henry.github.io/articles/optimising_strings.html
 pub fn escape_html(subject: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
