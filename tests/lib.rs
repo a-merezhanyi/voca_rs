@@ -651,6 +651,8 @@ mod tests {
             "Schildkröte"
         );
         assert_eq!(chop::slice("e\u{0301}", -1, 0), "\u{0301}");
+        assert_eq!(chop::slice("b\u{0142}\u{0105}d", -20, 10), "błąd");
+        assert_eq!(chop::slice("b\u{0142}\u{0105}d", -2, 100), "ąd");
     }
     #[test]
     fn chop_substr() {

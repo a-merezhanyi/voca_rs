@@ -17,6 +17,7 @@ use utils;
 /// chop::char_at("błąd", 1);
 /// // => "ł"
 /// ```
+// TODO: check boundaries - position < length
 pub fn char_at(subject: &str, position: usize) -> String {
     get_chars(&subject, position, position + 1)
 }
@@ -45,6 +46,7 @@ fn get_chars(subject: &str, start: usize, end: usize) -> String {
 /// chop::first("e\u{0301}", 1); // or 'é'
 /// // => "e"
 /// ```
+// TODO: check boundaries - length < subj length
 pub fn first(subject: &str, length: usize) -> String {
     match length {
         0 => "".to_string(),
@@ -67,6 +69,7 @@ pub fn first(subject: &str, length: usize) -> String {
 /// chop::grapheme_at("a̐éö̲", 0);
 /// // => "a̐"
 /// ```
+// TODO: check boundaries - position < length
 pub fn grapheme_at(subject: &str, position: usize) -> String {
     match subject.len() {
         0 => subject.to_string(),
@@ -91,6 +94,7 @@ pub fn grapheme_at(subject: &str, position: usize) -> String {
 /// chop::last("e\u{0301}", 1); // or 'é'
 /// // => "\u{0301}"
 /// ```
+// TODO: check boundaries - length < subj length
 pub fn last(subject: &str, length: usize) -> String {
     match length {
         0 => "".to_string(),
@@ -210,17 +214,23 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
 
     fn calulate_position(length: usize, x: isize, start: bool) -> usize {
         if x < 0 {
-            // TODO: check if < 0 then return 0
-            // TODO: add such unit tests
-            // TODO: check other methods
-            length - x.abs() as usize
+            let pos = length as isize - x.abs();
+            if pos < 0 {
+                0
+            } else {
+                pos as usize
+            }
         } else if x == 0 {
             match start {
                 true => 0,
                 false => length,
             }
         } else {
-            x as usize
+            if x > length as isize {
+                length as usize
+            } else {
+                x as usize
+            }
         }
     }
 
@@ -243,6 +253,7 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
 /// chop::substr("błąd", 1, 2);
 /// // => "łą"
 /// ```
+// TODO: check boundaries
 pub fn substr(subject: &str, start: usize, length: usize) -> String {
     let subject_length = split::chars(&subject).len();
     let position_end = match length {
@@ -271,6 +282,7 @@ pub fn substr(subject: &str, start: usize, length: usize) -> String {
 /// chop::substring("e\u{0301}", 1, 0); // or 'é'
 /// // => "\u{0301}"
 /// ```
+// TODO: check boundaries
 pub fn substring(subject: &str, start: usize, end: usize) -> String {
     let subject_length = split::chars(&subject).len();
     let position_end = match end {
