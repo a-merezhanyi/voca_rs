@@ -397,9 +397,11 @@ mod tests {
         assert_eq!(manipulate::pad("dog", 5, ""), " dog ");
         assert_eq!(manipulate::pad("bird", 6, "-"), "-bird-");
         assert_eq!(manipulate::pad("bird", 6, "-="), "-bird-");
-        // assert_eq!(manipulate::pad("bird", 6, "-=:"), "-bird-");
-        // assert_eq!(manipulate::pad("bird", 6, "-=:="), "-bird-");
-        // assert_eq!(manipulate::pad("bird", 6, "-=:=-"), "-bird-");
+        assert_eq!(manipulate::pad("bird", 6, "-=:"), "-bird-");
+        assert_eq!(manipulate::pad("bird", 6, "-=:="), "-bird-");
+        assert_eq!(manipulate::pad("bird", 7, "-=:=-"), "-bird-=");
+        assert_eq!(manipulate::pad("bird", 8, "-=:=-"), "-=bird-=");
+        assert_eq!(manipulate::pad("bird", 9, "-=:=-"), "-=bird-=:");
         assert_eq!(
             manipulate::pad("Café del Mar", 15, ""),
             " Café del Mar  "

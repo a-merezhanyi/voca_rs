@@ -80,26 +80,29 @@ fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) ->
     let width = length - count::count_graphemes(&subject);
     let to_add = if pad.len() == 0 { " " } else { pad };
     let times = width / to_add.len();
+    let str_to_add = to_add.repeat(times + 1);
+    let string_to_add = split::chars(&str_to_add);
+    let padding = if pad_mode == PadMode::Left || pad_mode == PadMode::Right {
+        string_to_add[..width].join("")
+    } else {
+        "".to_string()
+    };
 
     match pad_mode {
         PadMode::Both => {
-            let string_to_add = to_add.repeat(times);
-            let middle = string_to_add.len() / 2;
+            let string_to_add_len = string_to_add.len();
+            let middle = if string_to_add_len < width {
+                string_to_add_len / 2
+            } else {
+                width / 2
+            };
             let add = if width % 2 != 0 { 1 } else { 0 };
-            let prefix = split::chars(&string_to_add)[..middle].join("");
-            let sufix = split::chars(&string_to_add)[..middle + add].join("");
+            let prefix = string_to_add[..middle].join("");
+            let sufix = string_to_add[..middle + add].join("");
             format!("{}{}{}", prefix, subject, sufix)
         }
-        PadMode::Left => {
-            let string_to_add = to_add.repeat(times + 1);
-            let prefix = split::chars(&string_to_add)[..width].join("");
-            format!("{}{}", prefix, subject)
-        }
-        PadMode::Right => {
-            let string_to_add = to_add.repeat(times + 1);
-            let sufix = split::chars(&string_to_add)[..width].join("");
-            format!("{}{}", subject, sufix)
-        }
+        PadMode::Left => format!("{}{}", padding, subject),
+        PadMode::Right => format!("{}{}", subject, padding),
     }
 }
 
