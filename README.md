@@ -99,7 +99,7 @@ Build project: `cargo build` -> `./target/debug`
 - [ ] latinise - [link](https://vocajs.com/#latinise)
 - [x] [pad](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad.html)
 - [x] [pad_left](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad_left.html)
-- [ ] padRight - [link](https://vocajs.com/#padRight)
+- [x] [pad_right](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad_right.html)
 - [x] [repeat](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
 - [x] [replace](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
 - [x] [replace_all](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat_all.html)

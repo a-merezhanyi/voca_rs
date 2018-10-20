@@ -454,6 +454,38 @@ mod tests {
         );
     }
     #[test]
+    fn manipulate_pad_right() {
+        assert_eq!(manipulate::pad_right("", 0, ""), "");
+        assert_eq!(manipulate::pad_right("abc", 1, ""), "abc");
+        assert_eq!(manipulate::pad_right("abc", 5, ""), "abc  ");
+        assert_eq!(manipulate::pad_right("dog", 5, ""), "dog  ");
+        assert_eq!(manipulate::pad_right("bird", 6, "-"), "bird--");
+        assert_eq!(manipulate::pad_right("bird", 6, "-="), "bird-=");
+        assert_eq!(manipulate::pad_right("bird", 6, "-=:"), "bird-=");
+        assert_eq!(manipulate::pad_right("bird", 6, "-=:="), "bird-=");
+        assert_eq!(manipulate::pad_right("bird", 6, "-=:=-"), "bird-=");
+        assert_eq!(
+            manipulate::pad_right("Café del Mar", 15, ""),
+            "Café del Mar   "
+        );
+        assert_eq!(
+            manipulate::pad_right("Café del Mar", 15, "-="),
+            "Café del Mar-=-"
+        );
+        assert_eq!(
+            manipulate::pad_right("Zażółć gęślą jaźń", 25, ".:"),
+            "Zażółć gęślą jaźń.:.:.:.:"
+        );
+        assert_eq!(
+            manipulate::pad_right("Die Schildkröte fliegt", 29, "~-"),
+            "Die Schildkröte fliegt~-~-~-~"
+        );
+        assert_eq!(
+            manipulate::pad_right("Алё! Приём", 11, ""),
+            "Алё! Приём "
+        );
+    }
+    #[test]
     fn manipulate_repeat() {
         assert_eq!(manipulate::repeat("", 1), "");
         assert_eq!(manipulate::repeat("www", 0), "");

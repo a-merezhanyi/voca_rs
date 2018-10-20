@@ -136,6 +136,39 @@ pub fn pad_left(subject: &str, length: usize, pad: &str) -> String {
     }
 }
 
+/// Pads `subject` from right to a new `length`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to pad.
+/// * `length` - The length to pad the string. No changes are made if `length` is less than `subject.len()`.
+/// * `pad` - The string to be used for padding.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::pad_right("dog", 5, "");
+/// // => "dog  "
+/// manipulate::pad_right("bird", 6, "-");
+/// // => "bird--"
+/// manipulate::pad_right("Café del Mar", 15, "-=");
+/// // => "Café del Mar-=-"
+/// ```
+pub fn pad_right(subject: &str, length: usize, pad: &str) -> String {
+    let subject_len = count::count_graphemes(&subject);
+    match subject_len {
+        0 => "".to_string(),
+        _ => {
+            if subject_len >= length {
+                subject.to_string()
+            } else {
+                pad_left_right(&subject, length, &pad, PadMode::Right)
+            }
+        }
+    }
+}
+
 /// Repeats the `subject` number of `times`.
 ///
 /// # Arguments
