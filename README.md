@@ -138,7 +138,7 @@ Build project: `cargo build` -> `./target/debug`
 
 #### Strip
 
-- [ ] stripBom - [link](https://vocajs.com/#stripBom)
+- [x] [strip_bom](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.strip_bom.html)
 - [ ] stripTags - [link](https://vocajs.com/#stripTags)
 
 #### Utils

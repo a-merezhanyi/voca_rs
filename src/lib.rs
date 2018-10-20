@@ -8,6 +8,7 @@ pub mod index;
 pub mod manipulate;
 pub mod query;
 pub mod split;
+pub mod strip;
 pub mod utils;
 
 extern crate unicode_segmentation;

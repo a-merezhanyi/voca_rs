@@ -792,4 +792,22 @@ mod tests {
             "<p>wonderful<span>world<span/></p>"
         );
     }
+
+    /// voca_rs::strip testing
+    #[test]
+    fn strip_strip_bom() {
+        assert_eq!(strip::strip_bom(""), "");
+        assert_eq!(strip::strip_bom("\u{FEFF}"), "");
+        assert_eq!(strip::strip_bom(utils::PRINTABLE), utils::PRINTABLE);
+        assert_eq!(
+            strip::strip_bom("\u{FEFF}summertime sadness"),
+            "summertime sadness"
+        );
+        assert_eq!(
+            strip::strip_bom("\\u{FEFF}summertime sadness"),
+            "\\u{FEFF}summertime sadness"
+        );
+        assert_eq!(strip::strip_bom("summertime sadness"), "summertime sadness");
+    }
+
 }
