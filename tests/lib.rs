@@ -430,6 +430,46 @@ mod tests {
         );
     }
     #[test]
+    fn manipulate_replace_all() {
+        assert_eq!(manipulate::replace_all("", "", ""), "");
+        assert_eq!(manipulate::replace_all("abc", "", ""), "abc");
+        assert_eq!(manipulate::replace_all("swan", "wa", "u"), "sun");
+        assert_eq!(manipulate::replace_all("swan", "b", "a"), "swan");
+        assert_eq!(
+            manipulate::replace_all("Café del Mar café", "é", "e"),
+            "Cafe del Mar cafe"
+        );
+        assert_eq!(
+            manipulate::replace_all("domestic duck", "d", "D"),
+            "Domestic Duck"
+        );
+        assert_eq!(
+            manipulate::replace_all("Zażółć", "ó", "o"),
+            "Zażołć"
+        );
+        assert_eq!(manipulate::replace_all("café", "é", "e"), "cafe");
+        assert_eq!(
+            manipulate::replace_all("Café del Mar cafe\u{0301}", "é", "e"),
+            "Cafe del Mar cafe"
+        );
+        assert_eq!(
+            manipulate::replace_all(
+                "Cafe\u{0301} del Mar Café del Mar cafe\u{0301}",
+                "é",
+                "e"
+            ),
+            "Cafe del Mar Cafe del Mar cafe"
+        );
+        assert_eq!(
+            manipulate::replace_all(
+                "Zażółć gęślą jaźń w gęślą oraz jaźń",
+                "jaźń",
+                "***"
+            ),
+            "Zażółć gęślą *** w gęślą oraz ***"
+        );
+    }
+    #[test]
     fn manipulate_reverse() {
         assert_eq!(manipulate::reverse(""), "");
         assert_eq!(manipulate::reverse("abc"), "cba");

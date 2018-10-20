@@ -66,7 +66,7 @@ pub fn repeat(subject: &str, times: usize) -> String {
 ///
 /// * `subject` - The string to verify.
 /// * `pattern` - The pattern which match is replaced. Only the first occurrence replaced.
-/// * `replacement` - The string which invocation result replaces `pattern` match.
+/// * `replacement` - The string which replaces `pattern` match.
 ///
 /// # Example
 ///
@@ -87,6 +87,32 @@ pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
         -1 => subject.to_string(),
         x => splice(&subject, x as isize, count::count(&pattern), &replacement),
     }
+}
+
+/// Replaces all matches of `pattern` with `replacement`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+/// * `pattern` - The pattern which match is replaced. All matches are replaced.
+/// * `replacement` - The string which replaces `pattern` match.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::replace_all("swan", "wa", "u");
+/// // => "sun"
+/// manipulate::replace_all("domestic duck", "d", "D");
+/// // => "Domestic Duck"
+/// manipulate::replace_all("Café del Mar café", "é", "e");
+/// // => "Cafe del Mar cafe"
+/// ```
+pub fn replace_all(subject: &str, pattern: &str, replacement: &str) -> String {
+    if subject.len() == 0 || pattern.len() == 0 {
+        return subject.to_string();
+    }
+    subject.replace(pattern, replacement)
 }
 
 /// Reverses the `subject`.

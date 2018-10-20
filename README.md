@@ -102,7 +102,7 @@ Build project: `cargo build` -> `./target/debug`
 - [ ] padRight - [link](https://vocajs.com/#padRight)
 - [x] [repeat](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
 - [x] [replace](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
-- [ ] replaceAll - [link](https://vocajs.com/#replaceAll)
+- [x] [replace_all](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat_all.html)
 - [x] [reverse](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse.html)
 - [x] [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse_grapheme.html)
 - [ ] slugify - [link](https://vocajs.com/#slugify)
