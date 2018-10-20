@@ -97,7 +97,7 @@ Build project: `cargo build` -> `./target/debug`
 
 - [x] [insert](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.insert.html)
 - [ ] latinise - [link](https://vocajs.com/#latinise)
-- [ ] pad - [link](https://vocajs.com/#pad)
+- [x] [pad](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad.html)
 - [ ] padLeft - [link](https://vocajs.com/#padLeft)
 - [ ] padRight - [link](https://vocajs.com/#padRight)
 - [x] [repeat](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)

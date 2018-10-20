@@ -36,6 +36,62 @@ pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
     format!("{}{}{}", prefix, to_insert, sufix)
 }
 
+/// Pads `subject` to a new `length`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to pad.
+/// * `length` - The length to pad the string. No changes are made if `length` is less than `subject.len()`.
+/// * `pad` - The string to be used for padding.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::pad("dog", 5, "");
+/// // => " dog "
+/// manipulate::pad("bird", 6, "-");
+/// // => "-bird-"
+/// manipulate::pad("Café del Mar", 15, "-=");
+/// // => "-Café del Mar-="
+/// ```
+pub fn pad(subject: &str, length: usize, pad: &str) -> String {
+    let subject_len = count::count_graphemes(&subject);
+    match subject_len {
+        0 => "".to_string(),
+        _ => {
+            if subject_len >= length {
+                subject.to_string()
+            } else {
+                pad_left_right(&subject, length, &pad, PadMode::Both)
+            }
+        }
+    }
+}
+
+#[derive(Clone, Copy, PartialEq)]
+enum PadMode {
+    Both,
+    Left,
+    Right,
+}
+
+fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) -> String {
+    let width = length - count::count_graphemes(&subject);
+    let to_add = if pad.len() == 0 { " " } else { pad };
+    let times = width / to_add.len();
+    let string_to_add = to_add.repeat(times);
+    let middle = string_to_add.len() / 2;
+    let add = if width % 2 != 0 { 1 } else { 0 };
+    let prefix = split::chars(&string_to_add)[..middle].join("");
+    let sufix = split::chars(&string_to_add)[..middle + add].join("");
+    match pad_mode {
+        PadMode::Both => format!("{}{}{}", prefix, subject, sufix),
+        PadMode::Left => format!("{}{}{}", prefix, sufix, subject),
+        PadMode::Right => format!("{}{}{}", subject, prefix, sufix),
+    }
+}
+
 /// Repeats the `subject` number of `times`.
 ///
 /// # Arguments

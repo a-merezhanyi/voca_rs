@@ -390,6 +390,34 @@ mod tests {
         assert_eq!(manipulate::insert("приём", "!", 5), "приём!");
     }
     #[test]
+    fn manipulate_pad() {
+        assert_eq!(manipulate::pad("", 0, ""), "");
+        assert_eq!(manipulate::pad("abc", 1, ""), "abc");
+        assert_eq!(manipulate::pad("abc", 5, ""), " abc ");
+        assert_eq!(manipulate::pad("dog", 5, ""), " dog ");
+        assert_eq!(manipulate::pad("bird", 6, "-"), "-bird-");
+        assert_eq!(
+            manipulate::pad("Café del Mar", 15, ""),
+            " Café del Mar  "
+        );
+        assert_eq!(
+            manipulate::pad("Café del Mar", 15, "-="),
+            "-Café del Mar-="
+        );
+        assert_eq!(
+            manipulate::pad("Zażółć gęślą jaźń", 25, ".:"),
+            ".:.:Zażółć gęślą jaźń.:.:"
+        );
+        assert_eq!(
+            manipulate::pad("Die Schildkröte fliegt", 29, "~-"),
+            "~-~Die Schildkröte fliegt~-~-"
+        );
+        assert_eq!(
+            manipulate::pad("Алё! Приём", 11, ""),
+            "Алё! Приём "
+        );
+    }
+    #[test]
     fn manipulate_repeat() {
         assert_eq!(manipulate::repeat("", 1), "");
         assert_eq!(manipulate::repeat("www", 0), "");
