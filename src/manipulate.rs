@@ -59,12 +59,11 @@ pub fn repeat(subject: &str, times: usize) -> String {
     subject.repeat(times)
 }
 
-/// Repeats the `subject` number of `times`.
+/// Reverses the `subject`.
 ///
 /// # Arguments
 ///
-/// * `subject` - The string to repeat.
-/// * `times` - The number of times to repeat.
+/// * `subject` - The string to reverse.
 ///
 /// # Example
 ///
@@ -82,12 +81,11 @@ pub fn reverse(subject: &str) -> String {
 }
 
 use unicode_segmentation::UnicodeSegmentation;
-/// Repeats the `subject` number of `times`.
+/// Reverses the `subject` taking care of surrogate pairs and combining marks.
 ///
 /// # Arguments
 ///
-/// * `subject` - The string to repeat.
-/// * `times` - The number of times to repeat.
+/// * `subject` - The string to reverse.
 ///
 /// # Example
 ///
@@ -130,6 +128,7 @@ pub fn reverse_grapheme(subject: &str) -> String {
 /// manipulate::splice("Привет", 6, 0, ", Ёлка!");
 /// // => "Привет, Ёлка!"
 /// ```
+// TODO: check boundaries
 pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) -> String {
     let subject_len = count::count(&subject);
     fn calculate_start_position(start: isize, subject_len: usize) -> usize {

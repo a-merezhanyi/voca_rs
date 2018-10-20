@@ -18,6 +18,7 @@ use split;
 /// // => 7
 /// index::index_of("evening", "o", 0);
 /// // => -1
+// TODO: check boundaries
 pub fn index_of(subject: &str, search: &str, from_index: usize) -> i8 {
     match search.len() {
         0 => 0,
@@ -56,6 +57,7 @@ pub fn index_of(subject: &str, search: &str, from_index: usize) -> i8 {
 /// // => 5
 /// index::last_index_of("evening", "o", 0);
 /// // => -1
+// TODO: check boundaries
 pub fn last_index_of(subject: &str, search: &str, from_index: usize) -> i8 {
     match search.len() {
         0 => 0,

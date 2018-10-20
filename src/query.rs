@@ -46,6 +46,7 @@ pub fn ends_with(subject: &str, end: &str) -> bool {
 /// query::includes("galaxy", "g", 1);
 /// // => false
 /// ```
+// TODO: check boundaries
 pub fn includes(subject: &str, search: &str, position: usize) -> bool {
     if subject.len() == 0 || search.len() == 0 {
         return true;
@@ -328,7 +329,7 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
 /// query::starts_with("say hello to my little friend", "say hello");
 /// // => true
 /// query::starts_with("say hello to my little friend", "hello");
-/// // => flase
+/// // => false
 /// ```
 pub fn starts_with(subject: &str, start: &str) -> bool {
     if subject.len() == 0 || start.len() == 0 {
