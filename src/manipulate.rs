@@ -21,14 +21,13 @@ use split;
 /// manipulate::insert("sunny", " day", 5);
 /// // => "sunny day"
 /// ```
-// TODO: check boundaries
 pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
     let subject_len = subject.len();
     if subject_len == 0 || to_insert.len() == 0 {
         return subject.to_string();
     }
-    let insert_position = if position >= subject_len {
-        subject_len - 1
+    let insert_position = if position > subject_len {
+        subject_len
     } else {
         position
     };
@@ -321,7 +320,6 @@ pub fn reverse_grapheme(subject: &str) -> String {
 /// manipulate::splice("Привет", 6, 0, ", Ёлка!");
 /// // => "Привет, Ёлка!"
 /// ```
-// TODO: check boundaries
 pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) -> String {
     let subject_len = count::count(&subject);
     fn calculate_start_position(start: isize, subject_len: usize) -> usize {

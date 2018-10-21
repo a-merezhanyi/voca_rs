@@ -46,9 +46,12 @@ pub fn ends_with(subject: &str, end: &str) -> bool {
 /// query::includes("galaxy", "g", 1);
 /// // => false
 /// ```
-// TODO: check boundaries
 pub fn includes(subject: &str, search: &str, position: usize) -> bool {
-    if subject.len() == 0 || search.len() == 0 {
+    let subject_len = count::count(&subject);
+    if subject_len < position {
+        return false;
+    }
+    if subject_len == 0 || search.len() == 0 {
         return true;
     }
     subject.to_owned()[subject.char_indices().nth(position).unwrap().0..]

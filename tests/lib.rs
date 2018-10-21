@@ -113,10 +113,14 @@ mod tests {
     }
     #[test]
     fn query_includes() {
+        assert!(query::includes("", "", 0), true);
+        assert!(query::includes("a", "a", 0), true);
+        assert!(query::includes("abc", "c", 2), true);
         assert!(query::includes("the world is yours", "the world", 0));
         assert!(query::includes("Zażółć gęślą jaźń", "gęślą", 7));
         assert!(query::includes("the world is yours", "", 0));
-        assert!(query::includes("", "", 0), true);
+        assert_eq!(query::includes("abc", "c", 20), false);
+        assert_eq!(query::includes("abc", "z", 0), false);
     }
     #[test]
     fn query_is_alpha() {
@@ -380,7 +384,13 @@ mod tests {
     #[test]
     fn manipulate_insert() {
         assert_eq!(manipulate::insert("", "", 0), "");
-        assert_eq!(manipulate::insert("abc", "1", 1), "a1bc");
+        assert_eq!(manipulate::insert("abc", "", 0), "abc");
+        assert_eq!(manipulate::insert("abc", "-", 0), "-abc");
+        assert_eq!(manipulate::insert("abc", "-", 1), "a-bc");
+        assert_eq!(manipulate::insert("abc", "-", 2), "ab-c");
+        assert_eq!(manipulate::insert("abc", "-", 3), "abc-");
+        assert_eq!(manipulate::insert("abc", "-", 4), "abc-");
+        assert_eq!(manipulate::insert("abc", "-", 10), "abc-");
         assert_eq!(manipulate::insert("abc abc", ",", 3), "abc, abc");
         assert_eq!(manipulate::insert("Zażółć", "-!-", 3), "Zaż-!-ółć");
         assert_eq!(
@@ -909,13 +919,13 @@ mod tests {
     }
     #[test]
     fn chop_truncate() {
-        // assert_eq!(chop::truncate("", 0, ""), "");
-        // assert_eq!(chop::truncate("a", 1, ""), "a");
-        // assert_eq!(chop::truncate("a", 2, ""), "a");
-        // assert_eq!(chop::truncate("a", 3, ""), "a");
-        // assert_eq!(chop::truncate("a", 4, ""), "a...");
-        // assert_eq!(chop::truncate("a", 5, ""), "a...");
-        // assert_eq!(chop::truncate("a", 10, ""), "a...");
+        assert_eq!(chop::truncate("", 0, ""), "");
+        assert_eq!(chop::truncate("a", 1, ""), "a");
+        assert_eq!(chop::truncate("a", 2, ""), "a");
+        assert_eq!(chop::truncate("a", 3, ""), "a");
+        assert_eq!(chop::truncate("a", 4, ""), "a");
+        assert_eq!(chop::truncate("a", 5, ""), "a");
+        assert_eq!(chop::truncate("a", 10, ""), "a");
         assert_eq!(chop::truncate("Once upon a time", 7, ""), "Once...");
         assert_eq!(
             chop::truncate("Die Schildkröte fliegt über das Floß.", 28, "(...)"),
@@ -934,6 +944,8 @@ mod tests {
         assert_eq!(index::index_of("", "", 0), 0);
         assert_eq!(index::index_of("rain", "r", 0), 0);
         assert_eq!(index::index_of("rain", "a", 0), 1);
+        assert_eq!(index::index_of("rain", "n", 3), 0);
+        assert_eq!(index::index_of("rain", "a", 10), -1);
         assert_eq!(index::index_of("Rain, dear rain", "ear", 0), 7);
         assert_eq!(index::index_of("Rain, dear rain", "ain", 0), 1);
         assert_eq!(index::index_of("rain", "z", 0), -1);
@@ -960,6 +972,8 @@ mod tests {
         assert_eq!(index::last_index_of("", "", 0), 0);
         assert_eq!(index::last_index_of("rain", "r", 0), 0);
         assert_eq!(index::last_index_of("rain", "a", 0), 1);
+        assert_eq!(index::last_index_of("rain", "n", 3), 0);
+        assert_eq!(index::last_index_of("rain", "a", 10), -1);
         assert_eq!(index::last_index_of("Rain, dear rain", "rain", 0), 11);
         assert_eq!(index::last_index_of("Rain, dear rain", "ain", 0), 12);
         assert_eq!(index::last_index_of("rain", "z", 0), -1);

@@ -1,5 +1,6 @@
 //! Returns the index of `search` in `subject`.
 
+use count;
 use split;
 /// Returns the first occurrence index of `search` in `subject` or -1 if not found.
 ///
@@ -18,11 +19,13 @@ use split;
 /// // => 7
 /// index::index_of("evening", "o", 0);
 /// // => -1
-// TODO: check boundaries
 pub fn index_of(subject: &str, search: &str, from_index: usize) -> i8 {
     match search.len() {
         0 => 0,
         _ => {
+            if count::count(&subject) < from_index {
+                return -1;
+            }
             let string_slice = &subject[subject.char_indices().nth(from_index).unwrap().0..];
             match split::chars(string_slice)
                 .iter()
@@ -57,11 +60,13 @@ pub fn index_of(subject: &str, search: &str, from_index: usize) -> i8 {
 /// // => 5
 /// index::last_index_of("evening", "o", 0);
 /// // => -1
-// TODO: check boundaries
 pub fn last_index_of(subject: &str, search: &str, from_index: usize) -> i8 {
     match search.len() {
         0 => 0,
         _ => {
+            if count::count(&subject) < from_index {
+                return -1;
+            }
             let string_slice = &subject[subject.char_indices().nth(from_index).unwrap().0..];
             let string_chars = split::chars(string_slice);
             match string_chars.iter().enumerate().rev().position(|(pos, _)| {

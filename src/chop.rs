@@ -165,7 +165,6 @@ pub fn last(subject: &str, length: usize) -> String {
 /// chop::prune("Как слышно, приём!", 14, "");
 /// // => "Как слышно..."
 /// ```
-// TODO: check for limits
 pub fn prune(subject: &str, length: usize, end: &str) -> String {
     if length == 0 {
         return "".to_string();
@@ -372,7 +371,6 @@ pub fn substring(subject: &str, start: usize, end: usize) -> String {
 /// chop::truncate("Once upon", 10, "");
 /// // => "Once upon"
 /// ```
-// TODO: check the limits
 pub fn truncate(subject: &str, length: usize, end: &str) -> String {
     if length == 0 {
         return "".to_string();
@@ -383,7 +381,7 @@ pub fn truncate(subject: &str, length: usize, end: &str) -> String {
     };
     let subject_length = split::chars(&subject).len();
     let end_length = split::chars(&sufix).len();
-    let position_end = if subject_length < length {
+    let position_end = if subject_length < length || length < end_length {
         sufix = "";
         subject_length
     } else {
