@@ -1,12 +1,15 @@
 [package]
 name = "voca_rs"
-version = "0.5.0"
+version = "1.0.0"
 authors = ["Anatol Merezhanyi <a.merezhanyi@gmail.com>"]
 license = "MIT"
 description = "Voca_rs is inspired by Voca.js and string.py"
+
+homepage = "https://e1r0nd.github.io/voca_rs/"
+documentation = "https://docs.rs/voca_rs/"
 repository = "https://github.com/e1r0nd/voca_rs"
-documentation = "https://e1r0nd.github.io/voca_rs/"
-keywords = ["string", "string-manipulation", "string-formatter", "char", "unicode"]
+
+keywords = ["string", "case", "snake", "camel", "unicode"]
 categories = ["encoding"]
 readme = "README.md"
 include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]

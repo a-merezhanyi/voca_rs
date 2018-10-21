@@ -1,7 +1,49 @@
 //! Extracts a character(s) from `subject`.
 
+use count;
 use split;
 use utils;
+
+#[derive(Clone, Copy, PartialEq)]
+enum PointType {
+    Length,
+    Position,
+}
+
+#[derive(Clone, Copy, PartialEq)]
+enum CharType {
+    Simple,
+    Grapheme,
+}
+
+fn get_chars(subject: &str, start: usize, end: usize) -> String {
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => split::chars(&subject)[start..end].join(""),
+    }
+}
+
+fn get_subject_length(
+    subject: &str,
+    position: usize,
+    point_type: PointType,
+    char_type: CharType,
+) -> usize {
+    let subject_len = count::count_graphemes(subject);
+    let position_substruction = match point_type {
+        PointType::Length => 0,
+        PointType::Position => 1,
+    };
+    let is_out_of_bounds = match char_type {
+        CharType::Simple => position > subject_len,
+        CharType::Grapheme => position >= subject_len,
+    };
+    if is_out_of_bounds {
+        subject_len - position_substruction
+    } else {
+        position
+    }
+}
 /// Access a character from `subject` at specified `position`.
 ///
 /// # Arguments
@@ -17,16 +59,9 @@ use utils;
 /// chop::char_at("błąd", 1);
 /// // => "ł"
 /// ```
-// TODO: check boundaries - position < length
 pub fn char_at(subject: &str, position: usize) -> String {
-    get_chars(&subject, position, position + 1)
-}
-
-fn get_chars(subject: &str, start: usize, end: usize) -> String {
-    match subject.len() {
-        0 => subject.to_string(),
-        _ => split::chars(&subject)[start..end].join(""),
-    }
+    let the_position = get_subject_length(subject, position, PointType::Position, CharType::Simple);
+    get_chars(&subject, the_position, the_position + 1)
 }
 
 /// Extracts the first `length` characters from `subject`.
@@ -46,11 +81,11 @@ fn get_chars(subject: &str, start: usize, end: usize) -> String {
 /// chop::first("e\u{0301}", 1); // or 'é'
 /// // => "e"
 /// ```
-// TODO: check boundaries - length < subj length
 pub fn first(subject: &str, length: usize) -> String {
+    let the_length = get_subject_length(subject, length, PointType::Length, CharType::Simple);
     match length {
         0 => "".to_string(),
-        _ => get_chars(&subject, 0, length),
+        _ => get_chars(&subject, 0, the_length),
     }
 }
 
@@ -69,11 +104,15 @@ pub fn first(subject: &str, length: usize) -> String {
 /// chop::grapheme_at("a̐éö̲", 0);
 /// // => "a̐"
 /// ```
-// TODO: check boundaries - position < length
 pub fn grapheme_at(subject: &str, position: usize) -> String {
-    match subject.len() {
+    let subject_len = count::count_graphemes(subject);
+    match subject_len {
         0 => subject.to_string(),
-        _ => split::graphemes(&subject)[position].to_string(),
+        _ => {
+            let the_position =
+                get_subject_length(subject, position, PointType::Position, CharType::Grapheme);
+            split::graphemes(&subject)[the_position].to_string()
+        }
     }
 }
 
@@ -94,13 +133,14 @@ pub fn grapheme_at(subject: &str, position: usize) -> String {
 /// chop::last("e\u{0301}", 1); // or 'é'
 /// // => "\u{0301}"
 /// ```
-// TODO: check boundaries - length < subj length
 pub fn last(subject: &str, length: usize) -> String {
     match length {
         0 => "".to_string(),
         _ => {
             let subject_length = split::chars(&subject).len();
-            get_chars(&subject, subject_length - length, subject_length)
+            let the_length =
+                get_subject_length(subject, length, PointType::Length, CharType::Grapheme);
+            get_chars(&subject, subject_length - the_length, subject_length)
         }
     }
 }
@@ -125,6 +165,7 @@ pub fn last(subject: &str, length: usize) -> String {
 /// chop::prune("Как слышно, приём!", 14, "");
 /// // => "Как слышно..."
 /// ```
+// TODO: check for limits
 pub fn prune(subject: &str, length: usize, end: &str) -> String {
     if length == 0 {
         return "".to_string();
@@ -136,7 +177,7 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
     let subject_chars = split::chars(&subject);
     let subject_length = subject_chars.len();
     let end_length = split::chars(&sufix).len();
-    let position_end = if subject_length < length {
+    let position_end = if subject_length <= length {
         sufix = "";
         subject_length
     } else {
@@ -253,14 +294,25 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
 /// chop::substr("błąd", 1, 2);
 /// // => "łą"
 /// ```
-// TODO: check boundaries
 pub fn substr(subject: &str, start: usize, length: usize) -> String {
     let subject_length = split::chars(&subject).len();
+    if start >= subject_length {
+        return "".to_string();
+    }
     let position_end = match length {
         0 => subject_length,
-        _ => start + length,
+        _ => {
+            let to_position = start + length;
+            if to_position > subject_length {
+                subject_length
+            } else {
+                to_position
+            }
+        }
     };
-
+    if start >= position_end {
+        return "".to_string();
+    }
     get_chars(&subject, start, position_end)
 }
 
@@ -282,13 +334,22 @@ pub fn substr(subject: &str, start: usize, length: usize) -> String {
 /// chop::substring("e\u{0301}", 1, 0); // or 'é'
 /// // => "\u{0301}"
 /// ```
-// TODO: check boundaries
 pub fn substring(subject: &str, start: usize, end: usize) -> String {
     let subject_length = split::chars(&subject).len();
+    if start >= subject_length {
+        return "".to_string();
+    }
     let position_end = match end {
         0 => subject_length,
-        _ => end,
+        _ => if end > subject_length {
+            subject_length
+        } else {
+            end
+        },
     };
+    if start > position_end {
+        return "".to_string();
+    }
 
     get_chars(&subject, start, position_end)
 }
@@ -311,6 +372,7 @@ pub fn substring(subject: &str, start: usize, end: usize) -> String {
 /// chop::truncate("Once upon", 10, "");
 /// // => "Once upon"
 /// ```
+// TODO: check the limits
 pub fn truncate(subject: &str, length: usize, end: &str) -> String {
     if length == 0 {
         return "".to_string();

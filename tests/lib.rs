@@ -7,7 +7,7 @@ mod tests {
     /// voca_rs::utils testing
     #[test]
     fn utils_version() {
-        assert_eq!(utils::VERSION, "0.5.0");
+        assert_eq!(utils::VERSION, "1.0.0");
     }
     #[test]
     fn utils_ascii_letters() {
@@ -768,6 +768,9 @@ mod tests {
     fn chop_char_at() {
         assert_eq!(chop::char_at("", 0), "");
         assert_eq!(chop::char_at("rain", 0), "r");
+        assert_eq!(chop::char_at("rain", 2), "i");
+        assert_eq!(chop::char_at("rain", 3), "n");
+        assert_eq!(chop::char_at("rain", 40), "n");
         assert_eq!(chop::char_at("b\u{0142}\u{0105}d", 2), "ą");
         assert_eq!(
             chop::char_at("Die Schildkröte fliegt über das Floß.", 12),
@@ -780,6 +783,8 @@ mod tests {
         assert_eq!(chop::first("", 0), "");
         assert_eq!(chop::first("a", 0), "");
         assert_eq!(chop::first("rain", 2), "ra");
+        assert_eq!(chop::first("rain", 4), "rain");
+        assert_eq!(chop::first("rain", 20), "rain");
         assert_eq!(chop::first("b\u{0142}\u{0105}d", 3), "błą");
         assert_eq!(chop::first("über das Floß.", 1), "ü");
         assert_eq!(chop::first("Как слышно, приём!", 3), "Как");
@@ -788,15 +793,31 @@ mod tests {
     #[test]
     fn chop_grapheme_at() {
         assert_eq!(chop::grapheme_at("", 0), "");
+        assert_eq!(chop::grapheme_at("é", 0), "é");
         assert_eq!(chop::grapheme_at("b\u{0142}\u{0105}d", 1), "ł");
-        assert_eq!(chop::grapheme_at("cafe\u{0301}", 3), "é");
         assert_eq!(chop::grapheme_at("über das Floß.", 0), "ü");
         assert_eq!(chop::grapheme_at("a̐éö̲", 0), "a̐");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}", 0), "c");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}", 1), "a");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}", 2), "f");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}", 3), "é");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}", 4), "é");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}", 5), "é");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}", 30), "é");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}!", 3), "é");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}!", 4), "!");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}!", 5), "!");
+        assert_eq!(chop::grapheme_at("cafe\u{0301}!", 30), "!");
     }
     #[test]
     fn chop_last() {
         assert_eq!(chop::last("", 0), "");
         assert_eq!(chop::last("a", 0), "");
+        assert_eq!(chop::last("a", 1), "a");
+        assert_eq!(chop::last("a", 2), "a");
+        assert_eq!(chop::last("aa", 2), "aa");
+        assert_eq!(chop::last("ab", 3), "ab");
+        assert_eq!(chop::last("ab", 20), "ab");
         assert_eq!(chop::last("b\u{0142}\u{0105}d", 2), "ąd");
         assert_eq!(chop::last("helicopter", 1), "r");
         assert_eq!(chop::last("über das Floß.", 2), "ß.");
@@ -805,6 +826,12 @@ mod tests {
     #[test]
     fn chop_prune() {
         assert_eq!(chop::prune("", 0, ""), "");
+        assert_eq!(chop::prune("a", 0, ""), "");
+        assert_eq!(chop::prune("a", 1, ""), "a");
+        assert_eq!(chop::prune("a", 2, ""), "a");
+        assert_eq!(chop::prune("ab", 2, ""), "ab");
+        assert_eq!(chop::prune("ab", 3, ""), "ab");
+        assert_eq!(chop::prune("ab", 20, ""), "ab");
         assert_eq!(chop::prune("Once upon a time", 7, ""), "Once...");
         assert_eq!(
             chop::prune("Die Schildkröte fliegt über das Floß.", 19, "~~"),
@@ -819,6 +846,15 @@ mod tests {
     #[test]
     fn chop_slice() {
         assert_eq!(chop::slice("", 0, 0), "");
+        assert_eq!(chop::slice("a", 0, 0), "a");
+        assert_eq!(chop::slice("a", 0, 1), "a");
+        assert_eq!(chop::slice("a", 0, 10), "a");
+        assert_eq!(chop::slice("a", 2, 0), "");
+        assert_eq!(chop::slice("ab", -2, 0), "ab");
+        assert_eq!(chop::slice("ab", -3, 0), "ab");
+        assert_eq!(chop::slice("ab", -20, 20), "ab");
+        assert_eq!(chop::slice("a", -20, -10), "");
+        assert_eq!(chop::slice("ab", -20, -1), "a");
         assert_eq!(chop::slice("helicopter", 1, 0), "elicopter");
         assert_eq!(chop::slice("b\u{0142}\u{0105}d", -2, 0), "ąd");
         assert_eq!(
@@ -832,6 +868,18 @@ mod tests {
     #[test]
     fn chop_substr() {
         assert_eq!(chop::substr("", 0, 0), "");
+        assert_eq!(chop::substr("a", 0, 0), "a");
+        assert_eq!(chop::substr("a", 10, 0), "");
+        assert_eq!(chop::substr("a", 0, 1), "a");
+        assert_eq!(chop::substr("a", 0, 10), "a");
+        assert_eq!(chop::substr("a", 2, 0), "");
+        assert_eq!(chop::substr("ab", 1, 0), "b");
+        assert_eq!(chop::substr("abcd", 3, 1), "d");
+        assert_eq!(chop::substr("abcd", 30, 1), "");
+        assert_eq!(chop::substr("ab", 2, 0), "");
+        assert_eq!(chop::substr("ab", 3, 0), "");
+        assert_eq!(chop::substr("ab", 20, 20), "");
+        assert_eq!(chop::substr("a", 20, 10), "");
         assert_eq!(chop::substr("helicopter", 1, 0), "elicopter");
         assert_eq!(chop::substr("b\u{0142}\u{0105}d", 1, 2), "łą");
         assert_eq!(chop::substr("über das Floß.", 9, 4), "Floß");
@@ -840,6 +888,20 @@ mod tests {
     #[test]
     fn chop_substring() {
         assert_eq!(chop::substring("", 0, 0), "");
+        assert_eq!(chop::substring("a", 0, 0), "a");
+        assert_eq!(chop::substring("a", 10, 0), "");
+        assert_eq!(chop::substring("a", 0, 1), "a");
+        assert_eq!(chop::substring("a", 0, 10), "a");
+        assert_eq!(chop::substring("ab", 1, 0), "b");
+        assert_eq!(chop::substring("abcd", 3, 1), "");
+        assert_eq!(chop::substring("abcd", 3, 3), "");
+        assert_eq!(chop::substring("abcd", 3, 4), "d");
+        assert_eq!(chop::substring("abcd", 3, 10), "d");
+        assert_eq!(chop::substring("abcd", 30, 1), "");
+        assert_eq!(chop::substring("ab", 2, 0), "");
+        assert_eq!(chop::substring("ab", 3, 0), "");
+        assert_eq!(chop::substring("ab", 20, 20), "");
+        assert_eq!(chop::substring("a", 20, 10), "");
         assert_eq!(chop::substring("helicopter", 1, 0), "elicopter");
         assert_eq!(chop::substring("b\u{0142}\u{0105}d", 2, 4), "ąd");
         assert_eq!(chop::substring("über das Floß.", 0, 1), "ü");
@@ -847,7 +909,13 @@ mod tests {
     }
     #[test]
     fn chop_truncate() {
-        assert_eq!(chop::truncate("", 0, ""), "");
+        // assert_eq!(chop::truncate("", 0, ""), "");
+        // assert_eq!(chop::truncate("a", 1, ""), "a");
+        // assert_eq!(chop::truncate("a", 2, ""), "a");
+        // assert_eq!(chop::truncate("a", 3, ""), "a");
+        // assert_eq!(chop::truncate("a", 4, ""), "a...");
+        // assert_eq!(chop::truncate("a", 5, ""), "a...");
+        // assert_eq!(chop::truncate("a", 10, ""), "a...");
         assert_eq!(chop::truncate("Once upon a time", 7, ""), "Once...");
         assert_eq!(
             chop::truncate("Die Schildkröte fliegt über das Floß.", 28, "(...)"),

@@ -21,6 +21,7 @@ use split;
 /// manipulate::insert("sunny", " day", 5);
 /// // => "sunny day"
 /// ```
+// TODO: check boundaries
 pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
     let subject_len = subject.len();
     if subject_len == 0 || to_insert.len() == 0 {

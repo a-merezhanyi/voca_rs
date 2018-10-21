@@ -24,135 +24,158 @@ let trancated_string = chop::prune(&words_in_string, 15, "");
 
 See the complete documentation at https://e1r0nd.github.io/voca_rs/
 
-Run test: `cargo test`<br>
+Run tests: `cargo test`<br>
 Build docs: `cargo doc` -> `./target/doc/voca_rs/index.html` <br>
-Build project: `cargo build` -> `./target/debug`
+Build a project: `cargo build` -> `./target/debug`
 
-## Roadmap
+## Functions
 
 #### Case
 
-- [x] [camel_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.camel_case.html)
-- [x] [capitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.capitalize.html)
-- [x] [decapitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.decapitalize.html)
-- [x] [kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.kebab_case.html)
-- [x] [lower_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.lower_case.html)
-- [x] [pascal_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.pascal_case.html)
-- [x] [shouty_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.shouty_kebab_case.html)
-- [x] [shouty_snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.shouty_snake_case.html)
-- [x] [snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.snake_case.html)
-- [x] [swap_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.swap_case.html)
-- [x] [title_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.title_case.html)
-- [x] [upper_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.upper_case.html)
+- [camel_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.camel_case.html)
+- [capitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.capitalize.html)
+- [decapitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.decapitalize.html)
+- [kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.kebab_case.html)
+- [lower_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.lower_case.html)
+- [pascal_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.pascal_case.html)
+- [shouty_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.shouty_kebab_case.html)
+- [shouty_snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.shouty_snake_case.html)
+- [snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.snake_case.html)
+- [swap_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.swap_case.html)
+- [title_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.title_case.html)
+- [upper_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.upper_case.html)
 
 #### Chop
 
-- [x] [char_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.char_at.html)
-- [ ] codePointAt - [link](https://vocajs.com/#codePointAt)
-- [x] [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
-- [x] [grapheme_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.grapheme_at.html)
-- [x] [last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.last.html)
-- [x] [prune](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.prune.html)
-- [x] [slice](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.slice.html)
-- [x] [substr](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substr.html)
-- [x] [substring](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substring.html)
-- [x] [truncate](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.truncate.html)
+- [char_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.char_at.html)
+- [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
+- [grapheme_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.grapheme_at.html)
+- [last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.last.html)
+- [prune](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.prune.html)
+- [slice](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.slice.html)
+- [substr](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substr.html)
+- [substring](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substring.html)
+- [truncate](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.truncate.html)
 
 #### Count
 
-- [x] [count](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count.html)
-- [x] [count_graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_graphemes.html)
-- [x] [count_substrings](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_substrings.html)
-- [ ] countWhere - [link](https://vocajs.com/#countWhere)
-- [x] [count_words](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_words.html)
+- [count](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count.html)
+- [count_graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_graphemes.html)
+- [count_substrings](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_substrings.html)
+- [count_words](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_words.html)
 
 #### Escape
 
-- [x] [escape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_html.html)
-- [x] [escape_regexp](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_regexp.html)
-- [x] [unescape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.unescape_html.html)
-
-#### Format
-
-- [ ] format - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.format)
-- [ ] vformat - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.vformat)
-- [ ] parse - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.parse)
-- [ ] get_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.get_field)
-- [ ] get_value - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.get_value)
-- [ ] check_unused_args - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.check_unused_args)
-- [ ] format_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.format_field)
-- [ ] convert_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.convert_field)
-- [ ] substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.substitute)
-- [ ] safe_substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.safe_substitute)
-- [ ] sprintf - [link](https://vocajs.com/#sprintf)
-- [ ] vprintf - [link](https://vocajs.com/#vprintf)
+- [escape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_html.html)
+- [escape_regexp](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_regexp.html)
+- [unescape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.unescape_html.html)
 
 #### Index
 
-- [x] [index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.index_of.html)
-- [x] [last_index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.last_index_of.html)
-- [ ] search - [link](https://vocajs.com/#search)
+- [index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.index_of.html)
+- [last_index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.last_index_of.html)
 
 #### Manipulate
 
-- [x] [insert](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.insert.html)
-- [ ] latinise - [link](https://vocajs.com/#latinise)
-- [x] [pad](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad.html)
-- [x] [pad_left](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad_left.html)
-- [x] [pad_right](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad_right.html)
-- [x] [repeat](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
-- [x] [replace](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
-- [x] [replace_all](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat_all.html)
-- [x] [reverse](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse.html)
-- [x] [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse_grapheme.html)
-- [ ] slugify - [link](https://vocajs.com/#slugify)
-- [x] [splice](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.splice.html)
-- [ ] tr - [link](https://vocajs.com/#tr)
-- [x] [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
-- [x] [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)
-- [x] [trim_right](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_right.html)
-- [ ] wordWrap - [link](https://vocajs.com/#wordWrap)
+- [insert](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.insert.html)
+- [pad](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad.html)
+- [pad_left](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad_left.html)
+- [pad_right](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad_right.html)
+- [repeat](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
+- [replace](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
+- [replace_all](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat_all.html)
+- [reverse](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse.html)
+- [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse_grapheme.html)
+- [splice](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.splice.html)
+- [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
+- [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)
+- [trim_right](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_right.html)
 
 #### Query
 
-- [x] [ends_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.ends_with.html)
-- [x] [includes](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.includes.html)
-- [x] [is_alpha](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alpha.html)
-- [x] [is_alphadigit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alphadigit.html)
-- [x] [isBlank](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_blank.html)
-- [x] [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
-- [x] [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
-- [x] [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
-- [x] [is_numeric](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_numeric.html)
-- [x] [is_uppercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_uppercase.html)
-- [ ] matches - [link](https://vocajs.com/#matches)
-- [x] [starts_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.starts_with.html)
+- [ends_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.ends_with.html)
+- [includes](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.includes.html)
+- [is_alpha](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alpha.html)
+- [is_alphadigit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alphadigit.html)
+- [isBlank](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_blank.html)
+- [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
+- [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
+- [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
+- [is_numeric](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_numeric.html)
+- [is_uppercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_uppercase.html)
+- [starts_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.starts_with.html)
 
 #### Split
 
-- [x] [chars](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.chars.html)
-- [ ] codePoints - [link](https://vocajs.com/#codePoints)
-- [x] [graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.graphemes.html)
-- [x] [split](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.split.html)
-- [x] [words](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.words.html)
+- [chars](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.chars.html)
+- [graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.graphemes.html)
+- [split](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.split.html)
+- [words](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.words.html)
 
 #### Strip
 
-- [x] [strip_bom](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.strip_bom.html)
-- [ ] stripTags - [link](https://vocajs.com/#stripTags)
+- [strip_bom](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.strip_bom.html)
 
 #### Utils
 
-- [x] [ASCII_LETTERS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LETTERS.html)
-- [x] [ASCII_LOWERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LOWERCASE.html)
-- [x] [ASCII_UPPERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_UPPERCASE.html)
-- [x] [DIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.DIGITS.html)
-- [x] [HEXDIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.HEXDIGITS.html)
-- [x] [OCTDIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.OCTDIGITS.html)
-- [x] [PUNCTUATION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.PUNCTUATION.html)
-- [x] [PRINTABLE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.PRINTABLE.html)
-- [x] [WHITESPACE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.WHITESPACE.html)
-- [x] [VERSION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.VERSION.html)
+- [ASCII_LETTERS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LETTERS.html)
+- [ASCII_LOWERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_LOWERCASE.html)
+- [ASCII_UPPERCASE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.ASCII_UPPERCASE.html)
+- [DIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.DIGITS.html)
+- [HEXDIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.HEXDIGITS.html)
+- [OCTDIGITS](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.OCTDIGITS.html)
+- [PUNCTUATION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.PUNCTUATION.html)
+- [PRINTABLE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.PRINTABLE.html)
+- [WHITESPACE](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.WHITESPACE.html)
+- [VERSION](https://e1r0nd.github.io/voca_rs/voca_rs/utils/constant.VERSION.html)
+
+## Roadmap
+
+#### Chop
+
+- codePointAt - [link](https://vocajs.com/#codePointAt)
+
+#### Count
+
+- countWhere - [link](https://vocajs.com/#countWhere)
+
+#### Format
+
+- format - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.format)
+- vformat - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.vformat)
+- parse - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.parse)
+- get_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.get_field)
+- get_value - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.get_value)
+- check_unused_args - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.check_unused_args)
+- format_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.format_field)
+- convert_field - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.convert_field)
+- substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.substitute)
+- safe_substitute - [link](https://docs.python.org/3.4/library/string.html#string.Template.safe_substitute)
+- sprintf - [link](https://vocajs.com/#sprintf)
+- vprintf - [link](https://vocajs.com/#vprintf)
+
+#### Index
+
+- search - [link](https://vocajs.com/#search)
+
+#### Manipulate
+
+- latinise - [link](https://vocajs.com/#latinise)
+- slugify - [link](https://vocajs.com/#slugify)
+- tr - [link](https://vocajs.com/#tr)
+- wordWrap - [link](https://vocajs.com/#wordWrap)
+
+#### Query
+
+- matches - [link](https://vocajs.com/#matches)
+
+#### Split
+
+- codePoints - [link](https://vocajs.com/#codePoints)
+
+#### Strip
+
+- stripTags - [link](https://vocajs.com/#stripTags)
 
 ## Copyright
 
