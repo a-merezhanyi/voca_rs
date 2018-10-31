@@ -34,7 +34,7 @@ pub fn chars(subject: &str) -> Vec<&str> {
 /// split::split("rage against the dying of the light", "");
 /// // => ["rage", "against", "the", "dying", "of", "the", "light"]
 /// ```
-pub fn split(subject: &'static str, pattern: &str) -> Vec<&'static str> {
+pub fn split<'a>(subject: &'a str, pattern: &str) -> Vec<&'a str> {
     if subject.len() == 0 {
         return vec![""];
     }
@@ -60,8 +60,8 @@ use unicode_segmentation::UnicodeSegmentation;
 /// split::words("LazyLoad with XMLHttpRequest and snake_case");
 /// // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 /// ```
-pub fn words(subject: &str) -> Vec<String> {
-    fn transform(v: &str) -> String {
+pub fn words(subject: &str) -> Vec<&str> {
+    fn split_camel_case(string: &str) -> Vec<&str> {
         // https://github.com/withoutboats/heck/blob/master/src/lib.rs
         #[derive(Clone, Copy, PartialEq)]
         enum WordMode {
@@ -72,14 +72,12 @@ pub fn words(subject: &str) -> Vec<String> {
             /// The previous cased character in the current word is uppercase.
             Uppercase,
         }
-        let w = v.unicode_words().collect::<Vec<&str>>();
-        let string = w.join(" ");
-        let mut res = String::new();
+        let mut words = Vec::new();
+        let mut word_start = 0;
         let mut char_indices = string.char_indices().peekable();
         let mut mode = WordMode::Boundary;
-        let mut add_space = false;
-        while let Some((_, c)) = char_indices.next() {
-            if let Some(&(_, next)) = char_indices.peek() {
+        while let Some((c_idx, c)) = char_indices.next() {
+            if let Some(&(next_idx, next)) = char_indices.peek() {
                 let next_mode = if c.is_lowercase() {
                     WordMode::Lowercase
                 } else if c.is_uppercase() {
@@ -90,32 +88,34 @@ pub fn words(subject: &str) -> Vec<String> {
 
                 // not uppercase and next is uppercase
                 if next_mode == WordMode::Lowercase && next.is_uppercase() {
-                    add_space = true;
+                    words.push(&string[word_start..next_idx]);
+                    word_start = next_idx;
                     mode = WordMode::Boundary;
                 // Otherwise if current and previous are uppercase and next
                 // is lowercase, word boundary before
                 } else if mode == WordMode::Uppercase && c.is_uppercase() && next.is_lowercase() {
-                    res.push_str(" ");
+                    words.push(&string[word_start..c_idx]);
+                    word_start = c_idx;
                     mode = WordMode::Boundary;
                 // Otherwise no word boundary, just update the mode
                 } else {
                     mode = next_mode;
                 }
             }
-
-            res.push(c);
-            if add_space {
-                res.push_str(" ");
-                add_space = false;
-            }
         }
-        res
+        words.push(&string[word_start..]);
+        words
     }
 
-    let string = subject.to_string().replace("-", " ").replace("_", " ");
-    let res = transform(&string);
-    let return_vector: Vec<String> = res.unicode_words().map(String::from).collect();
-    return_vector
+    let splitting_punctuation = ['-', '_'];
+
+    let split_by_whitespace_and_punctuation = subject
+        .unicode_words()
+        .flat_map(|w| w.split_terminator(|c| splitting_punctuation.contains(&c)))
+        .filter(|w| !w.is_empty());
+
+    let res = split_by_whitespace_and_punctuation.flat_map(split_camel_case);
+    res.collect()
 }
 
 /// Splits `subject` into an array of graphemes
