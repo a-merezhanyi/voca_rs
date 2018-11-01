@@ -16,7 +16,7 @@ let words_in_string = &string_in_words.join(" ");
 // => "Lazy Load with XML Http Request and snake case"
 let snake_string = case::snake_case(chop::slice(&words_in_string, 13, 28));
 // => "xml_http_request"
-let trancated_string = chop::prune(&words_in_string, 15, "");
+let truncated_string = chop::prune(&words_in_string, 15, "");
 // => "Lazy Load..."
 ```
 
@@ -66,9 +66,9 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Escape
 
-- [escape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_html.html)
-- [escape_regexp](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.escape_regexp.html)
-- [unescape_html](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.unescape_html.html)
+- [escape_html](https://e1r0nd.github.io/voca_rs/voca_rs/escape/fn.escape_html.html)
+- [escape_regexp](https://e1r0nd.github.io/voca_rs/voca_rs/escape/fn.escape_regexp.html)
+- [unescape_html](https://e1r0nd.github.io/voca_rs/voca_rs/escape/fn.unescape_html.html)
 
 #### Index
 
@@ -77,16 +77,16 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Manipulate
 
-- [insert](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.insert.html)
-- [pad](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad.html)
-- [pad_left](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad_left.html)
-- [pad_right](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.pad_right.html)
-- [repeat](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
-- [replace](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat.html)
-- [replace_all](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.repeat_all.html)
-- [reverse](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse.html)
-- [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.reverse_grapheme.html)
-- [splice](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.splice.html)
+- [insert](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.insert.html)
+- [pad](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.pad.html)
+- [pad_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.pad_left.html)
+- [pad_right](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.pad_right.html)
+- [repeat](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.repeat.html)
+- [replace](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.replace.html)
+- [replace_all](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.replace_all.html)
+- [reverse](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.reverse.html)
+- [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.reverse_grapheme.html)
+- [splice](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.splice.html)
 - [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
 - [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)
 - [trim_right](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_right.html)
