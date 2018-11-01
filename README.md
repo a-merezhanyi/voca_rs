@@ -97,7 +97,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [includes](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.includes.html)
 - [is_alpha](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alpha.html)
 - [is_alphadigit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alphadigit.html)
-- [isBlank](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_blank.html)
+- [is_blank](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_blank.html)
 - [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
 - [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
 - [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
