@@ -33,7 +33,7 @@ fn camel_and_pascal_case(subject: &str, cale_case: bool) -> String {
             let s = if i == 0 && cale_case {
                 lower_case(c)
             } else {
-                capitalize(c, &true)
+                capitalize(c, true)
             };
             res.push_str(&s);
         }
@@ -52,24 +52,24 @@ fn camel_and_pascal_case(subject: &str, cale_case: bool) -> String {
 ///
 /// ```
 /// use voca_rs::*;
-/// case::capitalize("green", &true);
+/// case::capitalize("green", true);
 /// // => "Green"
-/// case::capitalize("Say Hello to ME", &true);
+/// case::capitalize("Say Hello to ME", true);
 /// // => "Say hello to me"
 /// ```
-pub fn capitalize(subject: &str, rest_to_lower: &bool) -> String {
+pub fn capitalize(subject: &str, rest_to_lower: bool) -> String {
     return match subject.len() {
         0 => subject.to_string(),
         _ => return_string(&subject, rest_to_lower),
     };
 
-    fn return_string(subject: &str, rest_to_lower: &bool) -> String {
+    fn return_string(subject: &str, rest_to_lower: bool) -> String {
         let mut res = String::with_capacity(subject.len());
         for (i, c) in split::chars(subject).iter().enumerate() {
             let s = if i == 0 {
                 c.to_uppercase()
             } else {
-                if *rest_to_lower {
+                if rest_to_lower {
                     c.to_lowercase()
                 } else {
                     c.to_string()
@@ -91,24 +91,24 @@ pub fn capitalize(subject: &str, rest_to_lower: &bool) -> String {
 ///
 /// ```
 /// use voca_rs::*;
-/// case::decapitalize("Green", &true);
+/// case::decapitalize("Green", true);
 /// // => "green"
-/// case::decapitalize("Say Hello to ME", &false);
+/// case::decapitalize("Say Hello to ME", false);
 /// // => "say Hello to ME"
 /// ```
-pub fn decapitalize(subject: &str, rest_to_lower: &bool) -> String {
+pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
     return match subject.len() {
         0 => subject.to_string(),
         _ => return_string(&subject, rest_to_lower),
     };
 
-    fn return_string(subject: &str, rest_to_lower: &bool) -> String {
+    fn return_string(subject: &str, rest_to_lower: bool) -> String {
         let mut res = String::with_capacity(subject.len());
         for (i, c) in split::chars(subject).iter().enumerate() {
             let s = if i == 0 {
                 c.to_lowercase()
             } else {
-                if *rest_to_lower {
+                if rest_to_lower {
                     c.to_lowercase()
                 } else {
                     c.to_string()
@@ -334,7 +334,7 @@ pub fn title_case(subject: &str) -> String {
         0 => subject.to_string(),
         _ => split::words(subject)
             .into_iter()
-            .map(|c| capitalize(&c, &true))
+            .map(|c| capitalize(&c, true))
             .collect::<Vec<String>>()
             .join(" "),
     }

@@ -236,34 +236,34 @@ mod tests {
     #[test]
     fn case_capitalize() {
         assert_eq!(
-            case::capitalize("The World IS YourS", &true),
+            case::capitalize("The World IS YourS", true),
             "The world is yours"
         );
         assert_eq!(
-            case::capitalize("ZAżółć GĘŚLĄ jAźń", &true),
+            case::capitalize("ZAżółć GĘŚLĄ jAźń", true),
             "Zażółć gęślą jaźń"
         );
         assert_eq!(
-            case::capitalize("say Hello to ME", &false),
+            case::capitalize("say Hello to ME", false),
             "Say Hello to ME"
         );
-        assert_eq!(case::capitalize("", &true), "");
+        assert_eq!(case::capitalize("", true), "");
     }
     #[test]
     fn case_decapitalize() {
         assert_eq!(
-            case::decapitalize("The World IS YourS", &true),
+            case::decapitalize("The World IS YourS", true),
             "the world is yours"
         );
         assert_eq!(
-            case::decapitalize("ZAżółć GĘŚLĄ jAźń", &true),
+            case::decapitalize("ZAżółć GĘŚLĄ jAźń", true),
             "zażółć gęślą jaźń"
         );
         assert_eq!(
-            case::decapitalize("Say Hello to ME", &false),
+            case::decapitalize("Say Hello to ME", false),
             "say Hello to ME"
         );
-        assert_eq!(case::decapitalize("", &true), "");
+        assert_eq!(case::decapitalize("", true), "");
     }
     #[test]
     fn case_kebab_case() {
