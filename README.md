@@ -134,6 +134,8 @@ Build a project: `cargo build` -> `./target/debug`
 #### Chop
 
 - codePointAt - [link](https://vocajs.com/#codePointAt)
+- max - [link](https://www.tutorialspoint.com/python3/string_max.htm)
+- min - [link](https://www.tutorialspoint.com/python3/string_min.htm)
 
 #### Count
 
@@ -152,12 +154,15 @@ Build a project: `cargo build` -> `./target/debug`
 #### Manipulate
 
 - latinise - [link](https://vocajs.com/#latinise)
+- expand_tabs - [link](https://www.tutorialspoint.com/python3/string_expandtabs.htm)
 - slugify - [link](https://vocajs.com/#slugify)
 - tr - [link](https://vocajs.com/#tr)
 - wordWrap - [link](https://vocajs.com/#wordWrap)
+- zfill - [link](https://www.tutorialspoint.com/python3/string_zfill.htm)
 
 #### Query
 
+- is_title - [link](https://www.tutorialspoint.com/python3/string_istitle.htm)
 - matches - [link](https://vocajs.com/#matches)
 
 #### Split
