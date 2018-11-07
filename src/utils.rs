@@ -101,7 +101,7 @@ pub const PUNCTUATION: &str = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 /// utils::PRINTABLE;
 /// // => 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r
 /// ```
-// TODO: make a conbination of DIGITS, ASCII_LETTERS, PUNCTUATION, WHITESPACE
+// TODO: make a combination of DIGITS, ASCII_LETTERS, PUNCTUATION, WHITESPACE
 pub const PRINTABLE: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r";
 
 /// The string `" \t\n\r"`.
