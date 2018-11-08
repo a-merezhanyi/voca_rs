@@ -39,7 +39,8 @@ fn camel_and_pascal_case(subject: &str, cale_case: bool) -> String {
         }
 
         res
-    };}
+    };
+}
 
 /// Converts the first character of `subject` to upper case. If `restToLower` is `true`, convert the rest of `subject` to lower case.
 ///
@@ -68,18 +69,17 @@ pub fn capitalize(subject: &str, rest_to_lower: bool) -> String {
         for (i, c) in split::chars(subject).iter().enumerate() {
             let s = if i == 0 {
                 c.to_uppercase()
+            } else if rest_to_lower {
+                c.to_lowercase()
             } else {
-                if rest_to_lower {
-                    c.to_lowercase()
-                } else {
-                    c.to_string()
-                }
+                c.to_string()
             };
             res.push_str(&s);
         }
 
         res
-    };}
+    };
+}
 
 /// Converts the first character of `subject` to lower case. If `restToLower` is `true`, convert the rest of `subject` to lower case.
 ///
@@ -105,20 +105,17 @@ pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
     fn return_string(subject: &str, rest_to_lower: bool) -> String {
         let mut res = String::with_capacity(subject.len());
         for (i, c) in split::chars(subject).iter().enumerate() {
-            let s = if i == 0 {
+            let s = if i == 0 || rest_to_lower {
                 c.to_lowercase()
             } else {
-                if rest_to_lower {
-                    c.to_lowercase()
-                } else {
-                    c.to_string()
-                }
+                c.to_string()
             };
             res.push_str(&s);
         }
 
         res
-    };}
+    };
+}
 
 /// Converts the `subject` to kebab case.
 ///
@@ -161,7 +158,7 @@ pub fn shouty_kebab_case(subject: &str) -> String {
 }
 
 fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
-    return match subject.len() {
+    match subject.len() {
         0 => subject.to_string(),
         _ => split::words(subject)
             .into_iter()
@@ -173,7 +170,7 @@ fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
                 }
             }).collect::<Vec<String>>()
             .join("-"),
-    };
+    }
 }
 
 /// Converts the `subject` to lower case.
