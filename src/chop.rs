@@ -207,17 +207,15 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
                             };
                             mode = WordMode::Spaces;
                         }
-                    } else {
-                        if mode == WordMode::Spaces {
-                            mode = WordMode::Words;
-                        }
+                    } else if mode == WordMode::Spaces {
+                        mode = WordMode::Words;
                     }
                 }
                 None => {
                     return subject.to_string();
                 }
             }
-            current_position = current_position + 1;
+            current_position += 1;
         }
         end_position
     };
@@ -261,16 +259,15 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
                 pos as usize
             }
         } else if x == 0 {
-            match start {
-                true => 0,
-                false => length,
-            }
-        } else {
-            if x > length as isize {
-                length as usize
+            if start {
+                0
             } else {
-                x as usize
+                length
             }
+        } else if x > length as isize {
+            length
+        } else {
+            x as usize
         }
     }
 
