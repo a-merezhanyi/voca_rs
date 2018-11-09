@@ -21,7 +21,7 @@ use utils;
 /// // => false
 /// ```
 pub fn ends_with(subject: &str, end: &str) -> bool {
-    if subject.len() == 0 || end.len() == 0 {
+    if subject.is_empty() || end.is_empty() {
         return true;
     }
     subject.ends_with(end)
@@ -51,7 +51,7 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
     if subject_len < position {
         return false;
     }
-    if subject_len == 0 || search.len() == 0 {
+    if subject_len == 0 || search.is_empty() {
         return true;
     }
     subject.to_owned()[subject.char_indices().nth(position).unwrap().0..]
@@ -81,9 +81,10 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
 /// // => false
 /// ```
 pub fn is_alpha(subject: &str) -> bool {
-    match is_empty(&subject) {
-        true => false,
-        _ => is_alpha_or_alphadigit(&subject, false),
+    if is_empty(&subject) {
+        false
+    } else {
+        is_alpha_or_alphadigit(&subject, false)
     }
 }
 
@@ -103,7 +104,7 @@ fn is_alpha_or_alphadigit(subject: &str, count_digits: bool) -> bool {
             subject_is_ok = false;
             current_pos = subject_grapheme_len;
         } else {
-            current_pos = current_pos + 1;
+            current_pos += 1;
         }
     }
     subject_is_ok
@@ -131,9 +132,10 @@ fn is_alpha_or_alphadigit(subject: &str, count_digits: bool) -> bool {
 /// // => false
 /// ```
 pub fn is_alphadigit(subject: &str) -> bool {
-    match is_empty(&subject) {
-        true => false,
-        _ => is_alpha_or_alphadigit(&subject, true),
+    if is_empty(&subject) {
+        false
+    } else {
+        is_alpha_or_alphadigit(&subject, true)
     }
 }
 
@@ -155,11 +157,11 @@ pub fn is_alphadigit(subject: &str) -> bool {
 /// // => false
 /// ```
 pub fn is_blank(subject: &str) -> bool {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return true;
     }
 
-    return subject.trim().is_empty();
+    subject.trim().is_empty()
 }
 
 /// Checks whether `subject` contains only digit characters.
@@ -193,8 +195,7 @@ pub fn is_digit(subject: &str) -> bool {
             let mut current_char = String::new();
             current_char.push_str(c);
             utils::DIGITS.contains(&current_char)
-        }).collect::<Vec<_>>()
-        .len()
+        }).count()
         == subject_len
 }
 
@@ -216,11 +217,11 @@ pub fn is_digit(subject: &str) -> bool {
 /// // => false
 /// ```
 pub fn is_empty(subject: &str) -> bool {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return true;
     }
 
-    return false;
+    false
 }
 
 /// Checks whether `subject` has only lower case characters.
@@ -265,7 +266,7 @@ pub fn is_lowercase(subject: &str) -> bool {
 // assert_eq!(query::is_numeric("1.5E+2"), true);
 // probably via regexp
 pub fn is_numeric(subject: &str) -> bool {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return true;
     }
 
@@ -301,16 +302,14 @@ pub fn is_uppercase(subject: &str) -> bool {
 }
 
 fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return true;
     }
 
     let mut res = true;
     split::chars(subject).into_iter().for_each(|s| {
         s.chars().for_each(|c| {
-            if lowercase && c.is_uppercase() {
-                res = false;
-            } else if !lowercase && c.is_lowercase() {
+            if (lowercase && c.is_uppercase()) || (!lowercase && c.is_lowercase()) {
                 res = false;
             }
         })
@@ -335,7 +334,7 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
 /// // => false
 /// ```
 pub fn starts_with(subject: &str, start: &str) -> bool {
-    if subject.len() == 0 || start.len() == 0 {
+    if subject.is_empty() || start.is_empty() {
         return true;
     }
     subject.starts_with(start)
