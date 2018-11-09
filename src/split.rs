@@ -14,7 +14,7 @@
 /// // => ["c", "l", "o", "u", "d"]
 /// ```
 pub fn chars(subject: &str) -> Vec<&str> {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return vec![""];
     }
     subject.split_terminator("").skip(1).collect::<Vec<_>>()
@@ -35,10 +35,10 @@ pub fn chars(subject: &str) -> Vec<&str> {
 /// // => ["rage", "against", "the", "dying", "of", "the", "light"]
 /// ```
 pub fn split<'a>(subject: &'a str, pattern: &str) -> Vec<&'a str> {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return vec![""];
     }
-    if pattern.len() == 0 {
+    if pattern.is_empty() {
         return vec![subject];
     }
     subject.split_terminator(pattern).collect::<Vec<_>>()
@@ -132,7 +132,7 @@ pub fn words(subject: &str) -> Vec<&str> {
 /// // => ["a̐", "é", "ö̲", "\r\n"]
 /// ```
 pub fn graphemes(subject: &str) -> Vec<&str> {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return vec![""];
     }
     UnicodeSegmentation::graphemes(subject, true).collect::<Vec<&str>>()
