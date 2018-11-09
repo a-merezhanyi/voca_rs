@@ -23,7 +23,7 @@ use split;
 /// ```
 pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
     let subject_len = subject.len();
-    if subject_len == 0 || to_insert.len() == 0 {
+    if subject_len == 0 || to_insert.is_empty() {
         return subject.to_string();
     }
     let insert_position = if position > subject_len {
@@ -78,7 +78,7 @@ enum PadMode {
 
 fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) -> String {
     let width = length - count::count_graphemes(&subject);
-    let to_add = if pad.len() == 0 { " " } else { pad };
+    let to_add = if pad.is_empty() { " " } else { pad };
     let times = width / to_add.len();
     let str_to_add = to_add.repeat(times + 1);
     let string_to_add = split::chars(&str_to_add);
@@ -189,7 +189,7 @@ pub fn pad_right(subject: &str, length: usize, pad: &str) -> String {
 /// // => ""
 /// ```
 pub fn repeat(subject: &str, times: usize) -> String {
-    if subject.len() == 0 || times == 0 {
+    if subject.is_empty() || times == 0 {
         return "".to_string();
     }
 
@@ -216,7 +216,7 @@ pub fn repeat(subject: &str, times: usize) -> String {
 /// // => "Cafe del Mar café"
 /// ```
 pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
-    if subject.len() == 0 || pattern.len() == 0 {
+    if subject.is_empty() || pattern.is_empty() {
         return subject.to_string();
     }
     match index::index_of(&subject, &pattern, 0) {
@@ -245,7 +245,7 @@ pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
 /// // => "Cafe del Mar cafe"
 /// ```
 pub fn replace_all(subject: &str, pattern: &str, replacement: &str) -> String {
-    if subject.len() == 0 || pattern.len() == 0 {
+    if subject.is_empty() || pattern.is_empty() {
         return subject.to_string();
     }
     subject.replace(pattern, replacement)
@@ -265,7 +265,7 @@ pub fn replace_all(subject: &str, pattern: &str, replacement: &str) -> String {
 /// // => "retniw"
 /// ```
 pub fn reverse(subject: &str) -> String {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return "".to_string();
     }
 
@@ -289,7 +289,7 @@ use unicode_segmentation::UnicodeSegmentation;
 /// // => "ö̲éa̐"
 /// ```
 pub fn reverse_grapheme(subject: &str) -> String {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return "".to_string();
     }
 
@@ -329,12 +329,10 @@ pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) ->
             } else {
                 subject_len - start.abs() as usize
             }
+        } else if (start as usize) >= subject_len {
+            subject_len
         } else {
-            if (start as usize) >= subject_len {
-                subject_len
-            } else {
-                start as usize
-            }
+            start as usize
         }
     }
 
@@ -434,10 +432,10 @@ pub fn trim_right(subject: &str, whitespace: &str) -> String {
 }
 
 fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: bool) -> String {
-    if subject.len() == 0 {
+    if subject.is_empty() {
         return subject.to_string();
     }
-    if whitespace.len() == 0 {
+    if whitespace.is_empty() {
         if to_left && to_right {
             return subject.trim().to_string();
         } else if to_left {
@@ -448,14 +446,14 @@ fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: 
     }
 
     if to_left && to_right {
-        return subject.trim_matches(|c| whitespace.contains(c)).to_owned();
+        subject.trim_matches(|c| whitespace.contains(c)).to_owned()
     } else if to_left {
-        return subject
+        subject
             .trim_left_matches(|c| whitespace.contains(c))
-            .to_owned();
+            .to_owned()
     } else {
-        return subject
+        subject
             .trim_right_matches(|c| whitespace.contains(c))
-            .to_owned();
+            .to_owned()
     }
 }
