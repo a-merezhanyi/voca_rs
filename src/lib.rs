@@ -12,3 +12,4 @@ pub mod strip;
 pub mod utils;
 
 extern crate unicode_segmentation;
+extern crate unidecode;

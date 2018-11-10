@@ -36,6 +36,32 @@ pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
     format!("{}{}{}", prefix, to_insert, sufix)
 }
 
+use unidecode::unidecode;
+/// Latinises the `subject` by removing diacritic characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string to latinise.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::latinise("cafe\u{0301}");
+/// // => "cafe"
+/// manipulate::latinise("août décembre");
+/// // => aout decembre
+/// manipulate::latinise("как прекрасен этот мир");
+/// // => kak prekrasen etot mir
+/// ```
+pub fn latinise(subject: &str) -> String {
+    if subject.is_empty() {
+        "".to_string()
+    } else {
+        unidecode(subject)
+    }
+}
+
 /// Pads `subject` to a new `length`.
 ///
 /// # Arguments

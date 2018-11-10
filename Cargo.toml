@@ -20,3 +20,4 @@ codecov = { repository = "e1r0nd/voca_rs", branch = "master", service = "github"
 
 [dependencies]
 unicode-segmentation = "1.2.0"
+unidecode = "0.3.0"

@@ -400,6 +400,28 @@ mod tests {
         assert_eq!(manipulate::insert("приём", "!", 5), "приём!");
     }
     #[test]
+    fn manipulate_latinise() {
+        assert_eq!(manipulate::latinise(""), "");
+        assert_eq!(manipulate::latinise("cafe\u{0301}"), "cafe");
+        assert_eq!(manipulate::latinise("août décembre"), "aout decembre");
+        assert_eq!(
+            manipulate::latinise("как прекрасен этот мир"),
+            "kak prekrasen etot mir"
+        );
+        assert_eq!(manipulate::latinise("Æneid étude"), "AEneid etude");
+        assert_eq!(manipulate::latinise("北亰"), "Bei Jing ");
+        assert_eq!(manipulate::latinise("ᔕᓇᓇ"), "shanana");
+        assert_eq!(manipulate::latinise("げんまい茶"), "genmaiCha ");
+        assert_eq!(
+            manipulate::latinise("Zażółć gęślą jaźń"),
+            "Zazolc gesla jazn"
+        );
+        assert_eq!(
+            manipulate::latinise("Die Schildkröte fliegt über das Floß."),
+            "Die Schildkrote fliegt uber das Floss."
+        );
+    }
+    #[test]
     fn manipulate_pad() {
         assert_eq!(manipulate::pad("", 0, ""), "");
         assert_eq!(manipulate::pad("abc", 1, ""), "abc");
