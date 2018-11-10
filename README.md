@@ -87,6 +87,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [replace_all](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.replace_all.html)
 - [reverse](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.reverse.html)
 - [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.reverse_grapheme.html)
+- [slugify](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.slugify.html)
 - [splice](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.splice.html)
 - [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
 - [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)
@@ -155,7 +156,6 @@ Build a project: `cargo build` -> `./target/debug`
 #### Manipulate
 
 - expand_tabs - [link](https://www.tutorialspoint.com/python3/string_expandtabs.htm)
-- slugify - [link](https://vocajs.com/#slugify)
 - tr - [link](https://vocajs.com/#tr)
 - wordWrap - [link](https://vocajs.com/#wordWrap)
 - zfill - [link](https://www.tutorialspoint.com/python3/string_zfill.htm)

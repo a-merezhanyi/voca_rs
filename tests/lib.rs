@@ -422,6 +422,43 @@ mod tests {
         );
     }
     #[test]
+    fn manipulate_slugify() {
+        assert_eq!(manipulate::slugify(""), "");
+        assert_eq!(
+            manipulate::slugify("Italian cappuccino drink"),
+            "italian-cappuccino-drink"
+        );
+        assert_eq!(manipulate::slugify("caffé latté"), "caffe-latte");
+        assert_eq!(
+            manipulate::slugify("хорошая погода"),
+            "khoroshaia-pogoda"
+        );
+        assert_eq!(manipulate::slugify("cafe\u{0301}"), "cafe");
+        assert_eq!(manipulate::slugify("août décembre"), "aout-decembre");
+        assert_eq!(
+            manipulate::slugify("как прекрасен этот мир"),
+            "kak-prekrasen-etot-mir"
+        );
+        assert_eq!(manipulate::slugify("Æneid étude"), "aeneid-etude");
+        assert_eq!(manipulate::slugify("北亰"), "bei-jing");
+        assert_eq!(
+            manipulate::slugify("ᔕᓇᓇ ᔕᓇᓇ"),
+            "shanana-shanana"
+        );
+        assert_eq!(
+            manipulate::slugify("げんまい茶 げん"),
+            "genmaicha-gen"
+        );
+        assert_eq!(
+            manipulate::slugify("Zażółć gęślą jaźń"),
+            "zazolc-gesla-jazn"
+        );
+        assert_eq!(
+            manipulate::slugify("Die Schildkröte fliegt über das Floß."),
+            "die-schildkrote-fliegt-uber-das-floss."
+        );
+    }
+    #[test]
     fn manipulate_pad() {
         assert_eq!(manipulate::pad("", 0, ""), "");
         assert_eq!(manipulate::pad("abc", 1, ""), "abc");

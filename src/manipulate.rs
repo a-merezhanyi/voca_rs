@@ -325,6 +325,36 @@ pub fn reverse_grapheme(subject: &str) -> String {
         .join("")
 }
 
+/// Slugifies the `subject`. Cleans the `subject` by replacing diacritics with corresponding latin characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string to latinise.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::slugify("Italian cappuccino drink");
+/// // => "italian-cappuccino-drink"
+/// manipulate::slugify("caffé latté");
+/// // => caffe-latte
+/// manipulate::slugify("хорошая погода");
+/// // => khoroshaia-pogoda
+/// ```
+pub fn slugify(subject: &str) -> String {
+    if subject.is_empty() {
+        "".to_string()
+    } else {
+        unidecode(subject)
+            .to_lowercase()
+            .trim()
+            .split_whitespace()
+            .collect::<Vec<&str>>()
+            .join("-")
+    }
+}
+
 /// Changes `subject` by deleting `delete_count` of characters starting at position `start`. Places a new string `to_add` instead of deleted characters.
 ///
 /// # Arguments
