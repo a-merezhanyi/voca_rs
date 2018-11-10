@@ -422,10 +422,6 @@ pub fn trim_left(subject: &str, whitespace: &str) -> String {
 /// manipulate::trim_right("-~-Earth~-~", "-~");
 /// // => "-~-Earth"
 /// ```
-// TODO: trim_left is deprecating in 1.33.0: superseded by trim_start
-// TODO: trim_right is deprecating in 1.33.0: superseded by trim_end
-// TODO: trim_left_matches is deprecating in 1.33.0: superseded by trim_start_matches
-// TODO: trim_right_matches is deprecating in 1.33.0: superseded by trim_end_matches
 
 pub fn trim_right(subject: &str, whitespace: &str) -> String {
     trim_left_or_right(&subject, &whitespace, false, true)
@@ -439,9 +435,9 @@ fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: 
         if to_left && to_right {
             return subject.trim().to_string();
         } else if to_left {
-            return subject.trim_left().to_string();
+            return subject.trim_start().to_string();
         } else {
-            return subject.trim_right().to_string();
+            return subject.trim_end().to_string();
         }
     }
 
@@ -449,11 +445,11 @@ fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: 
         subject.trim_matches(|c| whitespace.contains(c)).to_owned()
     } else if to_left {
         subject
-            .trim_left_matches(|c| whitespace.contains(c))
+            .trim_start_matches(|c| whitespace.contains(c))
             .to_owned()
     } else {
         subject
-            .trim_right_matches(|c| whitespace.contains(c))
+            .trim_end_matches(|c| whitespace.contains(c))
             .to_owned()
     }
 }
