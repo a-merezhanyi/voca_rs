@@ -20,7 +20,7 @@ pub const VERSION: &str = "1.0.0";
 /// utils::ASCII_LETTERS;
 /// // => "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 /// ```
-// TODO: make a combination of ASCII_LOWERCASE, ASCII_UPPERCASE
+// TODO: make a combination of ASCII_LOWERCASE, ASCII_UPPERCASE #5
 pub const ASCII_LETTERS: &str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 /// The lowercase letters `"abcdefghijklmnopqrstuvwxyz"`. This value is not locale-dependent and will not change.
@@ -43,7 +43,7 @@ pub const ASCII_LOWERCASE: &str = "abcdefghijklmnopqrstuvwxyz";
 /// utils::ASCII_UPPERCASE;
 /// // => "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 /// ```
-// TODO: make a variation of ASCII_LOWERCASE
+// TODO: make a variation of ASCII_LOWERCASE #6
 pub const ASCII_UPPERCASE: &str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 /// The string "0123456789".
@@ -66,7 +66,7 @@ pub const DIGITS: &str = "0123456789";
 /// utils::HEXDIGITS;
 /// // => "0123456789abcdefABCDEF"
 /// ```
-// TODO: make a combination of slices of DIGITS, ASCII_LOWERCASE, ASCII_UPPERCASE
+// TODO: make a combination of slices of DIGITS, ASCII_LOWERCASE, ASCII_UPPERCASE #7
 pub const HEXDIGITS: &str = "0123456789abcdefABCDEF";
 
 /// The string `"01234567"`.
@@ -78,7 +78,7 @@ pub const HEXDIGITS: &str = "0123456789abcdefABCDEF";
 /// utils::OCTDIGITS;
 /// // => "01234567"
 /// ```
-// TODO: make a slice of DIGITS
+// TODO: make a slice of DIGITS #8
 pub const OCTDIGITS: &str = "01234567";
 
 /// The string `!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~`.
@@ -101,7 +101,7 @@ pub const PUNCTUATION: &str = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 /// utils::PRINTABLE;
 /// // => 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r
 /// ```
-// TODO: make a combination of DIGITS, ASCII_LETTERS, PUNCTUATION, WHITESPACE
+// TODO: make a combination of DIGITS, ASCII_LETTERS, PUNCTUATION, WHITESPACE #9
 pub const PRINTABLE: &str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ \t\n\r";
 
 /// The string `" \t\n\r"`.
