@@ -420,10 +420,16 @@ mod tests {
             manipulate::latinise("Die Schildkröte fliegt über das Floß."),
             "Die Schildkrote fliegt uber das Floss."
         );
+        assert_eq!(
+            manipulate::latinise("Există peste 13.800 de localități în România"),
+            "Exista peste 13.800 de localitati in Romania"
+        );
     }
     #[test]
     fn manipulate_slugify() {
         assert_eq!(manipulate::slugify(""), "");
+        assert_eq!(manipulate::slugify("\n\n\n\n   ***\t\t"), "");
+        assert_eq!(manipulate::slugify("****"), "");
         assert_eq!(
             manipulate::slugify("Italian cappuccino drink"),
             "italian-cappuccino-drink"
@@ -433,6 +439,15 @@ mod tests {
             manipulate::slugify("хорошая погода"),
             "khoroshaia-pogoda"
         );
+        assert_eq!(
+            manipulate::slugify("Хорошая статья: 'XMLHttpRequest 101 Course' \\!/"),
+            "khoroshaia-statia-xmlhttprequest-101-course"
+        );
+        assert_eq!(
+            manipulate::slugify("/home/dmitri/projects/voca"),
+            "home-dmitri-projects-voca"
+        );
+
         assert_eq!(manipulate::slugify("cafe\u{0301}"), "cafe");
         assert_eq!(manipulate::slugify("août décembre"), "aout-decembre");
         assert_eq!(
@@ -455,7 +470,7 @@ mod tests {
         );
         assert_eq!(
             manipulate::slugify("Die Schildkröte fliegt über das Floß."),
-            "die-schildkrote-fliegt-uber-das-floss."
+            "die-schildkrote-fliegt-uber-das-floss"
         );
     }
     #[test]

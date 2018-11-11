@@ -339,19 +339,14 @@ pub fn reverse_grapheme(subject: &str) -> String {
 /// // => "italian-cappuccino-drink"
 /// manipulate::slugify("caffé latté");
 /// // => caffe-latte
-/// manipulate::slugify("хорошая погода");
-/// // => khoroshaia-pogoda
+/// manipulate::slugify("Хорошая статья: 'XMLHttpRequest 101 Course' \\!/");
+/// // => khoroshaia-statia-xmlhttprequest-101-course
 /// ```
 pub fn slugify(subject: &str) -> String {
     if subject.is_empty() {
         "".to_string()
     } else {
-        unidecode(subject)
-            .to_lowercase()
-            .trim()
-            .split_whitespace()
-            .collect::<Vec<&str>>()
-            .join("-")
+        split::words(unidecode(subject).replace("'", "").to_lowercase().trim()).join("-")
     }
 }
 
