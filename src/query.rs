@@ -331,7 +331,7 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
 /// use voca_rs::*;
 /// query::query("starship", "star", 0);
 /// // => true
-/// query::query("the world is yours", "te wld", 0)
+/// query::query("the world is yours", "te wld", 0);
 /// // => true
 /// query::query("galaxy", "g", 1);
 /// // => false
