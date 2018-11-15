@@ -152,6 +152,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Index
 
+- index_all - Returns an array of all occurrence index of `search` in `subject` or -1 if not found.
 - search - [link](https://vocajs.com/#search)
 
 #### Manipulate
