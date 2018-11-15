@@ -317,6 +317,53 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
     res
 }
 
+/// Checks whether `subject` contains all characters from `search` starting from `position`. Respects an order of characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+/// * `search` - The ending string.
+/// * `position` - The position to start searching.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::query("starship", "star", 0);
+/// // => true
+/// query::query("the world is yours", "te wld", 0)
+/// // => true
+/// query::query("galaxy", "g", 1);
+/// // => false
+/// ```
+pub fn query(subject: &str, search: &str, position: usize) -> bool {
+    let subject_len = count::count(&subject);
+    if subject_len < position {
+        return false;
+    }
+    if subject_len == 0 || search.is_empty() {
+        return true;
+    }
+    let mut i: usize = 0;
+    let q = split::chars(&search);
+    let q_len = split::chars(&search).len();
+    split::chars(&subject.to_owned()[subject.char_indices().nth(position).unwrap().0..])
+        .into_iter()
+        .filter(|c| {
+            if i < q_len {
+                if c == &q[i] {
+                    i += 1;
+                    true
+                } else {
+                    false
+                }
+            } else {
+                false
+            }
+        }).count()
+        == count::count(&search)
+}
+
 /// Checks whether `subject` starts with `start`.
 ///
 /// # Arguments

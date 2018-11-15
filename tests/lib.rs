@@ -196,6 +196,21 @@ mod tests {
         assert_eq!(query::is_uppercase("t1000"), false);
     }
     #[test]
+    fn query_query() {
+        assert!(query::query("", "", 0), true);
+        assert!(query::query("a", "a", 0), true);
+        assert!(query::query("abc", "c", 2), true);
+        assert!(query::query("the world is yours", "the world", 0));
+        assert!(query::query("the world is yours", "te wld", 0));
+        assert_eq!(query::query("the world is yours", "asdd", 0), false);
+        assert_eq!(query::query("the world is yours", "eht", 0), false);
+        assert!(query::query("the world is yours", "td", 0));
+        assert!(query::query("Zażółć gęślą jaźń", "gęślą", 7));
+        assert!(query::query("the world is yours", "", 0));
+        assert_eq!(query::query("abc", "c", 20), false);
+        assert_eq!(query::query("abc", "z", 0), false);
+    }
+    #[test]
     fn query_starts_with() {
         assert!(query::starts_with("the world is yours", "the world"));
         assert!(query::starts_with(
