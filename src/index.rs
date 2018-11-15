@@ -33,7 +33,7 @@ pub fn index_all(subject: &str, search: &str, from_index: usize) -> Vec<usize> {
     res
 }
 
-/// Returns the first occurrence index of `search` in `subject` or -1 if not found.
+/// Returns the first occurrence index of `search` in `subject` or -1 if not found. Case sensitive.
 ///
 /// # Arguments
 ///
@@ -76,7 +76,7 @@ pub fn index_of(subject: &str, search: &str, from_index: usize) -> i8 {
     }
 }
 
-/// Returns the last occurrence index of `search` in `subject` or -1 if not found.
+/// Returns the last occurrence index of `search` in `subject` or -1 if not found. Case sensitive.
 ///
 /// # Arguments
 ///
