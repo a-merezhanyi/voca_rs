@@ -105,7 +105,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
 - [is_numeric](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_numeric.html)
 - [is_uppercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_uppercase.html)
-- - [query](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.query.html)
+- [query](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.query.html)
 - [starts_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.starts_with.html)
 
 #### Split
