@@ -2,6 +2,37 @@
 
 use count;
 use split;
+/// Returns an array of all occurrence index of `search` in `subject` or an empty array if not found. Case sensitive.
+///
+/// # Arguments
+///
+/// * `subject` - The string where to search.
+/// * `search` - The string to search.
+/// * `from_index` - The index to start searching
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// index::index_all("morning", "n", 0);
+/// // => [3, 5]
+/// index::index_all("Zażółć gęślą jaźń", "aęą", 0);
+/// // => [1, 8, 11, 14]
+/// index::index_all("evening", "o", 0);
+/// // => []
+pub fn index_all(subject: &str, search: &str, from_index: usize) -> Vec<usize> {
+    if subject.is_empty() || count::count(&subject) < from_index {
+        return vec![];
+    }
+    let string_slice = &subject[subject.char_indices().nth(from_index).unwrap().0..];
+    let mut res = Vec::new();
+    for (i, c) in split::chars(string_slice).iter().enumerate() {
+        if search.contains(c) {
+            res.push(i)
+        }
+    }
+    res
+}
+
 /// Returns the first occurrence index of `search` in `subject` or -1 if not found.
 ///
 /// # Arguments

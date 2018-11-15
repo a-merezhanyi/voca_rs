@@ -72,6 +72,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Index
 
+- [index_all](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.index_all.html)
 - [index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.index_of.html)
 - [last_index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.last_index_of.html)
 
@@ -152,7 +153,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Index
 
-- index_all - Returns an array of all occurrence index of `search` in `subject` or an empty array if not found.
 - search - [link](https://vocajs.com/#search)
 
 #### Manipulate

@@ -1057,6 +1057,36 @@ mod tests {
         );
     }
     #[test]
+    fn index_index_all() {
+        assert_eq!(index::index_all("", "", 0), []);
+        assert_eq!(index::index_all("rain", "r", 0), [0]);
+        assert_eq!(index::index_all("rain", "a", 0), [1]);
+        assert_eq!(index::index_all("rain", "n", 3), [0]);
+        assert_eq!(index::index_all("rain", "a", 10), []);
+        assert_eq!(
+            index::index_all("Rain, dear rain", "ear", 0),
+            [1, 7, 8, 9, 11, 12]
+        );
+        assert_eq!(
+            index::index_all("Rain, dear rain", "ain", 0),
+            [1, 2, 3, 8, 12, 13, 14]
+        );
+        assert_eq!(index::index_all("rain", "z", 0), []);
+        assert_eq!(index::index_all("b\u{0142}\u{0105}d", "ą", 0), [2]);
+        assert_eq!(
+            index::index_all("Zażółć gęślą jaźń", "aęą", 0),
+            [1, 8, 11, 14]
+        );
+        assert_eq!(
+            index::index_all("Die Schildkröte fliegt über das Floß.", "iöß", 4),
+            [3, 8, 14, 31]
+        );
+        assert_eq!(
+            index::index_all("Как меня слышно, приём!", "н", 0),
+            [6, 13]
+        );
+    }
+    #[test]
     fn index_last_index_of() {
         assert_eq!(index::last_index_of("", "", 0), 0);
         assert_eq!(index::last_index_of("rain", "r", 0), 0);
