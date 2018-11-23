@@ -93,6 +93,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
 - [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)
 - [trim_right](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_right.html)
+- [zfill](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.zfill.html)
 
 #### Query
 
@@ -160,7 +161,6 @@ Build a project: `cargo build` -> `./target/debug`
 - expand_tabs - [link](https://www.tutorialspoint.com/python3/string_expandtabs.htm)
 - tr - [link](https://vocajs.com/#tr)
 - wordWrap - [link](https://vocajs.com/#wordWrap)
-- zfill - [link](https://www.tutorialspoint.com/python3/string_zfill.htm)
 
 #### Query
 

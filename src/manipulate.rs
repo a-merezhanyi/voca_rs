@@ -504,3 +504,32 @@ fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: 
             .to_owned()
     }
 }
+/// Pads `subject` from left with zeros to a new `length`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to pad.
+/// * `length` - The length to pad the string. No changes are made if `length` is less than `subject.len()`.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::zfill("123", 5);
+/// // => "00123"
+/// manipulate::zfill("Café", 7);
+/// // => "000Café"
+/// ```
+pub fn zfill(subject: &str, length: usize) -> String {
+    let subject_len = count::count_graphemes(&subject);
+    match subject_len {
+        0 => "".to_string(),
+        _ => {
+            if subject_len >= length {
+                subject.to_string()
+            } else {
+                pad_left_right(&subject, length, "0", PadMode::Left)
+            }
+        }
+    }
+}

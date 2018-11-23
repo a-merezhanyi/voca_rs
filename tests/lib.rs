@@ -795,6 +795,33 @@ mod tests {
         );
         assert_eq!(manipulate::trim_right("", ""), "");
     }
+    #[test]
+    fn manipulate_zfill() {
+        assert_eq!(manipulate::zfill("", 0), "");
+        assert_eq!(manipulate::zfill("abc", 0), "abc");
+        assert_eq!(manipulate::zfill("abc", 1), "abc");
+        assert_eq!(manipulate::zfill("abc", 2), "abc");
+        assert_eq!(manipulate::zfill("abc", 3), "abc");
+        assert_eq!(manipulate::zfill("abc", 4), "0abc");
+        assert_eq!(manipulate::zfill("abc", 5), "00abc");
+        assert_eq!(manipulate::zfill("abc", 6), "000abc");
+        assert_eq!(manipulate::zfill("Café", 4), "Café");
+        assert_eq!(manipulate::zfill("Café", 5), "0Café");
+        assert_eq!(manipulate::zfill("Café", 7), "000Café");
+        assert_eq!(manipulate::zfill("Café del Mar", 15), "000Café del Mar");
+        assert_eq!(
+            manipulate::zfill("Zażółć gęślą jaźń", 25),
+            "00000000Zażółć gęślą jaźń"
+        );
+        assert_eq!(
+            manipulate::zfill("Die Schildkröte fliegt", 29),
+            "0000000Die Schildkröte fliegt"
+        );
+        assert_eq!(
+            manipulate::zfill("Алё! Приём", 11),
+            "0Алё! Приём"
+        );
+    }
 
     /// voca_rs::count testing
     #[test]
