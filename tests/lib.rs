@@ -422,6 +422,38 @@ mod tests {
         );
     }
     #[test]
+    fn manipulate_expand_spaces() {
+        assert_eq!(manipulate::expand_spaces("", 0), "");
+        assert_eq!(
+            manipulate::expand_spaces("как же  хорошо", 0),
+            "как же  хорошо"
+        );
+        assert_eq!(
+            manipulate::expand_spaces("This  is  good", 2),
+            "This\tis\tgood"
+        );
+        assert_eq!(
+            manipulate::expand_spaces("Café del  Mar", 2),
+            "Café del\tMar"
+        );
+        assert_eq!(
+            manipulate::expand_spaces("line1\n  line2\n    line3", 2),
+            "line1\n\tline2\n\t\tline3"
+        );
+        assert_eq!(
+            manipulate::expand_spaces("Zaż    ółć    !", 4),
+            "Zaż\tółć\t!"
+        );
+        assert_eq!(
+            manipulate::expand_spaces("über das Floß", 1),
+            "über\tdas\tFloß"
+        );
+        assert_eq!(
+            manipulate::expand_spaces("caffé latté", 1),
+            "caffé\tlatté"
+        );
+    }
+    #[test]
     fn manipulate_insert() {
         assert_eq!(manipulate::insert("", "", 0), "");
         assert_eq!(manipulate::insert("abc", "", 0), "abc");

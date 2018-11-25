@@ -78,6 +78,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Manipulate
 
+- [expand_spaces](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.expand_spaces.html)
 - [expand_tabs](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.expand_tabs.html)
 - [insert](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.insert.html)
 - [latinise](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.latinise.html)

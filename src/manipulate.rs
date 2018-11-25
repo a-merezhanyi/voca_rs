@@ -4,12 +4,36 @@ use chop;
 use count;
 use index;
 use split;
+/// Returns a copy of `subject` expands spaces using the tab characters.
+///
+/// # Arguments
+///
+/// * `subject` - The string to expand.
+/// * `tabsize` - The tab size.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::expand_spaces(""This  is  good", 2);
+/// // => "This\tis\tgood"
+/// manipulate::expand_spaces("Café del  Mar", 2);
+/// // => "Café del\tMar"
+/// ```
+pub fn expand_spaces(subject: &str, tabsize: usize) -> String {
+    if subject.is_empty() || tabsize == 0 {
+        subject.to_string()
+    } else {
+        subject.replace(&" ".repeat(tabsize), "\t")
+    }
+}
+
 /// Returns a copy of `subject` expands the tab characters using spaces.
 ///
 /// # Arguments
 ///
 /// * `subject` - The string to expand.
-/// * `tabsize` - The position to insert.
+/// * `tabsize` - The tab size.
 ///
 /// # Example
 ///
