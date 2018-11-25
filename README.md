@@ -78,6 +78,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Manipulate
 
+- [expand_tabs](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.expand_tabs.html)
 - [insert](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.insert.html)
 - [latinise](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.latinise.html)
 - [pad](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.pad.html)
@@ -158,7 +159,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Manipulate
 
-- expand_tabs - [link](https://www.tutorialspoint.com/python3/string_expandtabs.htm)
 - tr - [link](https://vocajs.com/#tr)
 - wordWrap - [link](https://vocajs.com/#wordWrap)
 

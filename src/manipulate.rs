@@ -4,6 +4,30 @@ use chop;
 use count;
 use index;
 use split;
+/// Returns a copy of `subject` expands the tab characters using spaces.
+///
+/// # Arguments
+///
+/// * `subject` - The string to expand.
+/// * `tabsize` - The position to insert.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::expand_tabs("This is\tgood", 4);
+/// // => "This is    good"
+/// manipulate::expand_tabs("no\tspaces", 0);
+/// // => "nospaces"
+/// ```
+pub fn expand_tabs(subject: &str, tabsize: usize) -> String {
+    if subject.is_empty() {
+        "".to_string()
+    } else {
+        subject.replace("\t", &" ".repeat(tabsize))
+    }
+}
+
 /// Inserts into `subject` a string `to_insert` at specified `position`.
 ///
 /// # Arguments

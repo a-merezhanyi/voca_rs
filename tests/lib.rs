@@ -397,6 +397,31 @@ mod tests {
 
     /// voca_rs::manipulate testing
     #[test]
+    fn manipulate_expand_tabs() {
+        assert_eq!(manipulate::expand_tabs("", 0), "");
+        assert_eq!(
+            manipulate::expand_tabs("This is\tgood", 4),
+            "This is    good"
+        );
+        assert_eq!(manipulate::expand_tabs("no\tspaces", 0), "nospaces");
+        assert_eq!(
+            manipulate::expand_tabs("line1\n\tline2\n\t\tline3", 2),
+            "line1\n  line2\n    line3"
+        );
+        assert_eq!(
+            manipulate::expand_tabs("Zaż\tółć\t!", 4),
+            "Zaż    ółć    !"
+        );
+        assert_eq!(
+            manipulate::expand_tabs("über\tdas\tFloß", 1),
+            "über das Floß"
+        );
+        assert_eq!(
+            manipulate::expand_tabs("caffé\tlatté", 1),
+            "caffé latté"
+        );
+    }
+    #[test]
     fn manipulate_insert() {
         assert_eq!(manipulate::insert("", "", 0), "");
         assert_eq!(manipulate::insert("abc", "", 0), "abc");
