@@ -15,7 +15,7 @@ use split;
 ///
 /// ```
 /// use voca_rs::*;
-/// manipulate::expand_spaces(""This  is  good", 2);
+/// manipulate::expand_spaces("This  is  good", 2);
 /// // => "This\tis\tgood"
 /// manipulate::expand_spaces("Café del  Mar", 2);
 /// // => "Café del\tMar"
