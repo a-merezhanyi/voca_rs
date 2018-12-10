@@ -195,7 +195,8 @@ pub fn is_digit(subject: &str) -> bool {
             let mut current_char = String::new();
             current_char.push_str(c);
             utils::DIGITS.contains(&current_char)
-        }).count()
+        })
+        .count()
         == subject_len
 }
 
@@ -271,14 +272,8 @@ pub fn is_numeric(subject: &str) -> bool {
     }
 
     match subject.find('.') {
-        Some(_) => match subject.parse::<f32>() {
-            Ok(_) => true,
-            Err(_) => false,
-        },
-        None => match subject.parse::<i32>() {
-            Ok(_) => true,
-            Err(_) => false,
-        },
+        Some(_) => subject.parse::<f32>().is_ok(),
+        None => subject.parse::<i32>().is_ok(),
     }
 }
 
@@ -360,7 +355,8 @@ pub fn query(subject: &str, search: &str, position: usize) -> bool {
             } else {
                 false
             }
-        }).count()
+        })
+        .count()
         == count::count(&search)
 }
 
