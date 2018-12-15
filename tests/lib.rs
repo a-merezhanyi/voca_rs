@@ -109,13 +109,13 @@ mod tests {
         assert!(query::ends_with("the world is yours", "is yours"));
         assert!(query::ends_with("Zażółć gęślą jaźń", "jaźń"));
         assert!(query::ends_with("the world is yours", ""));
-        assert!(query::ends_with("", ""), true);
+        assert!(query::ends_with("", ""));
     }
     #[test]
     fn query_includes() {
-        assert!(query::includes("", "", 0), true);
-        assert!(query::includes("a", "a", 0), true);
-        assert!(query::includes("abc", "c", 2), true);
+        assert!(query::includes("", "", 0));
+        assert!(query::includes("a", "a", 0));
+        assert!(query::includes("abc", "c", 2));
         assert!(query::includes("the world is yours", "the world", 0));
         assert!(query::includes("Zażółć gęślą jaźń", "gęślą", 7));
         assert!(query::includes("the world is yours", "", 0));
@@ -124,37 +124,37 @@ mod tests {
     }
     #[test]
     fn query_is_alpha() {
+        assert!(query::is_alpha("bart"));
+        assert!(query::is_alpha("café"));
+        assert!(query::is_alpha("cafe\u{0301}"));
+        assert!(query::is_alpha("Zażółć"));
         assert_eq!(query::is_alpha(""), false);
-        assert_eq!(query::is_alpha("bart"), true);
-        assert_eq!(query::is_alpha("café"), true);
-        assert_eq!(query::is_alpha("cafe\u{0301}"), true);
         assert_eq!(query::is_alpha("T1000"), false);
         assert_eq!(query::is_alpha("\n\t"), false);
         assert_eq!(query::is_alpha("lisa!"), false);
         assert_eq!(query::is_alpha("lisa and bart"), false);
-        assert_eq!(query::is_alpha("Zażółć"), true);
         assert_eq!(query::is_alpha("Zażółć gęślą jaźń"), false);
     }
     #[test]
     fn query_is_alphadigit() {
+        assert!(query::is_alphadigit("bart"));
+        assert!(query::is_alphadigit("café"));
+        assert!(query::is_alphadigit("cafe\u{0301}"));
+        assert!(query::is_alphadigit("T1000"));
+        assert!(query::is_alphadigit("1000"));
+        assert!(query::is_alphadigit("Zażółć"));
         assert_eq!(query::is_alphadigit(""), false);
-        assert_eq!(query::is_alphadigit("bart"), true);
-        assert_eq!(query::is_alphadigit("café"), true);
-        assert_eq!(query::is_alphadigit("cafe\u{0301}"), true);
-        assert_eq!(query::is_alphadigit("T1000"), true);
-        assert_eq!(query::is_alphadigit("1000"), true);
         assert_eq!(query::is_alphadigit("10-00"), false);
         assert_eq!(query::is_alphadigit("\n\t"), false);
         assert_eq!(query::is_alphadigit("lisa!"), false);
         assert_eq!(query::is_alphadigit("lisa and bart"), false);
-        assert_eq!(query::is_alphadigit("Zażółć"), true);
         assert_eq!(query::is_alphadigit("Zażółć gęślą jaźń"), false);
     }
     #[test]
     fn query_is_blank() {
-        assert!(query::is_blank(""), true);
-        assert_eq!(query::is_blank("   "), true);
-        assert_eq!(query::is_blank("\n\t\r"), true);
+        assert!(query::is_blank(""));
+        assert!(query::is_blank("   "));
+        assert!(query::is_blank("\n\t\r"));
         assert_eq!(query::is_blank("Zażółć gęślą jaźń"), false);
     }
     #[test]
@@ -169,14 +169,14 @@ mod tests {
     }
     #[test]
     fn query_is_empty() {
-        assert!(query::is_empty(""), true);
+        assert!(query::is_empty(""));
         assert_eq!(query::is_empty("Zażółć gęślą jaźń"), false);
         assert_eq!(query::is_empty("the world is yours"), false);
     }
     #[test]
     fn query_is_lowercase() {
-        assert!(query::is_lowercase(""), true);
-        assert_eq!(query::is_lowercase("the world is yours"), true);
+        assert!(query::is_lowercase(""));
+        assert!(query::is_lowercase("the world is yours"));
         assert_eq!(query::is_lowercase("Zażółć gęślą jaźń"), false);
         assert_eq!(query::is_lowercase("T1000"), false);
     }
@@ -201,23 +201,23 @@ mod tests {
     }
     #[test]
     fn query_is_uppercase() {
-        assert!(query::is_uppercase(""), true);
-        assert_eq!(query::is_uppercase("THE WORLD IS YOURS"), true);
+        assert!(query::is_uppercase(""));
+        assert!(query::is_uppercase("THE WORLD IS YOURS"));
         assert_eq!(query::is_uppercase("Zażółć gęślą jaźń"), false);
         assert_eq!(query::is_uppercase("t1000"), false);
     }
     #[test]
     fn query_query() {
-        assert!(query::query("", "", 0), true);
-        assert!(query::query("a", "a", 0), true);
-        assert!(query::query("abc", "c", 2), true);
+        assert!(query::query("", "", 0));
+        assert!(query::query("a", "a", 0));
+        assert!(query::query("abc", "c", 2));
         assert!(query::query("the world is yours", "the world", 0));
         assert!(query::query("the world is yours", "te wld", 0));
-        assert_eq!(query::query("the world is yours", "asdd", 0), false);
-        assert_eq!(query::query("the world is yours", "eht", 0), false);
         assert!(query::query("the world is yours", "td", 0));
         assert!(query::query("Zażółć gęślą jaźń", "gęślą", 7));
         assert!(query::query("the world is yours", "", 0));
+        assert_eq!(query::query("the world is yours", "asdd", 0), false);
+        assert_eq!(query::query("the world is yours", "eht", 0), false);
         assert_eq!(query::query("abc", "c", 20), false);
         assert_eq!(query::query("abc", "z", 0), false);
     }
@@ -229,7 +229,8 @@ mod tests {
             "Zażółć"
         ));
         assert!(query::starts_with("the world is yours", ""));
-        assert!(query::starts_with("", ""), true);
+        assert!(query::starts_with("", ""));
+        assert_eq!(query::starts_with("the world is yours", "s"), false);
     }
 
     /// voca_rs::case testing
