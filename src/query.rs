@@ -265,6 +265,8 @@ pub fn is_lowercase(subject: &str) -> bool {
 /// query::is_numeric("five");
 /// // => false
 /// ```
+// TODO #12: Add hex number validation -> 0xFF
+// https://stackoverflow.com/questions/32381414/converting-a-hexadecimal-string-to-a-decimal-integer
 pub fn is_numeric(subject: &str) -> bool {
     if subject.is_empty() {
         return true;
