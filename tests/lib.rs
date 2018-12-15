@@ -182,11 +182,22 @@ mod tests {
     }
     #[test]
     fn query_is_numeric() {
-        assert!(query::is_numeric(""), true);
-        assert_eq!(query::is_numeric("350"), true);
-        assert_eq!(query::is_numeric("-20.5"), true);
+        assert!(query::is_numeric(""));
+        assert!(query::is_numeric("0"));
+        assert!(query::is_numeric("+0"));
+        assert!(query::is_numeric("0.0"));
+        assert!(query::is_numeric("1000"));
+        assert!(query::is_numeric("1.56"));
+        assert!(query::is_numeric("-10.888"));
+        assert!(query::is_numeric("350"));
+        assert!(query::is_numeric("-20.5"));
+        assert!(query::is_numeric("1.5E+2"));
+        assert!(query::is_numeric("1.25E-3"));
+        assert!(query::is_numeric("125e5"));
+        assert!(query::is_numeric("125e-3"));
         assert_eq!(query::is_numeric("five"), false);
         assert_eq!(query::is_numeric(".."), false);
+        assert_eq!(query::is_numeric(" "), false);
     }
     #[test]
     fn query_is_uppercase() {

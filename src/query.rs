@@ -260,20 +260,31 @@ pub fn is_lowercase(subject: &str) -> bool {
 /// // => true
 /// query::is_numeric("-20.5");
 /// // => true
+/// query::is_numeric("1.5E+2");
+/// // => true
 /// query::is_numeric("five");
 /// // => false
 /// ```
-// TODO: add scientific numbers validation #11
-// assert_eq!(query::is_numeric("1.5E+2"), true);
-// probably via regexp
 pub fn is_numeric(subject: &str) -> bool {
     if subject.is_empty() {
         return true;
     }
 
-    match subject.find('.') {
-        Some(_) => subject.parse::<f32>().is_ok(),
-        None => subject.parse::<i32>().is_ok(),
+    fn parse_str_num(n: &str) -> bool {
+        match n.find('.') {
+            Some(_) => n.parse::<f32>().is_ok(),
+            None => n.parse::<i32>().is_ok(),
+        }
+    }
+
+    match subject.to_lowercase().find('e') {
+        Some(_) => {
+            let sbj = subject.to_lowercase();
+            let s: Vec<&str> = sbj.split('e').collect();
+            println!("{}, {:?}", subject, s);
+            parse_str_num(s[0]) && parse_str_num(s[1])
+        }
+        None => parse_str_num(subject),
     }
 }
 
