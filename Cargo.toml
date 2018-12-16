@@ -1,6 +1,6 @@
 [package]
 name = "voca_rs"
-version = "1.1.0"
+version = "1.2.0"
 authors = ["Anatol Merezhanyi <a.merezhanyi@gmail.com>"]
 license = "MIT"
 description = "Voca_rs is a Rust library for manipulating strings. Inspired by Voca.js and string.py"
