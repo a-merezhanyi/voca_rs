@@ -195,6 +195,12 @@ mod tests {
         assert!(query::is_numeric("1.25E-3"));
         assert!(query::is_numeric("125e5"));
         assert!(query::is_numeric("125e-3"));
+        assert!(query::is_numeric("0xFF"));
+        assert!(query::is_numeric("0x22"));
+        assert!(query::is_numeric("0x123ABC"));
+        assert!(query::is_numeric("0x123ABC"));
+        assert!(query::is_numeric("0x1ab9"));
+        assert_eq!(query::is_numeric("0x123z"), false);
         assert_eq!(query::is_numeric("five"), false);
         assert_eq!(query::is_numeric(".."), false);
         assert_eq!(query::is_numeric(" "), false);

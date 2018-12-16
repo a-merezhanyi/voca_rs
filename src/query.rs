@@ -260,13 +260,13 @@ pub fn is_lowercase(subject: &str) -> bool {
 /// // => true
 /// query::is_numeric("-20.5");
 /// // => true
+/// query::is_numeric("0xFF");
+/// // => true
 /// query::is_numeric("1.5E+2");
 /// // => true
 /// query::is_numeric("five");
 /// // => false
 /// ```
-// TODO #12: Add hex number validation -> 0xFF
-// https://stackoverflow.com/questions/32381414/converting-a-hexadecimal-string-to-a-decimal-integer
 pub fn is_numeric(subject: &str) -> bool {
     if subject.is_empty() {
         return true;
@@ -279,14 +279,20 @@ pub fn is_numeric(subject: &str) -> bool {
         }
     }
 
+    let sbj = subject.to_lowercase();
     match subject.to_lowercase().find('e') {
         Some(_) => {
-            let sbj = subject.to_lowercase();
             let s: Vec<&str> = sbj.split('e').collect();
-            println!("{}, {:?}", subject, s);
             parse_str_num(s[0]) && parse_str_num(s[1])
         }
-        None => parse_str_num(subject),
+        None => {
+            if starts_with(&subject.to_lowercase(), "0x") {
+                let s = sbj.trim_left_matches("0x");
+                i32::from_str_radix(s, 16).is_ok()
+            } else {
+                parse_str_num(subject)
+            }
+        }
     }
 }
 
