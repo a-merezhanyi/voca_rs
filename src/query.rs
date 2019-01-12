@@ -296,6 +296,42 @@ pub fn is_numeric(subject: &str) -> bool {
     }
 }
 
+/// Checks whether `subject` is a titlecased string and there is at least one character.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_title("This Is String Example...Wow!!!");
+/// // => true
+/// query::is_title("This is string example....wow!!!");
+/// // => false
+/// ```
+pub fn is_title(subject: &str) -> bool {
+    if subject.is_empty() {
+        return false;
+    }
+    let words = split::words(&subject);
+    let subject_len = words.len();
+    words
+        .iter()
+        .filter(|w| {
+            let mut res = String::with_capacity(w.len());
+            for (i, c) in split::chars(w).iter().enumerate() {
+                if (i == 0 && c == &c.to_uppercase()) || (i > 0 && c == &c.to_lowercase()) {
+                    res.push_str(&c)
+                }
+            }
+            res.len() == w.len()
+        })
+        .count()
+        == subject_len
+}
+
 /// Checks whether `subject` has only upper case characters.
 ///
 /// # Arguments

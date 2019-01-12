@@ -206,6 +206,17 @@ mod tests {
         assert_eq!(query::is_numeric(" "), false);
     }
     #[test]
+    fn query_is_title() {
+        assert_eq!(query::is_title(""), false);
+        assert!(query::is_title("The World Is Yours"), true);
+        assert_eq!(query::is_title("the world is yours"), false);
+        assert!(query::is_title("This Is String Example...Wow!!!"));
+        assert_eq!(query::is_title("This is string example....wow!!!"), false);
+        assert!(query::is_title("Zażółć Gęślą Jaźń"));
+        assert_eq!(query::is_title("Zażółć gęślą jaźń"), false);
+        assert_eq!(query::is_title("T1000"), true);
+    }
+    #[test]
     fn query_is_uppercase() {
         assert!(query::is_uppercase(""));
         assert!(query::is_uppercase("THE WORLD IS YOURS"));
