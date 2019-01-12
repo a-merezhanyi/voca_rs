@@ -139,6 +139,12 @@ Build a project: `cargo build` -> `./target/debug`
 
 ## Roadmap
 
+#### Case
+
+- lower_first - [link](https://lodash.com/docs/4.17.11#lowerFirst)
+- start_case - [link](https://lodash.com/docs/4.17.11#startCase)
+- upper_first - [link](https://lodash.com/docs/4.17.11#upperFirst)
+
 #### Chop
 
 - codePointAt - [link](https://vocajs.com/#codePointAt)
