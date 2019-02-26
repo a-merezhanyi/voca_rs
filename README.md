@@ -45,6 +45,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [swap_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.swap_case.html)
 - [title_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.title_case.html)
 - [upper_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.upper_case.html)
+- [upper_first](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.upper_first.html)
 
 #### Chop
 
@@ -143,7 +144,6 @@ Build a project: `cargo build` -> `./target/debug`
 #### Case
 
 - start_case - [link](https://lodash.com/docs/4.17.11#startCase)
-- upper_first - [link](https://lodash.com/docs/4.17.11#upperFirst)
 
 #### Chop
 

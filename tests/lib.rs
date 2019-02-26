@@ -438,6 +438,25 @@ mod tests {
         assert_eq!(case::lower_first("Über Hello to ME"), "über Hello to ME");
         assert_eq!(case::lower_first(""), "");
     }
+    #[test]
+    fn case_upper_first() {
+        assert_eq!(case::upper_first("Fred"), "Fred");
+        assert_eq!(case::upper_first("FRED"), "FRED");
+        assert_eq!(
+            case::upper_first("the World IS YourS"),
+            "The World IS YourS"
+        );
+        assert_eq!(
+            case::upper_first("The World IS YourS"),
+            "The World IS YourS"
+        );
+        assert_eq!(
+            case::upper_first("zAżółć GĘŚLĄ jAźń"),
+            "ZAżółć GĘŚLĄ jAźń"
+        );
+        assert_eq!(case::upper_first("über Hello to ME"), "Über Hello to ME");
+        assert_eq!(case::upper_first(""), "");
+    }
 
     /// voca_rs::manipulate testing
     #[test]

@@ -387,3 +387,22 @@ pub fn upper_case(subject: &str) -> String {
 pub fn lower_first(subject: &str) -> String {
     decapitalize(&subject, false)
 }
+
+/// Converts the first character of the `subject` to upper case.
+///
+/// # Arguments
+///
+/// * `subject` - The string to convert.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// case::upper_first("fred");
+/// // => "Fred"
+/// case::upper_first("FRED");
+/// // => "FRED"
+/// ```
+pub fn upper_first(subject: &str) -> String {
+    capitalize(&subject, false)
+}
