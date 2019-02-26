@@ -37,6 +37,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [decapitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.decapitalize.html)
 - [kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.kebab_case.html)
 - [lower_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.lower_case.html)
+- [lower_first](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.lower_first.html)
 - [pascal_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.pascal_case.html)
 - [shouty_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.shouty_kebab_case.html)
 - [shouty_snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.shouty_snake_case.html)
@@ -141,7 +142,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Case
 
-- lower_first - [link](https://lodash.com/docs/4.17.11#lowerFirst)
 - start_case - [link](https://lodash.com/docs/4.17.11#startCase)
 - upper_first - [link](https://lodash.com/docs/4.17.11#upperFirst)
 

@@ -423,6 +423,21 @@ mod tests {
         );
         assert_eq!(case::title_case(""), "");
     }
+    #[test]
+    fn case_lower_first() {
+        assert_eq!(case::lower_first("Fred"), "fred");
+        assert_eq!(case::lower_first("FRED"), "fRED");
+        assert_eq!(
+            case::lower_first("The World IS YourS"),
+            "the World IS YourS"
+        );
+        assert_eq!(
+            case::lower_first("ZAżółć GĘŚLĄ jAźń"),
+            "zAżółć GĘŚLĄ jAźń"
+        );
+        assert_eq!(case::lower_first("Über Hello to ME"), "über Hello to ME");
+        assert_eq!(case::lower_first(""), "");
+    }
 
     /// voca_rs::manipulate testing
     #[test]

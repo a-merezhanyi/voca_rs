@@ -168,7 +168,8 @@ fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
                 } else {
                     lower_case(&c)
                 }
-            }).collect::<Vec<String>>()
+            })
+            .collect::<Vec<String>>()
             .join("-"),
     }
 }
@@ -272,7 +273,8 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
                 } else {
                     lower_case(&c)
                 }
-            }).collect::<Vec<String>>()
+            })
+            .collect::<Vec<String>>()
             .join("_"),
     }
 }
@@ -304,8 +306,10 @@ pub fn swap_case(subject: &str) -> String {
                         } else {
                             c.to_lowercase().next()
                         }
-                    }).collect()
-            }).collect::<Vec<String>>()
+                    })
+                    .collect()
+            })
+            .collect::<Vec<String>>()
             .join(""),
     }
 }
@@ -363,4 +367,23 @@ pub fn upper_case(subject: &str) -> String {
             res
         }
     }
+}
+
+/// Converts the first character of the `subject` to lower case.
+///
+/// # Arguments
+///
+/// * `subject` - The string to convert.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// case::lower_first("Fred");
+/// // => "fred"
+/// case::lower_first("FRED");
+/// // => "fRED"
+/// ```
+pub fn lower_first(subject: &str) -> String {
+    decapitalize(&subject, false)
 }
