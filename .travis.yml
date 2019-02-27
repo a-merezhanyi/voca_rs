@@ -19,7 +19,7 @@ os:
 
 # Run builds for all the supported trains
 rust:
-  # - nightly
+  - nightly
   - beta
   - stable
 
