@@ -942,6 +942,28 @@ mod tests {
             "0Алё! Приём"
         );
     }
+    #[test]
+    fn manipulate_tr() {
+        assert_eq!(manipulate::tr("", "", ""), "");
+        assert_eq!(manipulate::tr("asd", "", ""), "asd");
+        assert_eq!(manipulate::tr("asd", "", "a"), "asd");
+        assert_eq!(manipulate::tr("test strtr", "t", "T"), "TesT sTrTr");
+        assert_eq!(manipulate::tr("test strtr", "test", "TEST"), "TEST STrTr");
+        assert_eq!(
+            manipulate::tr("test strtr me", "tesm", "TES"),
+            "TEST STrTr E"
+        );
+        assert_eq!(manipulate::tr("hello", "el", "ip"), "hippo");
+        assert_eq!(manipulate::tr("légèreté", "éè", "ee"), "legerete");
+        assert_eq!(
+            manipulate::tr("Die Schildkröte fliegt über das Floß.", "üb", "un"),
+            "Die Schildkröte fliegt uner das Floß."
+        );
+        assert_eq!(
+            manipulate::tr("Как слышно, приём!", "ё", "е"),
+            "Как слышно, прием!"
+        );
+    }
 
     /// voca_rs::count testing
     #[test]

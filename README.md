@@ -94,6 +94,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [reverse_grapheme](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.reverse_grapheme.html)
 - [slugify](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.slugify.html)
 - [splice](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.splice.html)
+- [tr](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.tr.html)
 - [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
 - [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)
 - [trim_right](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_right.html)
@@ -163,7 +164,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Manipulate
 
-- tr - [link](https://vocajs.com/#tr)
 - wordWrap - [link](https://vocajs.com/#wordWrap)
 
 #### Query

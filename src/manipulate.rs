@@ -581,3 +581,36 @@ pub fn zfill(subject: &str, length: usize) -> String {
         }
     }
 }
+
+/// Translates characters or replaces substrings in `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to translate.
+/// * `from` - The string of characters to translate from.
+/// * `to` - The string of characters to translate to.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::tr("hello", "el", "ip");
+/// // => "hippo"
+/// manipulate::tr("légèreté", "éè", "ee");
+/// // => "legerete"
+/// ```
+pub fn tr(subject: &str, from: &str, to: &str) -> String {
+    if from.is_empty() || subject.is_empty() {
+        return subject.to_owned();
+    }
+    let mut result = String::from(subject);
+    let from_symbols = split::graphemes(&from);
+    let to_symbols = split::graphemes(&to);
+    let to_len = to_symbols.len();
+
+    for (i, c) in from_symbols.iter().enumerate() {
+        let new_c = if i < to_len { to_symbols[i] } else { "" };
+        result = result.replace(c, new_c);
+    }
+    result.to_owned()
+}
