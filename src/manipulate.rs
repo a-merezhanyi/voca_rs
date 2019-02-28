@@ -4,6 +4,7 @@ use chop;
 use count;
 use index;
 use split;
+use utils;
 /// Returns a copy of `subject` expands spaces using the tab characters.
 ///
 /// # Arguments
@@ -613,4 +614,62 @@ pub fn tr(subject: &str, from: &str, to: &str) -> String {
         result = result.replace(c, new_c);
     }
     result.to_owned()
+}
+
+/// Wraps `subject` to a given number of characters using a string break character.
+///
+/// # Arguments
+///
+/// * `subject` - The string to wrap.
+/// * `width` - The number of characters at which to wrap.
+/// * `newline` - The string to add at the end of line. Default value is "\n" (if it's not given).
+/// * `indent` - The string to intend the line. Default value is "" (if it's not given).
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::word_wrap("Hello world", 5, "", "");
+/// // => "Hello\nworld"
+/// manipulate::word_wrap("Hello world", 5, "<br/>", "__");
+/// // => "__Hello<br/>__world"
+/// ```
+pub fn word_wrap(subject: &str, width: usize, newline: &str, indent: &str) -> String {
+    let mut subject_len = count::count_graphemes(&subject);
+    if subject.is_empty() || (subject_len < width && indent.is_empty()) {
+        return subject.to_owned();
+    }
+    let mut result = String::new();
+    let mut string = String::from(subject);
+    let length = width + 1;
+    let new_line = if newline.is_empty() { "\n" } else { newline };
+    let indent_sym = if indent.is_empty() { "" } else { indent };
+
+    while subject_len > width {
+        let mut subj_part = chop::prune(&string, length, "+");
+        subj_part = trim(&chop::slice(&subj_part, 0, -1), "");
+        let length_to_cut = count::count_graphemes(&subj_part);
+        string = trim(&chop::slice(&string, length_to_cut as isize, 0), "");
+        subject_len = count::count_graphemes(&string);
+
+        if subj_part == string || subj_part.is_empty() {
+            break;
+        }
+        let mut is_finished = false;
+        let mut subj_part_len = count::count_graphemes(&subj_part);
+        while !is_finished && subj_part_len < width {
+            let first_char = chop::first(&string, 1);
+
+            if utils::PUNCTUATION.contains(&first_char) {
+                subj_part.push_str(&first_char);
+                subj_part_len = count::count_graphemes(&subj_part);
+                string = trim(&chop::slice(&string, 1, 0), "");
+            } else {
+                is_finished = true;
+            }
+        }
+        let str_to_insert = format!("{}{}{}", indent_sym, subj_part, new_line);
+        result.push_str(&str_to_insert);
+    }
+    format!("{}{}{}", result, indent_sym, string)
 }

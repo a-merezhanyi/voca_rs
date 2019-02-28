@@ -98,6 +98,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [trim](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim.html)
 - [trim_left](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_left.html)
 - [trim_right](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.trim_right.html)
+- [word_wrap](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.word_wrap.html)
 - [zfill](https://e1r0nd.github.io/voca_rs/voca_rs/manipulate/fn.zfill.html)
 
 #### Query
@@ -161,10 +162,6 @@ Build a project: `cargo build` -> `./target/debug`
 #### Index
 
 - search - [link](https://vocajs.com/#search)
-
-#### Manipulate
-
-- wordWrap - [link](https://vocajs.com/#wordWrap)
 
 #### Query
 

@@ -964,6 +964,42 @@ mod tests {
             "Как слышно, прием!"
         );
     }
+    #[test]
+    fn manipulate_word_wrap() {
+        assert_eq!(manipulate::word_wrap("", 0, "", ""), "");
+        assert_eq!(
+            manipulate::word_wrap("Café del Mar", 12, "", ""),
+            "Café del Mar"
+        );
+        assert_eq!(
+            manipulate::word_wrap("Hello world", 11, "", ""),
+            "Hello world"
+        );
+        assert_eq!(
+            manipulate::word_wrap("Hello world", 5, "", ""),
+            "Hello\nworld"
+        );
+        assert_eq!(
+            manipulate::word_wrap("Yes. The fire rises.", 4, "", ""),
+            "Yes.\nThe\nfire\nrises."
+        );
+        assert_eq!(
+            manipulate::word_wrap("Cafe del Mar", 4, "", ""),
+            "Cafe\ndel\nMar"
+        );
+        assert_eq!(
+            manipulate::word_wrap("And I think to myself what a wonderful world.", 10, "", ""),
+            "And I\nthink to\nmyself\nwhat a\nwonderful\nworld."
+        );
+        assert_eq!(
+            manipulate::word_wrap("Hello world", 5, "<br/>", "__"),
+            "__Hello<br/>__world"
+        );
+        assert_eq!(
+            manipulate::word_wrap("Yes. The fire rises.", 4, "", "**"),
+            "**Yes.\n**The\n**fire\n**rises."
+        );
+    }
 
     /// voca_rs::count testing
     #[test]
