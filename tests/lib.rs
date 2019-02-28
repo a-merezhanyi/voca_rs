@@ -999,6 +999,10 @@ mod tests {
             manipulate::word_wrap("Yes. The fire rises.", 4, "", "**"),
             "**Yes.\n**The\n**fire\n**rises."
         );
+        assert_eq!(
+            manipulate::word_wrap("Die Schildkröte fliegt über das Floß.", 15, "", ""),
+            "Die Schildkröte\nfliegt über das\nFloß."
+        );
     }
 
     /// voca_rs::count testing
