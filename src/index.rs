@@ -140,7 +140,6 @@ pub fn search(subject: &str, pattern: &str, from_index: usize) -> i8 {
     match pattern.len() {
         0 => 0,
         _ => {
-            println!("{} {} {}", subject, pattern, from_index);
             let re: Regex = Regex::new(pattern).unwrap();
             match re.find_at(&subject, from_index) {
                 None => -1,
