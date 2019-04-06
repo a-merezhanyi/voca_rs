@@ -2,6 +2,7 @@
 
 use chop;
 use count;
+use regex::Regex;
 use split;
 use utils;
 /// Checks whether `subject` ends with `end`.
@@ -365,6 +366,45 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
         })
     });
     res
+}
+
+/// Checks whether `subject` matches the regular expression `pattern`.
+/// NOTE: Executes regular expressions only on valid UTF-8 while exposing match locations as byte indices into the search string (see case #4).
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+/// * `pattern` - The RegExp pattern to match, it is transformed to Regex::new(pattern).
+/// * `position` - The position to start matching.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::matches("pluto", "a", 0);
+/// // => false
+/// query::matches("pluto", r"plu.{2}", 0);
+/// // => true
+/// query::matches("apollo 11", r"\d{3}", 0);
+/// // => false
+/// query::matches("Zażółć gęślą jaźń", "gęślą", 11);
+/// // => true (because "gęślą" starts from 11 not 7)
+/// ```
+pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
+    let subject_len = split::chars(&subject).len();
+    if subject_len == 0 {
+        return false;
+    }
+    if position >= subject_len {
+        return false;
+    }
+    match pattern.len() {
+        0 => true,
+        _ => {
+            println!("{} {} {}", subject, pattern, position);
+            let re: Regex = Regex::new(pattern).unwrap();
+            re.is_match_at(&subject, position)
+        }
+    }
 }
 
 /// Checks whether `subject` contains all characters from `search` starting from `position`. Respects an order of characters.

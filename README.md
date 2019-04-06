@@ -115,6 +115,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [is_numeric](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_numeric.html)
 - [is_title](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_title.html)
 - [is_uppercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_uppercase.html)
+- [matches](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.matches.html)
 - [query](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.query.html)
 - [starts_with](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.starts_with.html)
 
@@ -158,10 +159,6 @@ Build a project: `cargo build` -> `./target/debug`
 #### Format
 
 - vprintf - [link](https://vocajs.com/#vprintf)
-
-#### Query
-
-- matches - [link](https://vocajs.com/#matches)
 
 #### Split
 

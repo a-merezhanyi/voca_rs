@@ -224,6 +224,25 @@ mod tests {
         assert_eq!(query::is_uppercase("t1000"), false);
     }
     #[test]
+    fn query_matches() {
+        assert!(query::matches("", "", 0));
+        assert_eq!(query::matches("pluto", "a", 0), false);
+        assert!(query::matches("pluto", r"plu.{2}", 0));
+        assert_eq!(query::matches("apollo 11", r"\d{3}", 0), false);
+        assert!(query::matches("pacific", "", 0));
+        assert_eq!(query::matches("", "1", 0), false);
+        assert!(query::matches("pacific ocean", "ocean", 0));
+        assert!(query::matches("pacific ocean", "^pacific ocean$", 0));
+        assert!(query::matches("pacific ocean", r"\s", 0));
+        assert!(query::matches("1500", r"\d", 0));
+        assert!(query::matches("Zażółć gęślą jaźń", "gęślą", 0));
+        assert!(query::matches("Zażółć gęślą jaźń", "gęślą", 11));
+        assert_eq!(
+            query::matches("Zażółć gęślą jaźń", "gęślą", 12),
+            false
+        );
+    }
+    #[test]
     fn query_query() {
         assert!(query::query("", "", 0));
         assert!(query::query("a", "a", 0));
