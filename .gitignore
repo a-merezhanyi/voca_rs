@@ -11,3 +11,5 @@ Cargo.lock
 
 # Ignore documentation
 doc/
+
+.vscode/

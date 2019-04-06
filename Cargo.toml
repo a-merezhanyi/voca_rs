@@ -19,5 +19,6 @@ travis-ci = { repository = "e1r0nd/voca_rs" }
 codecov = { repository = "e1r0nd/voca_rs", branch = "master", service = "github" }
 
 [dependencies]
+dissolve = "0.2.2"
 unicode-segmentation = "1.2.0"
 unidecode = "0.3.0"

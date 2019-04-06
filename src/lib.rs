@@ -13,3 +13,4 @@ pub mod utils;
 
 extern crate unicode_segmentation;
 extern crate unidecode;
+extern crate dissolve;

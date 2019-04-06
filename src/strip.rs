@@ -1,6 +1,7 @@
 //! Strips specific characters from subject.
 
 use chop;
+use dissolve;
 /// Strips the byte order mark (BOM) from the beginning of `subject`.
 ///
 /// # Arguments
@@ -26,5 +27,28 @@ pub fn strip_bom(subject: &str) -> String {
                 subject.to_string()
             }
         }
+    }
+}
+
+/// Strips all HTML tags from `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to strip from.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// strip::strip_tags("<span><a href=\"#\">Summer</a> is nice</span>");
+/// // => "Summer is nice"
+/// ```
+pub fn strip_tags(subject: &str) -> String {
+    match subject.len() {
+        0 => "".to_string(),
+        _ => dissolve::strip_html_tags(&subject)
+            .into_iter()
+            .collect::<Vec<String>>()
+            .join(""),
     }
 }

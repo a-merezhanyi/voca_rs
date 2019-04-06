@@ -126,7 +126,8 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Strip
 
-- [strip_bom](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.strip_bom.html)
+- [strip_bom](https://e1r0nd.github.io/voca_rs/voca_rs/strip/fn.strip_bom.html)
+- [strip_tags](https://e1r0nd.github.io/voca_rs/voca_rs/strip/fn.strip_tags.html)
 
 #### Utils
 
@@ -170,10 +171,6 @@ Build a project: `cargo build` -> `./target/debug`
 #### Split
 
 - codePoints - [link](https://vocajs.com/#codePoints)
-
-#### Strip
-
-- stripTags - [link](https://vocajs.com/#stripTags)
 
 ## Copyright
 
