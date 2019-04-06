@@ -156,8 +156,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Format
 
-- format - [link](https://docs.python.org/3.4/library/string.html#string.Formatter.format)
-- sprintf - [link](https://vocajs.com/#sprintf)
 - vprintf - [link](https://vocajs.com/#vprintf)
 
 #### Index
