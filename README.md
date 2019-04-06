@@ -77,6 +77,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [index_all](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.index_all.html)
 - [index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.index_of.html)
 - [last_index_of](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.last_index_of.html)
+- [search](https://e1r0nd.github.io/voca_rs/voca_rs/index/fn.search.html)
 
 #### Manipulate
 
@@ -157,10 +158,6 @@ Build a project: `cargo build` -> `./target/debug`
 #### Format
 
 - vprintf - [link](https://vocajs.com/#vprintf)
-
-#### Index
-
-- search - [link](https://vocajs.com/#search)
 
 #### Query
 

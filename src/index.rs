@@ -1,6 +1,7 @@
 //! Returns the index of `search` in `subject`.
 
 use count;
+use regex::Regex;
 use split;
 /// Returns an array of all occurrence index of `search` in `subject` or an empty array if not found. Case sensitive.
 ///
@@ -109,6 +110,41 @@ pub fn last_index_of(subject: &str, search: &str, from_index: usize) -> i8 {
             }) {
                 Some(x) => (string_chars.len() - x - 1) as i8,
                 None => -1,
+            }
+        }
+    }
+}
+
+/// Returns the first index of a `pattern` match in `subject`.
+/// NOTE: Executes regular expressions only on valid UTF-8 while exposing match locations as byte indices into the search string (see case #3).
+///
+/// # Arguments
+///
+/// * `subject` - The string where to search.
+/// * `pattern` - The RegExp pattern to search, it is transformed to Regex::new(pattern).
+/// * `from_index` - The index to start searching.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// index::search("morning", "rn", 0);
+/// // => 2
+/// index::search("evening", r"\d", 0);
+/// // => -1
+/// index::search("Zażółć gęślą jaźń", "gęślą", 6);
+/// // => 11 (substring's position in `subject`), not 7
+pub fn search(subject: &str, pattern: &str, from_index: usize) -> i8 {
+    if from_index >= split::chars(&subject).len() {
+        return -1;
+    }
+    match pattern.len() {
+        0 => 0,
+        _ => {
+            println!("{} {} {}", subject, pattern, from_index);
+            let re: Regex = Regex::new(pattern).unwrap();
+            match re.find_at(&subject, from_index) {
+                None => -1,
+                Some(x) => x.start() as i8,
             }
         }
     }

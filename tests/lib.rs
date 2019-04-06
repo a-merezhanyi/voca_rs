@@ -1323,6 +1323,37 @@ mod tests {
             4
         );
     }
+    #[test]
+    fn index_search() {
+        assert_eq!(index::search("", "", 0), 0);
+        assert_eq!(index::search("morning", "rn", 0), 2);
+        assert_eq!(index::search("evening", r"\d", 0), -1);
+        assert_eq!(index::search("we have a mission", "mission", 0), 10);
+        assert_eq!(index::search("we have a mission", "a", 0), 4);
+        assert_eq!(index::search("we have a mission", r"\s", 0), 2);
+        assert_eq!(index::search("we have a mission", "", 0), 0);
+        assert_eq!(index::search("we have a mission", "a", 6), 8);
+        assert_eq!(index::search("we have a mission", "12", 0), -1);
+        assert_eq!(index::search("we have a mission", r"\s^", 0), -1);
+        assert_eq!(index::search("we have a mission", "we", 3), -1);
+        assert_eq!(index::search("we have a mission", "mission", 100), -1);
+        assert_eq!(
+            index::search("Zażółć gęślą jaźń", "gęślą", 6),
+            11
+        );
+        assert_eq!(
+            index::search(
+                "Die Schildkröte fliegt über das Floß.",
+                "Schildkröte",
+                4
+            ),
+            4
+        );
+        assert_eq!(
+            index::search("Как слышно, приём!", "слышно", 0),
+            7
+        );
+    }
 
     /// voca_rs::escape testing
     #[test]

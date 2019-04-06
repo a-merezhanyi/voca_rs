@@ -11,6 +11,7 @@ pub mod split;
 pub mod strip;
 pub mod utils;
 
+extern crate dissolve;
+extern crate regex;
 extern crate unicode_segmentation;
 extern crate unidecode;
-extern crate dissolve;
