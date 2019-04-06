@@ -287,7 +287,7 @@ pub fn is_numeric(subject: &str) -> bool {
         }
         None => {
             if starts_with(&subject.to_lowercase(), "0x") {
-                let s = sbj.trim_left_matches("0x");
+                let s = sbj.trim_start_matches("0x");
                 i32::from_str_radix(s, 16).is_ok()
             } else {
                 parse_str_num(subject)
