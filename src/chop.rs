@@ -64,6 +64,30 @@ pub fn char_at(subject: &str, position: usize) -> String {
     get_chars(&subject, the_position, the_position + 1)
 }
 
+/// Get the Unicode code point value of the character at `position`.
+/// NOTE: Unicode escape must not be a surrogate
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `position` - The position to get the code point number.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::code_point_at("rain", 1);
+/// // => [97]
+/// chop::code_point_at("cafe\u{0301}", 4);
+/// // => [101, 769]
+/// ```
+pub fn code_point_at(subject: &str, position: usize) -> Vec<u16> {
+    if subject.is_empty() {
+        return vec![];
+    }
+    let grapheme = grapheme_at(&subject, position);
+    split::code_points(&grapheme)
+}
+
 /// Extracts the first `length` characters from `subject`.
 ///
 /// # Arguments
@@ -337,11 +361,13 @@ pub fn substring(subject: &str, start: usize, end: usize) -> String {
     }
     let position_end = match end {
         0 => subject_length,
-        _ => if end > subject_length {
-            subject_length
-        } else {
-            end
-        },
+        _ => {
+            if end > subject_length {
+                subject_length
+            } else {
+                end
+            }
+        }
     };
     if start > position_end {
         return "".to_string();

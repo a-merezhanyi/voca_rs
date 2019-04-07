@@ -1119,6 +1119,22 @@ mod tests {
         assert_eq!(chop::char_at("Как слышно, приём!", 15), "ё");
     }
     #[test]
+    fn chop_code_point_at() {
+        assert_eq!(chop::code_point_at("", 0), []);
+        assert_eq!(chop::code_point_at("rain", 1), [97]);
+        assert_eq!(chop::code_point_at("café", 4), [233]);
+        assert_eq!(chop::code_point_at("cafe\u{0301}", 4), [101, 769]);
+        assert_eq!(chop::code_point_at("b\u{0142}\u{0105}d", 1), [322]);
+        assert_eq!(chop::code_point_at("über das Floß.", 0), [252]);
+        assert_eq!(chop::code_point_at("a̐éö̲", 3), [111, 776, 818]);
+        assert_eq!(chop::code_point_at("cafe\u{0301}", 0), [99]);
+        assert_eq!(chop::code_point_at("cafe\u{0301}", 2), [102]);
+        assert_eq!(chop::code_point_at("cafe\u{0301}!", 3), [101, 769]);
+        assert_eq!(chop::code_point_at("cafe\u{0301}!", 4), [33]);
+        assert_eq!(chop::code_point_at("cafe\u{0301}!", 5), [33]);
+        assert_eq!(chop::code_point_at("cafe\u{0301}!", 30), [33]);
+    }
+    #[test]
     fn chop_first() {
         assert_eq!(chop::first("", 0), "");
         assert_eq!(chop::first("a", 0), "");

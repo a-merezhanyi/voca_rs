@@ -50,6 +50,7 @@ Build a project: `cargo build` -> `./target/debug`
 #### Chop
 
 - [char_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.char_at.html)
+- [code_point_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.code_point_at.html)
 - [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
 - [grapheme_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.grapheme_at.html)
 - [last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.last.html)
@@ -149,7 +150,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
-- codePointAt - [link](https://vocajs.com/#codePointAt)
 - max - [link](https://www.tutorialspoint.com/python3/string_max.htm)
 - min - [link](https://www.tutorialspoint.com/python3/string_min.htm)
 
