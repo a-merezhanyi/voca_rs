@@ -21,5 +21,6 @@ codecov = { repository = "e1r0nd/voca_rs", branch = "master", service = "github"
 [dependencies]
 dissolve = "0.2.2"
 regex = "1.1.5"
+stfu8 = "0.2.4"
 unicode-segmentation = "1.2.0"
 unidecode = "0.3.0"

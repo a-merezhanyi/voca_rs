@@ -122,6 +122,7 @@ Build a project: `cargo build` -> `./target/debug`
 #### Split
 
 - [chars](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.chars.html)
+- [code_points](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.code_points.html)
 - [graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.graphemes.html)
 - [split](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.split.html)
 - [words](https://e1r0nd.github.io/voca_rs/voca_rs/split/fn.words.html)
@@ -159,10 +160,6 @@ Build a project: `cargo build` -> `./target/debug`
 #### Format
 
 - vprintf - [link](https://vocajs.com/#vprintf)
-
-#### Split
-
-- codePoints - [link](https://vocajs.com/#codePoints)
 
 ## Copyright
 

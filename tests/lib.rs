@@ -102,6 +102,19 @@ mod tests {
         );
         assert_eq!(split::graphemes(""), [""]);
     }
+    #[test]
+    fn split_code_points() {
+        assert_eq!(split::code_points(""), []);
+        assert_eq!(split::code_points("rain"), [114, 97, 105, 110]);
+        assert_eq!(
+            split::code_points("Un garçon de café"),
+            [85, 110, 32, 103, 97, 114, 231, 111, 110, 32, 100, 101, 32, 99, 97, 102, 233]
+        );
+        assert_eq!(
+            split::code_points("a̐éö̲\r\n"),
+            [97, 784, 101, 769, 111, 776, 818, 13, 10]
+        );
+    }
 
     /// voca_rs::query testing
     #[test]

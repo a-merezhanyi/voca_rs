@@ -13,5 +13,6 @@ pub mod utils;
 
 extern crate dissolve;
 extern crate regex;
+extern crate stfu8;
 extern crate unicode_segmentation;
 extern crate unidecode;

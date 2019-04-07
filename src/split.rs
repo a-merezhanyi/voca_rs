@@ -1,5 +1,7 @@
 //! Splits `subject` into an chuncks according to given rules.
 
+use stfu8;
+use unicode_segmentation::UnicodeSegmentation;
 /// Splits `subject` into an array of characters.
 ///
 /// # Arguments
@@ -44,7 +46,6 @@ pub fn split<'a>(subject: &'a str, pattern: &str) -> Vec<&'a str> {
     subject.split_terminator(pattern).collect::<Vec<_>>()
 }
 
-use unicode_segmentation::UnicodeSegmentation;
 /// Splits `subject` into an array of words.
 ///
 /// # Arguments
@@ -136,4 +137,27 @@ pub fn graphemes(subject: &str) -> Vec<&str> {
         return vec![""];
     }
     UnicodeSegmentation::graphemes(subject, true).collect::<Vec<&str>>()
+}
+
+/// Returns an array of Unicode code point values from characters of `subject`.
+/// NOTE: Unicode escape must not be a surrogate
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+///
+/// # Example
+///
+/// ```rust
+/// use voca_rs::*;
+/// split::code_points("rain");
+/// // => [114, 97, 105, 110]
+/// split::code_points("Un garçon de café");
+/// // => [85, 110, 32, 103, 97, 114, 231, 111, 110, 32, 100, 101, 32, 99, 97, 102, 233]
+/// ```
+pub fn code_points(subject: &str) -> Vec<u16> {
+    if subject.is_empty() {
+        return vec![];
+    }
+    stfu8::decode_u16(&subject).unwrap()
 }
