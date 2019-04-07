@@ -428,17 +428,56 @@ pub fn truncate(subject: &str, length: usize, end: &str) -> String {
 /// // => "r"
 /// chop::max("cafe\u{0301}"); // or "café"
 /// // => "\u{0301}"
-/// chop::max("a̐éö̲") // or "a\u{310}e\u{301}o\u{308}\u{332}"
+/// chop::max("a̐éö̲"); // or "a\u{310}e\u{301}o\u{308}\u{332}"
 /// // => "\u{332}"
 /// ```
 pub fn max(subject: &str) -> String {
     if subject.is_empty() {
         return "".to_owned();
     }
+    min_max(&subject, MinMaxType::Max)
+}
+
+/// Returns the min character from the `subject` by its code point.
+/// NOTE: Unicode escape must not be a surrogate
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::min("rain");
+/// // => "a"
+/// chop::min("cafe\u{0301}"); // or "café"
+/// // => "a"
+/// chop::min("Über das Floß.");
+/// // => " "
+/// ```
+pub fn min(subject: &str) -> String {
+    if subject.is_empty() {
+        return "".to_owned();
+    }
+    min_max(&subject, MinMaxType::Min)
+}
+
+#[derive(Clone, Copy, PartialEq)]
+enum MinMaxType {
+    Min,
+    Max,
+}
+
+fn min_max(subject: &str, search_type: MinMaxType) -> String {
+    if subject.is_empty() {
+        return "".to_owned();
+    }
     let code_points = split::code_points(&subject);
-    // let max = code_points.iter().enumerate().map(|(x, y)| (y, x)).max();
-    let max = code_points.iter().max();
-    match max {
+    let min_max = match search_type {
+        MinMaxType::Max => code_points.iter().max(),
+        MinMaxType::Min => code_points.iter().min(),
+    };
+    match min_max {
         None => "".to_owned(),
         Some(x) => stfu8::encode_u16(&[*x]),
     }

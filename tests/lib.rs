@@ -1293,6 +1293,16 @@ mod tests {
         assert_eq!(chop::max("über das Floß."), "ü");
         assert_eq!(chop::max("a̐éö̲"), "\u{332}");
     }
+    #[test]
+    fn chop_min() {
+        assert_eq!(chop::min(""), "");
+        assert_eq!(chop::min("rain"), "a");
+        assert_eq!(chop::min("cafe\u{0301}"), "a");
+        assert_eq!(chop::min("café"), "a");
+        assert_eq!(chop::min("b\u{0142}\u{0105}d"), "b");
+        assert_eq!(chop::min("Über das Floß."), " ");
+        assert_eq!(chop::min("a̐éö̲"), "a");
+    }
 
     /// voca_rs::index testing
     #[test]
