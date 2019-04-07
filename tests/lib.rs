@@ -1283,6 +1283,16 @@ mod tests {
             "Как слышно..."
         );
     }
+    #[test]
+    fn chop_max() {
+        assert_eq!(chop::max(""), "");
+        assert_eq!(chop::max("rain"), "r");
+        assert_eq!(chop::max("cafe\u{0301}"), "\u{0301}");
+        assert_eq!(chop::max("café"), "\u{0301}");
+        assert_eq!(chop::max("b\u{0142}\u{0105}d"), "ł");
+        assert_eq!(chop::max("über das Floß."), "ü");
+        assert_eq!(chop::max("a̐éö̲"), "\u{332}");
+    }
 
     /// voca_rs::index testing
     #[test]

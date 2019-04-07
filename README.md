@@ -54,6 +54,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
 - [grapheme_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.grapheme_at.html)
 - [last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.last.html)
+- [max](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.max.html)
 - [prune](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.prune.html)
 - [slice](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.slice.html)
 - [substr](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substr.html)
@@ -150,7 +151,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
-- max - [link](https://www.tutorialspoint.com/python3/string_max.htm)
 - min - [link](https://www.tutorialspoint.com/python3/string_min.htm)
 
 #### Count

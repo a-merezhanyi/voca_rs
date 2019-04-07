@@ -2,6 +2,7 @@
 
 use count;
 use split;
+use stfu8;
 use utils;
 
 #[derive(Clone, Copy, PartialEq)]
@@ -411,4 +412,34 @@ pub fn truncate(subject: &str, length: usize, end: &str) -> String {
         length - end_length
     };
     format!("{}{}", get_chars(&subject, 0, position_end), sufix)
+}
+
+/// Returns the max character from the `subject` by its code point.
+/// NOTE: Unicode escape must not be a surrogate
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::max("rain");
+/// // => "r"
+/// chop::max("cafe\u{0301}"); // or "café"
+/// // => "\u{0301}"
+/// chop::max("a̐éö̲") // or "a\u{310}e\u{301}o\u{308}\u{332}"
+/// // => "\u{332}"
+/// ```
+pub fn max(subject: &str) -> String {
+    if subject.is_empty() {
+        return "".to_owned();
+    }
+    let code_points = split::code_points(&subject);
+    // let max = code_points.iter().enumerate().map(|(x, y)| (y, x)).max();
+    let max = code_points.iter().max();
+    match max {
+        None => "".to_owned(),
+        Some(x) => stfu8::encode_u16(&[*x]),
+    }
 }
