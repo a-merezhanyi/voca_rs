@@ -46,6 +46,8 @@ pub fn strip_bom(subject: &str) -> String {
 pub fn strip_tags(subject: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
+        // TODO: Rewrite this function to remove "dissolve" module
+        // use the only clean function #14
         _ => dissolve::strip_html_tags(&subject)
             .into_iter()
             .collect::<Vec<String>>()
