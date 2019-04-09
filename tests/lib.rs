@@ -254,6 +254,11 @@ mod tests {
             query::matches("Zażółć gęślą jaźń", "gęślą", 12),
             false
         );
+        assert_eq!(
+            // [^] is not a valid regex
+            query::matches("Zażółć gęślą jaźń", "[^]", 0),
+            false
+        );
     }
     #[test]
     fn query_query() {
@@ -1420,6 +1425,11 @@ mod tests {
         assert_eq!(
             index::search("Как слышно, приём!", "слышно", 0),
             7
+        );
+        assert_eq!(
+            // [^] is not a valid regex
+            index::search("Zażółć gęślą jaźń", "[^]", 0),
+            -1
         );
     }
 
