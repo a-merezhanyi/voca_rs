@@ -400,8 +400,10 @@ pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
     match pattern.len() {
         0 => true,
         _ => {
-            println!("{} {} {}", subject, pattern, position);
-            let re: Regex = Regex::new(pattern).unwrap();
+            let re: Regex = match Regex::new(pattern) {
+                Ok(re) => re,
+                Err(_) => return false
+            };
             re.is_match_at(&subject, position)
         }
     }
