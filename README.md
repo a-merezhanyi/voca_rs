@@ -150,6 +150,13 @@ Build a project: `cargo build` -> `./target/debug`
 
 ## Roadmap
 
+Rewrite the code, so the functions (when it is possible) are accesible directly on String/&str. That can be achieved using an extension trait.
+
+#### Case
+
+- train_case - [link](https://docs.rs/Inflector/0.11.4/inflector/cases/traincase/fn.to_train_case.html)
+- foreign_key - [link](https://docs.rs/Inflector/0.11.4/inflector/suffix/foreignkey/fn.to_foreign_key.html)
+
 #### Count
 
 - countWhere - [link](https://vocajs.com/#countWhere)
@@ -157,6 +164,39 @@ Build a project: `cargo build` -> `./target/debug`
 #### Format
 
 - vprintf - [link](https://vocajs.com/#vprintf)
+
+#### Manipulate
+
+- deordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/deordinalize/fn.deordinalize.html)
+- deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
+- demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)
+- to_plural - [link](https://docs.rs/Inflector/0.11.4/inflector/string/pluralize/fn.to_plural.html)
+- to_singular - [link](https://docs.rs/Inflector/0.11.4/inflector/string/singularize/fn.to_singular.html)
+- ordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/ordinalize/index.html)
+
+#### Query
+
+- is_foreign_key - [link](https://docs.rs/Inflector/0.11.4/inflector/suffix/foreignkey/fn.is_foreign_key.html)
+- is_camel_case
+- is_capitalize
+- is_decapitalize
+- is_kebab_case
+- is_lower_case
+- is_lower_first
+- is_pascal_case
+- is_shouty_kebab_case
+- shouty_snake_caseml)
+- is_snake_case
+- is_swap_case
+- is_title_case
+- is_train_case - [link](https://docs.rs/Inflector/0.11.4/inflector/cases/traincase/fn.is_train_case.html)
+- is_upper_case
+- is_upper_first
+
+#### Implementations on Foreign Type
+
+- impl Inflector for String - [link](https://docs.rs/Inflector/0.11.4/src/inflector/lib.rs.html#195-228)
+- impl Inflector for str - [link](https://docs.rs/Inflector/0.11.4/src/inflector/lib.rs.html#195-228)
 
 ## Copyright
 
