@@ -185,7 +185,7 @@ Rewrite the code, so the functions (when it is possible) are accesible directly 
 - is_lower_first
 - is_pascal_case
 - is_shouty_kebab_case
-- shouty_snake_caseml)
+- is_shouty_snake_case
 - is_snake_case
 - is_swap_case
 - is_title_case
