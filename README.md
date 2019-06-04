@@ -150,7 +150,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 ## Roadmap
 
-Rewrite the code, so the functions (when it is possible) are accesible directly on String/&str. That can be achieved using an extension trait.
+Rewrite the code, so the functions (when it is possible) are accessible directly on String/&str. That can be achieved using an extension trait.
 
 #### Case
 
