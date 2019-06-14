@@ -187,7 +187,6 @@ Rewrite the code, so the functions (when it is possible) are accessible directly
 - is_shouty_snake_case
 - is_snake_case
 - is_swap_case
-- is_title_case
 - is_train_case - [link](https://docs.rs/Inflector/0.11.4/inflector/cases/traincase/fn.is_train_case.html)
 - is_upper_first
 
