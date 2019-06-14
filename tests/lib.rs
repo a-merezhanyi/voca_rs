@@ -203,6 +203,39 @@ mod tests {
         );
     }
     #[test]
+    fn query_is_decapitalize() {
+        assert!(query::is_decapitalize(""));
+        assert_eq!(
+            query::is_decapitalize("John has a motorcycle"),
+            false
+        );
+        assert!(
+            query::is_decapitalize("the world is yours")
+        );
+        assert_eq!(
+            query::is_decapitalize("The world is yours"),
+            false
+        );
+        assert_eq!(
+            query::is_decapitalize("the World IS YourS"),
+            false
+        );
+        assert!(
+            query::is_decapitalize("zażółć gęślą jaźń")
+        );
+        assert_eq!(
+            query::is_decapitalize("ZAżółć GĘŚLĄ jAźń"),
+            false
+        );
+        assert!(
+            query::is_decapitalize("это вообще работает?")
+        );
+        assert_eq!(
+            query::is_decapitalize("Это вообще работает?"),
+            false
+        );
+    }
+    #[test]
     fn query_is_digit() {
         assert!(query::is_digit(""));
         assert!(query::is_digit("0"));

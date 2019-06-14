@@ -185,16 +185,47 @@ pub fn is_blank(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_capitalize(subject: &str) -> bool {
+    is_capitalize_or_decapitalize(&subject, true)
+}
+
+/// Checks whether `subject` is decapitalized and the rest of `subject` is converted to lower case.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_decapitalize("");
+/// // => true
+/// query::is_decapitalize("John has a motorcycle");
+/// // => false
+/// query::is_decapitalize("the world is yours");
+/// // => true
+/// query::is_decapitalize("Żółć niedźwiedzia");
+/// // => false
+/// ```
+pub fn is_decapitalize(subject: &str) -> bool {
+    is_capitalize_or_decapitalize(&subject, false)
+}
+
+fn is_capitalize_or_decapitalize(subject: &str, if_capitalize: bool) -> bool {
     match subject.len() {
         0 => true,
         _ => {
             let first_letter = chop::first(&subject, 1);
             let the_rest = chop::slice(&subject,1,0);
-            is_uppercase(&first_letter) && is_lowercase(&the_rest)
+            let first_letter_to_check = if if_capitalize {
+                is_uppercase(&first_letter)
+            } else {
+                is_lowercase(&first_letter)
+            };
+            first_letter_to_check && is_lowercase(&the_rest)
         }
     }
 }
-
 /// Checks whether `subject` contains only digit characters.
 ///
 /// # Arguments
