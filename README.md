@@ -112,6 +112,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [is_alpha](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alpha.html)
 - [is_alphadigit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_alphadigit.html)
 - [is_blank](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_blank.html)
+- [is_capitalize](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_capitalize.html)
 - [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
 - [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
 - [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
@@ -180,7 +181,6 @@ Rewrite the code, so the functions (when it is possible) are accessible directly
 
 - is_foreign_key - [link](https://docs.rs/Inflector/0.11.4/inflector/suffix/foreignkey/fn.is_foreign_key.html)
 - is_camel_case
-- is_capitalize
 - is_decapitalize
 - is_kebab_case
 - is_pascal_case

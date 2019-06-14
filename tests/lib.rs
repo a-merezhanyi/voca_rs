@@ -171,6 +171,38 @@ mod tests {
         assert_eq!(query::is_blank("Zażółć gęślą jaźń"), false);
     }
     #[test]
+    fn query_is_capitalize() {
+        assert!(query::is_capitalize(""));
+        assert!(
+            query::is_capitalize("John has a motorcycle")
+        );
+        assert_eq!(
+            query::is_capitalize("the world is yours"),
+            false
+        );
+        assert!(
+            query::is_capitalize("The world is yours")
+        );
+        assert_eq!(
+            query::is_capitalize("The World IS YourS"),
+            false
+        );
+        assert!(
+            query::is_capitalize("Zażółć gęślą jaźń")
+        );
+        assert_eq!(
+            query::is_capitalize("ZAżółć GĘŚLĄ jAźń"),
+            false
+        );
+        assert!(
+            query::is_capitalize("Это вообще работает?"),
+        );
+        assert_eq!(
+            query::is_capitalize("это Вообще РАБОТАЕТ?"),
+            false
+        );
+    }
+    #[test]
     fn query_is_digit() {
         assert!(query::is_digit(""));
         assert!(query::is_digit("0"));

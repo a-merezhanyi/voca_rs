@@ -165,6 +165,36 @@ pub fn is_blank(subject: &str) -> bool {
     subject.trim().is_empty()
 }
 
+/// Checks whether `subject` is capitalized and the rest of `subject` is converted to lower case.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_capitalize("");
+/// // => true
+/// query::is_capitalize("John has a motorcycle");
+/// // => true
+/// query::is_capitalize("the world is yours");
+/// // => false
+/// query::is_capitalize("Żółć niedźwiedzia");
+/// // => true
+/// ```
+pub fn is_capitalize(subject: &str) -> bool {
+    match subject.len() {
+        0 => true,
+        _ => {
+            let first_letter = chop::first(&subject, 1);
+            let the_rest = chop::slice(&subject,1,0);
+            is_uppercase(&first_letter) && is_lowercase(&the_rest)
+        }
+    }
+}
+
 /// Checks whether `subject` contains only digit characters.
 ///
 /// # Arguments
