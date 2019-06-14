@@ -115,6 +115,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
 - [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
 - [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
+- [is_lower_first](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lower_first.html)
 - [is_numeric](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_numeric.html)
 - [is_title](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_title.html)
 - [is_uppercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_uppercase.html)
@@ -181,8 +182,6 @@ Rewrite the code, so the functions (when it is possible) are accessible directly
 - is_capitalize
 - is_decapitalize
 - is_kebab_case
-- is_lower_case
-- is_lower_first
 - is_pascal_case
 - is_shouty_kebab_case
 - is_shouty_snake_case
@@ -190,7 +189,6 @@ Rewrite the code, so the functions (when it is possible) are accessible directly
 - is_swap_case
 - is_title_case
 - is_train_case - [link](https://docs.rs/Inflector/0.11.4/inflector/cases/traincase/fn.is_train_case.html)
-- is_upper_case
 - is_upper_first
 
 #### Implementations on Foreign Type
