@@ -247,7 +247,7 @@ pub fn is_lowercase(subject: &str) -> bool {
     is_upper_or_lowercase(subject, true)
 }
 
-/// Checks whether `subject` the first character in lower case.
+/// Checks whether `subject` has the first character in lower case.
 ///
 /// # Arguments
 ///
@@ -379,6 +379,35 @@ pub fn is_title(subject: &str) -> bool {
 /// ```
 pub fn is_uppercase(subject: &str) -> bool {
     is_upper_or_lowercase(subject, false)
+}
+
+/// Checks whether `subject` has the first character in upper case.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_upper_first("motorcycle");
+/// // => false
+/// query::is_upper_first("John");
+/// // => true
+/// query::is_upper_first("T1000");
+/// // => true
+/// query::is_upper_first("Żółć niedźwiedzia");
+/// // => true
+/// ```
+pub fn is_upper_first(subject: &str) -> bool {
+    match subject.len() {
+        0 => true,
+        _ => {
+            let first_letter = split::chars(subject)[0];
+            is_upper_or_lowercase(first_letter, false)
+        }
+    }
 }
 
 fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {

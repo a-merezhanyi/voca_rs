@@ -246,6 +246,16 @@ mod tests {
         assert_eq!(query::is_uppercase("t1000"), false);
     }
     #[test]
+    fn query_is_upper_first() {
+        assert!(query::is_upper_first(""));
+        assert!(query::is_upper_first("The world is yours"));
+        assert!(query::is_upper_first("Zażółć gęślą jaźń"));
+        assert!(query::is_upper_first("T1000"));
+        assert!(query::is_upper_first("Żółć niedźwiedzia"));
+        assert_eq!(query::is_upper_first("żółć niedźwiedzia"), false);
+        assert_eq!(query::is_upper_first("tHE World"), false);
+    }
+    #[test]
     fn query_matches() {
         assert!(query::matches("", "", 0));
         assert_eq!(query::matches("pluto", "a", 0), false);
