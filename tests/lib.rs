@@ -194,6 +194,15 @@ mod tests {
         assert_eq!(query::is_lowercase("T1000"), false);
     }
     #[test]
+    fn query_is_lower_first() {
+        assert!(query::is_lower_first(""));
+        assert!(query::is_lower_first("the world is yours"));
+        assert!(query::is_lower_first("tHE World"));
+        assert!(query::is_lower_first("żółć niedźwiedzia"));
+        assert_eq!(query::is_lower_first("Zażółć gęślą jaźń"), false);
+        assert_eq!(query::is_lower_first("T1000"), false);
+    }
+    #[test]
     fn query_is_numeric() {
         assert!(query::is_numeric(""));
         assert!(query::is_numeric("0"));

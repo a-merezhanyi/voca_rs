@@ -247,6 +247,35 @@ pub fn is_lowercase(subject: &str) -> bool {
     is_upper_or_lowercase(subject, true)
 }
 
+/// Checks whether `subject` the first character in lower case.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_lower_first("motorcycle");
+/// // => true
+/// query::is_lower_first("John");
+/// // => false
+/// query::is_lower_first("T1000");
+/// // => false
+/// query::is_lower_first("żółć niedźwiedzia");
+/// // => true
+/// ```
+pub fn is_lower_first(subject: &str) -> bool {
+    match subject.len() {
+        0 => true,
+        _ => {
+            let first_letter = split::chars(subject)[0];
+            is_upper_or_lowercase(first_letter, true)
+        }
+    }
+}
+
 /// Checks whether `subject` is numeric.
 ///
 /// # Arguments
@@ -402,7 +431,7 @@ pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
         _ => {
             let re: Regex = match Regex::new(pattern) {
                 Ok(re) => re,
-                Err(_) => return false
+                Err(_) => return false,
             };
             re.is_match_at(&subject, position)
         }
