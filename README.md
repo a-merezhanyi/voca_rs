@@ -154,7 +154,9 @@ Build a project: `cargo build` -> `./target/debug`
 
 ## Roadmap
 
-Rewrite the code, so the functions (when it is possible) are accessible directly on String/&str. That can be achieved using an extension trait.
+- Rewrite the code, so the functions (when it is possible) are accessible directly on String/&str. That can be achieved using an extension trait.
+- Possible refactoring: all `position` indexes covert to zero-based and add a comment to each doc.
+- Change all inner arguments to Enums (instead `string` or `bool`)
 
 #### Case
 
