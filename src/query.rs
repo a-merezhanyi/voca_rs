@@ -1,5 +1,6 @@
 //! Checks a `subject` against a query.
 
+use case;
 use chop;
 use count;
 use regex::Regex;
@@ -163,6 +164,29 @@ pub fn is_blank(subject: &str) -> bool {
     }
 
     subject.trim().is_empty()
+}
+
+/// Checks whether `subject` is camelCased.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_camel_case("");
+/// // => true
+/// query::is_camel_case("birdFlight");
+/// // => true
+/// query::is_camel_case("bird flight");
+/// // => false
+/// query::is_camel_case("-BIRD-FLIGHT-");
+/// // => false
+/// ```
+pub fn is_camel_case(subject: &str) -> bool {
+    subject == case::camel_case(&subject)
 }
 
 /// Checks whether `subject` is capitalized and the rest of `subject` is converted to lower case.

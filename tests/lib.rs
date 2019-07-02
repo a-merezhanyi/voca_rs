@@ -171,33 +171,28 @@ mod tests {
         assert_eq!(query::is_blank("Zażółć gęślą jaźń"), false);
     }
     #[test]
+    fn query_is_camel_case() {
+        assert!(query::is_camel_case(""));
+        assert!(query::is_camel_case("birdFlight"));
+        assert_eq!(query::is_camel_case("bird flight"), false);
+        assert_eq!(query::is_camel_case("-BIRD-FLIGHT-"), false);
+        assert_eq!(query::is_camel_case("Zażółć gęślą jaźń"), false);
+        assert!(query::is_camel_case("zażółćGęśląJaźń"));
+    }
+    #[test]
     fn query_is_capitalize() {
         assert!(query::is_capitalize(""));
-        assert!(
-            query::is_capitalize("John has a motorcycle")
-        );
+        assert!(query::is_capitalize("John has a motorcycle"));
+        assert_eq!(query::is_capitalize("the world is yours"), false);
+        assert!(query::is_capitalize("The world is yours"));
+        assert_eq!(query::is_capitalize("The World IS YourS"), false);
+        assert!(query::is_capitalize("Zażółć gęślą jaźń"));
+        assert_eq!(query::is_capitalize("ZAżółć GĘŚLĄ jAźń"), false);
+        assert!(query::is_capitalize(
+            "Это вообще работает?"
+        ),);
         assert_eq!(
-            query::is_capitalize("the world is yours"),
-            false
-        );
-        assert!(
-            query::is_capitalize("The world is yours")
-        );
-        assert_eq!(
-            query::is_capitalize("The World IS YourS"),
-            false
-        );
-        assert!(
-            query::is_capitalize("Zażółć gęślą jaźń")
-        );
-        assert_eq!(
-            query::is_capitalize("ZAżółć GĘŚLĄ jAźń"),
-            false
-        );
-        assert!(
-            query::is_capitalize("Это вообще работает?"),
-        );
-        assert_eq!(
+
             query::is_capitalize("это Вообще РАБОТАЕТ?"),
             false
         );
@@ -205,31 +200,15 @@ mod tests {
     #[test]
     fn query_is_decapitalize() {
         assert!(query::is_decapitalize(""));
-        assert_eq!(
-            query::is_decapitalize("John has a motorcycle"),
-            false
-        );
-        assert!(
-            query::is_decapitalize("the world is yours")
-        );
-        assert_eq!(
-            query::is_decapitalize("The world is yours"),
-            false
-        );
-        assert_eq!(
-            query::is_decapitalize("the World IS YourS"),
-            false
-        );
-        assert!(
-            query::is_decapitalize("zażółć gęślą jaźń")
-        );
-        assert_eq!(
-            query::is_decapitalize("ZAżółć GĘŚLĄ jAźń"),
-            false
-        );
-        assert!(
-            query::is_decapitalize("это вообще работает?")
-        );
+        assert_eq!(query::is_decapitalize("John has a motorcycle"), false);
+        assert!(query::is_decapitalize("the world is yours"));
+        assert_eq!(query::is_decapitalize("The world is yours"), false);
+        assert_eq!(query::is_decapitalize("the World IS YourS"), false);
+        assert!(query::is_decapitalize("zażółć gęślą jaźń"));
+        assert_eq!(query::is_decapitalize("ZAżółć GĘŚLĄ jAźń"), false);
+        assert!(query::is_decapitalize(
+            "это вообще работает?"
+        ));
         assert_eq!(
             query::is_decapitalize("Это вообще работает?"),
             false
