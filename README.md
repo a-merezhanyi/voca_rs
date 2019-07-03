@@ -44,6 +44,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.snake_case.html)
 - [swap_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.swap_case.html)
 - [title_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.title_case.html)
+- [train_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.train_case.html)
 - [upper_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.upper_case.html)
 - [upper_first](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.upper_first.html)
 
@@ -161,7 +162,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Case
 
-- train_case - [link](https://docs.rs/Inflector/0.11.4/inflector/cases/traincase/fn.to_train_case.html)
 - foreign_key - [link](https://docs.rs/Inflector/0.11.4/inflector/suffix/foreignkey/fn.to_foreign_key.html)
 
 #### Count

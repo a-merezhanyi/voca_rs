@@ -442,6 +442,22 @@ mod tests {
         assert_eq!(case::shouty_kebab_case(""), "");
     }
     #[test]
+    fn case_train_case() {
+        assert_eq!(
+            case::train_case("The World - IS Yours"),
+            "The-World-Is-Yours"
+        );
+        assert_eq!(
+            case::train_case("_Zażółć-GĘŚLĄ_jaźń-"),
+            "Zażółć-Gęślą-Jaźń"
+        );
+        assert_eq!(
+            case::train_case("say  ***    Hello\r\n   to--ME++"),
+            "Say-Hello-To-Me"
+        );
+        assert_eq!(case::train_case(""), "");
+    }
+    #[test]
     fn case_lower_case() {
         assert_eq!(case::lower_case("The World IS YourS"), "the world is yours");
         assert_eq!(

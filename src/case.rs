@@ -134,7 +134,7 @@ pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
 /// // => "goodbye-blue-sky"
 /// ```
 pub fn kebab_case(subject: &str) -> String {
-    kebab_and_shouty_kebab_case(&subject, false)
+    kebab_and_shouty_kebab_and_train_case(&subject, KebabMode::Normal)
 }
 
 /// Converts the `subject` to SHOUTY kebab case.
@@ -154,20 +154,25 @@ pub fn kebab_case(subject: &str) -> String {
 /// // => "GOODBYE-BLUE-SKY"
 /// ```
 pub fn shouty_kebab_case(subject: &str) -> String {
-    kebab_and_shouty_kebab_case(&subject, true)
+    kebab_and_shouty_kebab_and_train_case(&subject, KebabMode::Shouty)
 }
 
-fn kebab_and_shouty_kebab_case(subject: &str, shouty: bool) -> String {
+#[derive(Clone, Copy, PartialEq)]
+enum KebabMode {
+    Normal,
+    Shouty,
+    Train,
+}
+
+fn kebab_and_shouty_kebab_and_train_case(subject: &str, kebab_mode: KebabMode) -> String {
     match subject.len() {
         0 => subject.to_string(),
         _ => split::words(subject)
             .into_iter()
-            .map(|c| {
-                if shouty {
-                    upper_case(&c)
-                } else {
-                    lower_case(&c)
-                }
+            .map(|c| match kebab_mode {
+                KebabMode::Normal => lower_case(&c),
+                KebabMode::Shouty => upper_case(&c),
+                KebabMode::Train => capitalize(&c, true),
             })
             .collect::<Vec<String>>()
             .join("-"),
@@ -339,6 +344,26 @@ pub fn title_case(subject: &str) -> String {
             .collect::<Vec<String>>()
             .join(" "),
     }
+}
+
+/// Converts the `subject` to train case.
+///
+/// # Arguments
+///
+/// * `subject` - The string to convert to train case.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::train_case("goodbye blue sky");
+/// // => "Goodbye-Blue-Sky"
+/// case::train_case("GoodbyeBlueSky");
+/// // => "Goodbye-Blue-Sky"
+/// case::train_case("-Goodbye-Blue-Sky-");
+/// // => "Goodbye-Blue-Sky"
+/// ```
+pub fn train_case(subject: &str) -> String {
+    kebab_and_shouty_kebab_and_train_case(&subject, KebabMode::Train)
 }
 
 /// Converts the `subject` to upper case.
