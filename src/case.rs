@@ -18,19 +18,25 @@ use split;
 /// // => "birdFlight"
 /// ```
 pub fn camel_case(subject: &str) -> String {
-    camel_and_pascal_case(&subject, true)
+    camel_and_pascal_case(&subject, TitleMode::Normal)
 }
 
-fn camel_and_pascal_case(subject: &str, cale_case: bool) -> String {
+#[derive(Clone, Copy, PartialEq)]
+enum TitleMode {
+    Normal,
+    Caps
+}
+
+fn camel_and_pascal_case(subject: &str, title_mode: TitleMode) -> String {
     return match subject.len() {
         0 => subject.to_string(),
-        _ => return_string(&subject, cale_case),
+        _ => return_string(&subject, title_mode),
     };
 
-    fn return_string(subject: &str, cale_case: bool) -> String {
+    fn return_string(subject: &str, title_mode: TitleMode) -> String {
         let mut res = String::with_capacity(subject.len());
         for (i, c) in split::words(subject).iter().enumerate() {
-            let s = if i == 0 && cale_case {
+            let s = if i == 0 && title_mode == TitleMode::Normal {
                 lower_case(c)
             } else {
                 capitalize(c, true)
@@ -224,7 +230,7 @@ pub fn lower_case(subject: &str) -> String {
 /// // => "BirdFlight"
 /// ```
 pub fn pascal_case(subject: &str) -> String {
-    camel_and_pascal_case(&subject, false)
+    camel_and_pascal_case(&subject, TitleMode::Caps)
 }
 
 /// Converts the `subject` to snake case.
