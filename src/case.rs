@@ -24,7 +24,7 @@ pub fn camel_case(subject: &str) -> String {
 #[derive(Clone, Copy, PartialEq)]
 enum TitleMode {
     Normal,
-    Caps
+    Caps,
 }
 
 fn camel_and_pascal_case(subject: &str, title_mode: TitleMode) -> String {
@@ -65,20 +65,45 @@ fn camel_and_pascal_case(subject: &str, title_mode: TitleMode) -> String {
 /// // => "Say hello to me"
 /// ```
 pub fn capitalize(subject: &str, rest_to_lower: bool) -> String {
+    let rest_to_lower_mode = if rest_to_lower {
+        RestMode::Lower
+    } else {
+        RestMode::Normal
+    };
+    capitalize_decapitalize(subject, rest_to_lower_mode, CapsMode::Caps)
+}
+
+#[derive(Clone, Copy, PartialEq)]
+enum RestMode {
+    Lower,
+    Normal,
+}
+#[derive(Clone, Copy, PartialEq)]
+enum CapsMode {
+    Caps,
+    Small,
+}
+
+fn capitalize_decapitalize(subject: &str, rest_mode: RestMode, caps_mode: CapsMode) -> String {
     return match subject.len() {
         0 => subject.to_string(),
-        _ => return_string(&subject, rest_to_lower),
+        _ => return_string(&subject, rest_mode, caps_mode),
     };
 
-    fn return_string(subject: &str, rest_to_lower: bool) -> String {
+    fn return_string(subject: &str, rest_mode: RestMode, caps_mode: CapsMode) -> String {
         let mut res = String::with_capacity(subject.len());
+
         for (i, c) in split::chars(subject).iter().enumerate() {
             let s = if i == 0 {
-                c.to_uppercase()
-            } else if rest_to_lower {
-                c.to_lowercase()
+                match caps_mode {
+                    CapsMode::Caps => c.to_uppercase(),
+                    CapsMode::Small => c.to_lowercase(),
+                }
             } else {
-                c.to_string()
+                match rest_mode {
+                    RestMode::Lower => c.to_lowercase(),
+                    RestMode::Normal => c.to_string(),
+                }
             };
             res.push_str(&s);
         }
@@ -86,7 +111,6 @@ pub fn capitalize(subject: &str, rest_to_lower: bool) -> String {
         res
     };
 }
-
 /// Converts the first character of `subject` to lower case. If `restToLower` is `true`, convert the rest of `subject` to lower case.
 ///
 /// # Arguments
@@ -103,24 +127,12 @@ pub fn capitalize(subject: &str, rest_to_lower: bool) -> String {
 /// // => "say Hello to ME"
 /// ```
 pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
-    return match subject.len() {
-        0 => subject.to_string(),
-        _ => return_string(&subject, rest_to_lower),
+    let rest_to_lower_mode = if rest_to_lower {
+        RestMode::Lower
+    } else {
+        RestMode::Normal
     };
-
-    fn return_string(subject: &str, rest_to_lower: bool) -> String {
-        let mut res = String::with_capacity(subject.len());
-        for (i, c) in split::chars(subject).iter().enumerate() {
-            let s = if i == 0 || rest_to_lower {
-                c.to_lowercase()
-            } else {
-                c.to_string()
-            };
-            res.push_str(&s);
-        }
-
-        res
-    };
+    capitalize_decapitalize(subject, rest_to_lower_mode, CapsMode::Small)
 }
 
 /// Converts the `subject` to kebab case.
