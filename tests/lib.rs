@@ -247,6 +247,17 @@ mod tests {
         assert_eq!(query::is_lower_first("T1000"), false);
     }
     #[test]
+    fn query_is_kebab_case() {
+        assert!(query::is_kebab_case(""));
+        assert!(query::is_kebab_case("bird-flight"));
+        assert!(query::is_kebab_case("is-kebab-case"));
+        assert!(query::is_kebab_case("zażółć-gęślą-jaźń"));
+        assert_eq!(query::is_kebab_case("-BIRD-FLIGHT-"), false);
+        assert_eq!(query::is_kebab_case("tHE World"), false);
+        assert_eq!(query::is_kebab_case("żółć niedźwiedzia"), false);
+        assert_eq!(query::is_kebab_case("T1000"), false);
+    }
+    #[test]
     fn query_is_numeric() {
         assert!(query::is_numeric(""));
         assert!(query::is_numeric("0"));

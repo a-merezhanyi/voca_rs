@@ -361,6 +361,29 @@ pub fn is_lower_first(subject: &str) -> bool {
     }
 }
 
+/// Checks whether `subject` is kebab-cased.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_kebab_case("");
+/// // => true
+/// query::is_kebab_case("bird-flight");
+/// // => true
+/// query::is_kebab_case("bird flight");
+/// // => false
+/// query::is_kebab_case("-BIRD-FLIGHT-");
+/// // => false
+/// ```
+pub fn is_kebab_case(subject: &str) -> bool {
+    subject == case::kebab_case(&subject)
+}
+
 /// Checks whether `subject` is numeric.
 ///
 /// # Arguments
