@@ -283,6 +283,18 @@ mod tests {
         assert_eq!(query::is_numeric(" "), false);
     }
     #[test]
+    fn query_is_pascal_case() {
+        assert!(query::is_pascal_case(""));
+        assert!(query::is_pascal_case("BirdFlight"));
+        assert!(query::is_pascal_case("ЭтоПаскальКейс"));
+        assert_eq!(query::is_pascal_case("birdFlight"), false);
+        assert_eq!(query::is_pascal_case("bird flight"), false);
+        assert_eq!(query::is_pascal_case("-BIRD-FLIGHT-"), false);
+        assert_eq!(query::is_pascal_case("Zażółć gęślą jaźń"), false);
+        assert!(query::is_pascal_case("ZażółćGęśląJaźń"));
+        assert_eq!(query::is_pascal_case("zażółćGęśląJaźń"), false);
+    }
+    #[test]
     fn query_is_title() {
         assert_eq!(query::is_title(""), false);
         assert!(query::is_title("The World Is Yours"), true);

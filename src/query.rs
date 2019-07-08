@@ -434,6 +434,29 @@ pub fn is_numeric(subject: &str) -> bool {
     }
 }
 
+/// Checks whether `subject` is PascalCased.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_pascal_case("");
+/// // => true
+/// query::is_pascal_case("BirdFlight");
+/// // => true
+/// query::is_pascal_case("bird flight");
+/// // => false
+/// query::is_pascal_case("-BIRD-FLIGHT-");
+/// // => false
+/// ```
+pub fn is_pascal_case(subject: &str) -> bool {
+    subject == case::pascal_case(&subject)
+}
+
 /// Checks whether `subject` is a titlecased string and there is at least one character.
 ///
 /// # Arguments
