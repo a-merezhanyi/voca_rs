@@ -240,7 +240,7 @@ fn is_capitalize_or_decapitalize(subject: &str, if_capitalize: bool) -> bool {
         0 => true,
         _ => {
             let first_letter = chop::first(&subject, 1);
-            let the_rest = chop::slice(&subject,1,0);
+            let the_rest = chop::slice(&subject, 1, 0);
             let first_letter_to_check = if if_capitalize {
                 is_uppercase(&first_letter)
             } else {
@@ -455,6 +455,29 @@ pub fn is_numeric(subject: &str) -> bool {
 /// ```
 pub fn is_pascal_case(subject: &str) -> bool {
     subject == case::pascal_case(&subject)
+}
+
+/// Checks whether `subject` is PascalCased.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_snake_case("");
+/// // => true
+/// query::is_snake_case("bird_flight");
+/// // => true
+/// query::is_snake_case("bird flight");
+/// // => false
+/// query::is_snake_case("-BIRD-FLIGHT-");
+/// // => false
+/// ```
+pub fn is_snake_case(subject: &str) -> bool {
+    subject == case::snake_case(&subject)
 }
 
 /// Checks whether `subject` is a titlecased string and there is at least one character.

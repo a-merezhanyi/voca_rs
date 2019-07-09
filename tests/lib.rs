@@ -295,6 +295,18 @@ mod tests {
         assert_eq!(query::is_pascal_case("zażółćGęśląJaźń"), false);
     }
     #[test]
+    fn query_is_snake_case() {
+        assert!(query::is_snake_case(""));
+        assert!(query::is_snake_case("bird_flight"));
+        assert!(query::is_snake_case("это_снэйк_кейс"));
+        assert_eq!(query::is_snake_case("birdFlight"), false);
+        assert_eq!(query::is_snake_case("bird flight"), false);
+        assert_eq!(query::is_snake_case("-BIRD-FLIGHT-"), false);
+        assert_eq!(query::is_snake_case("Zażółć gęślą jaźń"), false);
+        assert!(query::is_snake_case("zażółć_gęślą_jaźń"));
+        assert_eq!(query::is_snake_case("zażółćGęśląJaźń"), false);
+    }
+    #[test]
     fn query_is_title() {
         assert_eq!(query::is_title(""), false);
         assert!(query::is_title("The World Is Yours"), true);
