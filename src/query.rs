@@ -457,7 +457,7 @@ pub fn is_pascal_case(subject: &str) -> bool {
     subject == case::pascal_case(&subject)
 }
 
-/// Checks whether `subject` is PascalCased.
+/// Checks whether `subject` is snake_cased.
 ///
 /// # Arguments
 ///
