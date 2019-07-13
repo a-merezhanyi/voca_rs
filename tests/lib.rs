@@ -356,6 +356,19 @@ mod tests {
         assert_eq!(query::is_title("T1000"), true);
     }
     #[test]
+    fn query_is_train_case() {
+        assert!(query::is_train_case(""));
+        assert!(query::is_train_case("Goodbye-Blue-Sky"));
+        assert_eq!(query::is_train_case("bird_flight"), false);
+        assert!(query::is_train_case("Это-Снэйк-Кейс"));
+        assert_eq!(query::is_train_case("birdFlight"), false);
+        assert_eq!(query::is_train_case("bird flight"), false);
+        assert_eq!(query::is_train_case("-BIRD-FLIGHT-"), false);
+        assert_eq!(query::is_train_case("Zażółć gęślą jaźń"), false);
+        assert!(query::is_train_case("Zażółć-Gęślą-Jaźń"));
+        assert_eq!(query::is_train_case("zażółćGęśląJaźń"), false);
+    }
+    #[test]
     fn query_is_uppercase() {
         assert!(query::is_uppercase(""));
         assert!(query::is_uppercase("THE WORLD IS YOURS"));

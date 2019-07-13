@@ -562,6 +562,29 @@ pub fn is_title(subject: &str) -> bool {
         == subject_len
 }
 
+/// Checks whether `subject` is Train-Cased.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_train_case("");
+/// // => true
+/// query::is_train_case("Goodbye-Blue-Sky");
+/// // => true
+/// query::is_train_case("bird flight");
+/// // => false
+/// query::is_train_case("-BIRD-FLIGHT-");
+/// // => false
+/// ```
+pub fn is_train_case(subject: &str) -> bool {
+    subject == case::train_case(&subject)
+}
+
 /// Checks whether `subject` has only upper case characters.
 ///
 /// # Arguments
