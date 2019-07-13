@@ -123,6 +123,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [is_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_kebab_case.html)
 - [is_numeric](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_numeric.html)
 - [is_pascal_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_pascal_case.html)
+- [is_shouty_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_shouty_kebab_case.html)
 - [is_snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_snake_case.html)
 - [is_title](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_title.html)
 - [is_uppercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_uppercase.html)

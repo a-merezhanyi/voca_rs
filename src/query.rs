@@ -457,6 +457,29 @@ pub fn is_pascal_case(subject: &str) -> bool {
     subject == case::pascal_case(&subject)
 }
 
+/// Checks whether `subject` is SHOUTY-KEBAB-CASED.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_shouty_kebab_case("");
+/// // => true
+/// query::is_shouty_kebab_case("BIRD-FLIGHT");
+/// // => true
+/// query::is_shouty_kebab_case("bird flight");
+/// // => false
+/// query::is_shouty_kebab_case("-BIRD-FLIGHT-");
+/// // => false
+/// ```
+pub fn is_shouty_kebab_case(subject: &str) -> bool {
+    subject == case::shouty_kebab_case(&subject)
+}
+
 /// Checks whether `subject` is snake_cased.
 ///
 /// # Arguments

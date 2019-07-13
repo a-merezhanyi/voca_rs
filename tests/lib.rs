@@ -192,7 +192,6 @@ mod tests {
             "Это вообще работает?"
         ),);
         assert_eq!(
-
             query::is_capitalize("это Вообще РАБОТАЕТ?"),
             false
         );
@@ -293,6 +292,26 @@ mod tests {
         assert_eq!(query::is_pascal_case("Zażółć gęślą jaźń"), false);
         assert!(query::is_pascal_case("ZażółćGęśląJaźń"));
         assert_eq!(query::is_pascal_case("zażółćGęśląJaźń"), false);
+    }
+    #[test]
+    fn query_is_shouty_kebab_case() {
+        assert!(query::is_shouty_kebab_case(""));
+        assert!(query::is_shouty_kebab_case("BIRD-FLIGHT"));
+        assert!(query::is_shouty_kebab_case(
+            "ЭТО-ОЙ-КЕБАБ-КЕЙС"
+        ));
+        assert_eq!(query::is_shouty_kebab_case("birdFlight"), false);
+        assert_eq!(query::is_shouty_kebab_case("bird flight"), false);
+        assert_eq!(query::is_shouty_kebab_case("-BIRD-FLIGHT-"), false);
+        assert_eq!(
+            query::is_shouty_kebab_case("Zażółć gęślą jaźń"),
+            false
+        );
+        assert!(query::is_shouty_kebab_case("ZAŻÓŁĆ-GĘŚLĄ-JAŹŃ"));
+        assert_eq!(
+            query::is_shouty_kebab_case("zażółćGęśląJaźń"),
+            false
+        );
     }
     #[test]
     fn query_is_snake_case() {
