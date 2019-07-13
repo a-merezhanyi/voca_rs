@@ -121,10 +121,11 @@ Build a project: `cargo build` -> `./target/debug`
 - [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
 - [is_lower_first](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lower_first.html)
 - [is_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_kebab_case.html)
+- [is_shouty_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_shouty_kebab_case.html)
 - [is_numeric](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_numeric.html)
 - [is_pascal_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_pascal_case.html)
-- [is_shouty_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_shouty_kebab_case.html)
 - [is_snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_snake_case.html)
+- [is_shouty_snake_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_shouty_snake_case.html)
 - [is_title](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_title.html)
 - [is_uppercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_uppercase.html)
 - [is_upper_first](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_upper_first.html)
@@ -188,8 +189,6 @@ Build a project: `cargo build` -> `./target/debug`
 #### Query
 
 - is_foreign_key - [link](https://docs.rs/Inflector/0.11.4/inflector/suffix/foreignkey/fn.is_foreign_key.html)
-- is_shouty_kebab_case
-- is_shouty_snake_case
 - is_swap_case
 - is_train_case - [link](https://docs.rs/Inflector/0.11.4/inflector/cases/traincase/fn.is_train_case.html)
 

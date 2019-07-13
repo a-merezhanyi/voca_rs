@@ -503,6 +503,29 @@ pub fn is_snake_case(subject: &str) -> bool {
     subject == case::snake_case(&subject)
 }
 
+/// Checks whether `subject` is SHOUTY_SNAKE_CASED.
+///
+/// # Arguments
+///
+/// * `subject` - The string to verify.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// query::is_shouty_snake_case("");
+/// // => true
+/// query::is_shouty_snake_case("BIRD_FLIGHT");
+/// // => true
+/// query::is_shouty_snake_case("bird flight");
+/// // => false
+/// query::is_shouty_snake_case("-BIRD-FLIGHT-");
+/// // => false
+/// ```
+pub fn is_shouty_snake_case(subject: &str) -> bool {
+    subject == case::shouty_snake_case(&subject)
+}
+
 /// Checks whether `subject` is a titlecased string and there is at least one character.
 ///
 /// # Arguments

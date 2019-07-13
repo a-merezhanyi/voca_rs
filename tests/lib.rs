@@ -326,6 +326,25 @@ mod tests {
         assert_eq!(query::is_snake_case("zażółćGęśląJaźń"), false);
     }
     #[test]
+    fn query_is_shouty_snake_case() {
+        assert!(query::is_shouty_snake_case(""));
+        assert!(query::is_shouty_snake_case("BIRD_FLIGHT"));
+        assert_eq!(query::is_shouty_snake_case("bird_flight"), false);
+        assert!(query::is_shouty_snake_case("ЭТО_СНЭЙК_КЕЙС"));
+        assert_eq!(query::is_shouty_snake_case("birdFlight"), false);
+        assert_eq!(query::is_shouty_snake_case("bird flight"), false);
+        assert_eq!(query::is_shouty_snake_case("-BIRD-FLIGHT-"), false);
+        assert_eq!(
+            query::is_shouty_snake_case("Zażółć gęślą jaźń"),
+            false
+        );
+        assert!(query::is_shouty_snake_case("ZAŻÓŁĆ_GĘŚLĄ_JAŹŃ"));
+        assert_eq!(
+            query::is_shouty_snake_case("zażółćGęśląJaźń"),
+            false
+        );
+    }
+    #[test]
     fn query_is_title() {
         assert_eq!(query::is_title(""), false);
         assert!(query::is_title("The World Is Yours"), true);
