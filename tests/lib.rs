@@ -496,6 +496,18 @@ mod tests {
         assert_eq!(case::decapitalize("", true), "");
     }
     #[test]
+    fn case_foreign_key() {
+        assert_eq!(case::foreign_key(""), "");
+        assert_eq!(case::foreign_key("foo_bar"), "foo_bar_id");
+        assert_eq!(case::foreign_key("Foo bar"), "foo_bar_id");
+        assert_eq!(case::foreign_key("Foo Bar"), "foo_bar_id");
+        assert_eq!(case::foreign_key("Foo::Bar"), "bar_id");
+        assert_eq!(case::foreign_key("Test::Foo::Bar"), "bar_id");
+        assert_eq!(case::foreign_key("FooBar"), "foo_bar_id");
+        assert_eq!(case::foreign_key("fooBar"), "foo_bar_id");
+        assert_eq!(case::foreign_key("fooBar3"), "foo_bar3_id");
+    }
+    #[test]
     fn case_kebab_case() {
         assert_eq!(
             case::kebab_case("The World - IS Yours"),

@@ -135,6 +135,46 @@ pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
     capitalize_decapitalize(subject, rest_to_lower_mode, CapsMode::Small)
 }
 
+/// Converts the `subject` to a `foreign_key`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to convert to a `foreign_key`.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// case::foreign_key("foo_bar");
+/// // => "foo_bar_id"
+/// case::foreign_key("fooBar3"");
+/// // => "foo_bar3_id"
+/// case::foreign_key("Test::Foo::Bar");
+/// // => "bar_id"
+/// ```
+pub fn foreign_key(subject: &str) -> String {
+    /* https://docs.rs/crate/Inflector/0.11.4 */
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => {
+            if subject.contains("::") {
+                let split_string: Vec<&str> = subject.split("::").collect();
+                safe_convert(split_string[split_string.len() - 1])
+            } else {
+                safe_convert(subject)
+            }
+        }
+    }
+}
+
+fn safe_convert(safe_string: &str) -> String {
+    let snake_cased: String = snake_case(safe_string);
+    if snake_cased.ends_with("_id") {
+        snake_cased
+    } else {
+        format!("{}{}", snake_cased, "_id")
+    }
+}
+
 /// Converts the `subject` to kebab case.
 ///
 /// # Arguments

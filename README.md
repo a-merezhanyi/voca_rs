@@ -35,6 +35,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [camel_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.camel_case.html)
 - [capitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.capitalize.html)
 - [decapitalize](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.decapitalize.html)
+- [foreign_key](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.foreign_key.html)
 - [kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.kebab_case.html)
 - [lower_case](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.lower_case.html)
 - [lower_first](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.lower_first.html)
@@ -165,10 +166,6 @@ Build a project: `cargo build` -> `./target/debug`
 - Rewrite the code, so the functions (when it is possible) are accessible directly on String/&str. That can be achieved using an extension trait.
 - Possible refactoring: all `position` indexes covert to zero-based and add a comment to each doc.
 - Change all inner arguments to Enums (instead `string` or `bool`)
-
-#### Case
-
-- foreign_key - [link](https://docs.rs/Inflector/0.11.4/inflector/suffix/foreignkey/fn.to_foreign_key.html)
 
 #### Count
 
