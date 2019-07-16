@@ -146,7 +146,7 @@ pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
 /// use voca_rs::*;
 /// case::foreign_key("foo_bar");
 /// // => "foo_bar_id"
-/// case::foreign_key("fooBar3"");
+/// case::foreign_key("fooBar3");
 /// // => "foo_bar3_id"
 /// case::foreign_key("Test::Foo::Bar");
 /// // => "bar_id"

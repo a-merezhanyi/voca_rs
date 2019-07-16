@@ -119,6 +119,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [is_decapitalize](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_decapitalize.html)
 - [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
 - [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
+- [is_foreign_key](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_foreign_key.html)
 - [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
 - [is_lower_first](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lower_first.html)
 - [is_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_kebab_case.html)
@@ -183,10 +184,6 @@ Build a project: `cargo build` -> `./target/debug`
 - to_plural - [link](https://docs.rs/Inflector/0.11.4/inflector/string/pluralize/fn.to_plural.html)
 - to_singular - [link](https://docs.rs/Inflector/0.11.4/inflector/string/singularize/fn.to_singular.html)
 - ordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/ordinalize/index.html)
-
-#### Query
-
-- is_foreign_key - [link](https://docs.rs/Inflector/0.11.4/inflector/suffix/foreignkey/fn.is_foreign_key.html)
 
 #### Implementations on Foreign Type
 
