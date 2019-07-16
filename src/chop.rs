@@ -272,10 +272,10 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
 /// ```
 pub fn slice(subject: &str, start: isize, end: isize) -> String {
     let subject_length = split::chars(&subject).len();
-    let position_start = calulate_position(subject_length, start, true);
-    let position_end = calulate_position(subject_length, end, false);
+    let position_start = calculate_position(subject_length, start, true);
+    let position_end = calculate_position(subject_length, end, false);
 
-    fn calulate_position(length: usize, x: isize, start: bool) -> usize {
+    fn calculate_position(length: usize, x: isize, start: bool) -> usize {
         if x < 0 {
             let pos = length as isize - x.abs();
             if pos < 0 {
