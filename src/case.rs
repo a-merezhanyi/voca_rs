@@ -301,7 +301,7 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
     }
 }
 
-/// Converts the uppercase alpha caracters of `subject` to lowercase and lowercase characters to uppercase.
+/// Converts the uppercase alpha characters of `subject` to lowercase and lowercase characters to uppercase.
 ///
 /// # Arguments
 ///
