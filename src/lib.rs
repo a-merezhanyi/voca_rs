@@ -41,3 +41,35 @@ pub mod query;
 pub mod split;
 pub mod strip;
 pub mod utils;
+
+#[allow(missing_docs)]
+pub trait Voca {
+    fn camel_case(&self) -> String;
+    fn capitalize(&self, prm: bool) -> String;
+    fn decapitalize(&self, prm: bool) -> String;
+
+    // fn is_camel_case(&self) -> bool;
+}
+
+macro_rules! implement_string_for {
+    ( $trt:ident; $($typ:ident), *) => {
+        $(
+            impl $trt for $typ {
+                fn camel_case(&self) -> String {
+                case::camel_case(&self)
+                }
+                fn capitalize(&self, prm: bool) -> String {
+                    case::capitalize(&self, prm)
+                }
+                fn decapitalize(&self, prm: bool) -> String {
+                    case::decapitalize(&self, prm)
+                }
+            }
+        )*
+    }
+}
+
+implement_string_for![
+    Voca;
+    String, str
+];
