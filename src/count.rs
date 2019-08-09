@@ -1,6 +1,5 @@
 //! Counts the characters in `subject`.
 
-use split;
 /// Counts the characters in `subject`.
 ///
 /// # Arguments
@@ -18,7 +17,7 @@ use split;
 pub fn count(subject: &str) -> usize {
     match subject.len() {
         0 => 0,
-        _ => split::chars(subject).len(),
+        _ => crate::split::chars(subject).len(),
     }
 }
 
@@ -43,7 +42,7 @@ pub fn count(subject: &str) -> usize {
 pub fn count_graphemes(subject: &str) -> usize {
     match subject.len() {
         0 => 0,
-        _ => split::graphemes(subject).len(),
+        _ => crate::split::graphemes(subject).len(),
     }
 }
 
@@ -98,7 +97,7 @@ pub fn count_substrings(subject: &str, substring: &str) -> usize {
 pub fn count_words(subject: &str, pattern: &str) -> usize {
     fn match_substring(subject: &str, pattern: &str) -> usize {
         match pattern.len() {
-            0 => split::words(&subject).iter().count(),
+            0 => crate::split::words(&subject).iter().count(),
             _ => subject
                 .split_terminator(pattern)
                 .collect::<Vec<_>>()

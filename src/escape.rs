@@ -1,6 +1,5 @@
 //! Escapes  special characters in `subject`.
 
-use split;
 /// Escapes HTML special characters < > & ' " ` in `subject`.
 ///
 /// # Arguments
@@ -46,7 +45,7 @@ pub fn escape_regexp(subject: &str) -> String {
         0 => "".to_string(),
         _ => {
             let mut res = String::new();
-            for c in split::chars(&subject) {
+            for c in crate::split::chars(&subject) {
                 let push_char = if key.contains(&c) {
                     format!("\\{}", &c)
                 } else {

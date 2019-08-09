@@ -1,6 +1,5 @@
 //! Converts the `subject` to a selected case.
 
-use split;
 /// Converts the `subject` to camel case.
 ///
 /// # Arguments
@@ -35,7 +34,7 @@ fn camel_and_pascal_case(subject: &str, title_mode: TitleMode) -> String {
 
     fn return_string(subject: &str, title_mode: TitleMode) -> String {
         let mut res = String::with_capacity(subject.len());
-        for (i, c) in split::words(subject).iter().enumerate() {
+        for (i, c) in crate::split::words(subject).iter().enumerate() {
             let s = if i == 0 && title_mode == TitleMode::Normal {
                 lower_case(c)
             } else {
@@ -93,7 +92,7 @@ fn capitalize_decapitalize(subject: &str, rest_mode: RestMode, caps_mode: CapsMo
     fn return_string(subject: &str, rest_mode: RestMode, caps_mode: CapsMode) -> String {
         let mut res = String::with_capacity(subject.len());
 
-        for (i, c) in split::chars(subject).iter().enumerate() {
+        for (i, c) in crate::split::chars(subject).iter().enumerate() {
             let s = if i == 0 {
                 match caps_mode {
                     CapsMode::Caps => c.to_uppercase(),
@@ -225,7 +224,7 @@ enum KebabMode {
 fn kebab_and_shouty_kebab_and_train_case(subject: &str, kebab_mode: KebabMode) -> String {
     match subject.len() {
         0 => subject.to_string(),
-        _ => split::words(subject)
+        _ => crate::split::words(subject)
             .into_iter()
             .map(|c| match kebab_mode {
                 KebabMode::Normal => lower_case(&c),
@@ -257,7 +256,7 @@ pub fn lower_case(subject: &str) -> String {
         0 => subject.to_string(),
         _ => {
             let mut res = String::with_capacity(subject.len());
-            for c in split::chars(subject).iter() {
+            for c in crate::split::chars(subject).iter() {
                 res.push_str(&c.to_lowercase());
             }
             res
@@ -328,7 +327,7 @@ pub fn shouty_snake_case(subject: &str) -> String {
 fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
     match subject.len() {
         0 => subject.to_string(),
-        _ => split::words(subject)
+        _ => crate::split::words(subject)
             .into_iter()
             .map(|c| {
                 if shouty {
@@ -359,7 +358,7 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
 pub fn swap_case(subject: &str) -> String {
     match subject.len() {
         0 => subject.to_string(),
-        _ => split::chars(subject)
+        _ => crate::split::chars(subject)
             .into_iter()
             .map(|s| {
                 s.chars()
@@ -396,7 +395,7 @@ pub fn swap_case(subject: &str) -> String {
 pub fn title_case(subject: &str) -> String {
     match subject.len() {
         0 => subject.to_string(),
-        _ => split::words(subject)
+        _ => crate::split::words(subject)
             .into_iter()
             .map(|c| capitalize(&c, true))
             .collect::<Vec<String>>()
@@ -444,7 +443,7 @@ pub fn upper_case(subject: &str) -> String {
         0 => subject.to_string(),
         _ => {
             let mut res = String::with_capacity(subject.len());
-            for c in split::chars(subject).iter() {
+            for c in crate::split::chars(subject).iter() {
                 res.push_str(&c.to_uppercase());
             }
             res

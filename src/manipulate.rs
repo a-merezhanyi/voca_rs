@@ -1,10 +1,5 @@
 //! Manipulate with the `subject`.
 
-use chop;
-use count;
-use index;
-use split;
-use utils;
 /// Returns a copy of `subject` expands spaces using the tab characters.
 ///
 /// # Arguments
@@ -80,8 +75,8 @@ pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
     } else {
         position
     };
-    let prefix = split::chars(&subject)[..insert_position].join("");
-    let sufix = split::chars(&subject)[insert_position..].join("");
+    let prefix = crate::split::chars(&subject)[..insert_position].join("");
+    let sufix = crate::split::chars(&subject)[insert_position..].join("");
     format!("{}{}{}", prefix, to_insert, sufix)
 }
 
@@ -131,7 +126,7 @@ pub fn latinise(subject: &str) -> String {
 /// // => "-Café del Mar-="
 /// ```
 pub fn pad(subject: &str, length: usize, pad: &str) -> String {
-    let subject_len = count::count_graphemes(&subject);
+    let subject_len = crate::count::count_graphemes(&subject);
     match subject_len {
         0 => "".to_string(),
         _ => {
@@ -152,11 +147,11 @@ enum PadMode {
 }
 
 fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) -> String {
-    let width = length - count::count_graphemes(&subject);
+    let width = length - crate::count::count_graphemes(&subject);
     let to_add = if pad.is_empty() { " " } else { pad };
     let times = width / to_add.len();
     let str_to_add = to_add.repeat(times + 1);
-    let string_to_add = split::chars(&str_to_add);
+    let string_to_add = crate::split::chars(&str_to_add);
     let padding = if pad_mode == PadMode::Left || pad_mode == PadMode::Right {
         string_to_add[..width].join("")
     } else {
@@ -201,7 +196,7 @@ fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) ->
 /// // => "-=-Café del Mar"
 /// ```
 pub fn pad_left(subject: &str, length: usize, pad: &str) -> String {
-    let subject_len = count::count_graphemes(&subject);
+    let subject_len = crate::count::count_graphemes(&subject);
     match subject_len {
         0 => "".to_string(),
         _ => {
@@ -234,7 +229,7 @@ pub fn pad_left(subject: &str, length: usize, pad: &str) -> String {
 /// // => "Café del Mar-=-"
 /// ```
 pub fn pad_right(subject: &str, length: usize, pad: &str) -> String {
-    let subject_len = count::count_graphemes(&subject);
+    let subject_len = crate::count::count_graphemes(&subject);
     match subject_len {
         0 => "".to_string(),
         _ => {
@@ -294,9 +289,14 @@ pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
     if subject.is_empty() || pattern.is_empty() {
         return subject.to_string();
     }
-    match index::index_of(&subject, &pattern, 0) {
+    match crate::index::index_of(&subject, &pattern, 0) {
         -1 => subject.to_string(),
-        x => splice(&subject, x as isize, count::count(&pattern), &replacement),
+        x => splice(
+            &subject,
+            x as isize,
+            crate::count::count(&pattern),
+            &replacement,
+        ),
     }
 }
 
@@ -395,7 +395,7 @@ pub fn slugify(subject: &str) -> String {
     if subject.is_empty() {
         "".to_string()
     } else {
-        split::words(unidecode(subject).replace("'", "").to_lowercase().trim()).join("-")
+        crate::split::words(unidecode(subject).replace("'", "").to_lowercase().trim()).join("-")
     }
 }
 
@@ -421,7 +421,7 @@ pub fn slugify(subject: &str) -> String {
 /// // => "Привет, Ёлка!"
 /// ```
 pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) -> String {
-    let subject_len = count::count(&subject);
+    let subject_len = crate::count::count(&subject);
     fn calculate_start_position(start: isize, subject_len: usize) -> usize {
         if start < 0 {
             if start.abs() as usize > subject_len {
@@ -458,9 +458,9 @@ pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) ->
 
             format!(
                 "{}{}{}",
-                chop::first(&subject, start_position),
+                crate::chop::first(&subject, start_position),
                 &to_add,
-                chop::slice(&subject, end_position as isize, 0)
+                crate::chop::slice(&subject, end_position as isize, 0)
             )
         }
     }
@@ -570,7 +570,7 @@ fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: 
 /// // => "000Café"
 /// ```
 pub fn zfill(subject: &str, length: usize) -> String {
-    let subject_len = count::count_graphemes(&subject);
+    let subject_len = crate::count::count_graphemes(&subject);
     match subject_len {
         0 => "".to_string(),
         _ => {
@@ -605,8 +605,8 @@ pub fn tr(subject: &str, from: &str, to: &str) -> String {
         return subject.to_owned();
     }
     let mut result = String::from(subject);
-    let from_symbols = split::graphemes(&from);
-    let to_symbols = split::graphemes(&to);
+    let from_symbols = crate::split::graphemes(&from);
+    let to_symbols = crate::split::graphemes(&to);
     let to_len = to_symbols.len();
 
     for (i, c) in from_symbols.iter().enumerate() {
@@ -635,7 +635,7 @@ pub fn tr(subject: &str, from: &str, to: &str) -> String {
 /// // => "__Hello<br/>__world"
 /// ```
 pub fn word_wrap(subject: &str, width: usize, newline: &str, indent: &str) -> String {
-    let mut subject_len = count::count_graphemes(&subject);
+    let mut subject_len = crate::count::count_graphemes(&subject);
     if subject.is_empty() || (subject_len < width && indent.is_empty()) {
         return subject.to_owned();
     }
@@ -646,24 +646,24 @@ pub fn word_wrap(subject: &str, width: usize, newline: &str, indent: &str) -> St
     let indent_sym = if indent.is_empty() { "" } else { indent };
 
     while subject_len > width {
-        let mut subj_part = chop::prune(&string, length, "+");
-        subj_part = trim(&chop::slice(&subj_part, 0, -1), "");
-        let length_to_cut = count::count_graphemes(&subj_part);
-        string = trim(&chop::slice(&string, length_to_cut as isize, 0), "");
-        subject_len = count::count_graphemes(&string);
+        let mut subj_part = crate::chop::prune(&string, length, "+");
+        subj_part = trim(&crate::chop::slice(&subj_part, 0, -1), "");
+        let length_to_cut = crate::count::count_graphemes(&subj_part);
+        string = trim(&crate::chop::slice(&string, length_to_cut as isize, 0), "");
+        subject_len = crate::count::count_graphemes(&string);
 
         if subj_part == string || subj_part.is_empty() {
             break;
         }
         let mut is_finished = false;
-        let mut subj_part_len = count::count_graphemes(&subj_part);
+        let mut subj_part_len = crate::count::count_graphemes(&subj_part);
         while !is_finished && subj_part_len < width {
-            let first_char = chop::first(&string, 1);
+            let first_char = crate::chop::first(&string, 1);
 
-            if utils::PUNCTUATION.contains(&first_char) {
+            if crate::utils::PUNCTUATION.contains(&first_char) {
                 subj_part.push_str(&first_char);
-                subj_part_len = count::count_graphemes(&subj_part);
-                string = trim(&chop::slice(&string, 1, 0), "");
+                subj_part_len = crate::count::count_graphemes(&subj_part);
+                string = trim(&crate::chop::slice(&string, 1, 0), "");
             } else {
                 is_finished = true;
             }

@@ -1,9 +1,6 @@
 //! Extracts a character(s) from `subject`.
 
-use count;
-use split;
 use stfu8;
-use utils;
 
 #[derive(Clone, Copy, PartialEq)]
 enum PointType {
@@ -20,7 +17,7 @@ enum CharType {
 fn get_chars(subject: &str, start: usize, end: usize) -> String {
     match subject.len() {
         0 => subject.to_string(),
-        _ => split::chars(&subject)[start..end].join(""),
+        _ => crate::split::chars(&subject)[start..end].join(""),
     }
 }
 
@@ -30,7 +27,7 @@ fn get_subject_length(
     point_type: PointType,
     char_type: CharType,
 ) -> usize {
-    let subject_len = count::count_graphemes(subject);
+    let subject_len = crate::count::count_graphemes(subject);
     let position_substruction = match point_type {
         PointType::Length => 0,
         PointType::Position => 1,
@@ -86,7 +83,7 @@ pub fn code_point_at(subject: &str, position: usize) -> Vec<u16> {
         return vec![];
     }
     let grapheme = grapheme_at(&subject, position);
-    split::code_points(&grapheme)
+    crate::split::code_points(&grapheme)
 }
 
 /// Extracts the first `length` characters from `subject`.
@@ -130,13 +127,13 @@ pub fn first(subject: &str, length: usize) -> String {
 /// // => "a̐"
 /// ```
 pub fn grapheme_at(subject: &str, position: usize) -> String {
-    let subject_len = count::count_graphemes(subject);
+    let subject_len = crate::count::count_graphemes(subject);
     match subject_len {
         0 => subject.to_string(),
         _ => {
             let the_position =
                 get_subject_length(subject, position, PointType::Position, CharType::Grapheme);
-            split::graphemes(&subject)[the_position].to_string()
+            crate::split::graphemes(&subject)[the_position].to_string()
         }
     }
 }
@@ -162,7 +159,7 @@ pub fn last(subject: &str, length: usize) -> String {
     match length {
         0 => "".to_string(),
         _ => {
-            let subject_length = split::chars(&subject).len();
+            let subject_length = crate::split::chars(&subject).len();
             let the_length =
                 get_subject_length(subject, length, PointType::Length, CharType::Grapheme);
             get_chars(&subject, subject_length - the_length, subject_length)
@@ -198,9 +195,9 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
         "" => "...",
         _ => end,
     };
-    let subject_chars = split::chars(&subject);
+    let subject_chars = crate::split::chars(&subject);
     let subject_length = subject_chars.len();
-    let end_length = split::chars(&sufix).len();
+    let end_length = crate::split::chars(&sufix).len();
     let position_end = if subject_length <= length {
         sufix = "";
         subject_length
@@ -221,8 +218,8 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
                 Some(c) => {
                     let mut current_char = String::new();
                     current_char.push_str(c);
-                    if utils::WHITESPACE.contains(&current_char)
-                        || utils::PUNCTUATION.contains(&current_char)
+                    if crate::utils::WHITESPACE.contains(&current_char)
+                        || crate::utils::PUNCTUATION.contains(&current_char)
                     {
                         if mode == WordMode::Words {
                             end_position = if current_position > 0 {
@@ -271,7 +268,7 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
 /// // => "Schildkröte"
 /// ```
 pub fn slice(subject: &str, start: isize, end: isize) -> String {
-    let subject_length = split::chars(&subject).len();
+    let subject_length = crate::split::chars(&subject).len();
     let position_start = calculate_position(subject_length, start, true);
     let position_end = calculate_position(subject_length, end, false);
 
@@ -316,7 +313,7 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
 /// // => "łą"
 /// ```
 pub fn substr(subject: &str, start: usize, length: usize) -> String {
-    let subject_length = split::chars(&subject).len();
+    let subject_length = crate::split::chars(&subject).len();
     if start >= subject_length {
         return "".to_string();
     }
@@ -356,7 +353,7 @@ pub fn substr(subject: &str, start: usize, length: usize) -> String {
 /// // => "\u{0301}"
 /// ```
 pub fn substring(subject: &str, start: usize, end: usize) -> String {
-    let subject_length = split::chars(&subject).len();
+    let subject_length = crate::split::chars(&subject).len();
     if start >= subject_length {
         return "".to_string();
     }
@@ -403,8 +400,8 @@ pub fn truncate(subject: &str, length: usize, end: &str) -> String {
         "" => "...",
         _ => end,
     };
-    let subject_length = split::chars(&subject).len();
-    let end_length = split::chars(&sufix).len();
+    let subject_length = crate::split::chars(&subject).len();
+    let end_length = crate::split::chars(&sufix).len();
     let position_end = if subject_length < length || length < end_length {
         sufix = "";
         subject_length
@@ -472,7 +469,7 @@ fn min_max(subject: &str, search_type: MinMaxType) -> String {
     if subject.is_empty() {
         return "".to_owned();
     }
-    let code_points = split::code_points(&subject);
+    let code_points = crate::split::code_points(&subject);
     let min_max = match search_type {
         MinMaxType::Max => code_points.iter().max(),
         MinMaxType::Min => code_points.iter().min(),

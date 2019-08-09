@@ -1,6 +1,5 @@
 //! Strips specific characters from subject.
 
-use chop;
 use dissolve;
 /// Strips the byte order mark (BOM) from the beginning of `subject`.
 ///
@@ -21,8 +20,8 @@ pub fn strip_bom(subject: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
         _ => {
-            if chop::first(&subject, 1) == "\u{FEFF}" {
-                chop::slice(&subject, 1, 0)
+            if crate::chop::first(&subject, 1) == "\u{FEFF}" {
+                crate::chop::slice(&subject, 1, 0)
             } else {
                 subject.to_string()
             }
