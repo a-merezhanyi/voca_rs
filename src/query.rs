@@ -306,27 +306,6 @@ pub fn is_empty(subject: &str) -> bool {
     false
 }
 
-/// Checks whether `subject` is is a `foreign_key`.
-///
-/// # Arguments
-///
-/// * `subject` - The string to verify.
-///
-/// # Example
-///
-/// ```
-/// use voca_rs::*;
-/// query::is_foreign_key("");
-/// // => true
-/// query::is_foreign_key("foo_bar_id");
-/// // => true
-/// query::is_foreign_key("foo_bar");
-/// // => false
-/// ```
-pub fn is_foreign_key(subject: &str) -> bool {
-    subject == crate::case::foreign_key(&subject)
-}
-
 /// Checks whether `subject` has only lower case characters.
 ///
 /// # Arguments

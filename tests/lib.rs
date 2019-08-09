@@ -230,26 +230,6 @@ mod tests {
         assert_eq!(query::is_empty("the world is yours"), false);
     }
     #[test]
-    fn query_is_foreign_key() {
-        assert!(query::is_foreign_key(""));
-        assert!(query::is_foreign_key("foo_bar_id"));
-        assert_eq!(query::is_foreign_key("foo_bar"), false);
-        assert_eq!(query::is_foreign_key("the world is yours"), false);
-        assert_eq!(
-            query::is_foreign_key("foo-bar-string-that-is-really-really-long"),
-            false
-        );
-        assert_eq!(
-            query::is_foreign_key("FooBarIsAReallyReallyLongString"),
-            false
-        );
-        assert_eq!(
-            query::is_foreign_key("foo_bar_string_that_is_really_really_long"),
-            false
-        );
-        assert_eq!(query::is_foreign_key("voca::query::is_foreign_key"), false);
-    }
-    #[test]
     fn query_is_lowercase() {
         assert!(query::is_lowercase(""));
         assert!(query::is_lowercase("the world is yours"));
@@ -514,18 +494,6 @@ mod tests {
             "say Hello to ME"
         );
         assert_eq!(case::decapitalize("", true), "");
-    }
-    #[test]
-    fn case_foreign_key() {
-        assert_eq!(case::foreign_key(""), "");
-        assert_eq!(case::foreign_key("foo_bar"), "foo_bar_id");
-        assert_eq!(case::foreign_key("Foo bar"), "foo_bar_id");
-        assert_eq!(case::foreign_key("Foo Bar"), "foo_bar_id");
-        assert_eq!(case::foreign_key("Foo::Bar"), "bar_id");
-        assert_eq!(case::foreign_key("Test::Foo::Bar"), "bar_id");
-        assert_eq!(case::foreign_key("FooBar"), "foo_bar_id");
-        assert_eq!(case::foreign_key("fooBar"), "foo_bar_id");
-        assert_eq!(case::foreign_key("fooBar3"), "foo_bar3_id");
     }
     #[test]
     fn case_kebab_case() {
