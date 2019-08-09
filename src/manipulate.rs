@@ -1,5 +1,6 @@
 //! Manipulate with the `subject`.
 
+use index;
 /// Returns a copy of `subject` expands spaces using the tab characters.
 ///
 /// # Arguments
@@ -289,7 +290,7 @@ pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
     if subject.is_empty() || pattern.is_empty() {
         return subject.to_string();
     }
-    match crate::index::index_of(&subject, &pattern, 0) {
+    match index::index_of(&subject, &pattern, 0) {
         -1 => subject.to_string(),
         x => splice(
             &subject,
