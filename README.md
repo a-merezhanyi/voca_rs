@@ -2,7 +2,8 @@
 
 **Voca_rs is a Rust library for manipulating strings.**
 
-Voca_rs is inspired by [Voca.js](https://vocajs.com/) and [string.py](https://docs.python.org/3.4/library/string.html)
+Voca_rs is inspired by [Voca.js](https://vocajs.com/), [string.py](https://docs.python.org/3.4/library/string.html) and [Inflector](https://github.com/whatisinternet/inflector)
+Voca_rs is implemented on Foreign Types, i.e. `String` and `str`.
 
 ## TL;DR
 
@@ -14,7 +15,7 @@ let string_in_words = split::words(&input_string);
 // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 let words_in_string = &string_in_words.join(" ");
 // => "Lazy Load with XML Http Request and snake case"
-let snake_string = case::snake_case(&chop::slice(&words_in_string, 13, 28));
+let snake_string = case::snake_case(&chop::slice(&words_in_string, 14, 31));
 // => "xml_http_request"
 let truncated_string = chop::prune(&words_in_string, 15, "");
 // => "Lazy Load..."
@@ -176,19 +177,17 @@ Build a project: `cargo build` -> `./target/debug`
 
 - vprintf - [link](https://vocajs.com/#vprintf)
 
-#### Manipulate	
+#### Chop
 
- - deordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/deordinalize/fn.deordinalize.html)	
-- deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)	
-- demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)	
-- to_plural - [link](https://docs.rs/Inflector/0.11.4/inflector/string/pluralize/fn.to_plural.html)	
-- to_singular - [link](https://docs.rs/Inflector/0.11.4/inflector/string/singularize/fn.to_singular.html)	
+- deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
+- demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)
+
+### Manipulate
+
+- deordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/deordinalize/fn.deordinalize.html)
+- pluralize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/pluralize/fn.to_plural.html)
+- singularize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/singularize/fn.to_singular.html)
 - ordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/ordinalize/index.html)
-
-#### Implementations on Foreign Type
-
-- impl Voca_rs for String - [link](https://docs.rs/Inflector/0.11.4/src/inflector/lib.rs.html#195-228)
-- impl Voca_rs for str - [link](https://docs.rs/Inflector/0.11.4/src/inflector/lib.rs.html#195-228)
 
 ## Copyright
 
