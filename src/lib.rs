@@ -44,11 +44,27 @@ pub mod utils;
 
 #[allow(missing_docs)]
 pub trait Voca {
+    // case
     fn camel_case(&self) -> String;
-    fn capitalize(&self, prm: bool) -> String;
-    fn decapitalize(&self, prm: bool) -> String;
+    fn capitalize(&self, param: bool) -> String;
+    fn decapitalize(&self, param: bool) -> String;
 
-    // fn is_camel_case(&self) -> bool;
+    // chop
+
+    // count
+
+    // escape
+
+    // index
+
+    // manipulate
+
+    // query
+    //fn is_camel_case(&self) -> bool;
+
+    // split
+
+    // strip
 }
 
 macro_rules! implement_string_for {
@@ -58,11 +74,11 @@ macro_rules! implement_string_for {
                 fn camel_case(&self) -> String {
                 case::camel_case(&self)
                 }
-                fn capitalize(&self, prm: bool) -> String {
-                    case::capitalize(&self, prm)
+                fn capitalize(&self, param: bool) -> String {
+                    case::capitalize(&self, param)
                 }
-                fn decapitalize(&self, prm: bool) -> String {
-                    case::decapitalize(&self, prm)
+                fn decapitalize(&self, param: bool) -> String {
+                    case::decapitalize(&self, param)
                 }
             }
         )*
