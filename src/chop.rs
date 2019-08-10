@@ -111,6 +111,43 @@ pub fn first(subject: &str, length: usize) -> String {
     }
 }
 
+/// Converts the `subject` to a `foreign_key`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to convert to a `foreign_key`.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::foreign_key("foo_bar");
+/// // => "foo_bar_id"
+/// chop::foreign_key("fooBar3");
+/// // => "foo_bar3_id"
+/// chop::foreign_key("Test::Foo::Bar");
+/// // => "bar_id"
+/// ```
+pub fn foreign_key(subject: &str) -> String {
+    /* https://docs.rs/crate/Inflector/0.11.4 */
+    match subject.len() {
+        0 => subject.to_string(),
+        _ => {
+            let safe_string = if subject.contains("::") {
+                let split_string: Vec<&str> = subject.split("::").collect();
+                split_string[split_string.len() - 1]
+            } else {
+                subject
+            };
+            let snake_cased: String = crate::case::snake_case(safe_string);
+            if snake_cased.ends_with("_id") {
+                snake_cased
+            } else {
+                format!("{}{}", snake_cased, "_id")
+            }
+        }
+    }
+}
+
 /// Get a grapheme from `subject` at specified `position`.
 ///
 /// # Arguments

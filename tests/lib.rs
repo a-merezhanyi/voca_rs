@@ -230,6 +230,26 @@ mod tests {
         assert_eq!(query::is_empty("the world is yours"), false);
     }
     #[test]
+    fn query_is_foreign_key() {
+        assert!(query::is_foreign_key(""));
+        assert!(query::is_foreign_key("foo_bar_id"));
+        assert_eq!(query::is_foreign_key("foo_bar"), false);
+        assert_eq!(query::is_foreign_key("the world is yours"), false);
+        assert_eq!(
+            query::is_foreign_key("foo-bar-string-that-is-really-really-long"),
+            false
+        );
+        assert_eq!(
+            query::is_foreign_key("FooBarIsAReallyReallyLongString"),
+            false
+        );
+        assert_eq!(
+            query::is_foreign_key("foo_bar_string_that_is_really_really_long"),
+            false
+        );
+        assert_eq!(query::is_foreign_key("voca::query::is_foreign_key"), false);
+    }
+    #[test]
     fn query_is_lowercase() {
         assert!(query::is_lowercase(""));
         assert!(query::is_lowercase("the world is yours"));
@@ -1315,6 +1335,18 @@ mod tests {
         assert_eq!(chop::first("über das Floß.", 1), "ü");
         assert_eq!(chop::first("Как слышно, приём!", 3), "Как");
         assert_eq!(chop::first("e\u{0301}", 1), "e");
+    }
+    #[test]
+    fn chop_foreign_key() {
+        assert_eq!(chop::foreign_key(""), "");
+        assert_eq!(chop::foreign_key("foo_bar"), "foo_bar_id");
+        assert_eq!(chop::foreign_key("Foo bar"), "foo_bar_id");
+        assert_eq!(chop::foreign_key("Foo Bar"), "foo_bar_id");
+        assert_eq!(chop::foreign_key("Foo::Bar"), "bar_id");
+        assert_eq!(chop::foreign_key("Test::Foo::Bar"), "bar_id");
+        assert_eq!(chop::foreign_key("FooBar"), "foo_bar_id");
+        assert_eq!(chop::foreign_key("fooBar"), "foo_bar_id");
+        assert_eq!(chop::foreign_key("fooBar3"), "foo_bar3_id");
     }
     #[test]
     fn chop_grapheme_at() {

@@ -53,6 +53,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [char_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.char_at.html)
 - [code_point_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.code_point_at.html)
 - [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
+- [foreign_key](https://e1r0nd.github.io/voca_rs/voca_rs/case/fn.foreign_key.html)
 - [grapheme_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.grapheme_at.html)
 - [last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.last.html)
 - [max](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.max.html)
@@ -118,6 +119,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [is_decapitalize](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_decapitalize.html)
 - [is_digit](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_digit.html)
 - [is_empty](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_empty.html)
+- [is_foreign_key](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_foreign_key.html)
 - [is_lowercase](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lowercase.html)
 - [is_lower_first](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_lower_first.html)
 - [is_kebab_case](https://e1r0nd.github.io/voca_rs/voca_rs/query/fn.is_kebab_case.html)
@@ -173,6 +175,15 @@ Build a project: `cargo build` -> `./target/debug`
 #### Format
 
 - vprintf - [link](https://vocajs.com/#vprintf)
+
+#### Manipulate	
+
+ - deordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/deordinalize/fn.deordinalize.html)	
+- deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)	
+- demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)	
+- to_plural - [link](https://docs.rs/Inflector/0.11.4/inflector/string/pluralize/fn.to_plural.html)	
+- to_singular - [link](https://docs.rs/Inflector/0.11.4/inflector/string/singularize/fn.to_singular.html)	
+- ordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/ordinalize/index.html)
 
 #### Implementations on Foreign Type
 
