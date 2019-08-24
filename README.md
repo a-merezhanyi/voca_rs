@@ -172,6 +172,7 @@ Build a project: `cargo build` -> `./target/debug`
 #### Count
 
 - countWhere - [link](https://vocajs.com/#countWhere)
+- count_unique_words - [link](https://doc.rust-lang.org/book/ch08-03-hash-maps.html): Counting occurrences of words using a hash map that stores words and counts
 
 #### Format
 
