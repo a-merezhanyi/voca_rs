@@ -3,6 +3,7 @@
 **Voca_rs is a Rust library for manipulating strings.**
 
 Voca_rs is inspired by [Voca.js](https://vocajs.com/), [string.py](https://docs.python.org/3.4/library/string.html) and [Inflector](https://github.com/whatisinternet/inflector)
+
 Voca_rs is implemented on Foreign Types, i.e. `String` and `str`.
 
 ## TL;DR
