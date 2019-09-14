@@ -7,7 +7,6 @@ mod unit {
     mod chop;
     mod count;
     mod escape;
-    mod impl_test;
     mod index;
     mod manipulate;
     mod query;

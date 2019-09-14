@@ -8,6 +8,8 @@ Voca_rs is implemented on Foreign Types, i.e. `String` and `str`.
 
 ## TL;DR
 
+Using functions:
+
 ```rust
 use voca_rs::*;
 
@@ -20,6 +22,24 @@ let snake_string = case::snake_case(&chop::slice(&words_in_string, 14, 31));
 // => "xml_http_request"
 let truncated_string = chop::prune(&words_in_string, 15, "");
 // => "Lazy Load..."
+```
+
+Using traits:
+
+```rust
+use voca_rs::Voca;
+
+"LazyLoad with XMLHttpRequest and snake_case"
+.words()
+// => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
+.join(" ")
+// => "Lazy Load with XML Http Request and snake case"
+.prune(20, "");
+// => "Lazy Load with XML..."
+.slice(5, -2)
+// => "Load with XML."
+.snake_case()
+// => "load_with_xml"
 ```
 
 ## Documentation

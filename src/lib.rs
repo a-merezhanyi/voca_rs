@@ -48,7 +48,18 @@ pub trait Voca {
     fn camel_case(&self) -> String;
     fn capitalize(&self, param: bool) -> String;
     fn decapitalize(&self, param: bool) -> String;
-
+    fn kebab_case(&self) -> String;
+    fn shouty_kebab_case(&self) -> String;
+    fn lower_case(&self) -> String;
+    fn pascal_case(&self) -> String;
+    fn snake_case(&self) -> String;
+    fn shouty_snake_case(&self) -> String;
+    fn swap_case(&self) -> String;
+    fn title_case(&self) -> String;
+    fn train_case(&self) -> String;
+    fn upper_case(&self) -> String;
+    fn lower_first(&self) -> String;
+    fn upper_first(&self) -> String;
     // chop
 
     // count
@@ -72,13 +83,49 @@ macro_rules! implement_string_for {
         $(
             impl $trt for $typ {
                 fn camel_case(&self) -> String {
-                case::camel_case(&self)
+                    case::camel_case(&self)
                 }
                 fn capitalize(&self, param: bool) -> String {
                     case::capitalize(&self, param)
                 }
                 fn decapitalize(&self, param: bool) -> String {
                     case::decapitalize(&self, param)
+                }
+                fn kebab_case(&self) -> String {
+                    case::kebab_case(&self)
+                }
+                fn shouty_kebab_case(&self) -> String {
+                    case::shouty_kebab_case(&self)
+                }
+                fn lower_case(&self) -> String {
+                    case::lower_case(&self)
+                }
+                fn pascal_case(&self) -> String {
+                    case::pascal_case(&self)
+                }
+                fn snake_case(&self) -> String {
+                    case::snake_case(&self)
+                }
+                fn shouty_snake_case(&self) -> String {
+                    case::shouty_snake_case(&self)
+                }
+                fn swap_case(&self) -> String {
+                    case::swap_case(&self)
+                }
+                fn title_case(&self) -> String {
+                    case::title_case(&self)
+                }
+                fn train_case(&self) -> String {
+                    case::train_case(&self)
+                }
+                fn upper_case(&self) -> String {
+                    case::upper_case(&self)
+                }
+                fn lower_first(&self) -> String {
+                    case::lower_first(&self)
+                }
+                fn upper_first(&self) -> String {
+                    case::upper_first(&self)
                 }
             }
         )*
