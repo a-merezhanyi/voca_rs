@@ -61,7 +61,19 @@ pub trait Voca {
     fn lower_first(&self) -> String;
     fn upper_first(&self) -> String;
     // chop
-
+    fn char_at(&self, param: usize) -> String;
+    fn code_point_at(&self, param: usize) -> Vec<u16>;
+    fn first(&self, param: usize) -> String;
+    fn foreign_key(&self) -> String;
+    fn grapheme_at(&self, param: usize) -> String;
+    fn last(&self, param: usize) -> String;
+    fn prune(&self, param1: usize, param2: &str) -> String;
+    fn slice(&self, param1: isize, param2: isize) -> String;
+    fn substr(&self, param1: usize, param2: usize) -> String;
+    fn substring(&self, param1: usize, param2: usize) -> String;
+    fn truncate(&self, param1: usize, param2: &str) -> String;
+    fn max_code_point(&self) -> String;
+    fn min_code_point(&self) -> String;
     // count
 
     // escape
@@ -82,6 +94,7 @@ macro_rules! implement_string_for {
     ( $trt:ident; $($typ:ident), *) => {
         $(
             impl $trt for $typ {
+                // case
                 fn camel_case(&self) -> String {
                     case::camel_case(&self)
                 }
@@ -126,6 +139,46 @@ macro_rules! implement_string_for {
                 }
                 fn upper_first(&self) -> String {
                     case::upper_first(&self)
+                }
+                // chop
+                fn char_at(&self, param: usize) -> String {
+                    chop::char_at(&self, param)
+                }
+                fn code_point_at(&self, param: usize) -> Vec<u16> {
+                    chop::code_point_at(&self, param)
+                }
+                fn first(&self, param: usize) -> String {
+                    chop::first(&self, param)
+                }
+                fn foreign_key(&self) -> String {
+                    chop::foreign_key(&self)
+                }
+                fn grapheme_at(&self, param: usize) -> String {
+                    chop::grapheme_at(&self, param)
+                }
+                fn last(&self, param: usize) -> String {
+                    chop::last(&self, param)
+                }
+                fn prune(&self, param1: usize, param2: &str) -> String {
+                    chop::prune(&self, param1, param2)
+                }
+                fn slice(&self, param1: isize, param2: isize) -> String {
+                    chop::slice(&self, param1, param2)
+                }
+                fn substr(&self, param1: usize, param2: usize) -> String {
+                    chop::substr(&self, param1, param2)
+                }
+                fn substring(&self, param1: usize, param2: usize) -> String {
+                    chop::substring(&self, param1, param2)
+                }
+                fn truncate(&self, param1: usize, param2: &str) -> String {
+                    chop::truncate(&self, param1, param2)
+                }
+                fn max_code_point(&self) -> String {
+                    chop::max(&self)
+                }
+                fn min_code_point(&self) -> String {
+                    chop::min(&self)
                 }
             }
         )*

@@ -15,6 +15,9 @@
 /// // => "birdFlight"
 /// case::camel_case("-BIRD-FLIGHT-");
 /// // => "birdFlight"
+/// use voca_rs::Voca;
+/// "bird flight".camel_case();
+/// // => "birdFlight"
 /// ```
 pub fn camel_case(subject: &str) -> String {
     camel_and_pascal_case(&subject, TitleMode::Normal)
@@ -62,6 +65,9 @@ fn camel_and_pascal_case(subject: &str, title_mode: TitleMode) -> String {
 /// // => "Green"
 /// case::capitalize("Say Hello to ME", true);
 /// // => "Say hello to me"
+/// use voca_rs::Voca;
+/// "green".capitalize(true);
+/// // => "Green"
 /// ```
 pub fn capitalize(subject: &str, rest_to_lower: bool) -> String {
     let rest_to_lower_mode = if rest_to_lower {

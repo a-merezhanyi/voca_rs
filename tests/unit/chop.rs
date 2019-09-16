@@ -1,4 +1,5 @@
 //! voca_rs::chop testing
+use voca_rs::Voca;
 
 #[test]
 fn char_at() {
@@ -12,7 +13,14 @@ fn char_at() {
         voca_rs::chop::char_at("Die Schildkröte fliegt über das Floß.", 12),
         "ö"
     );
-    assert_eq!(voca_rs::chop::char_at("Как слышно, приём!", 15), "ё");
+    assert_eq!(
+        voca_rs::chop::char_at("Как слышно, приём!", 15),
+        "ё"
+    );
+}
+#[test]
+fn char_at_me() {
+    assert_eq!("rain".char_at(0), "r");
 }
 #[test]
 fn code_point_at() {
@@ -22,13 +30,20 @@ fn code_point_at() {
     assert_eq!(voca_rs::chop::code_point_at("cafe\u{0301}", 4), [101, 769]);
     assert_eq!(voca_rs::chop::code_point_at("b\u{0142}\u{0105}d", 1), [322]);
     assert_eq!(voca_rs::chop::code_point_at("über das Floß.", 0), [252]);
-    assert_eq!(voca_rs::chop::code_point_at("a̐éö̲", 3), [111, 776, 818]);
+    assert_eq!(
+        voca_rs::chop::code_point_at("a̐éö̲", 3),
+        [111, 776, 818]
+    );
     assert_eq!(voca_rs::chop::code_point_at("cafe\u{0301}", 0), [99]);
     assert_eq!(voca_rs::chop::code_point_at("cafe\u{0301}", 2), [102]);
     assert_eq!(voca_rs::chop::code_point_at("cafe\u{0301}!", 3), [101, 769]);
     assert_eq!(voca_rs::chop::code_point_at("cafe\u{0301}!", 4), [33]);
     assert_eq!(voca_rs::chop::code_point_at("cafe\u{0301}!", 5), [33]);
     assert_eq!(voca_rs::chop::code_point_at("cafe\u{0301}!", 30), [33]);
+}
+#[test]
+fn code_point_at_me() {
+    assert_eq!(voca_rs::chop::code_point_at("rain", 1), [97]);
 }
 #[test]
 fn first() {
@@ -39,8 +54,15 @@ fn first() {
     assert_eq!(voca_rs::chop::first("rain", 20), "rain");
     assert_eq!(voca_rs::chop::first("b\u{0142}\u{0105}d", 3), "błą");
     assert_eq!(voca_rs::chop::first("über das Floß.", 1), "ü");
-    assert_eq!(voca_rs::chop::first("Как слышно, приём!", 3), "Как");
+    assert_eq!(
+        voca_rs::chop::first("Как слышно, приём!", 3),
+        "Как"
+    );
     assert_eq!(voca_rs::chop::first("e\u{0301}", 1), "e");
+}
+#[test]
+fn first_me() {
+    assert_eq!("rain".first(2), "ra");
 }
 #[test]
 fn foreign_key() {
@@ -53,6 +75,10 @@ fn foreign_key() {
     assert_eq!(voca_rs::chop::foreign_key("FooBar"), "foo_bar_id");
     assert_eq!(voca_rs::chop::foreign_key("fooBar"), "foo_bar_id");
     assert_eq!(voca_rs::chop::foreign_key("fooBar3"), "foo_bar3_id");
+}
+#[test]
+fn foreign_key_me() {
+    assert_eq!("foo_bar".foreign_key(), "foo_bar_id");
 }
 #[test]
 fn grapheme_at() {
@@ -74,6 +100,10 @@ fn grapheme_at() {
     assert_eq!(voca_rs::chop::grapheme_at("cafe\u{0301}!", 30), "!");
 }
 #[test]
+fn grapheme_at_me() {
+    assert_eq!("a̐éö̲".grapheme_at(0), "a̐");
+}
+#[test]
 fn last() {
     assert_eq!(voca_rs::chop::last("", 0), "");
     assert_eq!(voca_rs::chop::last("a", 0), "");
@@ -86,6 +116,10 @@ fn last() {
     assert_eq!(voca_rs::chop::last("helicopter", 1), "r");
     assert_eq!(voca_rs::chop::last("über das Floß.", 2), "ß.");
     assert_eq!(voca_rs::chop::last("e\u{0301}", 1), "\u{0301}");
+}
+#[test]
+fn last_me() {
+    assert_eq!("helicopter".last(1), "r");
 }
 #[test]
 fn prune() {
@@ -108,6 +142,10 @@ fn prune() {
     );
 }
 #[test]
+fn prune_me() {
+    assert_eq!("Once upon a time".prune(7, ""), "Once...");
+}
+#[test]
 fn slice() {
     assert_eq!(voca_rs::chop::slice("", 0, 0), "");
     assert_eq!(voca_rs::chop::slice("a", 0, 0), "a");
@@ -126,8 +164,15 @@ fn slice() {
         "Schildkröte"
     );
     assert_eq!(voca_rs::chop::slice("e\u{0301}", -1, 0), "\u{0301}");
-    assert_eq!(voca_rs::chop::slice("b\u{0142}\u{0105}d", -20, 10), "błąd");
+    assert_eq!(
+        voca_rs::chop::slice("b\u{0142}\u{0105}d", -20, 10),
+        "błąd"
+    );
     assert_eq!(voca_rs::chop::slice("b\u{0142}\u{0105}d", -2, 100), "ąd");
+}
+#[test]
+fn slice_me() {
+    assert_eq!("helicopter".slice(1, 0), "elicopter");
 }
 #[test]
 fn substr() {
@@ -148,6 +193,10 @@ fn substr() {
     assert_eq!(voca_rs::chop::substr("b\u{0142}\u{0105}d", 1, 2), "łą");
     assert_eq!(voca_rs::chop::substr("über das Floß.", 9, 4), "Floß");
     assert_eq!(voca_rs::chop::substr("e\u{0301}", 1, 0), "\u{0301}");
+}
+#[test]
+fn substr_me() {
+    assert_eq!("helicopter".substr(1, 0), "elicopter");
 }
 #[test]
 fn substring() {
@@ -172,6 +221,10 @@ fn substring() {
     assert_eq!(voca_rs::chop::substring("e\u{0301}", 1, 0), "\u{0301}");
 }
 #[test]
+fn substring_me() {
+    assert_eq!("helicopter".substring(1, 0), "elicopter");
+}
+#[test]
 fn truncate() {
     assert_eq!(voca_rs::chop::truncate("", 0, ""), "");
     assert_eq!(voca_rs::chop::truncate("a", 1, ""), "a");
@@ -180,7 +233,10 @@ fn truncate() {
     assert_eq!(voca_rs::chop::truncate("a", 4, ""), "a");
     assert_eq!(voca_rs::chop::truncate("a", 5, ""), "a");
     assert_eq!(voca_rs::chop::truncate("a", 10, ""), "a");
-    assert_eq!(voca_rs::chop::truncate("Once upon a time", 7, ""), "Once...");
+    assert_eq!(
+        voca_rs::chop::truncate("Once upon a time", 7, ""),
+        "Once..."
+    );
     assert_eq!(
         voca_rs::chop::truncate("Die Schildkröte fliegt über das Floß.", 28, "(...)"),
         "Die Schildkröte fliegt (...)"
@@ -190,6 +246,10 @@ fn truncate() {
         voca_rs::chop::truncate("Как слышно, приём!", 13, ""),
         "Как слышно..."
     );
+}
+#[test]
+fn truncate_me() {
+    assert_eq!("Once upon a time".truncate(7, ""), "Once...");
 }
 #[test]
 fn max() {
@@ -202,6 +262,10 @@ fn max() {
     assert_eq!(voca_rs::chop::max("a̐éö̲"), "\u{332}");
 }
 #[test]
+fn max_me() {
+    assert_eq!("rain".max_code_point(), "r");
+}
+#[test]
 fn min() {
     assert_eq!(voca_rs::chop::min(""), "");
     assert_eq!(voca_rs::chop::min("rain"), "a");
@@ -210,4 +274,8 @@ fn min() {
     assert_eq!(voca_rs::chop::min("b\u{0142}\u{0105}d"), "b");
     assert_eq!(voca_rs::chop::min("Über das Floß."), " ");
     assert_eq!(voca_rs::chop::min("a̐éö̲"), "a");
+}
+#[test]
+fn min_me() {
+    assert_eq!("rain".min_code_point(), "a");
 }
