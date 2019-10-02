@@ -1,4 +1,5 @@
 //! voca_rs::count testing
+use voca_rs::Voca;
 
 #[test]
 fn count() {
@@ -7,6 +8,10 @@ fn count() {
     assert_eq!(voca_rs::count::count("b\u{0142}\u{0105}d"), 4);
     assert_eq!(voca_rs::count::count("Die Schildkröte fliegt über das Floß."), 37);
     assert_eq!(voca_rs::count::count("Как слышно, приём!"), 18);
+}
+#[test]
+fn count_me() {
+    assert_eq!("rain".count(), 4);
 }
 #[test]
 fn graphemes() {
@@ -20,6 +25,10 @@ fn graphemes() {
         37
     );
     assert_eq!(voca_rs::count::count_graphemes("cafe\u{0301}"), 4);
+}
+#[test]
+fn graphemes_me() {
+    assert_eq!("rain".count_graphemes(), 4);
 }
 #[test]
 fn substrings() {
@@ -45,6 +54,10 @@ fn substrings() {
     assert_eq!(voca_rs::count::count_substrings("every dog has its day", "cat"), 0);
 }
 #[test]
+fn substrings_me() {
+    assert_eq!("******".count_substrings("*"), 6);
+}
+#[test]
 fn words() {
     assert_eq!(voca_rs::count::count_words("", ""), 0);
     assert_eq!(voca_rs::count::count_words("ab c", ""), 2);
@@ -63,4 +76,8 @@ fn words() {
         voca_rs::count::count_words("Гравитация-Притягивает-ВСЕ!!", "-"),
         3
     );
+}
+#[test]
+fn words_me() {
+    assert_eq!("Gravity - can cross dimensions!".count_words(""), 4);
 }

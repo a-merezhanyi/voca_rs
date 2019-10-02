@@ -75,6 +75,10 @@ pub trait Voca {
     fn max_code_point(&self) -> String;
     fn min_code_point(&self) -> String;
     // count
+    fn count(&self) -> usize;
+    fn count_graphemes(&self) -> usize;
+    fn count_substrings(&self, param1: &str) -> usize;
+    fn count_words(&self, param1: &str) -> usize;
 
     // escape
 
@@ -179,6 +183,19 @@ macro_rules! implement_string_for {
                 }
                 fn min_code_point(&self) -> String {
                     chop::min(&self)
+                }
+                // count
+                fn count(&self) -> usize {
+                    count::count(&self)
+                }
+                fn count_graphemes(&self) -> usize {
+                    count::count_graphemes(&self)
+                }
+                fn count_substrings(&self, param1: &str) -> usize {
+                    count::count_substrings(&self, param1)
+                }
+                fn count_words(&self, param1: &str) -> usize {
+                    count::count_words(&self, param1)
                 }
             }
         )*
