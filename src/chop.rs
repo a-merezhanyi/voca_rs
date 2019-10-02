@@ -56,6 +56,9 @@ fn get_subject_length(
 /// // => "h"
 /// chop::char_at("błąd", 1);
 /// // => "ł"
+/// use voca_rs::Voca;
+/// "helicopter".char_at(0);
+/// // => "h"
 /// ```
 pub fn char_at(subject: &str, position: usize) -> String {
     let the_position = get_subject_length(subject, position, PointType::Position, CharType::Simple);
@@ -77,6 +80,9 @@ pub fn char_at(subject: &str, position: usize) -> String {
 /// // => [97]
 /// chop::code_point_at("cafe\u{0301}", 4);
 /// // => [101, 769]
+/// use voca_rs::Voca;
+/// "rain".code_point_at(1);
+/// // => [97]
 /// ```
 pub fn code_point_at(subject: &str, position: usize) -> Vec<u16> {
     if subject.is_empty() {
@@ -102,6 +108,9 @@ pub fn code_point_at(subject: &str, position: usize) -> Vec<u16> {
 /// // => "bł"
 /// chop::first("e\u{0301}", 1); // or 'é'
 /// // => "e"
+/// use voca_rs::Voca;
+/// "helicopter".first(1);
+/// // => "h"
 /// ```
 pub fn first(subject: &str, length: usize) -> String {
     let the_length = get_subject_length(subject, length, PointType::Length, CharType::Simple);
@@ -126,6 +135,9 @@ pub fn first(subject: &str, length: usize) -> String {
 /// // => "foo_bar3_id"
 /// chop::foreign_key("Test::Foo::Bar");
 /// // => "bar_id"
+/// use voca_rs::Voca;
+/// "foo_bar".foreign_key();
+/// // => "foo_bar_id"
 /// ```
 pub fn foreign_key(subject: &str) -> String {
     /* https://docs.rs/crate/Inflector/0.11.4 */
@@ -162,6 +174,9 @@ pub fn foreign_key(subject: &str) -> String {
 /// // => "é"
 /// chop::grapheme_at("a̐éö̲", 0);
 /// // => "a̐"
+/// use voca_rs::Voca;
+/// "cafe\u{0301}".grapheme_at(3); // or 'café'
+/// // => "é"
 /// ```
 pub fn grapheme_at(subject: &str, position: usize) -> String {
     let subject_len = crate::count::count_graphemes(subject);
@@ -191,6 +206,9 @@ pub fn grapheme_at(subject: &str, position: usize) -> String {
 /// // => "ąd"
 /// chop::last("e\u{0301}", 1); // or 'é'
 /// // => "\u{0301}"
+/// use voca_rs::Voca;
+/// "helicopter".last(1);
+/// // => "r"
 /// ```
 pub fn last(subject: &str, length: usize) -> String {
     match length {
@@ -223,6 +241,9 @@ pub fn last(subject: &str, length: usize) -> String {
 /// // => "Once upon"
 /// chop::prune("Как слышно, приём!", 14, "");
 /// // => "Как слышно..."
+/// use voca_rs::Voca;
+/// "Once upon a time".prune(7, "");
+/// // => "Once..."
 /// ```
 pub fn prune(subject: &str, length: usize, end: &str) -> String {
     if length == 0 {
@@ -303,6 +324,9 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
 /// // => "\u{0301}"
 /// chop::slice("Die Schildkröte fliegt.", 4, -8);
 /// // => "Schildkröte"
+/// use voca_rs::Voca;
+/// "miami".slice(1, 0);
+/// // => "iami"
 /// ```
 pub fn slice(subject: &str, start: isize, end: isize) -> String {
     let subject_length = crate::split::chars(&subject).len();
@@ -348,6 +372,9 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
 /// // => "each"
 /// chop::substr("błąd", 1, 2);
 /// // => "łą"
+/// use voca_rs::Voca;
+/// "beach".substr(1, 0);
+/// // => "each"
 /// ```
 pub fn substr(subject: &str, start: usize, length: usize) -> String {
     let subject_length = crate::split::chars(&subject).len();
@@ -388,6 +415,9 @@ pub fn substr(subject: &str, start: usize, length: usize) -> String {
 /// // => "ąd"
 /// chop::substring("e\u{0301}", 1, 0); // or 'é'
 /// // => "\u{0301}"
+/// use voca_rs::Voca;
+/// "beach".substring(1, 0);
+/// // => "each"
 /// ```
 pub fn substring(subject: &str, start: usize, end: usize) -> String {
     let subject_length = crate::split::chars(&subject).len();
@@ -428,6 +458,9 @@ pub fn substring(subject: &str, start: usize, end: usize) -> String {
 /// // => "Die Schildkröte fliegt (...)"
 /// chop::truncate("Once upon", 10, "");
 /// // => "Once upon"
+/// use voca_rs::Voca;
+/// "Once upon a time".truncate(7, "");
+/// // => "Once..."
 /// ```
 pub fn truncate(subject: &str, length: usize, end: &str) -> String {
     if length == 0 {
@@ -464,6 +497,9 @@ pub fn truncate(subject: &str, length: usize, end: &str) -> String {
 /// // => "\u{0301}"
 /// chop::max("a̐éö̲"); // or "a\u{310}e\u{301}o\u{308}\u{332}"
 /// // => "\u{332}"
+/// use voca_rs::Voca;
+/// "rain".max_code_point();
+/// // => "r"
 /// ```
 pub fn max(subject: &str) -> String {
     if subject.is_empty() {
@@ -488,6 +524,9 @@ pub fn max(subject: &str) -> String {
 /// // => "a"
 /// chop::min("Über das Floß.");
 /// // => " "
+/// use voca_rs::Voca;
+/// "rain".min_code_point();
+/// // => "a"
 /// ```
 pub fn min(subject: &str) -> String {
     if subject.is_empty() {
