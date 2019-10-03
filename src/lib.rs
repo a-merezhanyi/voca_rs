@@ -79,9 +79,10 @@ pub trait Voca {
     fn count_graphemes(&self) -> usize;
     fn count_substrings(&self, param1: &str) -> usize;
     fn count_words(&self, param1: &str) -> usize;
-
     // escape
-
+    fn escape_html(&self) -> String;
+    fn escape_regexp(&self) -> String;
+    fn unescape_html(&self) -> String;
     // index
 
     // manipulate
@@ -196,6 +197,16 @@ macro_rules! implement_string_for {
                 }
                 fn count_words(&self, param1: &str) -> usize {
                     count::count_words(&self, param1)
+                }
+                // escape
+                fn escape_html(&self) -> String {
+                    escape::escape_html(&self)
+                }
+                fn escape_regexp(&self) -> String {
+                    escape::escape_regexp(&self)
+                }
+                fn unescape_html(&self) -> String {
+                    escape::unescape_html(&self)
                 }
             }
         )*

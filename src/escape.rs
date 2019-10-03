@@ -12,6 +12,10 @@
 /// use voca_rs::*;
 /// escape::escape_html("<p>wonderful world</p>");
 /// // => &lt;p&gt;wonderful world&lt;/p&gt;
+/// use voca_rs::Voca;
+/// "<p>wonderful world</p>".escape_html();
+/// // => &lt;p&gt;wonderful world&lt;/p&gt;
+/// ```
 // TODO: check for optimizations #10
 // https://lise-henry.github.io/articles/optimising_strings.html
 pub fn escape_html(subject: &str) -> String {
@@ -39,6 +43,10 @@ pub fn escape_html(subject: &str) -> String {
 /// use voca_rs::*;
 /// escape::escape_regexp("(hours)[minutes]{seconds}");
 /// // => \(hours\)\[minutes\]\{seconds\}
+/// use voca_rs::Voca;
+/// "(hours)[minutes]{seconds}".escape_regexp();
+/// // => \(hours\)\[minutes\]\{seconds\}
+/// ```
 pub fn escape_regexp(subject: &str) -> String {
     let key = "-[]/{}()*+?.\\^$|";
     match subject.len() {
@@ -70,6 +78,10 @@ pub fn escape_regexp(subject: &str) -> String {
 /// use voca_rs::*;
 /// escape::unescape_html("&lt;p&gt;wonderful world&lt;/p&gt;");
 /// // => <p>wonderful world</p>
+/// use voca_rs::Voca;
+/// "&lt;p&gt;wonderful world&lt;/p&gt;".unescape_html();
+/// // => <p>wonderful world</p>
+/// ```
 pub fn unescape_html(subject: &str) -> String {
     match subject.len() {
         0 => "".to_string(),

@@ -1,4 +1,5 @@
 //! voca_rs::escape testing
+use voca_rs::Voca;
 
 #[test]
 fn escape_html() {
@@ -22,6 +23,13 @@ fn escape_html() {
     );
 }
 #[test]
+fn escape_html_me() {
+    assert_eq!(
+        "<>&\"'`".escape_html(),
+        "&lt;&gt;&amp;&quot;&#x27;&#x60;"
+    );
+}
+#[test]
 fn escape_regexp() {
     assert_eq!(voca_rs::escape::escape_regexp(""), "");
     assert_eq!(
@@ -31,6 +39,13 @@ fn escape_regexp() {
     assert_eq!(
         voca_rs::escape::escape_regexp("-[]/{}()*+?.\\^$|"),
         "\\-\\[\\]\\/\\{\\}\\(\\)\\*\\+\\?\\.\\\\\\^\\$\\|"
+    );
+}
+#[test]
+fn escape_regexp_me() {
+    assert_eq!(
+        "(hours)[minutes]{seconds}".escape_regexp(),
+        "\\(hours\\)\\[minutes\\]\\{seconds\\}"
     );
 }
 #[test]
@@ -52,5 +67,12 @@ fn unescape_html() {
     assert_eq!(
         voca_rs::escape::unescape_html("&lt;p&gt;wonderful&lt;span&gt;world&lt;span/&gt;&lt;/p&gt;"),
         "<p>wonderful<span>world<span/></p>"
+    );
+}
+#[test]
+fn unescape_html_me() {
+    assert_eq!(
+        "&lt;&gt;&amp;&quot;&#x27;&#x60;".unescape_html(),
+        "<>&\"'`"
     );
 }
