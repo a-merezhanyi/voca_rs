@@ -1,4 +1,5 @@
 //! voca_rs::index testing
+use voca_rs::Voca;
 
 #[test]
 fn index_of() {
@@ -27,6 +28,10 @@ fn index_of() {
         voca_rs::index::index_of("Как слышно, приём!", "слышно", 0),
         4
     );
+}
+#[test]
+fn index_of_me() {
+    assert_eq!("Rain, dear rain".index_of("ear", 0), 7);
 }
 #[test]
 fn index_all() {
@@ -59,6 +64,13 @@ fn index_all() {
     );
 }
 #[test]
+fn index_all_me() {
+    assert_eq!(
+        "Rain, dear rain".index_all("ear", 0),
+        [1, 7, 8, 9, 11, 12]
+    );
+}
+#[test]
 fn last_index_of() {
     assert_eq!(voca_rs::index::last_index_of("", "", 0), 0);
     assert_eq!(voca_rs::index::last_index_of("rain", "r", 0), 0);
@@ -85,6 +97,10 @@ fn last_index_of() {
         voca_rs::index::last_index_of("Как слышно, приём!", "слышно", 0),
         4
     );
+}
+#[test]
+fn last_index_of_me() {
+    assert_eq!("Rain, dear rain".last_index_of("rain", 0), 11);
 }
 #[test]
 fn search() {
@@ -121,4 +137,8 @@ fn search() {
         voca_rs::index::search("Zażółć gęślą jaźń", "[^]", 0),
         -1
     );
+}
+#[test]
+fn search_me() {
+    assert_eq!("we have a mission".search("mission", 0), 10);
 }

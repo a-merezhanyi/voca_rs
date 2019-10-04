@@ -84,7 +84,10 @@ pub trait Voca {
     fn escape_regexp(&self) -> String;
     fn unescape_html(&self) -> String;
     // index
-
+    fn index_all(&self, param1: &str, param2: usize) -> Vec<usize>;
+    fn index_of(&self, param1: &str, param2: usize) -> i8;
+    fn last_index_of(&self, param1: &str, param2: usize) -> i8;
+    fn search(&self, param1: &str, param2: usize) -> i8;
     // manipulate
 
     // query
@@ -207,6 +210,19 @@ macro_rules! implement_string_for {
                 }
                 fn unescape_html(&self) -> String {
                     escape::unescape_html(&self)
+                }
+                // index
+                fn index_all(&self, param1: &str, param2: usize) -> Vec<usize> {
+                    index::index_all(&self, param1, param2)
+                }
+                fn index_of(&self, param1: &str, param2: usize) -> i8 {
+                    index::index_of(&self, param1, param2)
+                }
+                fn last_index_of(&self, param1: &str, param2: usize) -> i8 {
+                    index::last_index_of(&self, param1, param2)
+                }
+                fn search(&self, param1: &str, param2: usize) -> i8 {
+                    index::search(&self, param1, param2)
                 }
             }
         )*
