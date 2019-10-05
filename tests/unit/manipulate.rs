@@ -1,4 +1,5 @@
 //! voca_rs::manipulate testing
+use voca_rs::Voca;
 
 #[test]
 fn expand_tabs() {
@@ -7,7 +8,10 @@ fn expand_tabs() {
         voca_rs::manipulate::expand_tabs("This is\tgood", 4),
         "This is    good"
     );
-    assert_eq!(voca_rs::manipulate::expand_tabs("no\tspaces", 0), "nospaces");
+    assert_eq!(
+        voca_rs::manipulate::expand_tabs("no\tspaces", 0),
+        "nospaces"
+    );
     assert_eq!(
         voca_rs::manipulate::expand_tabs("line1\n\tline2\n\t\tline3", 2),
         "line1\n  line2\n    line3"
@@ -24,6 +28,10 @@ fn expand_tabs() {
         voca_rs::manipulate::expand_tabs("caffé\tlatté", 1),
         "caffé latté"
     );
+}
+#[test]
+fn expand_tabs_me() {
+    assert_eq!("This is\tgood".expand_tabs(4), "This is    good");
 }
 #[test]
 fn expand_spaces() {
@@ -58,6 +66,10 @@ fn expand_spaces() {
     );
 }
 #[test]
+fn expand_spaces_me() {
+    assert_eq!("This  is  good".expand_spaces(2), "This\tis\tgood");
+}
+#[test]
 fn insert() {
     assert_eq!(voca_rs::manipulate::insert("", "", 0), "");
     assert_eq!(voca_rs::manipulate::insert("abc", "", 0), "abc");
@@ -68,26 +80,45 @@ fn insert() {
     assert_eq!(voca_rs::manipulate::insert("abc", "-", 4), "abc-");
     assert_eq!(voca_rs::manipulate::insert("abc", "-", 10), "abc-");
     assert_eq!(voca_rs::manipulate::insert("abc abc", ",", 3), "abc, abc");
-    assert_eq!(voca_rs::manipulate::insert("Zażółć", "-!-", 3), "Zaż-!-ółć");
+    assert_eq!(
+        voca_rs::manipulate::insert("Zażółć", "-!-", 3),
+        "Zaż-!-ółć"
+    );
     assert_eq!(
         voca_rs::manipulate::insert("über\tdas\tFloß", "~~~", 6),
         "über\td~~~as\tFloß"
     );
-    assert_eq!(voca_rs::manipulate::insert("приём", "!", 5), "приём!");
+    assert_eq!(
+        voca_rs::manipulate::insert("приём", "!", 5),
+        "приём!"
+    );
+}
+#[test]
+fn insert_me() {
+    assert_eq!("abc".insert("-", 0), "-abc");
 }
 #[test]
 fn latinise() {
     assert_eq!(voca_rs::manipulate::latinise(""), "");
     assert_eq!(voca_rs::manipulate::latinise("cafe\u{0301}"), "cafe");
-    assert_eq!(voca_rs::manipulate::latinise("août décembre"), "aout decembre");
+    assert_eq!(
+        voca_rs::manipulate::latinise("août décembre"),
+        "aout decembre"
+    );
     assert_eq!(
         voca_rs::manipulate::latinise("как прекрасен этот мир"),
         "kak prekrasen etot mir"
     );
-    assert_eq!(voca_rs::manipulate::latinise("Æneid étude"), "AEneid etude");
+    assert_eq!(
+        voca_rs::manipulate::latinise("Æneid étude"),
+        "AEneid etude"
+    );
     assert_eq!(voca_rs::manipulate::latinise("北亰"), "Bei Jing ");
     assert_eq!(voca_rs::manipulate::latinise("ᔕᓇᓇ"), "shanana");
-    assert_eq!(voca_rs::manipulate::latinise("げんまい茶"), "genmaiCha ");
+    assert_eq!(
+        voca_rs::manipulate::latinise("げんまい茶"),
+        "genmaiCha "
+    );
     assert_eq!(
         voca_rs::manipulate::latinise("Zażółć gęślą jaźń"),
         "Zazolc gesla jazn"
@@ -100,6 +131,10 @@ fn latinise() {
         voca_rs::manipulate::latinise("Există peste 13.800 de localități în România"),
         "Exista peste 13.800 de localitati in Romania"
     );
+}
+#[test]
+fn latinise_me() {
+    assert_eq!("cafe\u{0301}".latinise(), "cafe");
 }
 #[test]
 fn slugify() {
@@ -116,7 +151,9 @@ fn slugify() {
         "khoroshaia-pogoda"
     );
     assert_eq!(
-        voca_rs::manipulate::slugify("Хорошая статья: 'XMLHttpRequest 101 Course' \\!/"),
+        voca_rs::manipulate::slugify(
+            "Хорошая статья: 'XMLHttpRequest 101 Course' \\!/"
+        ),
         "khoroshaia-statia-xmlhttprequest-101-course"
     );
     assert_eq!(
@@ -125,12 +162,18 @@ fn slugify() {
     );
 
     assert_eq!(voca_rs::manipulate::slugify("cafe\u{0301}"), "cafe");
-    assert_eq!(voca_rs::manipulate::slugify("août décembre"), "aout-decembre");
+    assert_eq!(
+        voca_rs::manipulate::slugify("août décembre"),
+        "aout-decembre"
+    );
     assert_eq!(
         voca_rs::manipulate::slugify("как прекрасен этот мир"),
         "kak-prekrasen-etot-mir"
     );
-    assert_eq!(voca_rs::manipulate::slugify("Æneid étude"), "aeneid-etude");
+    assert_eq!(
+        voca_rs::manipulate::slugify("Æneid étude"),
+        "aeneid-etude"
+    );
     assert_eq!(voca_rs::manipulate::slugify("北亰"), "bei-jing");
     assert_eq!(
         voca_rs::manipulate::slugify("ᔕᓇᓇ ᔕᓇᓇ"),
@@ -147,6 +190,13 @@ fn slugify() {
     assert_eq!(
         voca_rs::manipulate::slugify("Die Schildkröte fliegt über das Floß."),
         "die-schildkrote-fliegt-uber-das-floss"
+    );
+}
+#[test]
+fn slugify_me() {
+    assert_eq!(
+        "Italian cappuccino drink".slugify(),
+        "italian-cappuccino-drink"
     );
 }
 #[test]
@@ -184,6 +234,10 @@ fn pad() {
     );
 }
 #[test]
+fn pad_me() {
+    assert_eq!("dog".pad(5, ""), " dog ");
+}
+#[test]
 fn pad_left() {
     assert_eq!(voca_rs::manipulate::pad_left("", 0, ""), "");
     assert_eq!(voca_rs::manipulate::pad_left("abc", 1, ""), "abc");
@@ -214,6 +268,10 @@ fn pad_left() {
         voca_rs::manipulate::pad_left("Алё! Приём", 11, ""),
         " Алё! Приём"
     );
+}
+#[test]
+fn pad_left_me() {
+    assert_eq!("dog".pad_left(5, ""), "  dog");
 }
 #[test]
 fn pad_right() {
@@ -248,11 +306,23 @@ fn pad_right() {
     );
 }
 #[test]
+fn pad_right_me() {
+    assert_eq!("dog".pad_right(5, ""), "dog  ");
+}
+#[test]
 fn repeat() {
     assert_eq!(voca_rs::manipulate::repeat("", 1), "");
+    assert_eq!(voca_rs::manipulate::repeat("w", 3), "www");
     assert_eq!(voca_rs::manipulate::repeat("www", 0), "");
     assert_eq!(voca_rs::manipulate::repeat("abc", 3), "abcabcabc");
-    assert_eq!(voca_rs::manipulate::repeat("abc abc", 3), "abc abcabc abcabc abc");
+    assert_eq!(
+        voca_rs::manipulate::repeat("abc abc", 3),
+        "abc abcabc abcabc abc"
+    );
+}
+#[test]
+fn repeat_me() {
+    assert_eq!("abc".repeat(3), "abcabcabc");
 }
 #[test]
 fn replace() {
@@ -264,7 +334,10 @@ fn replace() {
         voca_rs::manipulate::replace("domestic duck", "d", "D"),
         "Domestic duck"
     );
-    assert_eq!(voca_rs::manipulate::replace("Zażółć", "ó", "o"), "Zażołć");
+    assert_eq!(
+        voca_rs::manipulate::replace("Zażółć", "ó", "o"),
+        "Zażołć"
+    );
     assert_eq!(voca_rs::manipulate::replace("café", "é", "e"), "cafe");
     assert_eq!(
         voca_rs::manipulate::replace("Café del Mar cafe\u{0301}", "é", "e"),
@@ -288,6 +361,10 @@ fn replace() {
     );
 }
 #[test]
+fn replace_me() {
+    assert_eq!("swan".replace("wa", "u"), "sun");
+}
+#[test]
 fn replace_all() {
     assert_eq!(voca_rs::manipulate::replace_all("", "", ""), "");
     assert_eq!(voca_rs::manipulate::replace_all("abc", "", ""), "abc");
@@ -305,7 +382,10 @@ fn replace_all() {
         voca_rs::manipulate::replace_all("Zażółć", "ó", "o"),
         "Zażołć"
     );
-    assert_eq!(voca_rs::manipulate::replace_all("café", "é", "e"), "cafe");
+    assert_eq!(
+        voca_rs::manipulate::replace_all("café", "é", "e"),
+        "cafe"
+    );
     assert_eq!(
         voca_rs::manipulate::replace_all("Café del Mar cafe\u{0301}", "é", "e"),
         "Cafe del Mar cafe"
@@ -328,6 +408,10 @@ fn replace_all() {
     );
 }
 #[test]
+fn replace_all_me() {
+    assert_eq!("swan".replace_all("wa", "u"), "sun");
+}
+#[test]
 fn reverse() {
     assert_eq!(voca_rs::manipulate::reverse(""), "");
     assert_eq!(voca_rs::manipulate::reverse("abc"), "cba");
@@ -340,18 +424,35 @@ fn reverse() {
     assert_eq!(voca_rs::manipulate::reverse("приём!"), "!мёирп");
 }
 #[test]
+fn reverse_me() {
+    assert_eq!("abc".reverse(), "cba");
+}
+#[test]
 fn reverse_grapheme() {
     assert_eq!(voca_rs::manipulate::reverse_grapheme(""), "");
     assert_eq!(voca_rs::manipulate::reverse_grapheme("abc"), "cba");
     assert_eq!(voca_rs::manipulate::reverse_grapheme("abc abc"), "cba cba");
-    assert_eq!(voca_rs::manipulate::reverse_grapheme("Zażółć"), "ćłóżaZ");
+    assert_eq!(
+        voca_rs::manipulate::reverse_grapheme("Zażółć"),
+        "ćłóżaZ"
+    );
     assert_eq!(
         voca_rs::manipulate::reverse_grapheme("über\tdas\tFloß"),
         "ßolF\tsad\trebü"
     );
-    assert_eq!(voca_rs::manipulate::reverse_grapheme("приём!"), "!мёирп");
+    assert_eq!(
+        voca_rs::manipulate::reverse_grapheme("приём!"),
+        "!мёирп"
+    );
     assert_eq!(voca_rs::manipulate::reverse_grapheme("café"), "éfac");
-    assert_eq!(voca_rs::manipulate::reverse_grapheme("a̐éö̲"), "ö̲éa̐");
+    assert_eq!(
+        voca_rs::manipulate::reverse_grapheme("a̐éö̲"),
+        "ö̲éa̐"
+    );
+}
+#[test]
+fn reverse_grapheme_me() {
+    assert_eq!("a̐éö̲".reverse_grapheme(), "ö̲éa̐");
 }
 #[test]
 fn splice() {
@@ -394,6 +495,10 @@ fn splice() {
     );
 }
 #[test]
+fn splice_me() {
+    assert_eq!("test".splice(1, 0, "-"), "t-est");
+}
+#[test]
 fn trim() {
     assert_eq!(
         voca_rs::manipulate::trim("   The world - is yours\t   ", ""),
@@ -415,6 +520,13 @@ fn trim() {
     assert_eq!(voca_rs::manipulate::trim("", ""), "");
 }
 #[test]
+fn trim_me() {
+    assert_eq!(
+        "   The world - is yours\t   ".trim_me(""),
+        "The world - is yours"
+    );
+}
+#[test]
 fn trim_left() {
     assert_eq!(
         voca_rs::manipulate::trim_left("   The world - is yours\t   ", ""),
@@ -424,7 +536,10 @@ fn trim_left() {
         voca_rs::manipulate::trim_left("--Zażółć gęślą jaźń---", "-"),
         "Zażółć gęślą jaźń---"
     );
-    assert_eq!(voca_rs::manipulate::trim_left("-~-Earth--~", "-~"), "Earth--~");
+    assert_eq!(
+        voca_rs::manipulate::trim_left("-~-Earth--~", "-~"),
+        "Earth--~"
+    );
     assert_eq!(
         voca_rs::manipulate::trim_left("++--Die Schildkröte fliegt über das Floß.++", "+"),
         "--Die Schildkröte fliegt über das Floß.++"
@@ -436,6 +551,13 @@ fn trim_left() {
     assert_eq!(voca_rs::manipulate::trim_left("", ""), "");
 }
 #[test]
+fn trim_left_me() {
+    assert_eq!(
+        "   The world - is yours\t   ".trim_left_me(""),
+        "The world - is yours\t   "
+    );
+}
+#[test]
 fn trim_right() {
     assert_eq!(
         voca_rs::manipulate::trim_right("   The world - is yours\t   ", ""),
@@ -445,7 +567,10 @@ fn trim_right() {
         voca_rs::manipulate::trim_right("--Zażółć gęślą jaźń---", "-"),
         "--Zażółć gęślą jaźń"
     );
-    assert_eq!(voca_rs::manipulate::trim_right("-~-Earth--~", "-~"), "-~-Earth");
+    assert_eq!(
+        voca_rs::manipulate::trim_right("-~-Earth--~", "-~"),
+        "-~-Earth"
+    );
     assert_eq!(
         voca_rs::manipulate::trim_right("++--Die Schildkröte fliegt über das Floß.++", "+"),
         "++--Die Schildkröte fliegt über das Floß."
@@ -455,6 +580,13 @@ fn trim_right() {
         "ё1ё2ёКак слышно, приём!"
     );
     assert_eq!(voca_rs::manipulate::trim_right("", ""), "");
+}
+#[test]
+fn trim_right_me() {
+    assert_eq!(
+        "   The world - is yours\t   ".trim_right_me(""),
+        "   The world - is yours"
+    );
 }
 #[test]
 fn zfill() {
@@ -469,7 +601,10 @@ fn zfill() {
     assert_eq!(voca_rs::manipulate::zfill("Café", 4), "Café");
     assert_eq!(voca_rs::manipulate::zfill("Café", 5), "0Café");
     assert_eq!(voca_rs::manipulate::zfill("Café", 7), "000Café");
-    assert_eq!(voca_rs::manipulate::zfill("Café del Mar", 15), "000Café del Mar");
+    assert_eq!(
+        voca_rs::manipulate::zfill("Café del Mar", 15),
+        "000Café del Mar"
+    );
     assert_eq!(
         voca_rs::manipulate::zfill("Zażółć gęślą jaźń", 25),
         "00000000Zażółć gęślą jaźń"
@@ -484,18 +619,31 @@ fn zfill() {
     );
 }
 #[test]
+fn zfill_me() {
+    assert_eq!("abc".zfill(5), "00abc");
+}
+#[test]
 fn tr() {
     assert_eq!(voca_rs::manipulate::tr("", "", ""), "");
     assert_eq!(voca_rs::manipulate::tr("asd", "", ""), "asd");
     assert_eq!(voca_rs::manipulate::tr("asd", "", "a"), "asd");
-    assert_eq!(voca_rs::manipulate::tr("test strtr", "t", "T"), "TesT sTrTr");
-    assert_eq!(voca_rs::manipulate::tr("test strtr", "test", "TEST"), "TEST STrTr");
+    assert_eq!(
+        voca_rs::manipulate::tr("test strtr", "t", "T"),
+        "TesT sTrTr"
+    );
+    assert_eq!(
+        voca_rs::manipulate::tr("test strtr", "test", "TEST"),
+        "TEST STrTr"
+    );
     assert_eq!(
         voca_rs::manipulate::tr("test strtr me", "tesm", "TES"),
         "TEST STrTr E"
     );
     assert_eq!(voca_rs::manipulate::tr("hello", "el", "ip"), "hippo");
-    assert_eq!(voca_rs::manipulate::tr("légèreté", "éè", "ee"), "legerete");
+    assert_eq!(
+        voca_rs::manipulate::tr("légèreté", "éè", "ee"),
+        "legerete"
+    );
     assert_eq!(
         voca_rs::manipulate::tr("Die Schildkröte fliegt über das Floß.", "üb", "un"),
         "Die Schildkröte fliegt uner das Floß."
@@ -504,6 +652,10 @@ fn tr() {
         voca_rs::manipulate::tr("Как слышно, приём!", "ё", "е"),
         "Как слышно, прием!"
     );
+}
+#[test]
+fn tr_me() {
+    assert_eq!("test strtr".tr("t", "T"), "TesT sTrTr");
 }
 #[test]
 fn word_wrap() {
@@ -543,5 +695,12 @@ fn word_wrap() {
     assert_eq!(
         voca_rs::manipulate::word_wrap("Die Schildkröte fliegt über das Floß.", 15, "", ""),
         "Die Schildkröte\nfliegt über das\nFloß."
+    );
+}
+#[test]
+fn word_wrap_me() {
+    assert_eq!(
+        "Hello world".word_wrap(5, "", ""),
+        "Hello\nworld"
     );
 }

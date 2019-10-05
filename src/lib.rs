@@ -89,7 +89,26 @@ pub trait Voca {
     fn last_index_of(&self, param1: &str, param2: usize) -> i8;
     fn search(&self, param1: &str, param2: usize) -> i8;
     // manipulate
-
+    fn expand_tabs(&self, param1: usize) -> String;
+    fn expand_spaces(&self, param1: usize) -> String;
+    fn insert(&self, param1: &str, param2: usize) -> String;
+    fn latinise(&self) -> String;
+    fn pad(&self, param1: usize, param2: &str) -> String;
+    fn pad_left(&self, param1: usize, param2: &str) -> String;
+    fn pad_right(&self, param1: usize, param2: &str) -> String;
+    fn repeat(&self, param1: usize) -> String;
+    fn replace(&self, param1: &str, param2: &str) -> String;
+    fn replace_all(&self, param1: &str, param2: &str) -> String;
+    fn reverse(&self) -> String;
+    fn reverse_grapheme(&self) -> String;
+    fn slugify(&self) -> String;
+    fn splice(&self, param1: isize, param2: usize, param3: &str) -> String;
+    fn trim_me(&self, param1: &str) -> String;
+    fn trim_right_me(&self, param1: &str) -> String;
+    fn trim_left_me(&self, param1: &str) -> String;
+    fn zfill(&self, param1: usize) -> String;
+    fn tr(&self, param1: &str, param2: &str) -> String;
+    fn word_wrap(&self, param1: usize, param2: &str, param3: &str) -> String;
     // query
     //fn is_camel_case(&self) -> bool;
 
@@ -223,6 +242,67 @@ macro_rules! implement_string_for {
                 }
                 fn search(&self, param1: &str, param2: usize) -> i8 {
                     index::search(&self, param1, param2)
+                }
+                // manipulate
+                fn expand_tabs(&self, param1: usize) -> String {
+                    manipulate::expand_tabs(&self, param1)
+                }
+                fn expand_spaces(&self, param1: usize) -> String {
+                    manipulate::expand_spaces(&self, param1)
+                }
+                fn insert(&self, param1: &str, param2: usize) -> String {
+                    manipulate::insert(&self, param1, param2)
+                }
+                fn latinise(&self) -> String {
+                    manipulate::latinise(&self)
+                }
+                fn pad(&self, param1: usize, param2: &str ) -> String {
+                    manipulate::pad(&self, param1, param2)
+                }
+                fn pad_left(&self, param1: usize, param2: &str ) -> String {
+                    manipulate::pad_left(&self, param1, param2)
+                }
+                fn pad_right(&self, param1: usize, param2: &str ) -> String {
+                    manipulate::pad_right(&self, param1, param2)
+                }
+                fn repeat(&self, param1: usize) -> String {
+                    manipulate::repeat(&self, param1)
+                }
+                fn replace(&self, param1: &str, param2: &str ) -> String {
+                    manipulate::replace(&self, param1, param2)
+                }
+                fn replace_all(&self, param1: &str, param2: &str) -> String {
+                    manipulate::replace_all(&self, param1, param2)
+                }
+                fn reverse(&self) -> String {
+                    manipulate::reverse(&self)
+                }
+                fn reverse_grapheme(&self) -> String {
+                    manipulate::reverse_grapheme(&self)
+                }
+                fn slugify(&self) -> String {
+                    manipulate::slugify(&self)
+                }
+                fn splice(&self, param1: isize, param2: usize, param3: &str) -> String {
+                    manipulate::splice(&self, param1, param2, param3)
+                }
+                fn trim_me(&self, param1: &str) -> String {
+                    manipulate::trim(&self, param1)
+                }
+                fn trim_right_me(&self, param1: &str) -> String {
+                    manipulate::trim_right(&self, param1)
+                }
+                fn trim_left_me(&self, param1: &str) -> String {
+                    manipulate::trim_left(&self, param1)
+                }
+                fn zfill(&self, param1: usize) -> String {
+                    manipulate::zfill(&self, param1)
+                }
+                fn tr(&self, param1: &str, param2: &str) -> String {
+                    manipulate::tr(&self, param1, param2)
+                }
+                fn word_wrap(&self, param1: usize, param2: &str, param3: &str) -> String {
+                    manipulate::word_wrap(&self, param1, param2, param3)
                 }
             }
         )*
