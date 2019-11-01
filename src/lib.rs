@@ -110,8 +110,20 @@ pub trait Voca {
     fn tr(&self, param1: &str, param2: &str) -> String;
     fn word_wrap(&self, param1: usize, param2: &str, param3: &str) -> String;
     // query
-    //fn is_camel_case(&self) -> bool;
-
+    fn is_foreign_key(&self) -> bool;
+    fn ends_with(&self, param1: &str) -> bool;
+    fn includes(&self, param1: &str, param2: usize) -> bool;
+    fn is_alpha(&self) -> bool;
+    fn is_alphadigit(&self) -> bool;
+    fn is_blank(&self) -> bool;
+    fn is_camel_case(&self) -> bool;
+    fn is_capitalize(&self) -> bool;
+    fn is_decapitalize(&self) -> bool;
+    fn is_digit(&self) -> bool;
+    fn is_empty(&self) -> bool;
+    fn is_lowercase(&self) -> bool;
+    fn is_lower_first(&self) -> bool;
+    fn is_kebab_case(&self) -> bool;
     // split
 
     // strip
@@ -303,6 +315,49 @@ macro_rules! implement_string_for {
                 }
                 fn word_wrap(&self, param1: usize, param2: &str, param3: &str) -> String {
                     manipulate::word_wrap(&self, param1, param2, param3)
+                }
+                // query
+                fn is_foreign_key(&self) -> bool {
+                    query::is_foreign_key(&self)
+                }
+                fn ends_with(&self, param1: &str) -> bool {
+                    query::ends_with(&self, param1)
+                }
+                fn includes(&self, param1: &str, param2: usize) -> bool {
+                    query::includes(&self, param1, param2)
+                }
+                fn is_alpha(&self) -> bool {
+                    query::is_alpha(&self)
+                }
+                fn is_alphadigit(&self) -> bool {
+                    query::is_alphadigit(&self)
+                }
+                fn is_blank(&self) -> bool {
+                    query::is_blank(&self)
+                }
+                fn is_camel_case(&self) -> bool {
+                    query::is_camel_case(&self)
+                }
+                fn is_capitalize(&self) -> bool {
+                    query::is_capitalize(&self)
+                }
+                fn is_decapitalize(&self) -> bool {
+                    query::is_decapitalize(&self)
+                }
+                fn is_digit(&self) -> bool {
+                    query::is_digit(&self)
+                }
+                fn is_empty(&self) -> bool {
+                    query::is_empty(&self)
+                }
+                fn is_lowercase(&self) -> bool {
+                    query::is_lowercase(&self)
+                }
+                fn is_lower_first(&self) -> bool {
+                    query::is_lower_first(&self)
+                }
+                fn is_kebab_case(&self) -> bool {
+                    query::is_kebab_case(&self)
                 }
             }
         )*

@@ -16,6 +16,9 @@ use regex::Regex;
 /// // => true
 /// query::ends_with("say hello to my little friend", "little");
 /// // => false
+/// use voca_rs::Voca;
+/// "say hello to my little friend".ends_with("little friend");
+/// // => true
 /// ```
 pub fn ends_with(subject: &str, end: &str) -> bool {
     if subject.is_empty() || end.is_empty() {
@@ -42,6 +45,9 @@ pub fn ends_with(subject: &str, end: &str) -> bool {
 /// // => true
 /// query::includes("galaxy", "g", 1);
 /// // => false
+/// use voca_rs::Voca;
+/// "starship".includes("star", 0);
+/// // => true
 /// ```
 pub fn includes(subject: &str, search: &str, position: usize) -> bool {
     let subject_len = crate::count::count(&subject);
@@ -76,6 +82,9 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
 /// // => false
 /// query::is_alpha("Zażółć and bart");
 /// // => false
+/// use voca_rs::Voca;
+/// "bart".is_alpha();
+/// // => true
 /// ```
 pub fn is_alpha(subject: &str) -> bool {
     if is_empty(&subject) {
@@ -127,6 +136,9 @@ fn is_alpha_or_alphadigit(subject: &str, count_digits: bool) -> bool {
 /// // => true
 /// query::is_alphadigit("40-20");
 /// // => false
+/// use voca_rs::Voca;
+/// "year2020".is_alphadigit();
+/// // => true
 /// ```
 pub fn is_alphadigit(subject: &str) -> bool {
     if is_empty(&subject) {
@@ -152,6 +164,9 @@ pub fn is_alphadigit(subject: &str) -> bool {
 /// // => true
 /// query::is_blank("sun");
 /// // => false
+/// use voca_rs::Voca;
+/// "   ".is_blank();
+/// // => true
 /// ```
 pub fn is_blank(subject: &str) -> bool {
     if subject.is_empty() {
@@ -179,6 +194,9 @@ pub fn is_blank(subject: &str) -> bool {
 /// // => false
 /// query::is_camel_case("-BIRD-FLIGHT-");
 /// // => false
+/// use voca_rs::Voca;
+/// "birdFlight".is_camel_case();
+/// // => true
 /// ```
 pub fn is_camel_case(subject: &str) -> bool {
     subject == crate::case::camel_case(&subject)
@@ -201,6 +219,9 @@ pub fn is_camel_case(subject: &str) -> bool {
 /// query::is_capitalize("the world is yours");
 /// // => false
 /// query::is_capitalize("Żółć niedźwiedzia");
+/// // => true
+/// use voca_rs::Voca;
+/// "John has a motorcycle".is_capitalize();
 /// // => true
 /// ```
 pub fn is_capitalize(subject: &str) -> bool {
@@ -225,6 +246,9 @@ pub fn is_capitalize(subject: &str) -> bool {
 /// // => true
 /// query::is_decapitalize("Żółć niedźwiedzia");
 /// // => false
+/// use voca_rs::Voca;
+/// "the world is yours".is_decapitalize();
+/// // => true
 /// ```
 pub fn is_decapitalize(subject: &str) -> bool {
     is_capitalize_or_decapitalize(&subject, false)
@@ -263,6 +287,9 @@ fn is_capitalize_or_decapitalize(subject: &str, if_capitalize: bool) -> bool {
 /// // => false
 /// query::is_digit("ten");
 /// // => false
+/// use voca_rs::Voca;
+/// "35".is_digit();
+/// // => true
 /// ```
 pub fn is_digit(subject: &str) -> bool {
     let subject_len = subject.len();
@@ -297,6 +324,9 @@ pub fn is_digit(subject: &str) -> bool {
 /// // => false
 /// query::is_empty("sun");
 /// // => false
+/// use voca_rs::Voca;
+/// "".is_empty();
+/// // => true
 /// ```
 pub fn is_empty(subject: &str) -> bool {
     if subject.is_empty() {
@@ -322,6 +352,11 @@ pub fn is_empty(subject: &str) -> bool {
 /// // => true
 /// query::is_foreign_key("foo_bar");
 /// // => false
+/// use voca_rs::Voca;
+/// "foo_bar_id".is_foreign_key();
+/// // => true
+/// "foo_bar".is_foreign_key();
+/// // => false
 /// ```
 pub fn is_foreign_key(subject: &str) -> bool {
     subject == crate::chop::foreign_key(&subject)
@@ -343,6 +378,9 @@ pub fn is_foreign_key(subject: &str) -> bool {
 /// // => false
 /// query::is_lowercase("T1000");
 /// // => false
+/// use voca_rs::Voca;
+/// "motorcycle".is_lowercase();
+/// // => true
 /// ```
 pub fn is_lowercase(subject: &str) -> bool {
     is_upper_or_lowercase(subject, true)
@@ -365,6 +403,9 @@ pub fn is_lowercase(subject: &str) -> bool {
 /// query::is_lower_first("T1000");
 /// // => false
 /// query::is_lower_first("żółć niedźwiedzia");
+/// // => true
+/// use voca_rs::Voca;
+/// "motorcycle".is_lower_first();
 /// // => true
 /// ```
 pub fn is_lower_first(subject: &str) -> bool {
@@ -395,6 +436,9 @@ pub fn is_lower_first(subject: &str) -> bool {
 /// // => false
 /// query::is_kebab_case("-BIRD-FLIGHT-");
 /// // => false
+/// use voca_rs::Voca;
+/// "bird-flight".is_kebab_case();
+/// // => true
 /// ```
 pub fn is_kebab_case(subject: &str) -> bool {
     subject == crate::case::kebab_case(&subject)
