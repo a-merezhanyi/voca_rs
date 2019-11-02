@@ -124,6 +124,18 @@ pub trait Voca {
     fn is_lowercase(&self) -> bool;
     fn is_lower_first(&self) -> bool;
     fn is_kebab_case(&self) -> bool;
+    fn is_numeric(&self) -> bool;
+    fn is_pascal_case(&self) -> bool;
+    fn is_shouty_kebab_case(&self) -> bool;
+    fn is_snake_case(&self) -> bool;
+    fn is_shouty_snake_case(&self) -> bool;
+    fn is_title(&self) -> bool;
+    fn is_train_case(&self) -> bool;
+    fn is_uppercase(&self) -> bool;
+    fn is_upper_first(&self) -> bool;
+    fn matches_me(&self, param1: &str, param2: usize) -> bool;
+    fn query(&self, param1: &str, param2: usize) -> bool;
+    fn starts_with_me(&self, param1: &str) -> bool;
     // split
 
     // strip
@@ -358,6 +370,42 @@ macro_rules! implement_string_for {
                 }
                 fn is_kebab_case(&self) -> bool {
                     query::is_kebab_case(&self)
+                }
+                fn is_numeric(&self) -> bool {
+                    query::is_numeric(&self)
+                }
+                fn is_pascal_case(&self) -> bool {
+                    query::is_pascal_case(&self)
+                }
+                fn is_shouty_kebab_case(&self) -> bool {
+                    query::is_shouty_kebab_case(&self)
+                }
+                fn is_snake_case(&self) -> bool {
+                    query::is_snake_case(&self)
+                }
+                fn is_shouty_snake_case(&self) -> bool {
+                    query::is_shouty_snake_case(&self)
+                }
+                fn is_title(&self) -> bool {
+                    query::is_title(&self)
+                }
+                fn is_train_case(&self) -> bool {
+                    query::is_train_case(&self)
+                }
+                fn is_uppercase(&self) -> bool {
+                    query::is_uppercase(&self)
+                }
+                fn is_upper_first(&self) -> bool {
+                    query::is_upper_first(&self)
+                }
+                fn matches_me(&self, param1: &str, param2: usize) -> bool {
+                    query::matches(&self, param1, param2)
+                }
+                fn query(&self, param1: &str, param2: usize) -> bool {
+                    query::query(&self, param1, param2)
+                }
+                fn starts_with_me(&self, param1: &str) -> bool {
+                    query::starts_with(&self, param1)
                 }
             }
         )*

@@ -464,6 +464,9 @@ pub fn is_kebab_case(subject: &str) -> bool {
 /// // => true
 /// query::is_numeric("five");
 /// // => false
+/// use voca_rs::Voca;
+/// "350".is_numeric();
+/// // => true
 /// ```
 pub fn is_numeric(subject: &str) -> bool {
     if subject.is_empty() {
@@ -512,6 +515,9 @@ pub fn is_numeric(subject: &str) -> bool {
 /// // => false
 /// query::is_pascal_case("-BIRD-FLIGHT-");
 /// // => false
+/// use voca_rs::Voca;
+/// "BirdFlight".is_pascal_case();
+/// // => true
 /// ```
 pub fn is_pascal_case(subject: &str) -> bool {
     subject == crate::case::pascal_case(&subject)
@@ -535,6 +541,9 @@ pub fn is_pascal_case(subject: &str) -> bool {
 /// // => false
 /// query::is_shouty_kebab_case("-BIRD-FLIGHT-");
 /// // => false
+/// use voca_rs::Voca;
+/// "BIRD-FLIGHT".is_shouty_kebab_case();
+/// // => true
 /// ```
 pub fn is_shouty_kebab_case(subject: &str) -> bool {
     subject == crate::case::shouty_kebab_case(&subject)
@@ -558,6 +567,9 @@ pub fn is_shouty_kebab_case(subject: &str) -> bool {
 /// // => false
 /// query::is_snake_case("-BIRD-FLIGHT-");
 /// // => false
+/// use voca_rs::Voca;
+/// "bird_flight".is_snake_case();
+/// // => true
 /// ```
 pub fn is_snake_case(subject: &str) -> bool {
     subject == crate::case::snake_case(&subject)
@@ -581,6 +593,9 @@ pub fn is_snake_case(subject: &str) -> bool {
 /// // => false
 /// query::is_shouty_snake_case("-BIRD-FLIGHT-");
 /// // => false
+/// use voca_rs::Voca;
+/// "BIRD_FLIGHT".is_shouty_snake_case();
+/// // => true
 /// ```
 pub fn is_shouty_snake_case(subject: &str) -> bool {
     subject == crate::case::shouty_snake_case(&subject)
@@ -600,6 +615,9 @@ pub fn is_shouty_snake_case(subject: &str) -> bool {
 /// // => true
 /// query::is_title("This is string example....wow!!!");
 /// // => false
+/// use voca_rs::Voca;
+/// "This Is String Example...Wow!!!".is_title();
+/// // => true
 /// ```
 pub fn is_title(subject: &str) -> bool {
     if subject.is_empty() {
@@ -640,6 +658,9 @@ pub fn is_title(subject: &str) -> bool {
 /// // => false
 /// query::is_train_case("-BIRD-FLIGHT-");
 /// // => false
+/// use voca_rs::Voca;
+/// "Goodbye-Blue-Sky".is_train_case();
+/// // => true
 /// ```
 pub fn is_train_case(subject: &str) -> bool {
     subject == crate::case::train_case(&subject)
@@ -659,6 +680,9 @@ pub fn is_train_case(subject: &str) -> bool {
 /// // => true
 /// query::is_uppercase("Morning");
 /// // => false
+/// use voca_rs::Voca;
+/// "ACDC".is_uppercase();
+/// // => true
 /// ```
 pub fn is_uppercase(subject: &str) -> bool {
     is_upper_or_lowercase(subject, false)
@@ -681,6 +705,9 @@ pub fn is_uppercase(subject: &str) -> bool {
 /// query::is_upper_first("T1000");
 /// // => true
 /// query::is_upper_first("Żółć niedźwiedzia");
+/// // => true
+/// use voca_rs::Voca;
+/// "John".is_upper_first();
 /// // => true
 /// ```
 pub fn is_upper_first(subject: &str) -> bool {
@@ -729,6 +756,9 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
 /// // => false
 /// query::matches("Zażółć gęślą jaźń", "gęślą", 11);
 /// // => true (because "gęślą" starts from 11 not 7)
+/// use voca_rs::Voca;
+/// "pluto".matches_me(r"plu.{2}", 0);
+/// // => true
 /// ```
 pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
     let subject_len = crate::split::chars(&subject).len();
@@ -768,6 +798,9 @@ pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
 /// // => true
 /// query::query("galaxy", "g", 1);
 /// // => false
+/// use voca_rs::Voca;
+/// "starship".query("star", 0);
+/// // => true
 /// ```
 pub fn query(subject: &str, search: &str, position: usize) -> bool {
     let subject_len = crate::count::count(&subject);
@@ -813,6 +846,9 @@ pub fn query(subject: &str, search: &str, position: usize) -> bool {
 /// // => true
 /// query::starts_with("say hello to my little friend", "hello");
 /// // => false
+/// use voca_rs::Voca;
+/// "say hello to my little friend".starts_with_me("say hello");
+/// // => true
 /// ```
 pub fn starts_with(subject: &str, start: &str) -> bool {
     if subject.is_empty() || start.is_empty() {
