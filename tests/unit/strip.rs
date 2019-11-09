@@ -16,7 +16,10 @@ fn strip_bom() {
         voca_rs::strip::strip_bom("\\u{FEFF}summertime sadness"),
         "\\u{FEFF}summertime sadness"
     );
-    assert_eq!(voca_rs::strip::strip_bom("summertime sadness"), "summertime sadness");
+    assert_eq!(
+        voca_rs::strip::strip_bom("summertime sadness"),
+        "summertime sadness"
+    );
 }
 #[test]
 fn strip_tags() {
@@ -46,4 +49,12 @@ fn strip_tags() {
         "<...Hello world!"
     );
     assert_eq!(voca_rs::strip::strip_tags("< html >"), "< html >");
+    assert_eq!(voca_rs::strip::strip_tags("< html >"), "< html >");
+    assert_eq!(
+        voca_rs::strip::strip_tags(
+            "<img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACwAAAAAA‌\u{200B}QABAAACAkQBADs=\"
+    onload=\"$.getScript('evil.js');1<2>3\">"
+        ),
+        ""
+    );
 }
