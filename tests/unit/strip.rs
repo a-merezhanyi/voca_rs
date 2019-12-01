@@ -1,4 +1,5 @@
 //! voca_rs::strip testing
+use voca_rs::Voca;
 
 #[test]
 fn strip_bom() {
@@ -18,6 +19,19 @@ fn strip_bom() {
     );
     assert_eq!(
         voca_rs::strip::strip_bom("summertime sadness"),
+        "summertime sadness"
+    );
+}
+#[test]
+fn strip_bom_me() {
+    assert_eq!("".strip_bom(), "");
+    assert_eq!("\u{FEFF}".strip_bom(), "");
+    assert_eq!(
+        voca_rs::utils::PRINTABLE.strip_bom(),
+        voca_rs::utils::PRINTABLE
+    );
+    assert_eq!(
+        "\u{FEFF}summertime sadness".strip_bom(),
         "summertime sadness"
     );
 }
@@ -56,5 +70,17 @@ fn strip_tags() {
     onload=\"$.getScript('evil.js');1<2>3\">"
         ),
         ""
+    );
+}
+#[test]
+fn strip_tags_me() {
+    assert_eq!("".strip_tags(), "");
+    assert_eq!(
+        "<span><a href=\"#\">Summer</a> is nice</span>".strip_tags(),
+        "Summer is nice"
+    );
+    assert_eq!(
+        "<html><b>hello</b><p>world</p></html>".strip_tags(),
+        "helloworld"
     );
 }

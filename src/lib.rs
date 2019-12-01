@@ -143,6 +143,8 @@ pub trait Voca {
     fn graphemes(&self) -> Vec<&str>;
     fn code_points(&self) -> Vec<u16>;
     // strip
+    fn strip_bom(&self) -> String;
+    fn strip_tags(&self) -> String;
 }
 
 macro_rules! implement_string_for {
@@ -426,6 +428,13 @@ macro_rules! implement_string_for {
                 }
                 fn code_points(&self) -> Vec<u16> {
                     split::code_points(&self)
+                }
+                // strip
+                fn strip_bom(&self) -> String {
+                    strip::strip_bom(&self)
+                }
+                fn strip_tags(&self) -> String {
+                    strip::strip_tags(&self)
                 }
             }
         )*
