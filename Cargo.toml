@@ -24,3 +24,7 @@ regex = "1.1.5"
 stfu8 = "0.2.4"
 unicode-segmentation = "1.2.0"
 unidecode = "0.3.0"
+
+[profile.dev]
+lto = true
+opt-level = 3
