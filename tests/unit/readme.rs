@@ -26,31 +26,43 @@ fn example_functions() {
     assert_eq!(truncated_string, "Lazy Load...");
 }
 
-// #[test]
-// fn example_traits() {
-//     use voca_rs::Voca;
+#[test]
+fn example_traits() {
+    use voca_rs::Voca;
 
-//     let mut input_string;
-//     let mut expected_result;
-//     let mut expected_string;
+    // Test #1
+    let input_string1 = "LazyLoad with XMLHttpRequest and snake_case";
+    let expected_result1 = [
+        "Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case",
+    ];
+    assert_eq!(input_string1.words(), expected_result1);
 
-//     input_string = "LazyLoad with XMLHttpRequest and snake_case";
-//     expected_result = ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"];
-//     assert_eq!(input_string.words(), expected_result);
+    // Test #2
+    let input_string2 = "LazyLoad with XMLHttpRequest and snake_case".words();
+    let expected_result2 = "Lazy Load with XML Http Request and snake case";
+    assert_eq!(input_string2.join(" "), expected_result2);
 
-//     input_string = "LazyLoad with XMLHttpRequest and snake_case".words();
-//     expected_string = "Lazy Load with XML Http Request and snake case";
-//     assert_eq!(input_string.join(" "), expected_result);
+    // Test #3
+    let input_string3 = "LazyLoad with XMLHttpRequest and snake_case"
+        .words()
+        .join(" ");
+    let expected_string3 = "Lazy Load with XML...";
+    assert_eq!(input_string3.prune(21, ""), expected_string3);
 
-//     input_string = "LazyLoad with XMLHttpRequest and snake_case".words().join(" ");
-//     expected_string = "Lazy Load with XML...";
-//     assert_eq!(input_string.prune(20, ""), expected_string);
+    // Test #4
+    let input_string4 = "LazyLoad with XMLHttpRequest and snake_case"
+        .words()
+        .join(" ")
+        .prune(21, "");
+    let expected_string4 = "Load with XML.";
+    assert_eq!(input_string4.slice(5, -2), expected_string4);
 
-//     input_string = "LazyLoad with XMLHttpRequest and snake_case".words().join(" ").prune(20, "");
-//     expected_string = "Load with XML.";
-//     assert_eq!(input_string.slice(5, -2), expected_string);
-
-//     input_string = "LazyLoad with XMLHttpRequest and snake_case".words().join(" ").prune(20, "").slice(5, -2);
-//     expected_string = "load_with_xml";
-//     assert_eq!(input_string.snake_case(), expected_string);
-// }
+    // Test #5
+    let input_string5 = "LazyLoad with XMLHttpRequest and snake_case"
+        .words()
+        .join(" ")
+        .prune(21, "")
+        .slice(5, -2);
+    let expected_string5 = "load_with_xml";
+    assert_eq!(input_string5.snake_case(), expected_string5);
+}
