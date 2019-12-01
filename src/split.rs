@@ -14,6 +14,9 @@ use unicode_segmentation::UnicodeSegmentation;
 /// use voca_rs::*;
 /// split::chars("cloud");
 /// // => ["c", "l", "o", "u", "d"]
+/// use voca_rs::Voca;
+/// "cloud".chars_me();
+/// // => ["c", "l", "o", "u", "d"]
 /// ```
 pub fn chars(subject: &str) -> Vec<&str> {
     if subject.is_empty() {
@@ -34,6 +37,9 @@ pub fn chars(subject: &str) -> Vec<&str> {
 /// ```rust
 /// use voca_rs::*;
 /// split::split("rage against the dying of the light", "");
+/// // => ["rage", "against", "the", "dying", "of", "the", "light"]
+/// use voca_rs::Voca;
+/// "rage against the dying of the light".split_me("");
 /// // => ["rage", "against", "the", "dying", "of", "the", "light"]
 /// ```
 pub fn split<'a>(subject: &'a str, pattern: &str) -> Vec<&'a str> {
@@ -60,6 +66,9 @@ pub fn split<'a>(subject: &'a str, pattern: &str) -> Vec<&'a str> {
 /// // => ["Sześć", "звёзд", "are", "dying"]
 /// split::words("LazyLoad with XMLHttpRequest and snake_case");
 /// // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
+/// use voca_rs::Voca;
+/// "Sześć звёзд are dying".words();
+/// // => ["Sześć", "звёзд", "are", "dying"]
 /// ```
 pub fn words(subject: &str) -> Vec<&str> {
     fn split_camel_case(string: &str) -> Vec<&str> {
@@ -131,6 +140,9 @@ pub fn words(subject: &str) -> Vec<&str> {
 /// use voca_rs::*;
 /// split::graphemes("a̐éö̲\r\n");
 /// // => ["a̐", "é", "ö̲", "\r\n"]
+/// use voca_rs::Voca;
+/// "a̐éö̲\r\n".graphemes();
+/// // => ["a̐", "é", "ö̲", "\r\n"]
 /// ```
 pub fn graphemes(subject: &str) -> Vec<&str> {
     if subject.is_empty() {
@@ -154,6 +166,9 @@ pub fn graphemes(subject: &str) -> Vec<&str> {
 /// // => [114, 97, 105, 110]
 /// split::code_points("Un garçon de café");
 /// // => [85, 110, 32, 103, 97, 114, 231, 111, 110, 32, 100, 101, 32, 99, 97, 102, 233]
+/// use voca_rs::Voca;
+/// "rain".code_points();
+/// // => [114, 97, 105, 110]
 /// ```
 pub fn code_points(subject: &str) -> Vec<u16> {
     if subject.is_empty() {

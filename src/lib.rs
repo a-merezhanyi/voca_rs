@@ -137,7 +137,11 @@ pub trait Voca {
     fn query(&self, param1: &str, param2: usize) -> bool;
     fn starts_with_me(&self, param1: &str) -> bool;
     // split
-
+    fn chars_me(&self) -> Vec<&str>;
+    fn split_me(&self, param1: &str) -> Vec<&str>;
+    fn words(&self) -> Vec<&str>;
+    fn graphemes(&self) -> Vec<&str>;
+    fn code_points(&self) -> Vec<u16>;
     // strip
 }
 
@@ -406,6 +410,22 @@ macro_rules! implement_string_for {
                 }
                 fn starts_with_me(&self, param1: &str) -> bool {
                     query::starts_with(&self, param1)
+                }
+                // split
+                fn chars_me(&self) -> Vec<&str> {
+                    split::chars(&self)
+                }
+                fn split_me(&self, param1: &str) -> Vec<&str> {
+                    split::split(&self, param1)
+                }
+                fn words(&self) -> Vec<&str> {
+                    split::words(&self)
+                }
+                fn graphemes(&self) -> Vec<&str> {
+                    split::graphemes(&self)
+                }
+                fn code_points(&self) -> Vec<u16> {
+                    split::code_points(&self)
                 }
             }
         )*
