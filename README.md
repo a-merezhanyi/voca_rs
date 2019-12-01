@@ -24,21 +24,21 @@ let truncated_string = chop::prune(&words_in_string, 15, "");
 // => "Lazy Load..."
 ```
 
-Using traits:
+Using traits (all methods start from an underscore symbol):
 
 ```rust
 use voca_rs::Voca;
 
 "LazyLoad with XMLHttpRequest and snake_case"
-.words()
+._words()
 // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 .join(" ")
 // => "Lazy Load with XML Http Request and snake case"
-.prune(21, "");
+._prune(21, "");
 // => "Lazy Load with XML..."
-.slice(5, -2)
+._slice(5, -2)
 // => "Load with XML."
-.snake_case()
+._snake_case()
 // => "load_with_xml"
 ```
 

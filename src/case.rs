@@ -16,7 +16,7 @@
 /// case::camel_case("-BIRD-FLIGHT-");
 /// // => "birdFlight"
 /// use voca_rs::Voca;
-/// "bird flight".camel_case();
+/// "bird flight"._camel_case();
 /// // => "birdFlight"
 /// ```
 pub fn camel_case(subject: &str) -> String {
@@ -66,7 +66,7 @@ fn camel_and_pascal_case(subject: &str, title_mode: TitleMode) -> String {
 /// case::capitalize("Say Hello to ME", true);
 /// // => "Say hello to me"
 /// use voca_rs::Voca;
-/// "green".capitalize(true);
+/// "green"._capitalize(true);
 /// // => "Green"
 /// ```
 pub fn capitalize(subject: &str, rest_to_lower: bool) -> String {
@@ -131,7 +131,7 @@ fn capitalize_decapitalize(subject: &str, rest_mode: RestMode, caps_mode: CapsMo
 /// case::decapitalize("Say Hello to ME", false);
 /// // => "say Hello to ME"
 /// use voca_rs::Voca;
-/// "Green".decapitalize(true);
+/// "Green"._decapitalize(true);
 /// // => "green"
 /// ```
 pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
@@ -159,7 +159,7 @@ pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
 /// case::kebab_case("-Goodbye-Blue-Sky-");
 /// // => "goodbye-blue-sky"
 /// use voca_rs::Voca;
-/// "goodbye blue sky".kebab_case();
+/// "goodbye blue sky"._kebab_case();
 /// // => "goodbye-blue-sky"
 /// ```
 pub fn kebab_case(subject: &str) -> String {
@@ -182,7 +182,7 @@ pub fn kebab_case(subject: &str) -> String {
 /// case::shouty_kebab_case("-Goodbye-Blue-Sky-");
 /// // => "GOODBYE-BLUE-SKY"
 /// use voca_rs::Voca;
-/// "goodbye blue sky".shouty_kebab_case();
+/// "goodbye blue sky"._shouty_kebab_case();
 /// // => "GOODBYE-BLUE-SKY"
 /// ```
 pub fn shouty_kebab_case(subject: &str) -> String {
@@ -226,7 +226,7 @@ fn kebab_and_shouty_kebab_and_train_case(subject: &str, kebab_mode: KebabMode) -
 /// case::lower_case("Say Hello to ME");
 /// // => "say hello to me"
 /// use voca_rs::Voca;
-/// "Green".lower_case();
+/// "Green"._lower_case();
 /// // => "green"
 /// ```
 pub fn lower_case(subject: &str) -> String {
@@ -258,7 +258,7 @@ pub fn lower_case(subject: &str) -> String {
 /// case::pascal_case("-BIRD-FLIGHT-");
 /// // => "BirdFlight"
 /// use voca_rs::Voca;
-/// "bird flight".pascal_case();
+/// "bird flight"._pascal_case();
 /// // => "BirdFlight"
 /// ```
 pub fn pascal_case(subject: &str) -> String {
@@ -281,7 +281,7 @@ pub fn pascal_case(subject: &str) -> String {
 /// case::snake_case("-Learning-To-Fly-");
 /// // => "learning_to_fly"
 /// use voca_rs::Voca;
-/// "learning to fly".snake_case();
+/// "learning to fly"._snake_case();
 /// // => "learning_to_fly"
 /// ```
 pub fn snake_case(subject: &str) -> String {
@@ -304,7 +304,7 @@ pub fn snake_case(subject: &str) -> String {
 /// case::shouty_snake_case("-Learning-To-Fly-");
 /// // => "LEARNING_TO_FLY"
 /// use voca_rs::Voca;
-/// "learning to fly".shouty_snake_case();
+/// "learning to fly"._shouty_snake_case();
 /// // => "LEARNING_TO_FLY"
 /// ```
 pub fn shouty_snake_case(subject: &str) -> String {
@@ -342,7 +342,7 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
 /// case::swap_case("2 üBer Bees");
 /// // => "2 ÜbER bEES"
 /// use voca_rs::Voca;
-/// "League of Shadows".swap_case();
+/// "League of Shadows"._swap_case();
 /// // => "lEAGUE OF sHADOWS"
 /// ```
 pub fn swap_case(subject: &str) -> String {
@@ -382,7 +382,7 @@ pub fn swap_case(subject: &str) -> String {
 /// case::title_case("-BIRD-FLIGHT-");
 /// // => "Bird Flight"
 /// use voca_rs::Voca;
-/// "bird flight".title_case();
+/// "bird flight"._title_case();
 /// // => "Bird Flight"
 /// ```
 pub fn title_case(subject: &str) -> String {
@@ -412,7 +412,7 @@ pub fn title_case(subject: &str) -> String {
 /// case::train_case("-Goodbye-Blue-Sky-");
 /// // => "Goodbye-Blue-Sky"
 /// use voca_rs::Voca;
-/// "goodbye blue sky".train_case();
+/// "goodbye blue sky"._train_case();
 /// // => "Goodbye-Blue-Sky"
 /// ```
 pub fn train_case(subject: &str) -> String {
@@ -434,7 +434,7 @@ pub fn train_case(subject: &str) -> String {
 /// case::upper_case("Say Hello to ME");
 /// // => "SAY HELLO TO ME"
 /// use voca_rs::Voca;
-/// "Green".upper_case();
+/// "Green"._upper_case();
 /// // => "GREEN"
 /// ```
 pub fn upper_case(subject: &str) -> String {
@@ -465,7 +465,7 @@ pub fn upper_case(subject: &str) -> String {
 /// case::lower_first("FRED");
 /// // => "fRED"
 /// use voca_rs::Voca;
-/// "Fred".lower_first();
+/// "Fred"._lower_first();
 /// // => "fred"
 /// ```
 pub fn lower_first(subject: &str) -> String {
@@ -487,7 +487,7 @@ pub fn lower_first(subject: &str) -> String {
 /// case::upper_first("FRED");
 /// // => "FRED"
 /// use voca_rs::Voca;
-/// "fred".upper_first();
+/// "fred"._upper_first();
 /// // => "Fred"
 /// ```
 pub fn upper_first(subject: &str) -> String {

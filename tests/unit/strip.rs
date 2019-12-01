@@ -23,15 +23,9 @@ fn strip_bom() {
     );
 }
 #[test]
-fn strip_bom_me() {
-    assert_eq!("".strip_bom(), "");
-    assert_eq!("\u{FEFF}".strip_bom(), "");
+fn _strip_bom() {
     assert_eq!(
-        voca_rs::utils::PRINTABLE.strip_bom(),
-        voca_rs::utils::PRINTABLE
-    );
-    assert_eq!(
-        "\u{FEFF}summertime sadness".strip_bom(),
+        "\u{FEFF}summertime sadness"._strip_bom(),
         "summertime sadness"
     );
 }
@@ -73,14 +67,9 @@ fn strip_tags() {
     );
 }
 #[test]
-fn strip_tags_me() {
-    assert_eq!("".strip_tags(), "");
+fn _strip_tags() {
     assert_eq!(
-        "<span><a href=\"#\">Summer</a> is nice</span>".strip_tags(),
+        "<span><a href=\"#\">Summer</a> is nice</span>"._strip_tags(),
         "Summer is nice"
-    );
-    assert_eq!(
-        "<html><b>hello</b><p>world</p></html>".strip_tags(),
-        "helloworld"
     );
 }

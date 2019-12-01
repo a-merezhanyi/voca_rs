@@ -15,7 +15,7 @@
 /// count::count("błąd");
 /// // => 4
 /// use voca_rs::Voca;
-/// "rain".count();
+/// "rain"._count();
 /// // => 4
 /// ```
 pub fn count(subject: &str) -> usize {
@@ -44,7 +44,7 @@ pub fn count(subject: &str) -> usize {
 /// count::count_graphemes("rain");
 /// // => 4
 /// use voca_rs::Voca;
-/// "cafe\u{0301}".count_graphemes(); // or "café"
+/// "cafe\u{0301}"._count_graphemes(); // or "café"
 /// // => 4
 /// ```
 pub fn count_graphemes(subject: &str) -> usize {
@@ -72,7 +72,7 @@ pub fn count_graphemes(subject: &str) -> usize {
 /// count::count_substrings("every dog has its day", "cat");
 /// // => 0
 /// use voca_rs::Voca;
-/// "bad boys, bad boys whatcha gonna do?".count_substrings("boys");
+/// "bad boys, bad boys whatcha gonna do?"._count_substrings("boys");
 /// // => 2
 /// ```
 pub fn count_substrings(subject: &str, substring: &str) -> usize {
@@ -107,7 +107,7 @@ pub fn count_substrings(subject: &str, substring: &str) -> usize {
 /// count::count_words("Cafe\u{0301}-del-Mar-andBossaNova1", "-");
 /// // => 4
 /// use voca_rs::Voca;
-/// "Gravity - can cross dimensions!".count_words("");
+/// "Gravity - can cross dimensions!"._count_words("");
 /// // => 4
 /// ```
 pub fn count_words(subject: &str, pattern: &str) -> usize {

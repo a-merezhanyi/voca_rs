@@ -35,34 +35,34 @@ fn example_traits() {
     let expected_result1 = [
         "Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case",
     ];
-    assert_eq!(input_string1.words(), expected_result1);
+    assert_eq!(input_string1._words(), expected_result1);
 
     // Test #2
-    let input_string2 = "LazyLoad with XMLHttpRequest and snake_case".words();
+    let input_string2 = "LazyLoad with XMLHttpRequest and snake_case"._words();
     let expected_result2 = "Lazy Load with XML Http Request and snake case";
     assert_eq!(input_string2.join(" "), expected_result2);
 
     // Test #3
     let input_string3 = "LazyLoad with XMLHttpRequest and snake_case"
-        .words()
+        ._words()
         .join(" ");
     let expected_string3 = "Lazy Load with XML...";
-    assert_eq!(input_string3.prune(21, ""), expected_string3);
+    assert_eq!(input_string3._prune(21, ""), expected_string3);
 
     // Test #4
     let input_string4 = "LazyLoad with XMLHttpRequest and snake_case"
-        .words()
+        ._words()
         .join(" ")
-        .prune(21, "");
+        ._prune(21, "");
     let expected_string4 = "Load with XML.";
-    assert_eq!(input_string4.slice(5, -2), expected_string4);
+    assert_eq!(input_string4._slice(5, -2), expected_string4);
 
     // Test #5
     let input_string5 = "LazyLoad with XMLHttpRequest and snake_case"
-        .words()
+        ._words()
         .join(" ")
-        .prune(21, "")
-        .slice(5, -2);
+        ._prune(21, "")
+        ._slice(5, -2);
     let expected_string5 = "load_with_xml";
-    assert_eq!(input_string5.snake_case(), expected_string5);
+    assert_eq!(input_string5._snake_case(), expected_string5);
 }

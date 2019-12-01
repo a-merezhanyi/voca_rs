@@ -17,7 +17,7 @@ use regex::Regex;
 /// query::ends_with("say hello to my little friend", "little");
 /// // => false
 /// use voca_rs::Voca;
-/// "say hello to my little friend".ends_with("little friend");
+/// "say hello to my little friend"._ends_with("little friend");
 /// // => true
 /// ```
 pub fn ends_with(subject: &str, end: &str) -> bool {
@@ -46,7 +46,7 @@ pub fn ends_with(subject: &str, end: &str) -> bool {
 /// query::includes("galaxy", "g", 1);
 /// // => false
 /// use voca_rs::Voca;
-/// "starship".includes("star", 0);
+/// "starship"._includes("star", 0);
 /// // => true
 /// ```
 pub fn includes(subject: &str, search: &str, position: usize) -> bool {
@@ -83,7 +83,7 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
 /// query::is_alpha("Zażółć and bart");
 /// // => false
 /// use voca_rs::Voca;
-/// "bart".is_alpha();
+/// "bart"._is_alpha();
 /// // => true
 /// ```
 pub fn is_alpha(subject: &str) -> bool {
@@ -137,7 +137,7 @@ fn is_alpha_or_alphadigit(subject: &str, count_digits: bool) -> bool {
 /// query::is_alphadigit("40-20");
 /// // => false
 /// use voca_rs::Voca;
-/// "year2020".is_alphadigit();
+/// "year2020"._is_alphadigit();
 /// // => true
 /// ```
 pub fn is_alphadigit(subject: &str) -> bool {
@@ -165,7 +165,7 @@ pub fn is_alphadigit(subject: &str) -> bool {
 /// query::is_blank("sun");
 /// // => false
 /// use voca_rs::Voca;
-/// "   ".is_blank();
+/// "   "._is_blank();
 /// // => true
 /// ```
 pub fn is_blank(subject: &str) -> bool {
@@ -195,7 +195,7 @@ pub fn is_blank(subject: &str) -> bool {
 /// query::is_camel_case("-BIRD-FLIGHT-");
 /// // => false
 /// use voca_rs::Voca;
-/// "birdFlight".is_camel_case();
+/// "birdFlight"._is_camel_case();
 /// // => true
 /// ```
 pub fn is_camel_case(subject: &str) -> bool {
@@ -221,7 +221,7 @@ pub fn is_camel_case(subject: &str) -> bool {
 /// query::is_capitalize("Żółć niedźwiedzia");
 /// // => true
 /// use voca_rs::Voca;
-/// "John has a motorcycle".is_capitalize();
+/// "John has a motorcycle"._is_capitalize();
 /// // => true
 /// ```
 pub fn is_capitalize(subject: &str) -> bool {
@@ -247,7 +247,7 @@ pub fn is_capitalize(subject: &str) -> bool {
 /// query::is_decapitalize("Żółć niedźwiedzia");
 /// // => false
 /// use voca_rs::Voca;
-/// "the world is yours".is_decapitalize();
+/// "the world is yours"._is_decapitalize();
 /// // => true
 /// ```
 pub fn is_decapitalize(subject: &str) -> bool {
@@ -288,7 +288,7 @@ fn is_capitalize_or_decapitalize(subject: &str, if_capitalize: bool) -> bool {
 /// query::is_digit("ten");
 /// // => false
 /// use voca_rs::Voca;
-/// "35".is_digit();
+/// "35"._is_digit();
 /// // => true
 /// ```
 pub fn is_digit(subject: &str) -> bool {
@@ -325,7 +325,7 @@ pub fn is_digit(subject: &str) -> bool {
 /// query::is_empty("sun");
 /// // => false
 /// use voca_rs::Voca;
-/// "".is_empty();
+/// ""._is_empty();
 /// // => true
 /// ```
 pub fn is_empty(subject: &str) -> bool {
@@ -353,9 +353,9 @@ pub fn is_empty(subject: &str) -> bool {
 /// query::is_foreign_key("foo_bar");
 /// // => false
 /// use voca_rs::Voca;
-/// "foo_bar_id".is_foreign_key();
+/// "foo_bar_id"._is_foreign_key();
 /// // => true
-/// "foo_bar".is_foreign_key();
+/// "foo_bar"._is_foreign_key();
 /// // => false
 /// ```
 pub fn is_foreign_key(subject: &str) -> bool {
@@ -379,7 +379,7 @@ pub fn is_foreign_key(subject: &str) -> bool {
 /// query::is_lowercase("T1000");
 /// // => false
 /// use voca_rs::Voca;
-/// "motorcycle".is_lowercase();
+/// "motorcycle"._is_lowercase();
 /// // => true
 /// ```
 pub fn is_lowercase(subject: &str) -> bool {
@@ -405,7 +405,7 @@ pub fn is_lowercase(subject: &str) -> bool {
 /// query::is_lower_first("żółć niedźwiedzia");
 /// // => true
 /// use voca_rs::Voca;
-/// "motorcycle".is_lower_first();
+/// "motorcycle"._is_lower_first();
 /// // => true
 /// ```
 pub fn is_lower_first(subject: &str) -> bool {
@@ -437,7 +437,7 @@ pub fn is_lower_first(subject: &str) -> bool {
 /// query::is_kebab_case("-BIRD-FLIGHT-");
 /// // => false
 /// use voca_rs::Voca;
-/// "bird-flight".is_kebab_case();
+/// "bird-flight"._is_kebab_case();
 /// // => true
 /// ```
 pub fn is_kebab_case(subject: &str) -> bool {
@@ -465,7 +465,7 @@ pub fn is_kebab_case(subject: &str) -> bool {
 /// query::is_numeric("five");
 /// // => false
 /// use voca_rs::Voca;
-/// "350".is_numeric();
+/// "350"._is_numeric();
 /// // => true
 /// ```
 pub fn is_numeric(subject: &str) -> bool {
@@ -516,7 +516,7 @@ pub fn is_numeric(subject: &str) -> bool {
 /// query::is_pascal_case("-BIRD-FLIGHT-");
 /// // => false
 /// use voca_rs::Voca;
-/// "BirdFlight".is_pascal_case();
+/// "BirdFlight"._is_pascal_case();
 /// // => true
 /// ```
 pub fn is_pascal_case(subject: &str) -> bool {
@@ -542,7 +542,7 @@ pub fn is_pascal_case(subject: &str) -> bool {
 /// query::is_shouty_kebab_case("-BIRD-FLIGHT-");
 /// // => false
 /// use voca_rs::Voca;
-/// "BIRD-FLIGHT".is_shouty_kebab_case();
+/// "BIRD-FLIGHT"._is_shouty_kebab_case();
 /// // => true
 /// ```
 pub fn is_shouty_kebab_case(subject: &str) -> bool {
@@ -568,7 +568,7 @@ pub fn is_shouty_kebab_case(subject: &str) -> bool {
 /// query::is_snake_case("-BIRD-FLIGHT-");
 /// // => false
 /// use voca_rs::Voca;
-/// "bird_flight".is_snake_case();
+/// "bird_flight"._is_snake_case();
 /// // => true
 /// ```
 pub fn is_snake_case(subject: &str) -> bool {
@@ -594,7 +594,7 @@ pub fn is_snake_case(subject: &str) -> bool {
 /// query::is_shouty_snake_case("-BIRD-FLIGHT-");
 /// // => false
 /// use voca_rs::Voca;
-/// "BIRD_FLIGHT".is_shouty_snake_case();
+/// "BIRD_FLIGHT"._is_shouty_snake_case();
 /// // => true
 /// ```
 pub fn is_shouty_snake_case(subject: &str) -> bool {
@@ -616,7 +616,7 @@ pub fn is_shouty_snake_case(subject: &str) -> bool {
 /// query::is_title("This is string example....wow!!!");
 /// // => false
 /// use voca_rs::Voca;
-/// "This Is String Example...Wow!!!".is_title();
+/// "This Is String Example...Wow!!!"._is_title();
 /// // => true
 /// ```
 pub fn is_title(subject: &str) -> bool {
@@ -659,7 +659,7 @@ pub fn is_title(subject: &str) -> bool {
 /// query::is_train_case("-BIRD-FLIGHT-");
 /// // => false
 /// use voca_rs::Voca;
-/// "Goodbye-Blue-Sky".is_train_case();
+/// "Goodbye-Blue-Sky"._is_train_case();
 /// // => true
 /// ```
 pub fn is_train_case(subject: &str) -> bool {
@@ -681,7 +681,7 @@ pub fn is_train_case(subject: &str) -> bool {
 /// query::is_uppercase("Morning");
 /// // => false
 /// use voca_rs::Voca;
-/// "ACDC".is_uppercase();
+/// "ACDC"._is_uppercase();
 /// // => true
 /// ```
 pub fn is_uppercase(subject: &str) -> bool {
@@ -707,7 +707,7 @@ pub fn is_uppercase(subject: &str) -> bool {
 /// query::is_upper_first("Żółć niedźwiedzia");
 /// // => true
 /// use voca_rs::Voca;
-/// "John".is_upper_first();
+/// "John"._is_upper_first();
 /// // => true
 /// ```
 pub fn is_upper_first(subject: &str) -> bool {
@@ -757,7 +757,7 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
 /// query::matches("Zażółć gęślą jaźń", "gęślą", 11);
 /// // => true (because "gęślą" starts from 11 not 7)
 /// use voca_rs::Voca;
-/// "pluto".matches_me(r"plu.{2}", 0);
+/// "pluto"._matches(r"plu.{2}", 0);
 /// // => true
 /// ```
 pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
@@ -799,7 +799,7 @@ pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
 /// query::query("galaxy", "g", 1);
 /// // => false
 /// use voca_rs::Voca;
-/// "starship".query("star", 0);
+/// "starship"._query("star", 0);
 /// // => true
 /// ```
 pub fn query(subject: &str, search: &str, position: usize) -> bool {
@@ -847,7 +847,7 @@ pub fn query(subject: &str, search: &str, position: usize) -> bool {
 /// query::starts_with("say hello to my little friend", "hello");
 /// // => false
 /// use voca_rs::Voca;
-/// "say hello to my little friend".starts_with_me("say hello");
+/// "say hello to my little friend"._starts_with("say hello");
 /// // => true
 /// ```
 pub fn starts_with(subject: &str, start: &str) -> bool {

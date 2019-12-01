@@ -12,16 +12,9 @@ fn index_of() {
     assert_eq!(voca_rs::index::index_of("Rain, dear rain", "ain", 0), 1);
     assert_eq!(voca_rs::index::index_of("rain", "z", 0), -1);
     assert_eq!(voca_rs::index::index_of("b\u{0142}\u{0105}d", "ą", 0), 2);
+    assert_eq!(voca_rs::index::index_of("Zażółć gęślą jaźń", "gęślą", 0), 7);
     assert_eq!(
-        voca_rs::index::index_of("Zażółć gęślą jaźń", "gęślą", 0),
-        7
-    );
-    assert_eq!(
-        voca_rs::index::index_of(
-            "Die Schildkröte fliegt über das Floß.",
-            "Schildkröte",
-            4
-        ),
+        voca_rs::index::index_of("Die Schildkröte fliegt über das Floß.", "Schildkröte", 4),
         0
     );
     assert_eq!(
@@ -30,8 +23,8 @@ fn index_of() {
     );
 }
 #[test]
-fn index_of_me() {
-    assert_eq!("Rain, dear rain".index_of("ear", 0), 7);
+fn _index_of() {
+    assert_eq!("Rain, dear rain"._index_of("ear", 0), 7);
 }
 #[test]
 fn index_all() {
@@ -64,11 +57,8 @@ fn index_all() {
     );
 }
 #[test]
-fn index_all_me() {
-    assert_eq!(
-        "Rain, dear rain".index_all("ear", 0),
-        [1, 7, 8, 9, 11, 12]
-    );
+fn _index_all() {
+    assert_eq!("Rain, dear rain"._index_all("ear", 0), [1, 7, 8, 9, 11, 12]);
 }
 #[test]
 fn last_index_of() {
@@ -77,20 +67,25 @@ fn last_index_of() {
     assert_eq!(voca_rs::index::last_index_of("rain", "a", 0), 1);
     assert_eq!(voca_rs::index::last_index_of("rain", "n", 3), 0);
     assert_eq!(voca_rs::index::last_index_of("rain", "a", 10), -1);
-    assert_eq!(voca_rs::index::last_index_of("Rain, dear rain", "rain", 0), 11);
-    assert_eq!(voca_rs::index::last_index_of("Rain, dear rain", "ain", 0), 12);
+    assert_eq!(
+        voca_rs::index::last_index_of("Rain, dear rain", "rain", 0),
+        11
+    );
+    assert_eq!(
+        voca_rs::index::last_index_of("Rain, dear rain", "ain", 0),
+        12
+    );
     assert_eq!(voca_rs::index::last_index_of("rain", "z", 0), -1);
-    assert_eq!(voca_rs::index::last_index_of("b\u{0142}\u{0105}d", "ą", 0), 2);
+    assert_eq!(
+        voca_rs::index::last_index_of("b\u{0142}\u{0105}d", "ą", 0),
+        2
+    );
     assert_eq!(
         voca_rs::index::last_index_of("Zażółć gęślą jaźń", "gęślą", 0),
         7
     );
     assert_eq!(
-        voca_rs::index::last_index_of(
-            "Die Schildkröte fliegt über das Floß.",
-            "Schildkröte",
-            4
-        ),
+        voca_rs::index::last_index_of("Die Schildkröte fliegt über das Floß.", "Schildkröte", 4),
         0
     );
     assert_eq!(
@@ -99,15 +94,18 @@ fn last_index_of() {
     );
 }
 #[test]
-fn last_index_of_me() {
-    assert_eq!("Rain, dear rain".last_index_of("rain", 0), 11);
+fn _last_index_of() {
+    assert_eq!("Rain, dear rain"._last_index_of("rain", 0), 11);
 }
 #[test]
 fn search() {
     assert_eq!(voca_rs::index::search("", "", 0), 0);
     assert_eq!(voca_rs::index::search("morning", "rn", 0), 2);
     assert_eq!(voca_rs::index::search("evening", r"\d", 0), -1);
-    assert_eq!(voca_rs::index::search("we have a mission", "mission", 0), 10);
+    assert_eq!(
+        voca_rs::index::search("we have a mission", "mission", 0),
+        10
+    );
     assert_eq!(voca_rs::index::search("we have a mission", "a", 0), 4);
     assert_eq!(voca_rs::index::search("we have a mission", r"\s", 0), 2);
     assert_eq!(voca_rs::index::search("we have a mission", "", 0), 0);
@@ -115,23 +113,16 @@ fn search() {
     assert_eq!(voca_rs::index::search("we have a mission", "12", 0), -1);
     assert_eq!(voca_rs::index::search("we have a mission", r"\s^", 0), -1);
     assert_eq!(voca_rs::index::search("we have a mission", "we", 3), -1);
-    assert_eq!(voca_rs::index::search("we have a mission", "mission", 100), -1);
     assert_eq!(
-        voca_rs::index::search("Zażółć gęślą jaźń", "gęślą", 6),
-        11
+        voca_rs::index::search("we have a mission", "mission", 100),
+        -1
     );
+    assert_eq!(voca_rs::index::search("Zażółć gęślą jaźń", "gęślą", 6), 11);
     assert_eq!(
-        voca_rs::index::search(
-            "Die Schildkröte fliegt über das Floß.",
-            "Schildkröte",
-            4
-        ),
+        voca_rs::index::search("Die Schildkröte fliegt über das Floß.", "Schildkröte", 4),
         4
     );
-    assert_eq!(
-        voca_rs::index::search("Как слышно, приём!", "слышно", 0),
-        7
-    );
+    assert_eq!(voca_rs::index::search("Как слышно, приём!", "слышно", 0), 7);
     assert_eq!(
         // [^] is not a valid regex
         voca_rs::index::search("Zażółć gęślą jaźń", "[^]", 0),
@@ -139,6 +130,6 @@ fn search() {
     );
 }
 #[test]
-fn search_me() {
-    assert_eq!("we have a mission".search("mission", 0), 10);
+fn _search() {
+    assert_eq!("we have a mission"._search("mission", 0), 10);
 }

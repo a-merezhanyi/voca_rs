@@ -57,7 +57,7 @@ fn get_subject_length(
 /// chop::char_at("błąd", 1);
 /// // => "ł"
 /// use voca_rs::Voca;
-/// "helicopter".char_at(0);
+/// "helicopter"._char_at(0);
 /// // => "h"
 /// ```
 pub fn char_at(subject: &str, position: usize) -> String {
@@ -81,7 +81,7 @@ pub fn char_at(subject: &str, position: usize) -> String {
 /// chop::code_point_at("cafe\u{0301}", 4);
 /// // => [101, 769]
 /// use voca_rs::Voca;
-/// "rain".code_point_at(1);
+/// "rain"._code_point_at(1);
 /// // => [97]
 /// ```
 pub fn code_point_at(subject: &str, position: usize) -> Vec<u16> {
@@ -109,7 +109,7 @@ pub fn code_point_at(subject: &str, position: usize) -> Vec<u16> {
 /// chop::first("e\u{0301}", 1); // or 'é'
 /// // => "e"
 /// use voca_rs::Voca;
-/// "helicopter".first(1);
+/// "helicopter"._first(1);
 /// // => "h"
 /// ```
 pub fn first(subject: &str, length: usize) -> String {
@@ -136,7 +136,7 @@ pub fn first(subject: &str, length: usize) -> String {
 /// chop::foreign_key("Test::Foo::Bar");
 /// // => "bar_id"
 /// use voca_rs::Voca;
-/// "foo_bar".foreign_key();
+/// "foo_bar"._foreign_key();
 /// // => "foo_bar_id"
 /// ```
 pub fn foreign_key(subject: &str) -> String {
@@ -175,7 +175,7 @@ pub fn foreign_key(subject: &str) -> String {
 /// chop::grapheme_at("a̐éö̲", 0);
 /// // => "a̐"
 /// use voca_rs::Voca;
-/// "cafe\u{0301}".grapheme_at(3); // or 'café'
+/// "cafe\u{0301}"._grapheme_at(3); // or 'café'
 /// // => "é"
 /// ```
 pub fn grapheme_at(subject: &str, position: usize) -> String {
@@ -207,7 +207,7 @@ pub fn grapheme_at(subject: &str, position: usize) -> String {
 /// chop::last("e\u{0301}", 1); // or 'é'
 /// // => "\u{0301}"
 /// use voca_rs::Voca;
-/// "helicopter".last(1);
+/// "helicopter"._last(1);
 /// // => "r"
 /// ```
 pub fn last(subject: &str, length: usize) -> String {
@@ -242,7 +242,7 @@ pub fn last(subject: &str, length: usize) -> String {
 /// chop::prune("Как слышно, приём!", 14, "");
 /// // => "Как слышно..."
 /// use voca_rs::Voca;
-/// "Once upon a time".prune(7, "");
+/// "Once upon a time"._prune(7, "");
 /// // => "Once..."
 /// ```
 pub fn prune(subject: &str, length: usize, end: &str) -> String {
@@ -325,7 +325,7 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
 /// chop::slice("Die Schildkröte fliegt.", 4, -8);
 /// // => "Schildkröte"
 /// use voca_rs::Voca;
-/// "miami".slice(1, 0);
+/// "miami"._slice(1, 0);
 /// // => "iami"
 /// ```
 pub fn slice(subject: &str, start: isize, end: isize) -> String {
@@ -373,7 +373,7 @@ pub fn slice(subject: &str, start: isize, end: isize) -> String {
 /// chop::substr("błąd", 1, 2);
 /// // => "łą"
 /// use voca_rs::Voca;
-/// "beach".substr(1, 0);
+/// "beach"._substr(1, 0);
 /// // => "each"
 /// ```
 pub fn substr(subject: &str, start: usize, length: usize) -> String {
@@ -416,7 +416,7 @@ pub fn substr(subject: &str, start: usize, length: usize) -> String {
 /// chop::substring("e\u{0301}", 1, 0); // or 'é'
 /// // => "\u{0301}"
 /// use voca_rs::Voca;
-/// "beach".substring(1, 0);
+/// "beach"._substring(1, 0);
 /// // => "each"
 /// ```
 pub fn substring(subject: &str, start: usize, end: usize) -> String {
@@ -459,7 +459,7 @@ pub fn substring(subject: &str, start: usize, end: usize) -> String {
 /// chop::truncate("Once upon", 10, "");
 /// // => "Once upon"
 /// use voca_rs::Voca;
-/// "Once upon a time".truncate(7, "");
+/// "Once upon a time"._truncate(7, "");
 /// // => "Once..."
 /// ```
 pub fn truncate(subject: &str, length: usize, end: &str) -> String {
@@ -498,7 +498,7 @@ pub fn truncate(subject: &str, length: usize, end: &str) -> String {
 /// chop::max("a̐éö̲"); // or "a\u{310}e\u{301}o\u{308}\u{332}"
 /// // => "\u{332}"
 /// use voca_rs::Voca;
-/// "rain".max_code_point();
+/// "rain"._max_code_point();
 /// // => "r"
 /// ```
 pub fn max(subject: &str) -> String {
@@ -525,7 +525,7 @@ pub fn max(subject: &str) -> String {
 /// chop::min("Über das Floß.");
 /// // => " "
 /// use voca_rs::Voca;
-/// "rain".min_code_point();
+/// "rain"._min_code_point();
 /// // => "a"
 /// ```
 pub fn min(subject: &str) -> String {

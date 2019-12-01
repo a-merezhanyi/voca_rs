@@ -14,10 +14,8 @@ fn to_chars() {
     assert_eq!(voca_rs::split::chars(""), [""]);
 }
 #[test]
-fn to_chars_me() {
-    assert_eq!("gravity".chars_me(), ["g", "r", "a", "v", "i", "t", "y"]);
-    assert_eq!("  ".chars_me(), [" ", " "]);
-    assert_eq!("ÜbER".chars_me(), ["Ü", "b", "E", "R"]);
+fn _to_chars() {
+    assert_eq!("gravity"._chars(), ["g", "r", "a", "v", "i", "t", "y"]);
 }
 #[test]
 fn by_pattern() {
@@ -34,13 +32,11 @@ fn by_pattern() {
     assert_eq!(voca_rs::split::split("", ""), [""]);
 }
 #[test]
-fn by_pattern_me() {
+fn _by_pattern() {
     assert_eq!(
-        "gravity can cross dimensions".split_me(" "),
+        "gravity can cross dimensions"._split(" "),
         ["gravity", "can", "cross", "dimensions"]
     );
-    assert_eq!("*dying*star*".split_me("*"), ["", "dying", "star"]);
-    assert_eq!("".split_me(""), [""]);
 }
 #[test]
 fn words() {
@@ -70,16 +66,10 @@ fn words() {
     );
 }
 #[test]
-fn words_me() {
+fn _words() {
     assert_eq!(
-        "gravity can cross dimensions".words(),
+        "gravity can cross dimensions"._words(),
         ["gravity", "can", "cross", "dimensions"]
-    );
-    assert_eq!("Zażółć gęślą jaźń".words(), ["Zażółć", "gęślą", "jaźń"]);
-    assert_eq!("splitCamelCase".words(), ["split", "Camel", "Case"]);
-    assert_eq!(
-        "LazyLoad with XMLHttpRequest and snake_case".words(),
-        ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
     );
 }
 #[test]
@@ -91,9 +81,8 @@ fn to_graphemes() {
     assert_eq!(voca_rs::split::graphemes(""), [""]);
 }
 #[test]
-fn to_graphemes_me() {
-    assert_eq!("a̐éö̲\r\n".graphemes(), ["a̐", "é", "ö̲", "\r\n"]);
-    assert_eq!("".graphemes(), [""]);
+fn _to_graphemes() {
+    assert_eq!("a̐éö̲\r\n"._graphemes(), ["a̐", "é", "ö̲", "\r\n"]);
 }
 #[test]
 fn code_points() {
@@ -109,15 +98,6 @@ fn code_points() {
     );
 }
 #[test]
-fn code_points_me() {
-    assert_eq!("".code_points(), []);
-    assert_eq!("rain".code_points(), [114, 97, 105, 110]);
-    assert_eq!(
-        "Un garçon de café".code_points(),
-        [85, 110, 32, 103, 97, 114, 231, 111, 110, 32, 100, 101, 32, 99, 97, 102, 233]
-    );
-    assert_eq!(
-        "a̐éö̲\r\n".code_points(),
-        [97, 784, 101, 769, 111, 776, 818, 13, 10]
-    );
+fn _code_points() {
+    assert_eq!("rain"._code_points(), [114, 97, 105, 110]);
 }

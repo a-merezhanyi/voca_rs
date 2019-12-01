@@ -18,8 +18,8 @@ fn camel_case() {
     assert_eq!(voca_rs::case::camel_case(""), "");
 }
 #[test]
-fn camel_case_me() {
-    assert_eq!("The World - IS Yours".camel_case(), "theWorldIsYours");
+fn _camel_case() {
+    assert_eq!("The World - IS Yours"._camel_case(), "theWorldIsYours");
 }
 #[test]
 fn pascal_case() {
@@ -38,8 +38,8 @@ fn pascal_case() {
     assert_eq!(voca_rs::case::pascal_case(""), "");
 }
 #[test]
-fn pascal_case_me() {
-    assert_eq!("The World - IS Yours".pascal_case(), "TheWorldIsYours");
+fn _pascal_case() {
+    assert_eq!("The World - IS Yours"._pascal_case(), "TheWorldIsYours");
 }
 #[test]
 fn capitalize() {
@@ -58,8 +58,8 @@ fn capitalize() {
     assert_eq!(voca_rs::case::capitalize("", true), "");
 }
 #[test]
-fn capitalize_me() {
-    assert_eq!("The World IS YourS".capitalize(true), "The world is yours");
+fn _capitalize() {
+    assert_eq!("The World IS YourS"._capitalize(true), "The world is yours");
 }
 #[test]
 fn decapitalize() {
@@ -78,9 +78,9 @@ fn decapitalize() {
     assert_eq!(voca_rs::case::decapitalize("", true), "");
 }
 #[test]
-fn decapitalize_me() {
+fn _decapitalize() {
     assert_eq!(
-        "The World IS YourS".decapitalize(true),
+        "The World IS YourS"._decapitalize(true),
         "the world is yours"
     );
 }
@@ -101,8 +101,8 @@ fn kebab_case() {
     assert_eq!(voca_rs::case::kebab_case(""), "");
 }
 #[test]
-fn kebab_case_me() {
-    assert_eq!("The World - IS Yours".kebab_case(), "the-world-is-yours");
+fn _kebab_case() {
+    assert_eq!("The World - IS Yours"._kebab_case(), "the-world-is-yours");
 }
 #[test]
 fn shouty_kebab_case() {
@@ -121,9 +121,9 @@ fn shouty_kebab_case() {
     assert_eq!(voca_rs::case::shouty_kebab_case(""), "");
 }
 #[test]
-fn shouty_kebab_case_me() {
+fn _shouty_kebab_case() {
     assert_eq!(
-        "The World - IS Yours".shouty_kebab_case(),
+        "The World - IS Yours"._shouty_kebab_case(),
         "THE-WORLD-IS-YOURS"
     );
 }
@@ -144,8 +144,8 @@ fn train_case() {
     assert_eq!(voca_rs::case::train_case(""), "");
 }
 #[test]
-fn train_case_me() {
-    assert_eq!("The World - IS Yours".train_case(), "The-World-Is-Yours");
+fn _train_case() {
+    assert_eq!("The World - IS Yours"._train_case(), "The-World-Is-Yours");
 }
 #[test]
 fn lower_case() {
@@ -160,8 +160,8 @@ fn lower_case() {
     assert_eq!(voca_rs::case::lower_case(""), "");
 }
 #[test]
-fn lower_case_me() {
-    assert_eq!("The World IS YourS".lower_case(), "the world is yours");
+fn _lower_case() {
+    assert_eq!("The World IS YourS"._lower_case(), "the world is yours");
 }
 #[test]
 fn snake_case() {
@@ -180,8 +180,8 @@ fn snake_case() {
     assert_eq!(voca_rs::case::snake_case(""), "");
 }
 #[test]
-fn snake_case_me() {
-    assert_eq!("The World - IS Yours".snake_case(), "the_world_is_yours");
+fn _snake_case() {
+    assert_eq!("The World - IS Yours"._snake_case(), "the_world_is_yours");
 }
 #[test]
 fn shouty_snake_case() {
@@ -200,9 +200,9 @@ fn shouty_snake_case() {
     assert_eq!(voca_rs::case::shouty_snake_case(""), "");
 }
 #[test]
-fn shouty_snake_case_me() {
+fn _shouty_snake_case() {
     assert_eq!(
-        "The World - IS Yours".shouty_snake_case(),
+        "The World - IS Yours"._shouty_snake_case(),
         "THE_WORLD_IS_YOURS"
     );
 }
@@ -223,8 +223,8 @@ fn swap_case() {
     assert_eq!(voca_rs::case::swap_case(""), "");
 }
 #[test]
-fn swap_case_me() {
-    assert_eq!("The World - IS Yours".swap_case(), "tHE wORLD - is yOURS");
+fn _swap_case() {
+    assert_eq!("The World - IS Yours"._swap_case(), "tHE wORLD - is yOURS");
 }
 #[test]
 fn upper_case() {
@@ -239,8 +239,8 @@ fn upper_case() {
     assert_eq!(voca_rs::case::upper_case(""), "");
 }
 #[test]
-fn upper_case_me() {
-    assert_eq!("The World IS YourS".upper_case(), "THE WORLD IS YOURS");
+fn _upper_case() {
+    assert_eq!("The World IS YourS"._upper_case(), "THE WORLD IS YOURS");
 }
 #[test]
 fn title_case() {
@@ -259,8 +259,8 @@ fn title_case() {
     assert_eq!(voca_rs::case::title_case(""), "");
 }
 #[test]
-fn title_case_me() {
-    assert_eq!("The World - IS Yours".title_case(), "The World Is Yours");
+fn _title_case() {
+    assert_eq!("The World - IS Yours"._title_case(), "The World Is Yours");
 }
 #[test]
 fn lower_first() {
@@ -281,8 +281,8 @@ fn lower_first() {
     assert_eq!(voca_rs::case::lower_first(""), "");
 }
 #[test]
-fn lower_first_me() {
-    assert_eq!("Fred".lower_first(), "fred");
+fn _lower_first() {
+    assert_eq!("Fred"._lower_first(), "fred");
 }
 #[test]
 fn upper_first() {
@@ -307,6 +307,6 @@ fn upper_first() {
     assert_eq!(voca_rs::case::upper_first(""), "");
 }
 #[test]
-fn upper_first_me() {
-    assert_eq!("fred".upper_first(), "Fred");
+fn _upper_first() {
+    assert_eq!("fred"._upper_first(), "Fred");
 }

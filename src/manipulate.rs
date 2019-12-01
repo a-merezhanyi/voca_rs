@@ -17,7 +17,7 @@ use index;
 /// manipulate::expand_spaces("Café del  Mar", 2);
 /// // => "Café del\tMar"
 /// use voca_rs::Voca;
-/// "This  is  good".expand_spaces(2);
+/// "This  is  good"._expand_spaces(2);
 /// // => "This\tis\tgood"
 /// ```
 pub fn expand_spaces(subject: &str, tabsize: usize) -> String {
@@ -44,7 +44,7 @@ pub fn expand_spaces(subject: &str, tabsize: usize) -> String {
 /// manipulate::expand_tabs("no\tspaces", 0);
 /// // => "nospaces"
 /// use voca_rs::Voca;
-/// "This is\tgood".expand_tabs(4);
+/// "This is\tgood"._expand_tabs(4);
 /// // => "This is    good"
 /// ```
 pub fn expand_tabs(subject: &str, tabsize: usize) -> String {
@@ -72,7 +72,7 @@ pub fn expand_tabs(subject: &str, tabsize: usize) -> String {
 /// manipulate::insert("sunny", " day", 5);
 /// // => "sunny day"
 /// use voca_rs::Voca;
-/// "ct".insert("a", 1);
+/// "ct"._insert("a", 1);
 /// // => "cat"
 /// ```
 pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
@@ -108,7 +108,7 @@ use unidecode::unidecode;
 /// manipulate::latinise("как прекрасен этот мир");
 /// // => kak prekrasen etot mir
 /// use voca_rs::Voca;
-/// "cafe\u{0301}".latinise();
+/// "cafe\u{0301}"._latinise();
 /// // => "cafe"
 /// ```
 pub fn latinise(subject: &str) -> String {
@@ -138,7 +138,7 @@ pub fn latinise(subject: &str) -> String {
 /// manipulate::pad("Café del Mar", 15, "-=");
 /// // => "-Café del Mar-="
 /// use voca_rs::Voca;
-/// "dog".pad(5, "");
+/// "dog"._pad(5, "");
 /// // => " dog "
 /// ```
 pub fn pad(subject: &str, length: usize, pad: &str) -> String {
@@ -211,7 +211,7 @@ fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) ->
 /// manipulate::pad_left("Café del Mar", 15, "-=");
 /// // => "-=-Café del Mar"
 /// use voca_rs::Voca;
-/// "dog".pad_left(5, "");
+/// "dog"._pad_left(5, "");
 /// // => "  dog"
 /// ```
 pub fn pad_left(subject: &str, length: usize, pad: &str) -> String {
@@ -247,7 +247,7 @@ pub fn pad_left(subject: &str, length: usize, pad: &str) -> String {
 /// manipulate::pad_right("Café del Mar", 15, "-=");
 /// // => "Café del Mar-=-"
 /// use voca_rs::Voca;
-/// "dog".pad_right(5, "");
+/// "dog"._pad_right(5, "");
 /// // => "dog  "
 /// ```
 pub fn pad_right(subject: &str, length: usize, pad: &str) -> String {
@@ -280,7 +280,7 @@ pub fn pad_right(subject: &str, length: usize, pad: &str) -> String {
 /// manipulate::repeat("world", 0);
 /// // => ""
 /// use voca_rs::Voca;
-/// "w".repeat(3);
+/// "w"._repeat(3);
 /// // => "www"
 /// ```
 pub fn repeat(subject: &str, times: usize) -> String {
@@ -310,7 +310,7 @@ pub fn repeat(subject: &str, times: usize) -> String {
 /// manipulate::replace("Café del Mar cafe\u{0301}", "é", "e");
 /// // => "Cafe del Mar café"
 /// use voca_rs::Voca;
-/// "swan".replace("wa", "u");
+/// "swan"._replace("wa", "u");
 /// // => "sun"
 /// ```
 pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
@@ -347,7 +347,7 @@ pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
 /// manipulate::replace_all("Café del Mar café", "é", "e");
 /// // => "Cafe del Mar cafe"
 /// use voca_rs::Voca;
-/// "swan".replace_all("wa", "u");
+/// "swan"._replace_all("wa", "u");
 /// // => "sun"
 /// ```
 pub fn replace_all(subject: &str, pattern: &str, replacement: &str) -> String {
@@ -370,7 +370,7 @@ pub fn replace_all(subject: &str, pattern: &str, replacement: &str) -> String {
 /// manipulate::reverse("winter");
 /// // => "retniw"
 /// use voca_rs::Voca;
-/// "winter".reverse();
+/// "winter"._reverse();
 /// // => "retniw"
 /// ```
 pub fn reverse(subject: &str) -> String {
@@ -397,7 +397,7 @@ use unicode_segmentation::UnicodeSegmentation;
 /// manipulate::reverse_grapheme("a̐éö̲");
 /// // => "ö̲éa̐"
 /// use voca_rs::Voca;
-/// "café".reverse_grapheme();
+/// "café"._reverse_grapheme();
 /// // => "éfac"
 /// ```
 pub fn reverse_grapheme(subject: &str) -> String {
@@ -428,7 +428,7 @@ pub fn reverse_grapheme(subject: &str) -> String {
 /// manipulate::slugify("Хорошая статья: 'XMLHttpRequest 101 Course' \\!/");
 /// // => khoroshaia-statia-xmlhttprequest-101-course
 /// use voca_rs::Voca;
-/// "Italian cappuccino drink".slugify();
+/// "Italian cappuccino drink"._slugify();
 /// // => "italian-cappuccino-drink"
 /// ```
 pub fn slugify(subject: &str) -> String {
@@ -460,7 +460,7 @@ pub fn slugify(subject: &str) -> String {
 /// manipulate::splice("Привет", 6, 0, ", Ёлка!");
 /// // => "Привет, Ёлка!"
 /// use voca_rs::Voca;
-/// "new year".splice(0, 4, "");
+/// "new year"._splice(0, 4, "");
 /// // => "year"
 /// ```
 pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) -> String {
@@ -525,7 +525,7 @@ pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) ->
 /// manipulate::trim("-~-Earth~-~", "-~");
 /// // => "Earth"
 /// use voca_rs::Voca;
-/// " Mother nature ".trim_me("");
+/// " Mother nature "._trim("");
 /// // => "Mother nature"
 /// ```
 pub fn trim(subject: &str, whitespace: &str) -> String {
@@ -548,7 +548,7 @@ pub fn trim(subject: &str, whitespace: &str) -> String {
 /// manipulate::trim_left("-~-Earth~-~", "-~");
 /// // => "Earth~-~"
 /// use voca_rs::Voca;
-/// " Mother nature ".trim_left_me("");
+/// " Mother nature "._trim_left("");
 /// // => "Mother nature "
 /// ```
 pub fn trim_left(subject: &str, whitespace: &str) -> String {
@@ -571,7 +571,7 @@ pub fn trim_left(subject: &str, whitespace: &str) -> String {
 /// manipulate::trim_right("-~-Earth~-~", "-~");
 /// // => "-~-Earth"
 /// /// use voca_rs::Voca;
-/// " Mother nature ".trim_right_me("");
+/// " Mother nature "._trim_right("");
 /// // => " Mother nature"
 /// ```
 pub fn trim_right(subject: &str, whitespace: &str) -> String {
@@ -620,7 +620,7 @@ fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: 
 /// manipulate::zfill("Café", 7);
 /// // => "000Café"
 /// use voca_rs::Voca;
-/// "123".zfill(5);
+/// "123"._zfill(5);
 /// // => "00123"
 /// ```
 pub fn zfill(subject: &str, length: usize) -> String {
@@ -654,7 +654,7 @@ pub fn zfill(subject: &str, length: usize) -> String {
 /// manipulate::tr("légèreté", "éè", "ee");
 /// // => "legerete"
 /// use voca_rs::Voca;
-/// "hello".tr("el", "ip");
+/// "hello"._tr("el", "ip");
 /// // => "hippo"
 /// ```
 pub fn tr(subject: &str, from: &str, to: &str) -> String {
@@ -691,7 +691,7 @@ pub fn tr(subject: &str, from: &str, to: &str) -> String {
 /// manipulate::word_wrap("Hello world", 5, "<br/>", "__");
 /// // => "__Hello<br/>__world"
 /// use voca_rs::Voca;
-/// "Hello world".word_wrap(5, "", "");
+/// "Hello world"._word_wrap(5, "", "");
 /// // => "Hello\nworld"
 /// ```
 pub fn word_wrap(subject: &str, width: usize, newline: &str, indent: &str) -> String {

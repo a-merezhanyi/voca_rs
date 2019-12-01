@@ -16,7 +16,7 @@ use dissolve;
 /// strip::strip_bom("summertime sadness");
 /// // => "summertime sadness"
 /// use voca_rs::Voca;
-/// "\u{FEFF}summertime sadness".strip_bom();
+/// "\u{FEFF}summertime sadness"._strip_bom();
 /// // => "summertime sadness"
 /// ```
 pub fn strip_bom(subject: &str) -> String {
@@ -45,7 +45,7 @@ pub fn strip_bom(subject: &str) -> String {
 /// strip::strip_tags("<span><a href=\"#\">Summer</a> is nice</span>");
 /// // => "Summer is nice"
 /// use voca_rs::Voca;
-/// "<span><a href=\"#\">Summer</a> is nice</span>".strip_tags();
+/// "<span><a href=\"#\">Summer</a> is nice</span>"._strip_tags();
 /// // => "Summer is nice"
 /// ```
 pub fn strip_tags(subject: &str) -> String {

@@ -9,9 +9,9 @@ fn ends_with() {
     assert!(voca_rs::query::ends_with("", ""));
 }
 #[test]
-fn ends_with_me() {
-    assert!("the world is yours".ends_with("is yours"));
-    assert!("Zażółć gęślą jaźń".ends_with("jaźń"));
+fn _ends_with() {
+    assert!("the world is yours"._ends_with("is yours"));
+    assert!("Zażółć gęślą jaźń"._ends_with("jaźń"));
 }
 #[test]
 fn includes() {
@@ -29,9 +29,9 @@ fn includes() {
     assert_eq!(voca_rs::query::includes("abc", "z", 0), false);
 }
 #[test]
-fn includes_me() {
-    assert!("Zażółć gęślą jaźń".includes("gęślą", 7));
-    assert!("abc".includes("c", 2));
+fn _includes() {
+    assert!("Zażółć gęślą jaźń"._includes("gęślą", 7));
+    assert!("abc"._includes("c", 2));
 }
 #[test]
 fn is_alpha() {
@@ -47,10 +47,10 @@ fn is_alpha() {
     assert_eq!(voca_rs::query::is_alpha("Zażółć gęślą jaźń"), false);
 }
 #[test]
-fn is_alpha_me() {
-    assert!("bart".is_alpha());
-    assert!("café".is_alpha());
-    assert!("cafe\u{0301}".is_alpha());
+fn _is_alpha() {
+    assert!("bart"._is_alpha());
+    assert!("café"._is_alpha());
+    assert!("cafe\u{0301}"._is_alpha());
 }
 #[test]
 fn is_alphadigit() {
@@ -68,10 +68,10 @@ fn is_alphadigit() {
     assert_eq!(voca_rs::query::is_alphadigit("Zażółć gęślą jaźń"), false);
 }
 #[test]
-fn is_alphadigit_me() {
-    assert!("bart".is_alphadigit());
-    assert_eq!("10-00".is_alphadigit(), false);
-    assert!("T1000".is_alphadigit());
+fn _is_alphadigit() {
+    assert!("bart"._is_alphadigit());
+    assert_eq!("10-00"._is_alphadigit(), false);
+    assert!("T1000"._is_alphadigit());
 }
 #[test]
 fn is_blank() {
@@ -81,9 +81,9 @@ fn is_blank() {
     assert_eq!(voca_rs::query::is_blank("Zażółć gęślą jaźń"), false);
 }
 #[test]
-fn is_blank_me() {
-    assert!("   ".is_blank());
-    assert_eq!("Zażółć gęślą jaźń".is_blank(), false);
+fn _is_blank() {
+    assert!("   "._is_blank());
+    assert_eq!("Zażółć gęślą jaźń"._is_blank(), false);
 }
 #[test]
 fn is_camel_case() {
@@ -95,10 +95,10 @@ fn is_camel_case() {
     assert!(voca_rs::query::is_camel_case("zażółćGęśląJaźń"));
 }
 #[test]
-fn is_camel_case_me() {
-    assert!("birdFlight".is_camel_case());
-    assert_eq!("bird flight".is_camel_case(), false);
-    assert!("zażółćGęśląJaźń".is_camel_case());
+fn _is_camel_case() {
+    assert!("birdFlight"._is_camel_case());
+    assert_eq!("bird flight"._is_camel_case(), false);
+    assert!("zażółćGęśląJaźń"._is_camel_case());
 }
 #[test]
 fn is_capitalize() {
@@ -113,9 +113,9 @@ fn is_capitalize() {
     assert_eq!(voca_rs::query::is_capitalize("это Вообще РАБОТАЕТ?"), false);
 }
 #[test]
-fn is_capitalize_me() {
-    assert!("John has a motorcycle".is_capitalize());
-    assert_eq!("the world is yours".is_capitalize(), false);
+fn _is_capitalize() {
+    assert!("John has a motorcycle"._is_capitalize());
+    assert_eq!("the world is yours"._is_capitalize(), false);
 }
 #[test]
 fn is_decapitalize() {
@@ -136,9 +136,9 @@ fn is_decapitalize() {
     );
 }
 #[test]
-fn is_decapitalize_me() {
-    assert_eq!("John has a motorcycle".is_decapitalize(), false);
-    assert!("the world is yours".is_decapitalize());
+fn _is_decapitalize() {
+    assert_eq!("John has a motorcycle"._is_decapitalize(), false);
+    assert!("the world is yours"._is_decapitalize());
 }
 #[test]
 fn is_digit() {
@@ -151,9 +151,9 @@ fn is_digit() {
     assert_eq!(voca_rs::query::is_digit("ten"), false);
 }
 #[test]
-fn is_digit_me() {
-    assert!("0".is_digit());
-    assert_eq!("1.5".is_digit(), false);
+fn _is_digit() {
+    assert!("0"._is_digit());
+    assert_eq!("1.5"._is_digit(), false);
 }
 #[test]
 fn is_empty() {
@@ -162,9 +162,9 @@ fn is_empty() {
     assert_eq!(voca_rs::query::is_empty("the world is yours"), false);
 }
 #[test]
-fn is_empty_me() {
-    assert!("".is_empty());
-    assert_eq!("the world is yours".is_empty(), false);
+fn _is_empty() {
+    assert!(""._is_empty());
+    assert_eq!("the world is yours"._is_empty(), false);
 }
 #[test]
 fn is_foreign_key() {
@@ -190,13 +190,13 @@ fn is_foreign_key() {
     );
 }
 #[test]
-fn is_foreign_key_me() {
-    assert!("".is_foreign_key());
-    assert!("foo_bar_id".is_foreign_key());
-    assert_eq!("foo_bar".is_foreign_key(), false);
-    assert_eq!("the world is yours".is_foreign_key(), false);
+fn _is_foreign_key() {
+    assert!(""._is_foreign_key());
+    assert!("foo_bar_id"._is_foreign_key());
+    assert_eq!("foo_bar"._is_foreign_key(), false);
+    assert_eq!("the world is yours"._is_foreign_key(), false);
     assert_eq!(
-        "foo-bar-string-that-is-really-really-long".is_foreign_key(),
+        "foo-bar-string-that-is-really-really-long"._is_foreign_key(),
         false
     );
 }
@@ -208,9 +208,9 @@ fn is_lowercase() {
     assert_eq!(voca_rs::query::is_lowercase("T1000"), false);
 }
 #[test]
-fn is_lowercase_me() {
-    assert!("the world is yours".is_lowercase());
-    assert_eq!("T1000".is_lowercase(), false);
+fn _is_lowercase() {
+    assert!("the world is yours"._is_lowercase());
+    assert_eq!("T1000"._is_lowercase(), false);
 }
 #[test]
 fn is_lower_first() {
@@ -222,9 +222,9 @@ fn is_lower_first() {
     assert_eq!(voca_rs::query::is_lower_first("T1000"), false);
 }
 #[test]
-fn is_lower_first_me() {
-    assert!("the world is yours".is_lower_first());
-    assert_eq!("Zażółć gęślą jaźń".is_lower_first(), false);
+fn _is_lower_first() {
+    assert!("the world is yours"._is_lower_first());
+    assert_eq!("Zażółć gęślą jaźń"._is_lower_first(), false);
 }
 #[test]
 fn is_kebab_case() {
@@ -238,9 +238,9 @@ fn is_kebab_case() {
     assert_eq!(voca_rs::query::is_kebab_case("T1000"), false);
 }
 #[test]
-fn is_kebab_case_me() {
-    assert!("bird-flight".is_kebab_case());
-    assert_eq!("-BIRD-FLIGHT-".is_kebab_case(), false);
+fn _is_kebab_case() {
+    assert!("bird-flight"._is_kebab_case());
+    assert_eq!("-BIRD-FLIGHT-"._is_kebab_case(), false);
 }
 #[test]
 fn is_numeric() {
@@ -268,11 +268,11 @@ fn is_numeric() {
     assert_eq!(voca_rs::query::is_numeric(" "), false);
 }
 #[test]
-fn is_numeric_me() {
-    assert!("0".is_numeric());
-    assert!("1.5E+2".is_numeric());
-    assert!("0x22".is_numeric());
-    assert_eq!("0x123z".is_numeric(), false);
+fn _is_numeric() {
+    assert!("0"._is_numeric());
+    assert!("1.5E+2"._is_numeric());
+    assert!("0x22"._is_numeric());
+    assert_eq!("0x123z"._is_numeric(), false);
 }
 #[test]
 fn is_pascal_case() {
@@ -287,9 +287,9 @@ fn is_pascal_case() {
     assert_eq!(voca_rs::query::is_pascal_case("zażółćGęśląJaźń"), false);
 }
 #[test]
-fn is_pascal_case_me() {
-    assert!("BirdFlight".is_pascal_case());
-    assert_eq!("birdFlight".is_pascal_case(), false);
+fn _is_pascal_case() {
+    assert!("BirdFlight"._is_pascal_case());
+    assert_eq!("birdFlight"._is_pascal_case(), false);
 }
 #[test]
 fn is_shouty_kebab_case() {
@@ -310,9 +310,9 @@ fn is_shouty_kebab_case() {
     );
 }
 #[test]
-fn is_shouty_kebab_case_me() {
-    assert!("BIRD-FLIGHT".is_shouty_kebab_case());
-    assert_eq!("birdFlight".is_shouty_kebab_case(), false);
+fn _is_shouty_kebab_case() {
+    assert!("BIRD-FLIGHT"._is_shouty_kebab_case());
+    assert_eq!("birdFlight"._is_shouty_kebab_case(), false);
 }
 #[test]
 fn is_snake_case() {
@@ -327,9 +327,9 @@ fn is_snake_case() {
     assert_eq!(voca_rs::query::is_snake_case("zażółćGęśląJaźń"), false);
 }
 #[test]
-fn is_snake_case_me() {
-    assert!("bird_flight".is_snake_case());
-    assert_eq!("birdFlight".is_snake_case(), false);
+fn _is_snake_case() {
+    assert!("bird_flight"._is_snake_case());
+    assert_eq!("birdFlight"._is_snake_case(), false);
 }
 #[test]
 fn is_shouty_snake_case() {
@@ -351,9 +351,9 @@ fn is_shouty_snake_case() {
     );
 }
 #[test]
-fn is_shouty_snake_case_me() {
-    assert!("BIRD_FLIGHT".is_shouty_snake_case());
-    assert_eq!("bird_flight".is_shouty_snake_case(), false);
+fn _is_shouty_snake_case() {
+    assert!("BIRD_FLIGHT"._is_shouty_snake_case());
+    assert_eq!("bird_flight"._is_shouty_snake_case(), false);
 }
 #[test]
 fn is_title() {
@@ -370,9 +370,9 @@ fn is_title() {
     assert_eq!(voca_rs::query::is_title("T1000"), true);
 }
 #[test]
-fn is_title_me() {
-    assert!("The World Is Yours".is_title(), true);
-    assert_eq!("the world is yours".is_title(), false);
+fn _is_title() {
+    assert!("The World Is Yours"._is_title(), true);
+    assert_eq!("the world is yours"._is_title(), false);
 }
 #[test]
 fn is_train_case() {
@@ -388,7 +388,7 @@ fn is_train_case() {
     assert_eq!(voca_rs::query::is_train_case("zażółćGęśląJaźń"), false);
 }
 #[test]
-fn is_train_case_me() {
+fn _is_train_case() {
     assert!(voca_rs::query::is_train_case("Goodbye-Blue-Sky"));
     assert_eq!(voca_rs::query::is_train_case("bird_flight"), false);
 }
@@ -400,9 +400,9 @@ fn is_uppercase() {
     assert_eq!(voca_rs::query::is_uppercase("t1000"), false);
 }
 #[test]
-fn is_uppercase_me() {
-    assert!("THE WORLD IS YOURS".is_uppercase());
-    assert_eq!("Zażółć gęślą jaźń".is_uppercase(), false);
+fn _is_uppercase() {
+    assert!("THE WORLD IS YOURS"._is_uppercase());
+    assert_eq!("Zażółć gęślą jaźń"._is_uppercase(), false);
 }
 #[test]
 fn is_upper_first() {
@@ -415,7 +415,7 @@ fn is_upper_first() {
     assert_eq!(voca_rs::query::is_upper_first("tHE World"), false);
 }
 #[test]
-fn is_upper_first_me() {
+fn _is_upper_first() {
     assert!(voca_rs::query::is_upper_first("The world is yours"));
     assert_eq!(voca_rs::query::is_upper_first("żółć niedźwiedzia"), false);
 }
@@ -448,9 +448,9 @@ fn matches() {
     );
 }
 #[test]
-fn matches_me() {
-    assert_eq!("pluto".matches_me("a", 0), false);
-    assert!("pluto".matches_me(r"plu.{2}", 0));
+fn _matches() {
+    assert_eq!("pluto"._matches("a", 0), false);
+    assert!("pluto"._matches(r"plu.{2}", 0));
 }
 #[test]
 fn query() {
@@ -471,9 +471,9 @@ fn query() {
     assert_eq!(voca_rs::query::query("abc", "z", 0), false);
 }
 #[test]
-fn query_me() {
-    assert!("the world is yours".query("the world", 0));
-    assert_eq!("the world is yours".query("eht", 0), false);
+fn _query() {
+    assert!("the world is yours"._query("the world", 0));
+    assert_eq!("the world is yours"._query("eht", 0), false);
 }
 #[test]
 fn starts_with() {
@@ -490,7 +490,7 @@ fn starts_with() {
     );
 }
 #[test]
-fn starts_with_me() {
-    assert!("the world is yours".starts_with_me("the world"));
-    assert_eq!("the world is yours".starts_with_me("s"), false);
+fn _starts_with() {
+    assert!("the world is yours"._starts_with("the world"));
+    assert_eq!("the world is yours"._starts_with("s"), false);
 }

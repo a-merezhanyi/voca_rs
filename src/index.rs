@@ -19,7 +19,7 @@ use regex::Regex;
 /// index::index_all("evening", "o", 0);
 /// // => []
 /// use voca_rs::Voca;
-/// "morning".index_all("n", 0);
+/// "morning"._index_all("n", 0);
 /// // => [3, 5]
 /// ```
 pub fn index_all(subject: &str, search: &str, from_index: usize) -> Vec<usize> {
@@ -54,7 +54,7 @@ pub fn index_all(subject: &str, search: &str, from_index: usize) -> Vec<usize> {
 /// index::index_of("evening", "o", 0);
 /// // => -1
 /// use voca_rs::Voca;
-/// "morning".index_of("n", 0);
+/// "morning"._index_of("n", 0);
 /// // => 3
 /// ```
 pub fn index_of(subject: &str, search: &str, from_index: usize) -> i8 {
@@ -99,7 +99,7 @@ pub fn index_of(subject: &str, search: &str, from_index: usize) -> i8 {
 /// index::last_index_of("evening", "o", 0);
 /// // => -1
 /// use voca_rs::Voca;
-/// "morning".last_index_of("n", 0);
+/// "morning"._last_index_of("n", 0);
 /// // => 5
 /// ```
 pub fn last_index_of(subject: &str, search: &str, from_index: usize) -> i8 {
@@ -144,7 +144,7 @@ pub fn last_index_of(subject: &str, search: &str, from_index: usize) -> i8 {
 /// index::search("Zażółć gęślą jaźń", "gęślą", 6);
 /// // => 11 (substring's position in `subject`), not 7
 /// use voca_rs::Voca;
-/// "morning".search("rn", 0);
+/// "morning"._search("rn", 0);
 /// // => 2
 /// ```
 pub fn search(subject: &str, pattern: &str, from_index: usize) -> i8 {
