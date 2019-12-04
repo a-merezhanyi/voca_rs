@@ -191,6 +191,11 @@ Build a project: `cargo build` -> `./target/debug`
 - Possible refactoring: all `position` indexes covert to zero-based and add a comment to each doc.
 - Change all inner arguments to Enums (instead `string` or `bool`)
 
+#### Chop
+
+- after - [link](https://docs.grafite.ca/utilities/helpers/)
+- before - [link](https://docs.grafite.ca/utilities/helpers/)
+
 #### Count
 
 - countWhere - [link](https://vocajs.com/#countWhere)
@@ -202,11 +207,14 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
+- limint_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
 - deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
 - demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)
 
 ### Manipulate
 
+- finish - [link](https://docs.grafite.ca/utilities/helpers/)
+- start - [link](https://docs.grafite.ca/utilities/helpers/)
 - deordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/deordinalize/fn.deordinalize.html)
 - pluralize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/pluralize/fn.to_plural.html)
 - singularize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/singularize/fn.to_singular.html)
