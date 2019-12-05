@@ -9,17 +9,36 @@
 #![cfg_attr(all(test, feature = "nightly"), feature(test))]
 
 //! Voca_rs is the ultimate Rust string library inspired by Voca.js and string.py
+//!
+//! Using functions:
 //! ```rust
 //! use voca_rs::*;
 //! let input_string = "LazyLoad with XMLHttpRequest and snake_case";
 //! let string_in_words = split::words(&input_string);
-//! // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
-//! let words_in_string = &string_in_words.join(" ");
+//! // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]let words_in_string = &string_in_words.join(" ");
 //! // => "Lazy Load with XML Http Request and snake case"
-//! let snake_string = case::snake_case(&chop::slice(&words_in_string, 13, 28));
-//! // => "xml_http_request"
-//! let truncated_string = chop::prune(&words_in_string, 15, "");
-//! // => "Lazy Load..."
+//! let truncated_string = chop::prune(&words_in_string, 21, "");
+//! // => "Lazy Load with XML..."
+//! let sliced_string = chop::slice(&truncated_string, 5, -2);
+//! // => "Load with XML."
+//! let snaked_string = case::snake_case(&sliced_string);
+//! // => "load_with_xml"
+//! ```
+//!
+//! Using traits (all methods start from the underscore symbol):
+//! ```rust
+//! use voca_rs::Voca;
+//! "LazyLoad with XMLHttpRequest and snake_case"
+//! ._words()
+//! // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
+//! .join(" ")
+//! // => "Lazy Load with XML Http Request and snake case"
+//! ._prune(21, "");
+//! // => "Lazy Load with XML..."
+//! ._slice(5, -2)
+//! // => "Load with XML."
+//! ._snake_case()
+//! // => "load_with_xml"
 //! ```
 
 extern crate dissolve;

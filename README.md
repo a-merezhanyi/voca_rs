@@ -188,8 +188,9 @@ Build a project: `cargo build` -> `./target/debug`
 
 ## Roadmap
 
-- Possible refactoring: all `position` indexes covert to zero-based and add a comment to each doc.
+- Possible refactoring: all `position` indexes covert to zero-based and add a comment to each doc
 - Change all inner arguments to Enums (instead `string` or `bool`)
+- To ensure that all regexp expressions are wrapped by `lazy_static`
 
 #### Chop
 
