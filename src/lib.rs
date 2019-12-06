@@ -15,7 +15,8 @@
 //! use voca_rs::*;
 //! let input_string = "LazyLoad with XMLHttpRequest and snake_case";
 //! let string_in_words = split::words(&input_string);
-//! // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]let words_in_string = &string_in_words.join(" ");
+//! // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
+//! let words_in_string = &string_in_words.join(" ");
 //! // => "Lazy Load with XML Http Request and snake case"
 //! let truncated_string = chop::prune(&words_in_string, 21, "");
 //! // => "Lazy Load with XML..."
@@ -33,11 +34,11 @@
 //! // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 //! .join(" ")
 //! // => "Lazy Load with XML Http Request and snake case"
-//! ._prune(21, "");
+//! ._prune(21, "")
 //! // => "Lazy Load with XML..."
 //! ._slice(5, -2)
 //! // => "Load with XML."
-//! ._snake_case()
+//! ._snake_case();
 //! // => "load_with_xml"
 //! ```
 

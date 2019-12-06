@@ -36,11 +36,11 @@ use voca_rs::Voca;
 // => ["Lazy", "Load", "with", "XML", "Http", "Request", "and", "snake", "case"]
 .join(" ")
 // => "Lazy Load with XML Http Request and snake case"
-._prune(21, "");
+._prune(21, "")
 // => "Lazy Load with XML..."
 ._slice(5, -2)
 // => "Load with XML."
-._snake_case()
+._snake_case();
 // => "load_with_xml"
 ```
 
