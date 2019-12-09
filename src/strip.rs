@@ -146,6 +146,7 @@ fn strip_html_tags(subject: &str) -> String {
                 StateMode::Output => {
                     output.push_str(&c);
                 }
+                StateMode::Html => {}
                 _ => {}
             }
         }
