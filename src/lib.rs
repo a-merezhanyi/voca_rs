@@ -42,7 +42,6 @@
 //! // => "load_with_xml"
 //! ```
 
-extern crate dissolve;
 extern crate regex;
 extern crate stfu8;
 extern crate unicode_segmentation;
