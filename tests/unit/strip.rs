@@ -198,7 +198,8 @@ fn strip_tags_special_tests() {
 
     // should handle unicode
     assert_eq!(voca_rs::strip::strip_tags("<SCRIPT>Ω≈ç≈≈Ω</SCRIPT>"), "Ω≈ç≈≈Ω");
-    assert_eq!(voca_rs::strip::strip_tags("<SCRIPT a=\"blah\">片仮名平仮名</SCRIPT>"), "片仮名平仮名")
+    assert_eq!(voca_rs::strip::strip_tags("<SCRIPT a=\"blah\">片仮名平仮名</SCRIPT>"), "片仮名平仮名");
+    assert_eq!(voca_rs::strip::strip_tags("<!-- testing --><a>text here</a>"), "text here");
 }
 #[test]
 fn _strip_tags() {
