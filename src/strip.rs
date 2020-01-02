@@ -1,5 +1,7 @@
 //! Strips specific characters from subject.
 
+use split::graphemes;
+
 /// Strips the byte order mark (BOM) from the beginning of `subject`.
 ///
 /// # Arguments
@@ -62,6 +64,13 @@ enum StateMode {
     Comment,
 }
 
+fn unicode_string_range(subject: &str, start: usize, end: usize) -> String {
+    let unicode_segment = &graphemes(subject)[start..end];
+    let mut string = "".to_string();
+    unicode_segment.iter().for_each(|c| string.push_str(c));
+    return string;
+}
+
 fn strip_html_tags(subject: &str) -> String {
     // https://github.com/panzerdp/voca/blob/master/src/strip/strip_tags.js
     let length = subject.len();
@@ -74,7 +83,7 @@ fn strip_html_tags(subject: &str) -> String {
         match c.to_owned() {
             "<" => {
                 if !quote.is_empty() {
-                } else if crate::query::query(&subject[i..i + 2], "< ", 0) {
+                } else if crate::query::query(unicode_string_range(subject, i, i+2).as_str(), "< ", 0) {
                     advance = true;
                 } else if state == StateMode::Output {
                     advance = true;
@@ -86,7 +95,7 @@ fn strip_html_tags(subject: &str) -> String {
                 }
             }
             "!" => {
-                if state == StateMode::Html && crate::query::query(&subject[i..i + 2], "<!", 0) {
+                if state == StateMode::Html && crate::query::query(unicode_string_range(subject, i, i+2).as_str(), "<!", 0) {
                     state = StateMode::Exclamation;
                 } else {
                     advance = true;
@@ -94,7 +103,7 @@ fn strip_html_tags(subject: &str) -> String {
             }
             "-" => {
                 if state == StateMode::Exclamation
-                    && crate::query::query(&subject[i..i + 3], "!--", 0)
+                    && crate::query::query(unicode_string_range(subject, i, i+3).as_str(), "!--", 0)
                 {
                     state = StateMode::Comment;
                 } else {
@@ -115,7 +124,7 @@ fn strip_html_tags(subject: &str) -> String {
             }
             "E" | "e" => {
                 if state == StateMode::Exclamation
-                    && crate::query::query(&subject[i..i + 7], "doctype", 0)
+                    && crate::query::query(unicode_string_range(subject, i, i+7).as_str(), "doctype", 0)
                 {
                     state = StateMode::Html;
                 } else {
@@ -129,7 +138,7 @@ fn strip_html_tags(subject: &str) -> String {
                 } else if state == StateMode::Html
                     || state == StateMode::Exclamation
                     || state == StateMode::Comment
-                        && crate::query::query(&subject[i..i + 3], "-->", 0)
+                    && crate::query::query(unicode_string_range(subject, i, i+3).as_str(), "-->", 0)
                 {
                     quote = String::from("");
                     state = StateMode::Output;

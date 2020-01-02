@@ -195,6 +195,10 @@ fn strip_tags_special_tests() {
         ""
     );
     assert_eq!(voca_rs::strip::strip_tags("<SCRIPT>document.write(\"<SCRI\");</SCRIPT>PT SRC=\"httx://xss.rocks/xss.js\"></SCRIPT>"), "document.write(\"");
+
+    // should handle unicode
+    assert_eq!(voca_rs::strip::strip_tags("<SCRIPT>Ω≈ç≈≈Ω</SCRIPT>"), "Ω≈ç≈≈Ω");
+    assert_eq!(voca_rs::strip::strip_tags("<SCRIPT a=\"blah\">片仮名平仮名</SCRIPT>"), "片仮名平仮名")
 }
 #[test]
 fn _strip_tags() {
