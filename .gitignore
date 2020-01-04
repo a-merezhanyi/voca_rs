@@ -13,3 +13,4 @@ Cargo.lock
 doc/
 
 .vscode/
+.idea/
