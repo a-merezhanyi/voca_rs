@@ -1,10 +1,10 @@
 # voca_rs [![Build Status](https://travis-ci.org/e1r0nd/voca_rs.svg?branch=master)](https://travis-ci.org/e1r0nd/voca_rs) [![Crates version](http://meritbadge.herokuapp.com/voca_rs)](https://crates.io/crates/voca_rs) [![dependency status](https://deps.rs/crate/voca_rs/1.9.1/status.svg)](https://deps.rs/crate/voca_rs/1.9.1) [![codecov](https://codecov.io/gh/e1r0nd/voca_rs/branch/master/graph/badge.svg)](https://codecov.io/gh/e1r0nd/voca_rs) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd9aee15841a470da1408b83d05e09f7)](https://app.codacy.com/app/e1r0nd-crg/voca_rs?utm_source=github.com&utm_medium=referral&utm_content=e1r0nd/voca_rs&utm_campaign=Badge_Grade_Dashboard) [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-**Voca_rs is a Rust library for manipulating strings.**
+**Voca_rs is a Rust library for manipulating [unicode] strings.**
 
-Voca_rs is inspired by [Voca.js](https://vocajs.com/), [string.py](https://docs.python.org/3.4/library/string.html) and [Inflector](https://github.com/whatisinternet/inflector)
+Voca_rs is inspired by [Voca.js](https://vocajs.com/) (JavaScript), [string.py](https://docs.python.org/3.4/library/string.html) (Python), [Inflector](https://github.com/whatisinternet/inflector) (Rust), and [Grafite](https://docs.grafite.ca/utilities/helpers/) (PHP).
 
-Voca_rs is implemented on Foreign Types, i.e. `String` and `str`.
+Voca_rs is implemented on Foreign Types, i.e. `String` and `str`. Respects Unicode.
 
 ## TL;DR
 
@@ -188,6 +188,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 ## Roadmap
 
+- Ensure respecting unicode string for each method. Update each function's description clearly stating whether it works with UTF or ASCII.
 - Possible refactoring: all `position` indexes covert to zero-based and add a comment to each doc
 - Change all inner arguments to Enums (instead `string` or `bool`)
 - To ensure that all regexp expressions are wrapped by `lazy_static`
