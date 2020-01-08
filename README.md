@@ -209,7 +209,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
-- limint_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
+- limit_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
 - deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
 - demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)
 
