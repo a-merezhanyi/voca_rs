@@ -26,4 +26,7 @@ unidecode = "0.3.0"
 
 [profile.dev]
 lto = true
+opt-level = 0
+
+[profile.release]
 opt-level = 3
