@@ -107,7 +107,7 @@ fn capitalize_decapitalize(subject: &str, rest_mode: RestMode, caps_mode: CapsMo
             } else {
                 match rest_mode {
                     RestMode::Lower => c.to_lowercase(),
-                    RestMode::Normal => c.to_string(),
+                    RestMode::Normal => (*c).to_string(),
                 }
             };
             res.push_str(&s);

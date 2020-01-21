@@ -119,6 +119,22 @@ fn strip_tags_special_tests() {
         voca_rs::strip::strip_tags("<span class=\"italic\"><b>He>llo</b> < world!</span>"),
         "He>llo < world!"
     );
+    // should handle unicode
+    assert_eq!(
+        voca_rs::strip::strip_tags("<SCRIPT>Ω≈ç≈≈Ω</SCRIPT>"),
+        "Ω≈ç≈≈Ω"
+    );
+    assert_eq!(
+        voca_rs::strip::strip_tags("<SCRIPT a=\"blah\">片仮名平仮名</SCRIPT>"),
+        "片仮名平仮名"
+    );
+    assert_eq!(
+        voca_rs::strip::strip_tags("<!-- testing --><a>text here</a>"),
+        "text here"
+    );
+}
+#[test]
+fn strip_tags_xss_tests() {
     // should strip potential xss tags', function() {
     // @see https://www.owasp.org/index.php/XSS_Filter_Evasion_Cheat_Sheet
     assert_eq!(
@@ -195,11 +211,6 @@ fn strip_tags_special_tests() {
         ""
     );
     assert_eq!(voca_rs::strip::strip_tags("<SCRIPT>document.write(\"<SCRI\");</SCRIPT>PT SRC=\"httx://xss.rocks/xss.js\"></SCRIPT>"), "document.write(\"");
-
-    // should handle unicode
-    assert_eq!(voca_rs::strip::strip_tags("<SCRIPT>Ω≈ç≈≈Ω</SCRIPT>"), "Ω≈ç≈≈Ω");
-    assert_eq!(voca_rs::strip::strip_tags("<SCRIPT a=\"blah\">片仮名平仮名</SCRIPT>"), "片仮名平仮名");
-    assert_eq!(voca_rs::strip::strip_tags("<!-- testing --><a>text here</a>"), "text here");
 }
 #[test]
 fn _strip_tags() {

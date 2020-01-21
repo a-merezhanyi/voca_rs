@@ -126,7 +126,7 @@ fn strip_html_tags(subject: &str) -> String {
             }
             "\"" | "'" => {
                 if state == StateMode::Html {
-                    let c_copy = c.to_string();
+                    let c_copy = (*c).to_string();
                     if quote.as_str() == c_copy {
                         quote = String::from("");
                     } else if quote.is_empty() {
@@ -182,5 +182,5 @@ fn strip_html_tags(subject: &str) -> String {
             }
         }
     }
-    output.to_owned()
+    output
 }

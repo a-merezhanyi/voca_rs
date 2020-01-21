@@ -670,7 +670,7 @@ pub fn tr(subject: &str, from: &str, to: &str) -> String {
         let new_c = if i < to_len { to_symbols[i] } else { "" };
         result = result.replace(c, new_c);
     }
-    result.to_owned()
+    result
 }
 
 /// Wraps `subject` to a given number of characters using a string break character.
