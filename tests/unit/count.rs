@@ -66,6 +66,52 @@ fn substrings() {
 fn _substrings() {
     assert_eq!("******"._count_substrings("*"), 6);
 }
+
+#[test]
+fn count_where() {
+    assert_eq!(
+        voca_rs::count::count_where("hola!", voca_rs::query::is_alpha),
+        4
+    );
+    assert_eq!(
+        voca_rs::count::count_where("2022", |s: &str| -> bool { s == "2" }),
+        3
+    );
+    assert_eq!(voca_rs::count::count_where("", voca_rs::query::is_alpha), 0);
+    assert_eq!(
+        voca_rs::count::count_where("abc", voca_rs::query::is_alpha),
+        3
+    );
+    assert_eq!(
+        voca_rs::count::count_where("africa654", voca_rs::query::is_alpha),
+        6
+    );
+    assert_eq!(
+        voca_rs::count::count_where("790", voca_rs::query::is_alpha),
+        0
+    );
+    assert_eq!(
+        voca_rs::count::count_where("790", voca_rs::query::is_alphadigit),
+        3
+    );
+    assert_eq!(
+        voca_rs::count::count_where(voca_rs::utils::PRINTABLE, voca_rs::query::is_digit),
+        10
+    );
+    assert_eq!(
+        voca_rs::count::count_where("****--**--**", |s: &str| -> bool { s == "*" }),
+        8
+    );
+    assert_eq!(
+        voca_rs::count::count_where("****--**--**", |_s: &str| -> bool { false }),
+        0
+    );
+}
+#[test]
+fn _count_where() {
+    assert_eq!("hola!"._count_where(voca_rs::query::is_alpha), 4);
+}
+
 #[test]
 fn words() {
     assert_eq!(voca_rs::count::count_words("", ""), 0);

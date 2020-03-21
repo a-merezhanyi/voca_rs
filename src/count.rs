@@ -89,6 +89,40 @@ pub fn count_substrings(subject: &str, substring: &str) -> usize {
     }
 }
 
+/// Counts the characters in `subject` for which `predicate` returns true. This function respects unicode.
+///
+/// # Arguments
+///
+/// * `subject` - The string to count characters.
+/// * `predicate` - The predicate function invoked on each character with a parameter `(string)`.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// count::count_where("hola!", voca_rs::query::is_alpha);
+/// // => 4
+/// count::count_where("2022", |s: &str| -> bool { s == "2" });
+/// // => 3
+/// use voca_rs::Voca;
+/// "hola!"._count_where(voca_rs::query::is_alpha);
+/// // => 4
+/// ```
+pub fn count_where(subject: &str, f: fn(&str) -> bool) -> usize {
+    match subject.len() {
+        0 => 0,
+        _ => {
+            let mut res = 0;
+            for c in crate::split::graphemes(&subject).iter() {
+                if f(&c) {
+                    res += 1;
+                }
+            }
+            res
+        }
+    }
+}
+
 /// Counts the number of words in `subject`.
 ///
 /// # Arguments

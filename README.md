@@ -93,6 +93,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [count](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count.html)
 - [count_graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_graphemes.html)
 - [count_substrings](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_substrings.html)
+- [count_where](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_where.html)
 - [count_words](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_words.html)
 
 #### Escape
@@ -200,7 +201,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Count
 
-- countWhere - [link](https://vocajs.com/#countWhere)
 - count_unique_words - [link](https://doc.rust-lang.org/book/ch08-03-hash-maps.html): Counting occurrences of words using a hash map that stores words and counts
 
 #### Format
