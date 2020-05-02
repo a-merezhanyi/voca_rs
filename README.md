@@ -198,6 +198,8 @@ Build a project: `cargo build` -> `./target/debug`
 
 - after - [link](https://docs.grafite.ca/utilities/helpers/)
 - before - [link](https://docs.grafite.ca/utilities/helpers/)
+- removeprefix - [link](https://martinheinz.dev/blog/21) 
+- removesuffix - [link](https://martinheinz.dev/blog/21)
 
 #### Count
 
