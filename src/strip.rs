@@ -78,7 +78,7 @@ fn strip_html_tags(subject: &str) -> String {
     let mut depth = 0;
     let mut output = String::with_capacity(length);
     let mut quote = String::with_capacity(4);
-    for (i, c) in crate::split::chars(subject).iter().enumerate() {
+    for (i, c) in crate::split::graphemes(subject).iter().enumerate() {
         let mut advance = false;
         match c.to_owned() {
             "<" => {
