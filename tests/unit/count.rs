@@ -142,3 +142,47 @@ fn words() {
 fn _words() {
     assert_eq!("Gravity - can cross dimensions!"._count_words(""), 4);
 }
+
+#[test]
+fn unique_words() {
+    assert_eq!(voca_rs::count::count_unique_words("", ""), 0);
+    assert_eq!(voca_rs::count::count_unique_words("ab c", ""), 2);
+    assert_eq!(
+        voca_rs::count::count_unique_words("hello world wonderful world", ""),
+        3
+    );
+    assert_eq!(
+        voca_rs::count::count_unique_words("HelloWorldWonderfulWorld", ""),
+        3
+    );
+    // Hebrew: אני יכול לאכול זכוכית וזה לא מזיק לי.
+    assert_eq!(
+        voca_rs::count::count_unique_words(
+            "Hebrew: אני יכול לאכול זכוכית וזה לא מזיק לי. אני יכול לאכול זכוכית.",
+            ""
+        ),
+        9
+    );
+    // Arabic: أنا قادر على أكل الزجاج و هذا لا يؤلمني.
+    assert_eq!(
+        voca_rs::count::count_unique_words(
+            "Arabic: أنا قادر على أكل الزجاج و هذا لا يؤلمني. أنا قادر على أكل الزجاج و.",
+            ""
+        ),
+        10
+    );
+    // Vietnamese: Tôi có thể ăn thủy tinh mà không hại gì.
+    assert_eq!(
+        voca_rs::count::count_unique_words(
+            "Vietnamese: Tôi có thể ăn thủy tinh mà không hại gì. Tôi có thể ăn thủy tinh.",
+            ""
+        ),
+        11
+    );
+}
+
+#[test]
+fn _unique_words() {
+    assert_eq!(""._count_unique_words(""), 0);
+    assert_eq!("hello world wonderful world"._count_unique_words(""), 3);
+}

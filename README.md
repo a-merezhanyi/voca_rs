@@ -93,6 +93,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [count](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count.html)
 - [count_graphemes](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_graphemes.html)
 - [count_substrings](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_substrings.html)
+- [count_unique_words](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_unique_words.html)
 - [count_where](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_where.html)
 - [count_words](https://e1r0nd.github.io/voca_rs/voca_rs/count/fn.count_words.html)
 
@@ -197,23 +198,18 @@ Build a project: `cargo build` -> `./target/debug`
 #### Chop
 
 - after - [link](https://docs.grafite.ca/utilities/helpers/)
+- afterLast - [link](https://docs.grafite.ca/utilities/helpers/)
 - before - [link](https://docs.grafite.ca/utilities/helpers/)
+- beforeLast - [link](https://docs.grafite.ca/utilities/helpers/)
 - removeprefix - [link](https://martinheinz.dev/blog/21)
 - removesuffix - [link](https://martinheinz.dev/blog/21)
-
-#### Count
-
-- count_unique_words - [link](https://doc.rust-lang.org/book/ch08-03-hash-maps.html): Counting occurrences of words using a hash map that stores words and counts
+- limit_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
+- deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
+- demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)
 
 #### Format
 
 - vprintf - [link](https://vocajs.com/#vprintf)
-
-#### Chop
-
-- limit_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
-- deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
-- demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)
 
 ### Manipulate
 

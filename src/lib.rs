@@ -99,6 +99,7 @@ pub trait Voca {
     fn _count_substrings(&self, param1: &str) -> usize;
     fn _count_where(&self, param2: fn(&str) -> bool) -> usize;
     fn _count_words(&self, param1: &str) -> usize;
+    fn _count_unique_words(&self, param1: &str) -> usize;
     // escape
     fn _escape_html(&self) -> String;
     fn _escape_regexp(&self) -> String;
@@ -272,6 +273,9 @@ macro_rules! implement_string_for {
                 }
                 fn _count_words(&self, param1: &str) -> usize {
                     count::count_words(&self, param1)
+                }
+                fn _count_unique_words(&self, param1: &str) -> usize {
+                    count::count_unique_words(&self, param1)
                 }
                 // escape
                 fn _escape_html(&self) -> String {

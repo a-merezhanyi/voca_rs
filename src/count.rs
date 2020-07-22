@@ -155,9 +155,44 @@ pub fn count_words(subject: &str, pattern: &str) -> usize {
                 .count(),
         }
     }
-
     match subject.len() {
         0 => 0,
         _ => match_substring(&subject, &pattern),
     }
+}
+
+use std::collections::HashMap;
+/// Counting occurrences of unique words in `subject`. This function respects unicode.
+///
+/// # Arguments
+///
+/// * `subject` - The string to count characters.
+/// * `pattern` - The pattern to watch words.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// count::count_unique_words("hello world wonderful world", "");
+/// // => 3
+/// count::count_unique_words("Arabic: أنا قادر على أكل الزجاج و هذا لا يؤلمني. أنا قادر على أكل الزجاج و.", "");
+/// // => ???????????????????????????????????
+/// use voca_rs::Voca;
+/// "Hebrew: אני יכול לאכול זכוכית וזה לא מזיק לי. אני יכול לאכול זכוכית."._count_words("");
+/// // => 9
+/// ```
+pub fn count_unique_words(subject: &str, pattern: &str) -> usize {
+    let mut unique_words = HashMap::new();
+    let words = match pattern.len() {
+        0 => crate::split::words(&subject),
+        _ => subject.split_terminator(pattern).collect::<Vec<_>>(),
+    };
+    if words.len() == 0 {
+        return 0;
+    };
+
+    for word in words {
+        unique_words.entry(word).or_insert(0);
+    }
+    unique_words.len()
 }
