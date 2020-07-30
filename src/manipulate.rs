@@ -90,7 +90,7 @@ pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
     format!("{}{}{}", prefix, to_insert, sufix)
 }
 
-use unidecode::unidecode;
+use utils::unidecode;
 /// Latinises the `subject` by removing diacritic characters.
 ///
 /// # Arguments

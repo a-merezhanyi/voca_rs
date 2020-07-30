@@ -22,7 +22,6 @@ codecov = { repository = "e1r0nd/voca_rs", branch = "master", service = "github"
 regex = "1.3.9"
 stfu8 = "0.2.4"
 unicode-segmentation = "1.6.0"
-unidecode = "0.3.0"
 
 [profile.dev]
 lto = true
