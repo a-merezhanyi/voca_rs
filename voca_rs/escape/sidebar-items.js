@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["escape_html","Escapes HTML special characters < > & ' \" `in`subject`."],["escape_regexp","Escapes the regular expression special characters - [ ] / { } ( ) * + ? . \\ ^ $ | in `subject`."],["unescape_html","Unescapes HTML special characters from < > & \" ' ` to corresponding < > & \" ' `in`subject`."]]});
