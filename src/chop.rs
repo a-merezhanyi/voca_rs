@@ -42,6 +42,37 @@ fn get_subject_length(
         position
     }
 }
+/// Returns everything after the given `search`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `search` - The substring to look for.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::after("This is my name", "This is");
+/// // => " my name"
+/// chop::after("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱", "gḷ̉y̌p̆ẖs");
+/// // => " a̋řẹ̆̇ hër̵ē̱"
+/// use voca_rs::Voca;
+/// "This is my name"._after("This is");
+/// // => " my name"
+/// ```
+pub fn after(subject: &str, search: &str) -> String {
+    match subject.len() {
+        0 => "".to_string(),
+        _ => {
+            let start_position = crate::index::index_of(&subject, &search, 0) as isize;
+            if start_position == -1 {
+                return "".to_owned();
+            }
+            let the_length = crate::count::count(&search) as isize;
+            crate::chop::slice(&subject, start_position + the_length, 0)
+        }
+    }
+}
 /// Access a character from `subject` at specified `position`.
 ///
 /// # Arguments

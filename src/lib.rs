@@ -79,6 +79,7 @@ pub trait Voca {
     fn _lower_first(&self) -> String;
     fn _upper_first(&self) -> String;
     // chop
+    fn _after(&self, param: &str) -> String;
     fn _char_at(&self, param: usize) -> String;
     fn _code_point_at(&self, param: usize) -> Vec<u16>;
     fn _first(&self, param: usize) -> String;
@@ -218,6 +219,9 @@ macro_rules! implement_string_for {
                     case::upper_first(&self)
                 }
                 // chop
+                fn _after(&self, param: &str) -> String {
+                    chop::after(&self, param)
+                }
                 fn _char_at(&self, param: usize) -> String {
                     chop::char_at(&self, param)
                 }

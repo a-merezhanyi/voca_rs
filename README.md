@@ -74,6 +74,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
+- [after](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.after.html)
 - [char_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.char_at.html)
 - [code_point_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.code_point_at.html)
 - [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
@@ -197,7 +198,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
-- after - [link](https://docs.grafite.ca/utilities/helpers/)
 - afterLast - [link](https://docs.grafite.ca/utilities/helpers/)
 - before - [link](https://docs.grafite.ca/utilities/helpers/)
 - beforeLast - [link](https://docs.grafite.ca/utilities/helpers/)

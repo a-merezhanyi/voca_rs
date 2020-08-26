@@ -2,6 +2,26 @@
 use voca_rs::Voca;
 
 #[test]
+fn after() {
+    assert_eq!(voca_rs::chop::after("", ""), "");
+    assert_eq!(
+        voca_rs::chop::after("This is my name", "This is"),
+        " my name"
+    );
+    assert_eq!(
+        voca_rs::chop::after("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱", "gḷ̉y̌p̆ẖs"),
+        " a̋řẹ̆̇ hër̵ē̱"
+    );
+    assert_eq!(
+        voca_rs::chop::after("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱", "Something"),
+        ""
+    );
+}
+#[test]
+fn _after() {
+    assert_eq!("This is my name"._after("This is"), " my name");
+}
+#[test]
 fn char_at() {
     assert_eq!(voca_rs::chop::char_at("", 0), "");
     assert_eq!(voca_rs::chop::char_at("rain", 0), "r");
