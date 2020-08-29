@@ -42,6 +42,24 @@ fn get_subject_length(
         position
     }
 }
+
+#[derive(Clone, Copy, PartialEq)]
+enum ReturnType {
+    Normal,
+    Last,
+}
+
+fn return_after_or_after_last(subject: &str, search: &str, return_type: ReturnType) -> String {
+    let start_position = match return_type {
+        ReturnType::Normal => crate::index::index_of(&subject, &search, 0),
+        ReturnType::Last => crate::index::last_index_of(&subject, &search, 0),
+    } as isize;
+    if start_position == -1 {
+        return "".to_owned();
+    }
+    let the_length = crate::count::count(&search) as isize;
+    crate::chop::slice(&subject, start_position + the_length, 0)
+}
 /// Returns everything after the given `search`.
 ///
 /// # Arguments
@@ -63,14 +81,31 @@ fn get_subject_length(
 pub fn after(subject: &str, search: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
-        _ => {
-            let start_position = crate::index::index_of(&subject, &search, 0) as isize;
-            if start_position == -1 {
-                return "".to_owned();
-            }
-            let the_length = crate::count::count(&search) as isize;
-            crate::chop::slice(&subject, start_position + the_length, 0)
-        }
+        _ => return_after_or_after_last(&subject, &search, ReturnType::Normal),
+    }
+}
+/// Returns everything after the last given `search`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `search` - The substring to look for.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::after_last("To be, or not to be, that is the question", "be,");
+/// // => " that is the question"
+/// chop::after_last("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱, but a̋řẹ̆̇ nŏt tẖër̵ē̱", "a̋řẹ̆̇");
+/// // => " nŏt tẖër̵ē̱"
+/// use voca_rs::Voca;
+/// "To be, or not to be, that is the question"._after_last("be,");
+/// // => " that is the question"
+/// ```
+pub fn after_last(subject: &str, search: &str) -> String {
+    match subject.len() {
+        0 => "".to_string(),
+        _ => return_after_or_after_last(&subject, &search, ReturnType::Last),
     }
 }
 /// Access a character from `subject` at specified `position`.

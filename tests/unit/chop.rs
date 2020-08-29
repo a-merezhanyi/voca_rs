@@ -22,6 +22,29 @@ fn _after() {
     assert_eq!("This is my name"._after("This is"), " my name");
 }
 #[test]
+fn after_last() {
+    assert_eq!(voca_rs::chop::after_last("", ""), "");
+    assert_eq!(
+        voca_rs::chop::after_last("To be, or not to be, that is the question", "be,"),
+        " that is the question"
+    );
+    assert_eq!(
+        voca_rs::chop::after_last("To be, or not to be, that is the question", "ho-ho"),
+        ""
+    );
+    assert_eq!(
+        voca_rs::chop::after_last("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱, but a̋řẹ̆̇ nŏt tẖër̵ē̱", "a̋řẹ̆̇"),
+        " nŏt tẖër̵ē̱"
+    );
+}
+#[test]
+fn _after_last() {
+    assert_eq!(
+        "To be, or not to be, that is the question"._after_last("be,"),
+        " that is the question"
+    );
+}
+#[test]
 fn char_at() {
     assert_eq!(voca_rs::chop::char_at("", 0), "");
     assert_eq!(voca_rs::chop::char_at("rain", 0), "r");
