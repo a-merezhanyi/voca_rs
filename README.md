@@ -77,6 +77,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [after](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.after.html)
 - [after_last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.after_last.html)
 - [before](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.before.html)
+- [before_last](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.before_last.html)
 - [char_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.char_at.html)
 - [code_point_at](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.code_point_at.html)
 - [first](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.first.html)
@@ -200,7 +201,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
-- beforeLast - [link](https://docs.grafite.ca/utilities/helpers/)
 - removeprefix - [link](https://martinheinz.dev/blog/21)
 - removesuffix - [link](https://martinheinz.dev/blog/21)
 - limit_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)

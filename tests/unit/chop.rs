@@ -65,6 +65,29 @@ fn _before() {
     assert_eq!("This is my name"._before("my name"), "This is ");
 }
 #[test]
+fn before_last() {
+    assert_eq!(voca_rs::chop::before_last("", ""), "");
+    assert_eq!(
+        voca_rs::chop::before_last("To be, or not to be, that is the question", "be,"),
+        "To be, or not to "
+    );
+    assert_eq!(
+        voca_rs::chop::before_last("To be, or not to be, that is the question", "ho-ho"),
+        ""
+    );
+    assert_eq!(
+        voca_rs::chop::before_last("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱, but a̋řẹ̆̇ nŏt tẖër̵ē̱", "a̋řẹ̆̇"),
+        "S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱, but "
+    );
+}
+#[test]
+fn _before_last() {
+    assert_eq!(
+        "To be, or not to be, that is the question"._before_last("be,"),
+        "To be, or not to "
+    );
+}
+#[test]
 fn char_at() {
     assert_eq!(voca_rs::chop::char_at("", 0), "");
     assert_eq!(voca_rs::chop::char_at("rain", 0), "r");

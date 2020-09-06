@@ -82,6 +82,7 @@ pub trait Voca {
     fn _after(&self, param: &str) -> String;
     fn _after_last(&self, param: &str) -> String;
     fn _before(&self, param: &str) -> String;
+    fn _before_last(&self, param: &str) -> String;
     fn _char_at(&self, param: usize) -> String;
     fn _code_point_at(&self, param: usize) -> Vec<u16>;
     fn _first(&self, param: usize) -> String;
@@ -229,6 +230,9 @@ macro_rules! implement_string_for {
                 }
                 fn _before(&self, param: &str) -> String {
                     chop::before(&self, param)
+                }
+                fn _before_last(&self, param: &str) -> String {
+                    chop::before_last(&self, param)
                 }
                 fn _char_at(&self, param: usize) -> String {
                     chop::char_at(&self, param)

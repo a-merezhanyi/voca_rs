@@ -162,6 +162,34 @@ pub fn before(subject: &str, search: &str) -> String {
         ),
     }
 }
+/// Returns everything before the last given `search`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `search` - The substring to look for.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::after_last("To be, or not to be, that is the question", "be,");
+/// // => "To be, or not to "
+/// chop::after_last("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱, but a̋řẹ̆̇ nŏt tẖër̵ē̱", "a̋řẹ̆̇");
+/// // => "S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱, but "
+/// use voca_rs::Voca;
+/// "To be, or not to be, that is the question"._after_last("be,");
+/// // => "To be, or not to "
+/// ```
+pub fn before_last(subject: &str, search: &str) -> String {
+    match subject.len() {
+        0 => "".to_string(),
+        _ => return_after_or_before_and_after_last_or_before_last(
+            &subject,
+            &search,
+            ReturnType::BeforeLast,
+        ),
+    }
+}
 /// Access a character from `subject` at specified `position`.
 ///
 /// # Arguments
