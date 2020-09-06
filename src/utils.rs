@@ -7,9 +7,9 @@
 /// ```
 /// use voca_rs::*;
 /// utils::VERSION;
-/// // => "1.11.0"
+/// // => "1.12.0"
 /// ```
-pub const VERSION: &str = "1.11.0";
+pub const VERSION: &str = "1.12.0";
 
 /// The concatenation of the `ascii_lowercase` and `ascii_uppercase` constants described below. This value is not locale-dependent.
 ///
