@@ -45,20 +45,38 @@ fn get_subject_length(
 
 #[derive(Clone, Copy, PartialEq)]
 enum ReturnType {
-    Normal,
-    Last,
+    AfterNormal,
+    AfterLast,
+    BeforeNormal,
+    BeforeLast,
 }
 
-fn return_after_or_after_last(subject: &str, search: &str, return_type: ReturnType) -> String {
+fn return_after_or_before_and_after_last_or_before_last(
+    subject: &str,
+    search: &str,
+    return_type: ReturnType,
+) -> String {
     let start_position = match return_type {
-        ReturnType::Normal => crate::index::index_of(&subject, &search, 0),
-        ReturnType::Last => crate::index::last_index_of(&subject, &search, 0),
+        ReturnType::AfterNormal | ReturnType::BeforeNormal => {
+            crate::index::index_of(&subject, &search, 0)
+        }
+        ReturnType::AfterLast | ReturnType::BeforeLast => {
+            crate::index::last_index_of(&subject, &search, 0)
+        }
     } as isize;
     if start_position == -1 {
         return "".to_owned();
     }
     let the_length = crate::count::count(&search) as isize;
-    crate::chop::slice(&subject, start_position + the_length, 0)
+    let chop_start_position = match return_type {
+        ReturnType::AfterNormal | ReturnType::AfterLast => start_position + the_length,
+        ReturnType::BeforeNormal | ReturnType::BeforeLast => 0,
+    };
+    let chop_end_position = match return_type {
+        ReturnType::AfterNormal | ReturnType::AfterLast => 0,
+        ReturnType::BeforeNormal | ReturnType::BeforeLast => start_position,
+    };
+    crate::chop::slice(&subject, chop_start_position, chop_end_position)
 }
 /// Returns everything after the given `search`.
 ///
@@ -81,7 +99,11 @@ fn return_after_or_after_last(subject: &str, search: &str, return_type: ReturnTy
 pub fn after(subject: &str, search: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
-        _ => return_after_or_after_last(&subject, &search, ReturnType::Normal),
+        _ => return_after_or_before_and_after_last_or_before_last(
+            &subject,
+            &search,
+            ReturnType::AfterNormal,
+        ),
     }
 }
 /// Returns everything after the last given `search`.
@@ -105,7 +127,39 @@ pub fn after(subject: &str, search: &str) -> String {
 pub fn after_last(subject: &str, search: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
-        _ => return_after_or_after_last(&subject, &search, ReturnType::Last),
+        _ => return_after_or_before_and_after_last_or_before_last(
+            &subject,
+            &search,
+            ReturnType::AfterLast,
+        ),
+    }
+}
+/// Returns everything before the given `search`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `search` - The substring to look for.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::before("This is my name", "my name");
+/// // => "This is "
+/// chop::before("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱", "gḷ̉y̌p̆ẖs");
+/// // => "S̃o̊m̋ȩ̈ "
+/// use voca_rs::Voca;
+/// "This is my name"._before("my name");
+/// // => "This is "
+/// ```
+pub fn before(subject: &str, search: &str) -> String {
+    match subject.len() {
+        0 => "".to_string(),
+        _ => return_after_or_before_and_after_last_or_before_last(
+            &subject,
+            &search,
+            ReturnType::BeforeNormal,
+        ),
     }
 }
 /// Access a character from `subject` at specified `position`.

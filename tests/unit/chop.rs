@@ -45,6 +45,26 @@ fn _after_last() {
     );
 }
 #[test]
+fn before() {
+    assert_eq!(voca_rs::chop::before("", ""), "");
+    assert_eq!(
+        voca_rs::chop::before("This is my name", "my name"),
+        "This is "
+    );
+    assert_eq!(
+        voca_rs::chop::before("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱", "gḷ̉y̌p̆ẖs"),
+        "S̃o̊m̋ȩ̈ "
+    );
+    assert_eq!(
+        voca_rs::chop::before("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱", "Something"),
+        ""
+    );
+}
+#[test]
+fn _before() {
+    assert_eq!("This is my name"._before("my name"), "This is ");
+}
+#[test]
 fn char_at() {
     assert_eq!(voca_rs::chop::char_at("", 0), "");
     assert_eq!(voca_rs::chop::char_at("rain", 0), "r");
