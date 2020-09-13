@@ -87,6 +87,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [max](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.max.html)
 - [min](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.min.html)
 - [prune](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.prune.html)
+- [removeprefix](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.removeprefix.html)
 - [slice](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.slice.html)
 - [substr](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substr.html)
 - [substring](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substring.html)
@@ -201,7 +202,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
-- removeprefix - [link](https://martinheinz.dev/blog/21)
 - removesuffix - [link](https://martinheinz.dev/blog/21)
 - limit_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
 - deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)

@@ -451,6 +451,43 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
     format!("{}{}", get_chars(&subject, 0, position_end), sufix)
 }
 
+/// Extracts the `prefix` from `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `prefix` - The number of characters to extract.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::removeprefix("Once upon a time", "Once");
+/// // => " upon a time"
+/// chop::removeprefix("O̱̣̊ñç̉é ụ̈̇pǒ̵̱n ą̆ tímę", "O̱̣̊ñç̉é");
+/// // => " ụ̈̇pǒ̵̱n ą̆ tímę"
+/// use voca_rs::Voca;
+/// "Once upon a time"._removeprefix("Once");
+/// // => " upon a time"
+/// ```
+pub fn removeprefix(subject: &str, prefix: &str) -> String {
+    match subject.len() {
+        0 => subject.to_owned(),
+        _ => {
+            let prefix_len = crate::count::count(&prefix);
+            match prefix_len {
+                0 => subject.to_owned(),
+                _ => {
+                    if crate::query::starts_with(&subject, &prefix) {
+                        crate::chop::after(&subject, &prefix)
+                    } else {
+                        subject.to_owned()
+                    }
+                }
+            }
+        }
+    }
+}
+
 /// Extracts from `subject` a string from `start` position up to `end` position. The character at `end` position is not included.
 ///
 /// # Arguments
