@@ -251,6 +251,36 @@ fn removeprefix() {
 fn _removeprefix() {
     assert_eq!("Once upon a time"._removeprefix("Once"), " upon a time");
 }
+
+#[test]
+fn removesuffix() {
+    assert_eq!(voca_rs::chop::removesuffix("", ""), "");
+    assert_eq!(
+        voca_rs::chop::removesuffix("Once upon a time", ""),
+        "Once upon a time"
+    );
+    assert_eq!(voca_rs::chop::removesuffix("", "Once"), "");
+    assert_eq!(
+        voca_rs::chop::removesuffix("Once upon a time", "None"),
+        "Once upon a time"
+    );
+    assert_eq!(
+        voca_rs::chop::removesuffix("Once upon a time", "time"),
+        "Once upon a "
+    );
+    assert_eq!(
+        voca_rs::chop::removesuffix("Once upon a time time", "time"),
+        "Once upon a time "
+    );
+    assert_eq!(
+        voca_rs::chop::removesuffix("O̱̣̊ñç̉é ụ̈̇pǒ̵̱n ą̆ tímę", "tímę"),
+        "O̱̣̊ñç̉é ụ̈̇pǒ̵̱n ą̆ "
+    );
+}
+#[test]
+fn _removesuffix() {
+    assert_eq!("Once upon a time"._removesuffix("time"), "Once upon a ");
+}
 #[test]
 fn slice() {
     assert_eq!(voca_rs::chop::slice("", 0, 0), "");

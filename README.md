@@ -1,4 +1,4 @@
-# voca_rs [![Build Status](https://travis-ci.org/e1r0nd/voca_rs.svg?branch=master)](https://travis-ci.org/e1r0nd/voca_rs) [![Crates version](http://meritbadge.herokuapp.com/voca_rs)](https://crates.io/crates/voca_rs) [![dependency status](https://deps.rs/crate/voca_rs/1.12.0/status.svg)](https://deps.rs/crate/voca_rs/1.12.0) [![codecov](https://codecov.io/gh/e1r0nd/voca_rs/branch/master/graph/badge.svg)](https://codecov.io/gh/e1r0nd/voca_rs) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd9aee15841a470da1408b83d05e09f7)](https://app.codacy.com/app/e1r0nd-crg/voca_rs?utm_source=github.com&utm_medium=referral&utm_content=e1r0nd/voca_rs&utm_campaign=Badge_Grade_Dashboard) [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+# voca_rs [![Build Status](https://travis-ci.org/e1r0nd/voca_rs.svg?branch=master)](https://travis-ci.org/e1r0nd/voca_rs) [![Crates version](http://meritbadge.herokuapp.com/voca_rs)](https://crates.io/crates/voca_rs) [![dependency status](https://deps.rs/crate/voca_rs/1.13.0/status.svg)](https://deps.rs/crate/voca_rs/1.13.0) [![codecov](https://codecov.io/gh/e1r0nd/voca_rs/branch/master/graph/badge.svg)](https://codecov.io/gh/e1r0nd/voca_rs) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bd9aee15841a470da1408b83d05e09f7)](https://app.codacy.com/app/e1r0nd-crg/voca_rs?utm_source=github.com&utm_medium=referral&utm_content=e1r0nd/voca_rs&utm_campaign=Badge_Grade_Dashboard) [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 **Voca_rs is a Rust library for manipulating [unicode] strings.**
 
@@ -88,6 +88,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [min](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.min.html)
 - [prune](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.prune.html)
 - [removeprefix](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.removeprefix.html)
+- [removesuffix](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.removesuffix.html)
 - [slice](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.slice.html)
 - [substr](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substr.html)
 - [substring](https://e1r0nd.github.io/voca_rs/voca_rs/chop/fn.substring.html)
@@ -202,7 +203,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 #### Chop
 
-- removesuffix - [link](https://martinheinz.dev/blog/21)
 - limit_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
 - deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
 - demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)

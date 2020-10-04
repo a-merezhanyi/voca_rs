@@ -451,12 +451,38 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
     format!("{}{}", get_chars(&subject, 0, position_end), sufix)
 }
 
+#[derive(Clone, Copy, PartialEq)]
+enum CutType {
+    StartsWith,
+    EndsWith,
+}
+fn remove_prefix_or_suffix(subject: &str, substring: &str, cut_type: CutType) -> String {
+    let substring_len = crate::count::count(&substring);
+    match substring_len {
+        0 => subject.to_owned(),
+        _ => {
+            if cut_type == CutType::StartsWith {
+                if crate::query::starts_with(&subject, &substring) {
+                    crate::chop::after(&subject, &substring)
+                } else {
+                    subject.to_owned()
+                }
+            } else {
+                if crate::query::ends_with(&subject, &substring) {
+                    crate::chop::before_last(&subject, &substring)
+                } else {
+                    subject.to_owned()
+                }
+            }
+        }
+    }
+}
 /// Extracts the `prefix` from `subject`.
 ///
 /// # Arguments
 ///
 /// * `subject` - The string to extract from.
-/// * `prefix` - The number of characters to extract.
+/// * `prefix` - The string to extract if starts from it.
 ///
 /// # Example
 /// ```
@@ -472,19 +498,32 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
 pub fn removeprefix(subject: &str, prefix: &str) -> String {
     match subject.len() {
         0 => subject.to_owned(),
-        _ => {
-            let prefix_len = crate::count::count(&prefix);
-            match prefix_len {
-                0 => subject.to_owned(),
-                _ => {
-                    if crate::query::starts_with(&subject, &prefix) {
-                        crate::chop::after(&subject, &prefix)
-                    } else {
-                        subject.to_owned()
-                    }
-                }
-            }
-        }
+        _ => remove_prefix_or_suffix(&subject, &prefix, CutType::StartsWith),
+    }
+}
+
+/// Extracts the `suffix` from `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `suffix` - The string to extract if ends with it.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::removesuffix("Once upon a time", "time");
+/// // => "Once upon a "
+/// chop::removesuffix("O̱̣̊ñç̉é ụ̈̇pǒ̵̱n ą̆ tímę", "tímę");
+/// // => "O̱̣̊ñç̉é ụ̈̇pǒ̵̱n ą̆ "
+/// use voca_rs::Voca;
+/// "Once upon a time"._removesuffix("time");
+/// // => "Once upon a "
+/// ```
+pub fn removesuffix(subject: &str, prefix: &str) -> String {
+    match subject.len() {
+        0 => subject.to_owned(),
+        _ => remove_prefix_or_suffix(&subject, &prefix, CutType::EndsWith),
     }
 }
 

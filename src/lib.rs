@@ -91,6 +91,7 @@ pub trait Voca {
     fn _last(&self, param: usize) -> String;
     fn _prune(&self, param1: usize, param2: &str) -> String;
     fn _removeprefix(&self, param2: &str) -> String;
+    fn _removesuffix(&self, param2: &str) -> String;
     fn _slice(&self, param1: isize, param2: isize) -> String;
     fn _substr(&self, param1: usize, param2: usize) -> String;
     fn _substring(&self, param1: usize, param2: usize) -> String;
@@ -258,6 +259,9 @@ macro_rules! implement_string_for {
                 }
                 fn _removeprefix(&self, param2: &str) -> String {
                     chop::removeprefix(&self, param2)
+                }
+                fn _removesuffix(&self, param2: &str) -> String {
+                    chop::removesuffix(&self, param2)
                 }
                 fn _slice(&self, param1: isize, param2: isize) -> String {
                     chop::slice(&self, param1, param2)
