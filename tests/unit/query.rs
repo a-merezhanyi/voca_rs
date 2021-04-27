@@ -358,7 +358,7 @@ fn _is_shouty_snake_case() {
 #[test]
 fn is_title() {
     assert_eq!(voca_rs::query::is_title(""), false);
-    assert!(voca_rs::query::is_title("The World Is Yours"), true);
+    assert_eq!(voca_rs::query::is_title("The World Is Yours"), true);
     assert_eq!(voca_rs::query::is_title("the world is yours"), false);
     assert!(voca_rs::query::is_title("This Is String Example...Wow!!!"));
     assert_eq!(
@@ -371,7 +371,7 @@ fn is_title() {
 }
 #[test]
 fn _is_title() {
-    assert!("The World Is Yours"._is_title(), true);
+    assert_eq!("The World Is Yours"._is_title(), true);
     assert_eq!("the world is yours"._is_title(), false);
 }
 #[test]

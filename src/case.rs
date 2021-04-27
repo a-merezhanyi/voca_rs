@@ -47,7 +47,7 @@ fn camel_and_pascal_case(subject: &str, title_mode: TitleMode) -> String {
         }
 
         res
-    };
+    }
 }
 
 /// Converts the first character of `subject` to upper case. If `restToLower` is `true`, convert the rest of `subject` to lower case.
@@ -114,7 +114,7 @@ fn capitalize_decapitalize(subject: &str, rest_mode: RestMode, caps_mode: CapsMo
         }
 
         res
-    };
+    }
 }
 /// Converts the first character of `subject` to lower case. If `restToLower` is `true`, convert the rest of `subject` to lower case.
 ///
