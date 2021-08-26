@@ -1,6 +1,5 @@
 # voca_rs
 
-[![Build Status](https://travis-ci.org/a-merezhanyi/voca_rs.svg?branch=master)](https://travis-ci.org/a-merezhanyi/voca_rs)
 [![Crates version](https://img.shields.io/crates/v/voca_rs.svg)](https://crates.io/crates/voca_rs)
 [![dependency status](https://deps.rs/crate/voca_rs/1.13.1/status.svg)](https://deps.rs/crate/voca_rs/1.13.1)
 [![codecov](https://codecov.io/gh/a-merezhanyi/voca_rs/branch/master/graph/badge.svg?token=uSEi0L8ivo)](https://codecov.io/gh/a-merezhanyi/voca_rs)
@@ -228,10 +227,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 ## Copyright
 
-coded by Anatol Marezhanyi [@e1r0nd_crg](https://twitter.com/e1r0nd_crg)
-
-https://www.linkedin.com/in/e1r0nd/<br>
-https://www.youtube.com/c/AnatolMerezhanyi
+Coded by Anatol Marezhanyi [@e1r0nd_crg](https://twitter.com/a_merezhanyi)
 
 ## License
 
