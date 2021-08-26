@@ -5,9 +5,9 @@ authors = ["Anatol Merezhanyi <a.merezhanyi@gmail.com>"]
 license = "MIT"
 description = "Voca_rs is a Rust library for manipulating strings. Inspired by Voca.js and string.py"
 
-homepage = "https://e1r0nd.github.io/voca_rs/"
+homepage = "https://a-merezhanyi.github.io/voca_rs/"
 documentation = "https://docs.rs/voca_rs/"
-repository = "https://github.com/e1r0nd/voca_rs"
+repository = "https://github.com/a-merezhanyi/voca_rs"
 
 keywords = ["string", "case", "snake", "camel", "unicode"]
 categories = ["encoding"]
@@ -15,8 +15,8 @@ readme = "README.md"
 include = ["Cargo.toml", "src/**/*.rs", "README.md", "LICENSE"]
 
 [badges]
-travis-ci = { repository = "e1r0nd/voca_rs" }
-codecov = { repository = "e1r0nd/voca_rs", branch = "master", service = "github" }
+travis-ci = { repository = "a-merezhanyi/voca_rs" }
+codecov = { repository = "a-merezhanyi/voca_rs", branch = "master", service = "github" }
 
 [dependencies]
 regex = "1.3.9"
