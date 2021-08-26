@@ -19,9 +19,9 @@ travis-ci = { repository = "a-merezhanyi/voca_rs" }
 codecov = { repository = "a-merezhanyi/voca_rs", branch = "master", service = "github" }
 
 [dependencies]
-regex = "1.3.9"
+regex = "1.5.4"
 stfu8 = "0.2.4"
-unicode-segmentation = "1.6.0"
+unicode-segmentation = "1.8.0"
 
 [profile.dev]
 lto = true
