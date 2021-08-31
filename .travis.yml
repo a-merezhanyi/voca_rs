@@ -1,32 +1,14 @@
 language: rust
-# sudo: true
-# before_install:
-#   - sudo apt-get update
-# addons:
-#   apt:
-#     packages:
-#       - libcurl4-openssl-dev
-#       - libelf-dev
-#       - libdw-dev
-#       - cmake
-#       - gcc
-#       - binutils-dev
-
-cache: cargo
-# dist: trusty
-os:
-  - linux
-
-# Run builds for all the supported trains
 rust:
   - stable
 
-# The main build
-# script:
-#   - cargo test
+cache: cargo
+os:
+  - linux
 
-# Upload docs
+
 after_success:
+  # Upload docs
   - |
     if [[ "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_RUST_VERSION" == "stable" && "$TRAVIS_PULL_REQUEST" = "false" && "$TRAVIS_BRANCH" == "master" ]]; then
       cargo doc &&
