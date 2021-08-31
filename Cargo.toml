@@ -3,7 +3,7 @@ name = "voca_rs"
 version = "1.13.1"
 authors = ["Anatol Merezhanyi <a.merezhanyi@gmail.com>"]
 license = "MIT"
-description = "Voca_rs is a Rust library for manipulating [unicode] strings. Inspired by Voca.js and string.py"
+description = "Voca_rs is a Rust library for manipulating [unicode] strings"
 
 homepage = "https://a-merezhanyi.github.io/voca_rs/"
 documentation = "https://docs.rs/voca_rs/"
