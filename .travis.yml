@@ -1,31 +1,29 @@
 language: rust
-sudo: true
-before_install:
-  - sudo apt-get update
-addons:
-  apt:
-    packages:
-      - libcurl4-openssl-dev
-      - libelf-dev
-      - libdw-dev
-      - cmake
-      - gcc
-      - binutils-dev
+# sudo: true
+# before_install:
+#   - sudo apt-get update
+# addons:
+#   apt:
+#     packages:
+#       - libcurl4-openssl-dev
+#       - libelf-dev
+#       - libdw-dev
+#       - cmake
+#       - gcc
+#       - binutils-dev
 
 cache: cargo
-dist: trusty
+# dist: trusty
 os:
   - linux
 
 # Run builds for all the supported trains
 rust:
-  - nightly
-  - beta
   - stable
 
 # The main build
-script:
-  - cargo test
+# script:
+#   - cargo test
 
 # Upload docs
 after_success:
