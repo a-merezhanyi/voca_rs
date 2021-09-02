@@ -206,7 +206,7 @@ Build a project: `cargo build` -> `./target/debug`
 - Change all inner arguments to Enums (instead `string` or `bool`)
 - To ensure that all regexp expressions are wrapped by `lazy_static`
 
-#### Chop
+### Chop
 
 - limit_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
 - deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
