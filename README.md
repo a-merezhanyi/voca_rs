@@ -51,7 +51,7 @@ use voca_rs::Voca;
 
 ## Documentation
 
-See the complete documentation at https://a-merezhanyi.github.io/voca_rs/
+See the complete documentation at https://docs.rs/voca_rs/
 
 Run tests: `cargo test`<br>
 Build docs: `cargo doc` -> `./target/doc/voca_rs/index.html` <br>
