@@ -227,4 +227,4 @@ Coded by Anatol Marezhanyi [@a_merezhanyi](https://twitter.com/a_merezhanyi)
 
 ## License
 
-Licensed under [MIT License](LICENSE)
+Licensed under [MIT License](LICENSE.md)
