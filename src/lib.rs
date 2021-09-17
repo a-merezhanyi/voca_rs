@@ -117,6 +117,7 @@ pub trait Voca {
     // manipulate
     fn _expand_tabs(&self, param1: usize) -> String;
     fn _expand_spaces(&self, param1: usize) -> String;
+    fn _finish(&self, param1: &str) -> String;
     fn _insert(&self, param1: &str, param2: usize) -> String;
     fn _latinise(&self) -> String;
     fn _pad(&self, param1: usize, param2: &str) -> String;
@@ -329,6 +330,9 @@ macro_rules! implement_string_for {
                 }
                 fn _expand_spaces(&self, param1: usize) -> String {
                     manipulate::expand_spaces(&self, param1)
+                }
+                fn _finish(&self, param1: &str) -> String {
+                    manipulate::finish(&self, param1)
                 }
                 fn _insert(&self, param1: &str, param2: usize) -> String {
                     manipulate::insert(&self, param1, param2)

@@ -648,3 +648,27 @@ fn word_wrap() {
 fn _word_wrap() {
     assert_eq!("Hello world"._word_wrap(5, "", ""), "Hello\nworld");
 }
+#[test]
+fn finish() {
+    assert_eq!(voca_rs::manipulate::finish("", ""), "");
+    assert_eq!(voca_rs::manipulate::finish("foo bar", "bar"), "foo bar");
+    assert_eq!(
+        voca_rs::manipulate::finish("fóo bąr", " ço¨oł"),
+        "fóo bąr ço¨oł"
+    );
+    assert_eq!(voca_rs::manipulate::finish("asd", ""), "asd");
+    assert_eq!(voca_rs::manipulate::finish("", "asd"), "asd");
+    assert_eq!(
+        voca_rs::manipulate::finish("asd   QWE       zXc", "!"),
+        "asd   QWE       zXc!"
+    );
+    assert_eq!(
+        voca_rs::manipulate::finish("légèreté", "-éè"),
+        "légèreté-éè"
+    );
+    assert_eq!(voca_rs::manipulate::finish("légèreté", "é"), "légèreté");
+    assert_eq!(
+        voca_rs::manipulate::finish("Как слышно, приём", "!"),
+        "Как слышно, приём!"
+    );
+}

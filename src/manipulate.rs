@@ -733,3 +733,29 @@ pub fn word_wrap(subject: &str, width: usize, newline: &str, indent: &str) -> St
     }
     format!("{}{}{}", result, indent_sym, string)
 }
+
+/// Adds the `suffix` to the end of the string unless it already exists in the `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extend.
+/// * `suffix` - The ending string.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::finish("foo bar", "bar");
+/// // => "foo bar"
+/// manipulate::finish("fóo bąr", " ço¨oł");
+/// // => "fóo bąr ço¨oł"
+/// use voca_rs::Voca;
+/// "foo bar"._finish(" cool");
+/// // => "foo bar cool"
+/// ```
+pub fn finish(subject: &str, suffix: &str) -> String {
+    if suffix.is_empty() || subject.ends_with(suffix) {
+        return subject.to_owned();
+    }
+    format!("{}{}", subject, suffix)
+}
