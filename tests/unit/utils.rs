@@ -2,7 +2,7 @@
 
 #[test]
 fn version() {
-    assert_eq!(voca_rs::utils::VERSION, "1.13.1");
+    assert_eq!(voca_rs::utils::VERSION, "1.14.0");
 }
 #[test]
 fn ascii_letters() {
