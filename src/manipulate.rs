@@ -759,3 +759,28 @@ pub fn finish(subject: &str, suffix: &str) -> String {
     }
     format!("{}{}", subject, suffix)
 }
+/// Adds the `prefix` to the start of the string unless it already exists in the `subject`.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extend.
+/// * `prefix` - The starting string.
+///
+/// # Example
+///
+/// ```
+/// use voca_rs::*;
+/// manipulate::start("foo bar", "foo");
+/// // => "foo bar"
+/// manipulate::start("fóo bąr", "ço¨oł ");
+/// // => "ço¨oł fóo bąr"
+/// use voca_rs::Voca;
+/// "foo bar"._start("cool ");
+/// // => "cool foo bar"
+/// ```
+pub fn start(subject: &str, prefix: &str) -> String {
+    if prefix.is_empty() || subject.starts_with(prefix) {
+        return subject.to_owned();
+    }
+    format!("{}{}", prefix, subject)
+}

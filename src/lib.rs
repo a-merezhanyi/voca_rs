@@ -130,6 +130,7 @@ pub trait Voca {
     fn _reverse_grapheme(&self) -> String;
     fn _slugify(&self) -> String;
     fn _splice(&self, param1: isize, param2: usize, param3: &str) -> String;
+    fn _start(&self, param1: &str) -> String;
     fn _trim(&self, param1: &str) -> String;
     fn _trim_right(&self, param1: &str) -> String;
     fn _trim_left(&self, param1: &str) -> String;
@@ -369,6 +370,9 @@ macro_rules! implement_string_for {
                 }
                 fn _splice(&self, param1: isize, param2: usize, param3: &str) -> String {
                     manipulate::splice(&self, param1, param2, param3)
+                }
+                fn _start(&self, param1: &str) -> String {
+                    manipulate::start(&self, param1)
                 }
                 fn _trim(&self, param1: &str) -> String {
                     manipulate::trim(&self, param1)

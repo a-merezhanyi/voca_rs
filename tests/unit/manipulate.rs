@@ -672,3 +672,24 @@ fn finish() {
         "Как слышно, приём!"
     );
 }
+#[test]
+fn start() {
+    assert_eq!(voca_rs::manipulate::start("", ""), "");
+    assert_eq!(voca_rs::manipulate::start("foo bar", "foo"), "foo bar");
+    assert_eq!(
+        voca_rs::manipulate::start("fóo bąr", "ço¨oł "),
+        "ço¨oł fóo bąr"
+    );
+    assert_eq!(voca_rs::manipulate::start("asd", ""), "asd");
+    assert_eq!(voca_rs::manipulate::start("", "asd"), "asd");
+    assert_eq!(
+        voca_rs::manipulate::start("asd   QWE       zXc", "!"),
+        "!asd   QWE       zXc"
+    );
+    assert_eq!(voca_rs::manipulate::start("légèreté", "éè-"), "éè-légèreté");
+    assert_eq!(voca_rs::manipulate::start("élégèreté", "é"), "élégèreté");
+    assert_eq!(
+        voca_rs::manipulate::start("Как слышно, приём!", "¡"),
+        "¡Как слышно, приём!"
+    );
+}

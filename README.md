@@ -139,6 +139,7 @@ Build a project: `cargo build` -> `./target/debug`
 - [reverse_grapheme](https://docs.rs/voca_rs/*/voca_rs/manipulate/fn.reverse_grapheme.html)
 - [slugify](https://docs.rs/voca_rs/*/voca_rs/manipulate/fn.slugify.html)
 - [splice](https://docs.rs/voca_rs/*/voca_rs/manipulate/fn.splice.html)
+- [start](https://docs.rs/voca_rs/*/voca_rs/manipulate/fn.start.html)
 - [tr](https://docs.rs/voca_rs/*/voca_rs/manipulate/fn.tr.html)
 - [trim](https://docs.rs/voca_rs/*/voca_rs/manipulate/fn.trim.html)
 - [trim_left](https://docs.rs/voca_rs/*/voca_rs/manipulate/fn.trim_left.html)
@@ -216,7 +217,6 @@ Build a project: `cargo build` -> `./target/debug`
 
 ### Manipulate
 
-- start - [link](https://docs.grafite.ca/utilities/helpers/)
 - deordinalize - [link](https://docs.rs/Inflector/0.11.4/inflector/numbers/deordinalize/fn.deordinalize.html)
 - pluralize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/pluralize/fn.to_plural.html)
 - singularize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/singularize/fn.to_singular.html)
