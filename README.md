@@ -227,7 +227,7 @@ Build a project: `cargo build` -> `./target/debug`
 
 ## Copyright
 
-Coded by Anatol Marezhanyi [@a_merezhanyi](https://twitter.com/a_merezhanyi)
+Coded by Tolik Merezhanyi [@a_merezhanyi](https://twitter.com/a_merezhanyi)
 
 ## License
 
