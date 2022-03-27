@@ -52,8 +52,6 @@ use voca_rs::Voca;
 
 ## Documentation
 
-See the complete documentation at https://a-merezhanyi.github.io/voca_rs/
-
 Run tests: `cargo test`<br>
 Build docs: `cargo doc` -> `./target/doc/voca_rs/index.html` <br>
 Build a project: `cargo build` -> `./target/debug`
@@ -214,6 +212,11 @@ Build a project: `cargo build` -> `./target/debug`
 - limit_words (from "words") - [link](https://docs.grafite.ca/utilities/helpers/)
 - deconstantize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/deconstantize/fn.deconstantize.html)
 - demodulize - [link](https://docs.rs/Inflector/0.11.4/inflector/string/demodulize/fn.demodulize.html)
+
+### Escape
+
+- escape_uri - [link](https://docs.rs/urlencoding/2.1.0/urlencoding/fn.encode.html)
+- unescape_uri - [link](https://docs.rs/urlencoding/2.1.0/urlencoding/fn.decode.html)
 
 ### Manipulate
 

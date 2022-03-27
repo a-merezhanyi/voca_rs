@@ -1,11 +1,10 @@
 [package]
 name = "voca_rs"
 version = "1.14.0"
-authors = ["Anatol Merezhanyi <a.merezhanyi@gmail.com>"]
+authors = ["Tolik Merezhanyi <a.merezhanyi@gmail.com>"]
 license = "MIT"
 description = "Voca_rs is a Rust library for manipulating [unicode] strings"
 
-homepage = "https://a-merezhanyi.github.io/voca_rs/"
 documentation = "https://docs.rs/voca_rs/"
 repository = "https://github.com/a-merezhanyi/voca_rs"
 
