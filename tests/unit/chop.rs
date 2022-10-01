@@ -385,6 +385,31 @@ fn _truncate() {
     assert_eq!("Once upon a time"._truncate(7, ""), "Once...");
 }
 #[test]
+fn limit_words() {
+    assert_eq!(voca_rs::chop::limit_words("", 0, ""), "");
+    assert_eq!(voca_rs::chop::limit_words("a", 0, ""), "");
+    assert_eq!(voca_rs::chop::limit_words("a", 1, ""), "a");
+    assert_eq!(voca_rs::chop::limit_words("a", 2, ""), "a");
+    assert_eq!(voca_rs::chop::limit_words("a", 10, ""), "a");
+    assert_eq!(
+        voca_rs::chop::limit_words("Once upon a time", 1, ""),
+        "Once..."
+    );
+    assert_eq!(
+        voca_rs::chop::limit_words("Die Schildkröte, fliegt über das Floß.", 2, "(...)"),
+        "Die Schildkröte(...)"
+    );
+    assert_eq!(voca_rs::chop::limit_words("Once upon", 10, ""), "Once upon");
+    assert_eq!(
+        voca_rs::chop::limit_words("Как слышно, приём!", 2, ""),
+        "Как слышно..."
+    );
+}
+#[test]
+fn _limit_words() {
+    assert_eq!("Once upon a time"._limit_words(1, ""), "Once...");
+}
+#[test]
 fn max() {
     assert_eq!(voca_rs::chop::max(""), "");
     assert_eq!(voca_rs::chop::max("rain"), "r");

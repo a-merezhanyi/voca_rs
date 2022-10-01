@@ -397,15 +397,15 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
     if length == 0 {
         return "".to_string();
     }
-    let mut sufix = match end {
+    let mut suffix = match end {
         "" => "...",
         _ => end,
     };
     let subject_chars = crate::split::chars(&subject);
     let subject_length = subject_chars.len();
-    let end_length = crate::split::chars(&sufix).len();
+    let end_length = crate::split::chars(&suffix).len();
     let position_end = if subject_length <= length {
-        sufix = "";
+        suffix = "";
         subject_length
     } else {
         let string_length = length - end_length;
@@ -448,7 +448,7 @@ pub fn prune(subject: &str, length: usize, end: &str) -> String {
         end_position
     };
 
-    format!("{}{}", get_chars(&subject, 0, position_end), sufix)
+    format!("{}{}", get_chars(&subject, 0, position_end), suffix)
 }
 
 #[derive(Clone, Copy, PartialEq)]
@@ -690,19 +690,19 @@ pub fn truncate(subject: &str, length: usize, end: &str) -> String {
     if length == 0 {
         return "".to_string();
     }
-    let mut sufix = match end {
+    let mut suffix = match end {
         "" => "...",
         _ => end,
     };
     let subject_length = crate::split::chars(&subject).len();
-    let end_length = crate::split::chars(&sufix).len();
+    let end_length = crate::split::chars(&suffix).len();
     let position_end = if subject_length < length || length < end_length {
-        sufix = "";
+        suffix = "";
         subject_length
     } else {
         length - end_length
     };
-    format!("{}{}", get_chars(&subject, 0, position_end), sufix)
+    format!("{}{}", get_chars(&subject, 0, position_end), suffix)
 }
 
 /// Returns the max character from the `subject` by its code point.
@@ -778,4 +778,45 @@ fn min_max(subject: &str, search_type: MinMaxType) -> String {
         None => "".to_owned(),
         Some(x) => stfu8::encode_u16(&[*x]),
     }
+}
+
+/// Limits the `subject` length to a `number` of words. Removes trailing commas and other punctuation.
+///
+/// # Arguments
+///
+/// * `subject` - The string to truncate.
+/// * `number` - The limit number of words.
+/// * `end` - The string to be added at the end. Default value is "...".
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::limit_words("zen and the art of Motorcycle Maintenance", 4, "");
+/// // => "zen and the art..."
+/// chop::limit_words("Die Schildkröte, fliegt über das Floß.", 2, "(...)");
+/// // => "Die Schildkröte(...)"
+/// chop::limit_words("Once upon", 10, "");
+/// // => "Once upon"
+/// use voca_rs::Voca;
+/// "Once upon a time"._limit_words(1, "");
+/// // => "Once..."
+/// ```
+pub fn limit_words(subject: &str, number: usize, end: &str) -> String {
+    if number == 0 {
+        return "".to_string();
+    }
+    let mut suffix = match end {
+        "" => "...",
+        _ => end,
+    };
+    let mut subject_words: Vec<&str> = subject.split_ascii_whitespace().collect();
+    let fragment = if subject_words.len() <= number {
+        suffix = "";
+        subject.to_owned()
+    } else {
+        subject_words.truncate(number);
+        let result = subject_words.join(" ");
+        crate::manipulate::trim_right(&result, crate::utils::PUNCTUATION)
+    };
+    format!("{}{}", fragment, suffix)
 }

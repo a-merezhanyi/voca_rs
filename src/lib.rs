@@ -96,6 +96,7 @@ pub trait Voca {
     fn _substr(&self, param1: usize, param2: usize) -> String;
     fn _substring(&self, param1: usize, param2: usize) -> String;
     fn _truncate(&self, param1: usize, param2: &str) -> String;
+    fn _limit_words(&self, param1: usize, param2: &str) -> String;
     fn _max_code_point(&self) -> String;
     fn _min_code_point(&self) -> String;
     // count
@@ -276,6 +277,9 @@ macro_rules! implement_string_for {
                 }
                 fn _truncate(&self, param1: usize, param2: &str) -> String {
                     chop::truncate(&self, param1, param2)
+                }
+                fn _limit_words(&self, param1: usize, param2: &str) -> String {
+                    chop::limit_words(&self, param1, param2)
                 }
                 fn _max_code_point(&self) -> String {
                     chop::max(&self)
