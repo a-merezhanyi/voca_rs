@@ -24,8 +24,8 @@ pub fn strip_bom(subject: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
         _ => {
-            if crate::chop::first(&subject, 1) == "\u{FEFF}" {
-                crate::chop::slice(&subject, 1, 0)
+            if crate::chop::first(subject, 1) == "\u{FEFF}" {
+                crate::chop::slice(subject, 1, 0)
             } else {
                 subject.to_string()
             }
@@ -52,7 +52,7 @@ pub fn strip_bom(subject: &str) -> String {
 pub fn strip_tags(subject: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
-        _ => strip_html_tags(&subject),
+        _ => strip_html_tags(subject),
     }
 }
 
@@ -175,7 +175,7 @@ fn strip_html_tags(subject: &str) -> String {
         if advance {
             match state {
                 StateMode::Output => {
-                    output.push_str(&c);
+                    output.push_str(c);
                 }
                 StateMode::Html => {}
                 _ => {}

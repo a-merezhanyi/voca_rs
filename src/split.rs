@@ -174,5 +174,5 @@ pub fn code_points(subject: &str) -> Vec<u16> {
     if subject.is_empty() {
         return vec![];
     }
-    stfu8::decode_u16(&subject).unwrap()
+    stfu8::decode_u16(subject).unwrap()
 }

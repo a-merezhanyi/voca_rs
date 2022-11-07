@@ -53,9 +53,9 @@ pub fn escape_regexp(subject: &str) -> String {
         0 => "".to_string(),
         _ => {
             let mut res = String::new();
-            for c in crate::split::chars(&subject) {
-                let push_char = if key.contains(&c) {
-                    format!("\\{}", &c)
+            for c in crate::split::chars(subject) {
+                let push_char = if key.contains(c) {
+                    format!("\\{}", c)
                 } else {
                     c.to_string()
                 };

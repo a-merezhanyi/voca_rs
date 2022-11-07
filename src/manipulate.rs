@@ -85,8 +85,8 @@ pub fn insert(subject: &str, to_insert: &str, position: usize) -> String {
     } else {
         position
     };
-    let prefix = crate::split::chars(&subject)[..insert_position].join("");
-    let sufix = crate::split::chars(&subject)[insert_position..].join("");
+    let prefix = crate::split::chars(subject)[..insert_position].join("");
+    let sufix = crate::split::chars(subject)[insert_position..].join("");
     format!("{}{}{}", prefix, to_insert, sufix)
 }
 
@@ -142,14 +142,14 @@ pub fn latinise(subject: &str) -> String {
 /// // => " dog "
 /// ```
 pub fn pad(subject: &str, length: usize, pad: &str) -> String {
-    let subject_len = crate::count::count_graphemes(&subject);
+    let subject_len = crate::count::count_graphemes(subject);
     match subject_len {
         0 => "".to_string(),
         _ => {
             if subject_len >= length {
                 subject.to_string()
             } else {
-                pad_left_right(&subject, length, &pad, PadMode::Both)
+                pad_left_right(subject, length, pad, PadMode::Both)
             }
         }
     }
@@ -163,7 +163,7 @@ enum PadMode {
 }
 
 fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) -> String {
-    let width = length - crate::count::count_graphemes(&subject);
+    let width = length - crate::count::count_graphemes(subject);
     let to_add = if pad.is_empty() { " " } else { pad };
     let times = width / to_add.len();
     let str_to_add = to_add.repeat(times + 1);
@@ -215,14 +215,14 @@ fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) ->
 /// // => "  dog"
 /// ```
 pub fn pad_left(subject: &str, length: usize, pad: &str) -> String {
-    let subject_len = crate::count::count_graphemes(&subject);
+    let subject_len = crate::count::count_graphemes(subject);
     match subject_len {
         0 => "".to_string(),
         _ => {
             if subject_len >= length {
                 subject.to_string()
             } else {
-                pad_left_right(&subject, length, &pad, PadMode::Left)
+                pad_left_right(subject, length, pad, PadMode::Left)
             }
         }
     }
@@ -251,14 +251,14 @@ pub fn pad_left(subject: &str, length: usize, pad: &str) -> String {
 /// // => "dog  "
 /// ```
 pub fn pad_right(subject: &str, length: usize, pad: &str) -> String {
-    let subject_len = crate::count::count_graphemes(&subject);
+    let subject_len = crate::count::count_graphemes(subject);
     match subject_len {
         0 => "".to_string(),
         _ => {
             if subject_len >= length {
                 subject.to_string()
             } else {
-                pad_left_right(&subject, length, &pad, PadMode::Right)
+                pad_left_right(subject, length, pad, PadMode::Right)
             }
         }
     }
@@ -317,13 +317,13 @@ pub fn replace(subject: &str, pattern: &str, replacement: &str) -> String {
     if subject.is_empty() || pattern.is_empty() {
         return subject.to_string();
     }
-    match index::index_of(&subject, &pattern, 0) {
+    match index::index_of(subject, pattern, 0) {
         -1 => subject.to_string(),
         x => splice(
-            &subject,
+            subject,
             x as isize,
-            crate::count::count(&pattern),
-            &replacement,
+            crate::count::count(pattern),
+            replacement,
         ),
     }
 }
@@ -464,7 +464,7 @@ pub fn slugify(subject: &str) -> String {
 /// // => "year"
 /// ```
 pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) -> String {
-    let subject_len = crate::count::count(&subject);
+    let subject_len = crate::count::count(subject);
     fn calculate_start_position(start: isize, subject_len: usize) -> usize {
         if start < 0 {
             if start.abs() as usize > subject_len {
@@ -485,9 +485,9 @@ pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) ->
             _ => {
                 let insert_position = calculate_start_position(start, subject_len);
                 if insert_position >= subject_len {
-                    format!("{}{}", &subject, &to_add)
+                    format!("{}{}", subject, to_add)
                 } else {
-                    insert(&subject, &to_add, insert_position)
+                    insert(subject, to_add, insert_position)
                 }
             }
         },
@@ -501,9 +501,9 @@ pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) ->
 
             format!(
                 "{}{}{}",
-                crate::chop::first(&subject, start_position),
-                &to_add,
-                crate::chop::slice(&subject, end_position as isize, 0)
+                crate::chop::first(subject, start_position),
+                to_add,
+                crate::chop::slice(subject, end_position as isize, 0)
             )
         }
     }
@@ -529,7 +529,7 @@ pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) ->
 /// // => "Mother nature"
 /// ```
 pub fn trim(subject: &str, whitespace: &str) -> String {
-    trim_left_or_right(&subject, &whitespace, true, true)
+    trim_left_or_right(subject, whitespace, true, true)
 }
 
 /// Removes whitespaces from the left side of the `subject`.
@@ -552,7 +552,7 @@ pub fn trim(subject: &str, whitespace: &str) -> String {
 /// // => "Mother nature "
 /// ```
 pub fn trim_left(subject: &str, whitespace: &str) -> String {
-    trim_left_or_right(&subject, &whitespace, true, false)
+    trim_left_or_right(subject, whitespace, true, false)
 }
 
 /// Removes whitespaces from the right side of the `subject`.
@@ -575,7 +575,7 @@ pub fn trim_left(subject: &str, whitespace: &str) -> String {
 /// // => " Mother nature"
 /// ```
 pub fn trim_right(subject: &str, whitespace: &str) -> String {
-    trim_left_or_right(&subject, &whitespace, false, true)
+    trim_left_or_right(subject, whitespace, false, true)
 }
 
 fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: bool) -> String {
@@ -624,14 +624,14 @@ fn trim_left_or_right(subject: &str, whitespace: &str, to_left: bool, to_right: 
 /// // => "00123"
 /// ```
 pub fn zfill(subject: &str, length: usize) -> String {
-    let subject_len = crate::count::count_graphemes(&subject);
+    let subject_len = crate::count::count_graphemes(subject);
     match subject_len {
         0 => "".to_string(),
         _ => {
             if subject_len >= length {
                 subject.to_string()
             } else {
-                pad_left_right(&subject, length, "0", PadMode::Left)
+                pad_left_right(subject, length, "0", PadMode::Left)
             }
         }
     }
@@ -662,8 +662,8 @@ pub fn tr(subject: &str, from: &str, to: &str) -> String {
         return subject.to_owned();
     }
     let mut result = String::from(subject);
-    let from_symbols = crate::split::graphemes(&from);
-    let to_symbols = crate::split::graphemes(&to);
+    let from_symbols = crate::split::graphemes(from);
+    let to_symbols = crate::split::graphemes(to);
     let to_len = to_symbols.len();
 
     for (i, c) in from_symbols.iter().enumerate() {
@@ -695,7 +695,7 @@ pub fn tr(subject: &str, from: &str, to: &str) -> String {
 /// // => "Hello\nworld"
 /// ```
 pub fn word_wrap(subject: &str, width: usize, newline: &str, indent: &str) -> String {
-    let mut subject_len = crate::count::count_graphemes(&subject);
+    let mut subject_len = crate::count::count_graphemes(subject);
     if subject.is_empty() || (subject_len < width && indent.is_empty()) {
         return subject.to_owned();
     }

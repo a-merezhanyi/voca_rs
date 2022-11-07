@@ -20,7 +20,7 @@
 /// // => "birdFlight"
 /// ```
 pub fn camel_case(subject: &str) -> String {
-    camel_and_pascal_case(&subject, TitleMode::Normal)
+    camel_and_pascal_case(subject, TitleMode::Normal)
 }
 
 #[derive(Clone, Copy, PartialEq)]
@@ -32,7 +32,7 @@ enum TitleMode {
 fn camel_and_pascal_case(subject: &str, title_mode: TitleMode) -> String {
     return match subject.len() {
         0 => subject.to_string(),
-        _ => return_string(&subject, title_mode),
+        _ => return_string(subject, title_mode),
     };
 
     fn return_string(subject: &str, title_mode: TitleMode) -> String {
@@ -92,7 +92,7 @@ enum CapsMode {
 fn capitalize_decapitalize(subject: &str, rest_mode: RestMode, caps_mode: CapsMode) -> String {
     return match subject.len() {
         0 => subject.to_string(),
-        _ => return_string(&subject, rest_mode, caps_mode),
+        _ => return_string(subject, rest_mode, caps_mode),
     };
 
     fn return_string(subject: &str, rest_mode: RestMode, caps_mode: CapsMode) -> String {
@@ -163,7 +163,7 @@ pub fn decapitalize(subject: &str, rest_to_lower: bool) -> String {
 /// // => "goodbye-blue-sky"
 /// ```
 pub fn kebab_case(subject: &str) -> String {
-    kebab_and_shouty_kebab_and_train_case(&subject, KebabMode::Normal)
+    kebab_and_shouty_kebab_and_train_case(subject, KebabMode::Normal)
 }
 
 /// Converts the `subject` to SHOUTY kebab case.
@@ -186,7 +186,7 @@ pub fn kebab_case(subject: &str) -> String {
 /// // => "GOODBYE-BLUE-SKY"
 /// ```
 pub fn shouty_kebab_case(subject: &str) -> String {
-    kebab_and_shouty_kebab_and_train_case(&subject, KebabMode::Shouty)
+    kebab_and_shouty_kebab_and_train_case(subject, KebabMode::Shouty)
 }
 
 #[derive(Clone, Copy, PartialEq)]
@@ -202,9 +202,9 @@ fn kebab_and_shouty_kebab_and_train_case(subject: &str, kebab_mode: KebabMode) -
         _ => crate::split::words(subject)
             .into_iter()
             .map(|c| match kebab_mode {
-                KebabMode::Normal => lower_case(&c),
-                KebabMode::Shouty => upper_case(&c),
-                KebabMode::Train => capitalize(&c, true),
+                KebabMode::Normal => lower_case(c),
+                KebabMode::Shouty => upper_case(c),
+                KebabMode::Train => capitalize(c, true),
             })
             .collect::<Vec<String>>()
             .join("-"),
@@ -262,7 +262,7 @@ pub fn lower_case(subject: &str) -> String {
 /// // => "BirdFlight"
 /// ```
 pub fn pascal_case(subject: &str) -> String {
-    camel_and_pascal_case(&subject, TitleMode::Caps)
+    camel_and_pascal_case(subject, TitleMode::Caps)
 }
 
 /// Converts the `subject` to snake case.
@@ -285,7 +285,7 @@ pub fn pascal_case(subject: &str) -> String {
 /// // => "learning_to_fly"
 /// ```
 pub fn snake_case(subject: &str) -> String {
-    snake_and_shouty_snake_case(&subject, false)
+    snake_and_shouty_snake_case(subject, false)
 }
 
 /// Converts the `subject` to SHOUTY snake case.
@@ -308,7 +308,7 @@ pub fn snake_case(subject: &str) -> String {
 /// // => "LEARNING_TO_FLY"
 /// ```
 pub fn shouty_snake_case(subject: &str) -> String {
-    snake_and_shouty_snake_case(&subject, true)
+    snake_and_shouty_snake_case(subject, true)
 }
 
 fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
@@ -318,9 +318,9 @@ fn snake_and_shouty_snake_case(subject: &str, shouty: bool) -> String {
             .into_iter()
             .map(|c| {
                 if shouty {
-                    upper_case(&c)
+                    upper_case(c)
                 } else {
-                    lower_case(&c)
+                    lower_case(c)
                 }
             })
             .collect::<Vec<String>>()
@@ -390,7 +390,7 @@ pub fn title_case(subject: &str) -> String {
         0 => subject.to_string(),
         _ => crate::split::words(subject)
             .into_iter()
-            .map(|c| capitalize(&c, true))
+            .map(|c| capitalize(c, true))
             .collect::<Vec<String>>()
             .join(" "),
     }
@@ -416,7 +416,7 @@ pub fn title_case(subject: &str) -> String {
 /// // => "Goodbye-Blue-Sky"
 /// ```
 pub fn train_case(subject: &str) -> String {
-    kebab_and_shouty_kebab_and_train_case(&subject, KebabMode::Train)
+    kebab_and_shouty_kebab_and_train_case(subject, KebabMode::Train)
 }
 
 /// Converts the `subject` to upper case.
@@ -469,7 +469,7 @@ pub fn upper_case(subject: &str) -> String {
 /// // => "fred"
 /// ```
 pub fn lower_first(subject: &str) -> String {
-    decapitalize(&subject, false)
+    decapitalize(subject, false)
 }
 
 /// Converts the first character of the `subject` to upper case.
@@ -491,5 +491,5 @@ pub fn lower_first(subject: &str) -> String {
 /// // => "Fred"
 /// ```
 pub fn upper_first(subject: &str) -> String {
-    capitalize(&subject, false)
+    capitalize(subject, false)
 }
