@@ -467,12 +467,10 @@ fn remove_prefix_or_suffix(subject: &str, substring: &str, cut_type: CutType) ->
                 } else {
                     subject.to_owned()
                 }
-            } else {
-                if crate::query::ends_with(subject, substring) {
+            } else if crate::query::ends_with(subject, substring) {
                     crate::chop::before_last(subject, substring)
-                } else {
-                    subject.to_owned()
-                }
+            } else {
+                subject.to_owned()
             }
         }
     }
