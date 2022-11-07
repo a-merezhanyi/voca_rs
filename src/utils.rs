@@ -132,7 +132,7 @@ pub fn unidecode_char(ch: char) -> &'static str {
 
 /// Unicode mapping
 /// https://github.com/chowdhurya/rust-unidecode/blob/master/src/data.rs
-static MAPPING: [&'static str; 0xffff] = [
+static MAPPING: [&str; 0xffff] = [
     "\u{0}",
     "\u{1}",
     "\u{2}",
