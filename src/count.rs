@@ -147,11 +147,9 @@ pub fn count_where(subject: &str, f: fn(&str) -> bool) -> usize {
 pub fn count_words(subject: &str, pattern: &str) -> usize {
     fn match_substring(subject: &str, pattern: &str) -> usize {
         match pattern.len() {
-            0 => crate::split::words(subject).iter().count(),
+            0 => crate::split::words(subject).len(),
             _ => subject
                 .split_terminator(pattern)
-                .collect::<Vec<_>>()
-                .iter()
                 .count(),
         }
     }
@@ -187,7 +185,7 @@ pub fn count_unique_words(subject: &str, pattern: &str) -> usize {
         0 => crate::split::words(subject),
         _ => subject.split_terminator(pattern).collect::<Vec<_>>(),
     };
-    if words.len() == 0 {
+    if words.is_empty() {
         return 0;
     };
 

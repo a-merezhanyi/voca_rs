@@ -182,7 +182,7 @@ fn pad_left_right(subject: &str, length: usize, pad: &str, pad_mode: PadMode) ->
             } else {
                 width / 2
             };
-            let add = if width % 2 != 0 { 1 } else { 0 };
+            let add = usize::from(width % 2 != 0);
             let prefix = string_to_add[..middle].join("");
             let sufix = string_to_add[..middle + add].join("");
             format!("{}{}{}", prefix, subject, sufix)
@@ -467,10 +467,10 @@ pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) ->
     let subject_len = crate::count::count(subject);
     fn calculate_start_position(start: isize, subject_len: usize) -> usize {
         if start < 0 {
-            if start.abs() as usize > subject_len {
+            if start.unsigned_abs() > subject_len {
                 0
             } else {
-                subject_len - start.abs() as usize
+                subject_len - start.unsigned_abs()
             }
         } else if (start as usize) >= subject_len {
             subject_len
