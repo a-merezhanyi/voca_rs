@@ -80,7 +80,7 @@ fn strip_html_tags(subject: &str) -> String {
     let mut quote = String::with_capacity(4);
     for (i, c) in crate::split::graphemes(subject).iter().enumerate() {
         let mut advance = false;
-        match c.to_owned() {
+        match *c {
             "<" => {
                 if !quote.is_empty() {
                 } else if crate::query::query(
