@@ -51,7 +51,7 @@ pub fn expand_tabs(subject: &str, tabsize: usize) -> String {
     if subject.is_empty() {
         "".to_string()
     } else {
-        subject.replace("\t", &" ".repeat(tabsize))
+        subject.replace('\t', &" ".repeat(tabsize))
     }
 }
 
@@ -435,7 +435,7 @@ pub fn slugify(subject: &str) -> String {
     if subject.is_empty() {
         "".to_string()
     } else {
-        crate::split::words(unidecode(subject).replace("'", "").to_lowercase().trim()).join("-")
+        crate::split::words(unidecode(subject).replace('\'', "").to_lowercase().trim()).join("-")
     }
 }
 
