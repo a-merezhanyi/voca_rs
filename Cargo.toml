@@ -1,6 +1,6 @@
 [package]
 name = "voca_rs"
-version = "1.15.0"
+version = "1.15.1"
 authors = ["A. Merezhanyi <a.merezhanyi@gmail.com>"]
 license = "MIT"
 description = "Voca_rs is a Rust library for manipulating [unicode] strings"

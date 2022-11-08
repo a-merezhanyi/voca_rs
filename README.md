@@ -1,7 +1,7 @@
 # voca_rs
 
 [![Crates version](https://img.shields.io/crates/v/voca_rs.svg)](https://crates.io/crates/voca_rs)
-[![dependency status](https://deps.rs/crate/voca_rs/1.15.0/status.svg)](https://deps.rs/crate/voca_rs/1.15.0)
+[![dependency status](https://deps.rs/crate/voca_rs/1.15.1/status.svg)](https://deps.rs/crate/voca_rs/1.15.1)
 [![Build Status](https://app.travis-ci.com/a-merezhanyi/voca_rs.svg?branch=master)](https://app.travis-ci.com/a-merezhanyi/voca_rs)
 [![codecov](https://codecov.io/gh/a-merezhanyi/voca_rs/branch/master/graph/badge.svg?token=uSEi0L8ivo)](https://codecov.io/gh/a-merezhanyi/voca_rs)
 [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
