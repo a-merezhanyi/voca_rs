@@ -3,9 +3,9 @@
     warnings,
     unused_variables,
     missing_docs,
-    unsafe_code,
     unused_extern_crates
 )]
+#![forbid(unsafe_code)]
 #![cfg_attr(all(test, feature = "nightly"), feature(test))]
 
 //! Voca_rs is the ultimate Rust string library inspired by Voca.js and string.py
