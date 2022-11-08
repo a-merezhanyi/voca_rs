@@ -80,14 +80,16 @@ fn strip_html_tags(subject: &str) -> String {
     let mut quote = String::with_capacity(4);
     for (i, c) in crate::split::graphemes(subject).iter().enumerate() {
         let mut advance = false;
-        match c.to_owned() {
+        match *c {
             "<" => {
                 if !quote.is_empty() {
-                } else if crate::query::query(
-                    unicode_string_range(subject, i, i + 2).as_str(),
-                    "< ",
-                    0,
-                ) {
+                } else if i + 2 < length
+                    && crate::query::query(
+                        unicode_string_range(subject, i, i + 2).as_str(),
+                        "< ",
+                        0,
+                    )
+                {
                     advance = true;
                 } else if state == StateMode::Output {
                     advance = true;
@@ -100,6 +102,7 @@ fn strip_html_tags(subject: &str) -> String {
             }
             "!" => {
                 if state == StateMode::Html
+                    && i + 2 < length
                     && crate::query::query(
                         unicode_string_range(subject, i, i + 2).as_str(),
                         "<!",
@@ -113,6 +116,7 @@ fn strip_html_tags(subject: &str) -> String {
             }
             "-" => {
                 if state == StateMode::Exclamation
+                    && i + 3 < length
                     && crate::query::query(
                         unicode_string_range(subject, i, i + 3).as_str(),
                         "!--",
@@ -138,6 +142,7 @@ fn strip_html_tags(subject: &str) -> String {
             }
             "E" | "e" => {
                 if state == StateMode::Exclamation
+                    && i + 7 < length
                     && crate::query::query(
                         unicode_string_range(subject, i, i + 7).as_str(),
                         "doctype",
@@ -156,6 +161,7 @@ fn strip_html_tags(subject: &str) -> String {
                 } else if state == StateMode::Html
                     || state == StateMode::Exclamation
                     || state == StateMode::Comment
+                        && i + 3 < length
                         && crate::query::query(
                             unicode_string_range(subject, i, i + 3).as_str(),
                             "-->",

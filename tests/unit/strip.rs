@@ -226,3 +226,13 @@ fn _strip_tags() {
         "Summer is nice"
     );
 }
+
+#[test]
+fn partial_directive() {
+    assert_eq!(voca_rs::strip::strip_tags("<"), "");
+    assert_eq!(voca_rs::strip::strip_tags("<t"), "");
+    assert_eq!(voca_rs::strip::strip_tags("</"), "");
+    assert_eq!(voca_rs::strip::strip_tags("</a"), "");
+    assert_eq!(voca_rs::strip::strip_tags("<!"), "");
+    assert_eq!(voca_rs::strip::strip_tags("<!-"), "");
+}
