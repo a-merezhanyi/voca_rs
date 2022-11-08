@@ -85,7 +85,7 @@ pub fn count_substrings(subject: &str, substring: &str) -> usize {
 
     match subject.len() {
         0 => 0,
-        _ => match_substring(&subject, &substring),
+        _ => match_substring(subject, substring),
     }
 }
 
@@ -113,8 +113,8 @@ pub fn count_where(subject: &str, f: fn(&str) -> bool) -> usize {
         0 => 0,
         _ => {
             let mut res = 0;
-            for c in crate::split::graphemes(&subject).iter() {
-                if f(&c) {
+            for c in crate::split::graphemes(subject).iter() {
+                if f(c) {
                     res += 1;
                 }
             }
@@ -147,17 +147,15 @@ pub fn count_where(subject: &str, f: fn(&str) -> bool) -> usize {
 pub fn count_words(subject: &str, pattern: &str) -> usize {
     fn match_substring(subject: &str, pattern: &str) -> usize {
         match pattern.len() {
-            0 => crate::split::words(&subject).iter().count(),
+            0 => crate::split::words(subject).len(),
             _ => subject
                 .split_terminator(pattern)
-                .collect::<Vec<_>>()
-                .iter()
                 .count(),
         }
     }
     match subject.len() {
         0 => 0,
-        _ => match_substring(&subject, &pattern),
+        _ => match_substring(subject, pattern),
     }
 }
 
@@ -184,10 +182,10 @@ use std::collections::HashMap;
 pub fn count_unique_words(subject: &str, pattern: &str) -> usize {
     let mut unique_words = HashMap::new();
     let words = match pattern.len() {
-        0 => crate::split::words(&subject),
+        0 => crate::split::words(subject),
         _ => subject.split_terminator(pattern).collect::<Vec<_>>(),
     };
-    if words.len() == 0 {
+    if words.is_empty() {
         return 0;
     };
 

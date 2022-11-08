@@ -22,12 +22,12 @@ pub fn escape_html(subject: &str) -> String {
     match subject.len() {
         0 => "".to_string(),
         _ => subject
-            .replace("&", "&amp;")
-            .replace("<", "&lt;")
-            .replace(">", "&gt;")
-            .replace("\"", "&quot;")
-            .replace("'", "&#x27;")
-            .replace("`", "&#x60;"),
+            .replace('&', "&amp;")
+            .replace('<', "&lt;")
+            .replace('>', "&gt;")
+            .replace('"', "&quot;")
+            .replace('\'', "&#x27;")
+            .replace('`', "&#x60;"),
     }
 }
 
@@ -53,9 +53,9 @@ pub fn escape_regexp(subject: &str) -> String {
         0 => "".to_string(),
         _ => {
             let mut res = String::new();
-            for c in crate::split::chars(&subject) {
-                let push_char = if key.contains(&c) {
-                    format!("\\{}", &c)
+            for c in crate::split::chars(subject) {
+                let push_char = if key.contains(c) {
+                    format!("\\{}", c)
                 } else {
                     c.to_string()
                 };

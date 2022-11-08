@@ -23,7 +23,7 @@ use regex::Regex;
 /// // => [3, 5]
 /// ```
 pub fn index_all(subject: &str, search: &str, from_index: usize) -> Vec<usize> {
-    if subject.is_empty() || crate::count::count(&subject) < from_index {
+    if subject.is_empty() || crate::count::count(subject) < from_index {
         return vec![];
     }
     let string_slice = &subject[subject.char_indices().nth(from_index).unwrap().0..];
@@ -61,7 +61,7 @@ pub fn index_of(subject: &str, search: &str, from_index: usize) -> i8 {
     match search.len() {
         0 => 0,
         _ => {
-            if crate::count::count(&subject) < from_index {
+            if crate::count::count(subject) < from_index {
                 return -1;
             }
             let string_slice = &subject[subject.char_indices().nth(from_index).unwrap().0..];
@@ -106,7 +106,7 @@ pub fn last_index_of(subject: &str, search: &str, from_index: usize) -> i8 {
     match search.len() {
         0 => 0,
         _ => {
-            if crate::count::count(&subject) < from_index {
+            if crate::count::count(subject) < from_index {
                 return -1;
             }
             let string_slice = &subject[subject.char_indices().nth(from_index).unwrap().0..];
@@ -148,7 +148,7 @@ pub fn last_index_of(subject: &str, search: &str, from_index: usize) -> i8 {
 /// // => 2
 /// ```
 pub fn search(subject: &str, pattern: &str, from_index: usize) -> i8 {
-    if from_index >= crate::split::chars(&subject).len() {
+    if from_index >= crate::split::chars(subject).len() {
         return -1;
     }
     match pattern.len() {
@@ -158,7 +158,7 @@ pub fn search(subject: &str, pattern: &str, from_index: usize) -> i8 {
                 Ok(re) => re,
                 Err(_) => return -1,
             };
-            match re.find_at(&subject, from_index) {
+            match re.find_at(subject, from_index) {
                 None => -1,
                 Some(x) => x.start() as i8,
             }

@@ -119,7 +119,7 @@ pub const WHITESPACE: &str = " \t\n\r";
 /// of that string.
 /// https://github.com/chowdhurya/rust-unidecode/blob/master/src/lib.rs
 pub fn unidecode(s: &str) -> String {
-    s.chars().map(|ch| unidecode_char(ch)).collect()
+    s.chars().map(unidecode_char).collect()
 }
 
 /// Takes a single Unicode character and returns an ASCII
@@ -127,12 +127,12 @@ pub fn unidecode(s: &str) -> String {
 /// https://github.com/chowdhurya/rust-unidecode/blob/master/src/lib.rs
 #[inline]
 pub fn unidecode_char(ch: char) -> &'static str {
-    MAPPING.get(ch as usize).map(|&s| s).unwrap_or("")
+    MAPPING.get(ch as usize).copied().unwrap_or("")
 }
 
 /// Unicode mapping
 /// https://github.com/chowdhurya/rust-unidecode/blob/master/src/data.rs
-static MAPPING: [&'static str; 0xffff] = [
+static MAPPING: [&str; 0xffff] = [
     "\u{0}",
     "\u{1}",
     "\u{2}",

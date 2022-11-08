@@ -50,7 +50,7 @@ pub fn ends_with(subject: &str, end: &str) -> bool {
 /// // => true
 /// ```
 pub fn includes(subject: &str, search: &str, position: usize) -> bool {
-    let subject_len = crate::count::count(&subject);
+    let subject_len = crate::count::count(subject);
     if subject_len < position {
         return false;
     }
@@ -59,7 +59,7 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
     }
     subject.to_owned()[subject.char_indices().nth(position).unwrap().0..]
         .to_string()
-        .contains(&search)
+        .contains(search)
 }
 
 /// Checks whether `subject` contains only alpha characters.
@@ -87,19 +87,19 @@ pub fn includes(subject: &str, search: &str, position: usize) -> bool {
 /// // => true
 /// ```
 pub fn is_alpha(subject: &str) -> bool {
-    if is_empty(&subject) {
+    if is_empty(subject) {
         false
     } else {
-        is_alpha_or_alphadigit(&subject, false)
+        is_alpha_or_alphadigit(subject, false)
     }
 }
 
 fn is_alpha_or_alphadigit(subject: &str, count_digits: bool) -> bool {
     let mut subject_is_ok = true;
-    let subject_grapheme_len = crate::count::count_graphemes(&subject);
+    let subject_grapheme_len = crate::count::count_graphemes(subject);
     let mut current_pos = 0;
     while current_pos < subject_grapheme_len {
-        let current_char = crate::chop::grapheme_at(&subject, current_pos);
+        let current_char = crate::chop::grapheme_at(subject, current_pos);
         if (!count_digits
             && (is_digit(&current_char)
                 || is_blank(&current_char)
@@ -141,10 +141,10 @@ fn is_alpha_or_alphadigit(subject: &str, count_digits: bool) -> bool {
 /// // => true
 /// ```
 pub fn is_alphadigit(subject: &str) -> bool {
-    if is_empty(&subject) {
+    if is_empty(subject) {
         false
     } else {
-        is_alpha_or_alphadigit(&subject, true)
+        is_alpha_or_alphadigit(subject, true)
     }
 }
 
@@ -199,7 +199,7 @@ pub fn is_blank(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_camel_case(subject: &str) -> bool {
-    subject == crate::case::camel_case(&subject)
+    subject == crate::case::camel_case(subject)
 }
 
 /// Checks whether `subject` is capitalized and the rest of `subject` is converted to lower case.
@@ -225,7 +225,7 @@ pub fn is_camel_case(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_capitalize(subject: &str) -> bool {
-    is_capitalize_or_decapitalize(&subject, true)
+    is_capitalize_or_decapitalize(subject, true)
 }
 
 /// Checks whether `subject` is decapitalized and the rest of `subject` is converted to lower case.
@@ -251,15 +251,15 @@ pub fn is_capitalize(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_decapitalize(subject: &str) -> bool {
-    is_capitalize_or_decapitalize(&subject, false)
+    is_capitalize_or_decapitalize(subject, false)
 }
 
 fn is_capitalize_or_decapitalize(subject: &str, if_capitalize: bool) -> bool {
     match subject.len() {
         0 => true,
         _ => {
-            let first_letter = crate::chop::first(&subject, 1);
-            let the_rest = crate::chop::slice(&subject, 1, 0);
+            let first_letter = crate::chop::first(subject, 1);
+            let the_rest = crate::chop::slice(subject, 1, 0);
             let first_letter_to_check = if if_capitalize {
                 is_uppercase(&first_letter)
             } else {
@@ -297,7 +297,7 @@ pub fn is_digit(subject: &str) -> bool {
         return true;
     }
 
-    crate::split::chars(&subject)
+    crate::split::chars(subject)
         .iter()
         .filter(|c| {
             let mut current_char = String::new();
@@ -359,7 +359,7 @@ pub fn is_empty(subject: &str) -> bool {
 /// // => false
 /// ```
 pub fn is_foreign_key(subject: &str) -> bool {
-    subject == crate::chop::foreign_key(&subject)
+    subject == crate::chop::foreign_key(subject)
 }
 
 /// Checks whether `subject` has only lower case characters.
@@ -441,7 +441,7 @@ pub fn is_lower_first(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_kebab_case(subject: &str) -> bool {
-    subject == crate::case::kebab_case(&subject)
+    subject == crate::case::kebab_case(subject)
 }
 
 /// Checks whether `subject` is numeric.
@@ -520,7 +520,7 @@ pub fn is_numeric(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_pascal_case(subject: &str) -> bool {
-    subject == crate::case::pascal_case(&subject)
+    subject == crate::case::pascal_case(subject)
 }
 
 /// Checks whether `subject` is SHOUTY-KEBAB-CASED.
@@ -546,7 +546,7 @@ pub fn is_pascal_case(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_shouty_kebab_case(subject: &str) -> bool {
-    subject == crate::case::shouty_kebab_case(&subject)
+    subject == crate::case::shouty_kebab_case(subject)
 }
 
 /// Checks whether `subject` is snake_cased.
@@ -572,7 +572,7 @@ pub fn is_shouty_kebab_case(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_snake_case(subject: &str) -> bool {
-    subject == crate::case::snake_case(&subject)
+    subject == crate::case::snake_case(subject)
 }
 
 /// Checks whether `subject` is SHOUTY_SNAKE_CASED.
@@ -598,7 +598,7 @@ pub fn is_snake_case(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_shouty_snake_case(subject: &str) -> bool {
-    subject == crate::case::shouty_snake_case(&subject)
+    subject == crate::case::shouty_snake_case(subject)
 }
 
 /// Checks whether `subject` is a titlecased string and there is at least one character.
@@ -623,7 +623,7 @@ pub fn is_title(subject: &str) -> bool {
     if subject.is_empty() {
         return false;
     }
-    let words = crate::split::words(&subject);
+    let words = crate::split::words(subject);
     let subject_len = words.len();
     words
         .iter()
@@ -631,7 +631,7 @@ pub fn is_title(subject: &str) -> bool {
             let mut res = String::with_capacity(w.len());
             for (i, c) in crate::split::chars(w).iter().enumerate() {
                 if (i == 0 && c == &c.to_uppercase()) || (i > 0 && c == &c.to_lowercase()) {
-                    res.push_str(&c)
+                    res.push_str(c)
                 }
             }
             res.len() == w.len()
@@ -663,7 +663,7 @@ pub fn is_title(subject: &str) -> bool {
 /// // => true
 /// ```
 pub fn is_train_case(subject: &str) -> bool {
-    subject == crate::case::train_case(&subject)
+    subject == crate::case::train_case(subject)
 }
 
 /// Checks whether `subject` has only upper case characters.
@@ -761,7 +761,7 @@ fn is_upper_or_lowercase(subject: &str, lowercase: bool) -> bool {
 /// // => true
 /// ```
 pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
-    let subject_len = crate::split::chars(&subject).len();
+    let subject_len = crate::split::chars(subject).len();
     if subject_len == 0 {
         return false;
     }
@@ -775,7 +775,7 @@ pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
                 Ok(re) => re,
                 Err(_) => return false,
             };
-            re.is_match_at(&subject, position)
+            re.is_match_at(subject, position)
         }
     }
 }
@@ -803,7 +803,7 @@ pub fn matches(subject: &str, pattern: &str, position: usize) -> bool {
 /// // => true
 /// ```
 pub fn query(subject: &str, search: &str, position: usize) -> bool {
-    let subject_len = crate::count::count(&subject);
+    let subject_len = crate::count::count(subject);
     if subject_len < position {
         return false;
     }
@@ -811,8 +811,8 @@ pub fn query(subject: &str, search: &str, position: usize) -> bool {
         return true;
     }
     let mut i: usize = 0;
-    let q = crate::split::chars(&search);
-    let q_len = crate::split::chars(&search).len();
+    let q = crate::split::chars(search);
+    let q_len = crate::split::chars(search).len();
     crate::split::chars(&subject.to_owned()[subject.char_indices().nth(position).unwrap().0..])
         .into_iter()
         .filter(|c| {
@@ -828,7 +828,7 @@ pub fn query(subject: &str, search: &str, position: usize) -> bool {
             }
         })
         .count()
-        == crate::count::count(&search)
+        == crate::count::count(search)
 }
 
 /// Checks whether `subject` starts with `start`.
