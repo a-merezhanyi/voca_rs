@@ -235,4 +235,8 @@ fn partial_directive() {
     assert_eq!(voca_rs::strip::strip_tags("</a"), "");
     assert_eq!(voca_rs::strip::strip_tags("<!"), "");
     assert_eq!(voca_rs::strip::strip_tags("<!-"), "");
+    assert_eq!(voca_rs::strip::strip_tags("á<!"), "á");
+    // Should maybe keep the lose both angle brackets?
+    assert_eq!(voca_rs::strip::strip_tags(">天地不仁<"), ">天地不仁");
+    assert_eq!(voca_rs::strip::strip_tags("\u{00a0}<!"), "\u{a0}");
 }
