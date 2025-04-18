@@ -1,10 +1,6 @@
 #![crate_name = "voca_rs"]
-#![deny(
-    warnings,
-    unused_variables,
-    missing_docs,
-    unused_extern_crates
-)]
+#![deny(warnings, unused_variables, missing_docs, unused_extern_crates)]
+#![allow(unexpected_cfgs)]
 #![forbid(unsafe_code)]
 #![cfg_attr(all(test, feature = "nightly"), feature(test))]
 
