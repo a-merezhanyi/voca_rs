@@ -67,16 +67,23 @@ fn return_after_or_before_and_after_last_or_before_last(
     if start_position == -1 {
         return "".to_owned();
     }
+    if start_position == 0 {
+        if let ReturnType::BeforeNormal | ReturnType::BeforeLast = return_type {
+            // A special check is needed for this case because `chop::slice` interprets an end position of 0 as "end at the last index"
+            // which means it would incorrectly return the entire `subject`, but if we want everything before the first index, that's just nothing.
+            return "".to_owned();
+        }
+    }
     let the_length = crate::count::count(search) as isize;
     let chop_start_position = match return_type {
         ReturnType::AfterNormal | ReturnType::AfterLast => start_position + the_length,
         ReturnType::BeforeNormal | ReturnType::BeforeLast => 0,
     };
     let chop_end_position = match return_type {
-        ReturnType::AfterNormal | ReturnType::AfterLast => None,
-        ReturnType::BeforeNormal | ReturnType::BeforeLast => Some(start_position),
+        ReturnType::AfterNormal | ReturnType::AfterLast => 0,
+        ReturnType::BeforeNormal | ReturnType::BeforeLast => start_position,
     };
-    crate::chop::slice_fixed(subject, chop_start_position, chop_end_position)
+    crate::chop::slice(subject, chop_start_position, chop_end_position)
 }
 /// Returns everything after the given `search`.
 ///
