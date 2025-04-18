@@ -73,10 +73,10 @@ fn return_after_or_before_and_after_last_or_before_last(
         ReturnType::BeforeNormal | ReturnType::BeforeLast => 0,
     };
     let chop_end_position = match return_type {
-        ReturnType::AfterNormal | ReturnType::AfterLast => 0,
-        ReturnType::BeforeNormal | ReturnType::BeforeLast => start_position,
+        ReturnType::AfterNormal | ReturnType::AfterLast => None,
+        ReturnType::BeforeNormal | ReturnType::BeforeLast => Some(start_position),
     };
-    crate::chop::slice(subject, chop_start_position, chop_end_position)
+    crate::chop::slice_fixed(subject, chop_start_position, chop_end_position)
 }
 /// Returns everything after the given `search`.
 ///
@@ -468,7 +468,7 @@ fn remove_prefix_or_suffix(subject: &str, substring: &str, cut_type: CutType) ->
                     subject.to_owned()
                 }
             } else if crate::query::ends_with(subject, substring) {
-                    crate::chop::before_last(subject, substring)
+                crate::chop::before_last(subject, substring)
             } else {
                 subject.to_owned()
             }
@@ -551,23 +551,52 @@ pub fn removesuffix(subject: &str, prefix: &str) -> String {
 /// // => "iami"
 /// ```
 pub fn slice(subject: &str, start: isize, end: isize) -> String {
-    let subject_length = crate::split::chars(subject).len();
-    let position_start = calculate_position(subject_length, start, true);
-    let position_end = calculate_position(subject_length, end, false);
+    let end_opt = if end == 0 { None } else { Some(end) };
+    slice_fixed(subject, start, end_opt)
+}
 
-    fn calculate_position(length: usize, x: isize, start: bool) -> usize {
+/// Extracts from `subject` a string from `start` position up to `end` position. The character at `end` position is not included.
+///
+/// # Arguments
+///
+/// * `subject` - The string to extract from.
+/// * `start` - The position to start extraction. 0 means extract from the beginning of the `subject`. If negative use `subject.len() - start`.
+/// * `end` - The position to end extraction. `None` means extract to the end of the `subject`. If negative use `subject.len() - end`.
+///
+/// # Example
+/// ```
+/// use voca_rs::*;
+/// chop::slice("miami", 1, 0);
+/// // => "iami"
+/// chop::slice("błąd", -2, 0);
+/// // => "ąd"
+/// chop::slice("florida", 1, 4);
+/// // => "lor"
+/// chop::slice("e\u{0301}", 1, 0); // or 'é'
+/// // => "\u{0301}"
+/// chop::slice("Die Schildkröte fliegt.", 4, -8);
+/// // => "Schildkröte"
+/// use voca_rs::Voca;
+/// "miami"._slice(1, 0);
+/// // => "iami"
+/// ```
+pub fn slice_fixed(subject: &str, start: isize, end: Option<isize>) -> String {
+    //TODO choose a better name for this function
+    let subject_length = crate::split::chars(subject).len();
+    let position_start = calculate_position(subject_length, start);
+    let position_end = if let Some(end) = end {
+        calculate_position(subject_length, end)
+    } else {
+        subject_length
+    };
+
+    fn calculate_position(length: usize, x: isize) -> usize {
         if x < 0 {
             let pos = length as isize - x.abs();
             if pos < 0 {
                 0
             } else {
                 pos as usize
-            }
-        } else if x == 0 {
-            if start {
-                0
-            } else {
-                length
             }
         } else if x > length as isize {
             length

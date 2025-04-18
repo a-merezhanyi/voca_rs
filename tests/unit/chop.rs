@@ -8,17 +8,11 @@ fn after() {
         voca_rs::chop::after("This is my name", "This is"),
         " my name"
     );
-    assert_eq!(
-        voca_rs::chop::after("This is my name", "tHiS IS"),
-        ""
-    );
-    assert_eq!(
-        voca_rs::chop::after("This is my name", "my name"),
-        ""
-    );
+    assert_eq!(voca_rs::chop::after("This is my name", "tHiS IS"), "");
+    assert_eq!(voca_rs::chop::after("This is my name", "my name"), "");
     assert_eq!(
         voca_rs::chop::after("This is my name", ""),
-        ""
+        "This is my name"
     );
     assert_eq!(
         voca_rs::chop::after("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱", "gḷ̉y̌p̆ẖs"),
@@ -63,18 +57,9 @@ fn before() {
         voca_rs::chop::before("This is my name", "my name"),
         "This is "
     );
-    assert_eq!(
-        voca_rs::chop::before("This is my name", "My NAME"),
-        ""
-    );
-    assert_eq!(
-        voca_rs::chop::before("This is my name", "This is"),
-        ""
-    );
-    assert_eq!(
-        voca_rs::chop::before("This is my name", ""),
-        ""
-    );
+    assert_eq!(voca_rs::chop::before("This is my name", "My NAME"), "");
+    assert_eq!(voca_rs::chop::before("This is my name", "This is"), "");
+    assert_eq!(voca_rs::chop::before("This is my name", ""), "");
     assert_eq!(
         voca_rs::chop::before("S̃o̊m̋ȩ̈ gḷ̉y̌p̆ẖs a̋řẹ̆̇ hër̵ē̱", "gḷ̉y̌p̆ẖs"),
         "S̃o̊m̋ȩ̈ "
