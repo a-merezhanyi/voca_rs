@@ -558,52 +558,23 @@ pub fn removesuffix(subject: &str, prefix: &str) -> String {
 /// // => "iami"
 /// ```
 pub fn slice(subject: &str, start: isize, end: isize) -> String {
-    let end_opt = if end == 0 { None } else { Some(end) };
-    slice_fixed(subject, start, end_opt)
-}
-
-/// Extracts from `subject` a string from `start` position up to `end` position. The character at `end` position is not included.
-///
-/// # Arguments
-///
-/// * `subject` - The string to extract from.
-/// * `start` - The position to start extraction. 0 means extract from the beginning of the `subject`. If negative use `subject.len() - start`.
-/// * `end` - The position to end extraction. `None` means extract to the end of the `subject`. If negative use `subject.len() - end`.
-///
-/// # Example
-/// ```
-/// use voca_rs::*;
-/// chop::slice("miami", 1, 0);
-/// // => "iami"
-/// chop::slice("błąd", -2, 0);
-/// // => "ąd"
-/// chop::slice("florida", 1, 4);
-/// // => "lor"
-/// chop::slice("e\u{0301}", 1, 0); // or 'é'
-/// // => "\u{0301}"
-/// chop::slice("Die Schildkröte fliegt.", 4, -8);
-/// // => "Schildkröte"
-/// use voca_rs::Voca;
-/// "miami"._slice(1, 0);
-/// // => "iami"
-/// ```
-pub fn slice_fixed(subject: &str, start: isize, end: Option<isize>) -> String {
-    //TODO choose a better name for this function
     let subject_length = crate::split::chars(subject).len();
-    let position_start = calculate_position(subject_length, start);
-    let position_end = if let Some(end) = end {
-        calculate_position(subject_length, end)
-    } else {
-        subject_length
-    };
+    let position_start = calculate_position(subject_length, start, true);
+    let position_end = calculate_position(subject_length, end, false);
 
-    fn calculate_position(length: usize, x: isize) -> usize {
+    fn calculate_position(length: usize, x: isize, start: bool) -> usize {
         if x < 0 {
             let pos = length as isize - x.abs();
             if pos < 0 {
                 0
             } else {
                 pos as usize
+            }
+        } else if x == 0 {
+            if start {
+                0
+            } else {
+                length
             }
         } else if x > length as isize {
             length

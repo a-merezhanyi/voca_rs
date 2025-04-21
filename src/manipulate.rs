@@ -503,7 +503,7 @@ pub fn splice(subject: &str, start: isize, delete_count: usize, to_add: &str) ->
                 "{}{}{}",
                 crate::chop::first(subject, start_position),
                 to_add,
-                crate::chop::slice_fixed(subject, end_position as isize, None)
+                crate::chop::slice(subject, end_position as isize, 0)
             )
         }
     }
@@ -709,10 +709,7 @@ pub fn word_wrap(subject: &str, width: usize, newline: &str, indent: &str) -> St
         let mut subj_part = crate::chop::prune(&string, length, "+");
         subj_part = trim(&crate::chop::slice(&subj_part, 0, -1), "");
         let length_to_cut = crate::count::count_graphemes(&subj_part);
-        string = trim(
-            &crate::chop::slice_fixed(&string, length_to_cut as isize, None),
-            "",
-        );
+        string = trim(&crate::chop::slice(&string, length_to_cut as isize, 0), "");
         subject_len = crate::count::count_graphemes(&string);
 
         if subj_part == string || subj_part.is_empty() {
