@@ -148,6 +148,8 @@ pub fn after_last(subject: &str, search: &str) -> String {
 /// * `subject` - The string to extract from.
 /// * `search` - The substring to look for.
 ///
+/// If `search` is found at the start of `subject`, an empty string is returned.
+///
 /// # Example
 /// ```
 /// use voca_rs::*;
