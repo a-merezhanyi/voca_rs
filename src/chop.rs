@@ -67,6 +67,13 @@ fn return_after_or_before_and_after_last_or_before_last(
     if start_position == -1 {
         return "".to_owned();
     }
+    if start_position == 0 {
+        if let ReturnType::BeforeNormal | ReturnType::BeforeLast = return_type {
+            // A special check is needed for this case because `chop::slice` interprets an end position of 0 as "end at the last index"
+            // which means it would incorrectly return the entire `subject`, but if we want everything before the first index, that's just nothing.
+            return "".to_owned();
+        }
+    }
     let the_length = crate::count::count(search) as isize;
     let chop_start_position = match return_type {
         ReturnType::AfterNormal | ReturnType::AfterLast => start_position + the_length,
@@ -140,6 +147,8 @@ pub fn after_last(subject: &str, search: &str) -> String {
 ///
 /// * `subject` - The string to extract from.
 /// * `search` - The substring to look for.
+///
+/// If `search` is found at the start of `subject`, an empty string is returned.
 ///
 /// # Example
 /// ```
@@ -468,7 +477,7 @@ fn remove_prefix_or_suffix(subject: &str, substring: &str, cut_type: CutType) ->
                     subject.to_owned()
                 }
             } else if crate::query::ends_with(subject, substring) {
-                    crate::chop::before_last(subject, substring)
+                crate::chop::before_last(subject, substring)
             } else {
                 subject.to_owned()
             }
